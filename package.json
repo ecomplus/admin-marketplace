@@ -9,7 +9,7 @@
     "release": "npm run build && standard-version --prerelease"
   },
   "dependencies": {
-    "@ecomplus/apps-manager": "^0.2.1",
+    "@ecomplus/apps-manager": "^0.3.0",
     "@ecomplus/client": "^1.1.3",
     "@ecomplus/i18n": "^1.1.0",
     "@ecomplus/storefront-twbs": "^3.5.0",
