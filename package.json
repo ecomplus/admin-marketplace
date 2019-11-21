@@ -14,7 +14,7 @@
     "@ecomplus/i18n": "^1.1.0",
     "@ecomplus/storefront-twbs": "^3.5.0",
     "@ecomplus/utils": "^1.1.1",
-    "ant-design-vue": "^1.4.5",
+    "ant-design-vue": "^1.4.6",
     "core-js": "^3.4.1",
     "vue": "^2.6.10",
     "vue-markdown": "^2.2.4",
