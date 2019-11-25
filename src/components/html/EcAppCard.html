@@ -4,11 +4,11 @@
     <div class="act">
       <div v-if="isInstalled">
         <a-icon type="edit" />
-        <router-link :to="`/apps/edit/${app.slug}`"> {{i19edit}} </router-link>
+        <router-link :to="`/apps/edit/${app.app_id}`"> {{i19edit}} </router-link>
       </div>
       <div v-else>
         <a-icon type="download" />
-        <router-link :to="`/apps/edit/${app.slug}`"> {{i19install}} </router-link>
+        <router-link :to="`/apps/edit/${app.app_id}`"> {{i19install}} </router-link>
       </div>
     </div>
   </template>

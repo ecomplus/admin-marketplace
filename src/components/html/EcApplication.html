@@ -1,41 +1,48 @@
-<div class="container py-4">
-  <div class="row">
-    <div class="col">
-      <a-card hoverable style="width: 100%">
-        <template class="ant-card-actions" slot="actions">
-          <a-icon type="api" title="Instalar agora" @click="installApp" v-if="!isInstalled" class="ec-application__actions"/>
-          <a-icon type="setting" title="Configurar aplicativo" @click="toggleSettings" v-if="isInstalled" class="ec-application__actions"/>
-          <a-popconfirm
-            title="Tem certeza que deseja excluir o aplicativo?"
-            @confirm="deleteApp"
-            okText="Sim"
-            cancelText="Não"
-            v-if="isInstalled"
-          >
-            <a-icon type="delete" title="Excluir aplicativo" class="ec-application__actions"/>
-          </a-popconfirm>
-        </template>
-        <a-card-meta :title="title" :description="shortDescription">
-          <a-avatar
-            slot="avatar"
-            :src="icon"
-          />
-        </a-card-meta>
-      </a-card>
-    </div>
+<div class="page-header-index-wide page-header-wrapper-grid-content-main">
+    <a-row :gutter="24">
+      <a-col :md="24" :lg="7">
+        <a-card :bordered="false">
+          <div class="account-center-avatarHolder">
+            <div class="avatar">
+              <img :src="icon">
+            </div>
+            <div class="title" style="margin-bottom: 5px">{{ title }}</div>
+            <div class="short-description">{{ shortDescription }}</div>
+          </div>
+          <div class="install" style="text-align: center; margin-bottom: 5px">
+            <span class="table-page-search-submitButtons">
+              <a-button type="primary" shape="round" size="large"> <a-icon type="download" /> {{ i19install }}</a-button>
+            </span>
+          </div>
+          <div class="price" style="text-align: center; margin-bottom: 5px">
+            <p>Grátis</p>
+          </div>
+          <div class="account-center-detail">
+            <p>
+                <a-icon type="user" />  Autor : {{ author }}
+            </p>
+            <p>
+              <a-icon type="interation" /> {{ i19version }} : {{ version }}
+            </p>
+            <p>
+              <a-icon type="global" /> {{ website }}
+            </p>
+          </div>
+
+        </a-card>
+      </a-col>
+      <a-col :md="24" :lg="17">
+        <a-card
+          style="width:100%"
+          :bordered="false"
+          :tabList="tabListNoTitle"
+          :activeTabKey="noTitleKey"
+          @tabChange="key => handleTabChange(key, 'noTitleKey')"
+        >
+          <ec-app-description v-if="noTitleKey === 'description'" :description="description"></ec-app-description>
+          <ec-app-configuration v-else-if="noTitleKey === 'config'"></ec-app-configuration>
+          <ec-app-related v-else-if="noTitleKey === 'appr'"></ec-app-related>
+        </a-card>
+      </a-col>
+    </a-row>
   </div>
-  <div class="row pt-4" v-if="showSettings">
-    <div class="col">
-      <a-card hoverable style="width: 100%">
-        <slot name="application-settings"></slot>
-      </a-card>
-    </div>
-  </div>
-  <div class="row py-4">
-    <div class="col">
-      <a-card>
-        <vue-markdown>{{description}}</vue-markdown>
-      </a-card>
-    </div>
-  </div>
-</div>

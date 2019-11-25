@@ -1,16 +1,39 @@
 import VueMarkdown from 'vue-markdown'
 import EcomApps from '@ecomplus/apps-manager'
+import EcAppDescription from './EcAppDescription'
+import EcAppConfiguration from './EcAppConfiguration'
+import EcAppRelated from './EcAppRelated'
+import { i18n } from '@ecomplus/utils'
+import { i19version, i19install } from '@ecomplus/i18n'
 
 export default {
   name: 'EcApplication',
   components: {
-    VueMarkdown
+    VueMarkdown,
+    EcAppDescription,
+    EcAppConfiguration,
+    EcAppRelated
   },
   data () {
     return {
       showSettings: false,
       isInstalled: false,
-      applicationBody: this.application
+      applicationBody: this.application,
+      tabListNoTitle: [
+        {
+          key: 'description',
+          tab: 'Descrição'
+        },
+        {
+          key: 'config',
+          tab: 'Configuração'
+        },
+        {
+          key: 'appr',
+          tab: 'Aplicativos relacionados'
+        }
+      ],
+      noTitleKey: 'config'
     }
   },
   props: {
@@ -24,6 +47,9 @@ export default {
     }
   },
   methods: {
+    handleTabChange (key, type) {
+      this[type] = key
+    },
     fetchMarketApplication () {
       this.ecomApps.findApp(this.appId).then(app => {
         // remove null
@@ -81,13 +107,33 @@ export default {
       return this.applicationBody.category
     },
     author () {
-      return this.applicationBody.partner.name
+      if (this.applicationBody.partner) {
+        return this.applicationBody.partner.name
+      } else {
+        return 'Sem autor'
+      }
     },
     shortDescription () {
       return this.applicationBody.short_description
     },
     description () {
       return this.applicationBody.description
+    },
+    i19version () {
+      return i18n(i19version)
+    },
+    i19install () {
+      return i18n(i19install)
+    },
+    version () {
+      return this.applicationBody.version
+    },
+    price () {
+      if (!this.applicationBody.paid) {
+        return 'Grátis'
+      } else {
+        return 'Pago'
+      }
     },
     localApplication: {
       get () {
@@ -97,6 +143,9 @@ export default {
         this.applicationBody = data
         this.$emit('update:application', data)
       }
+    },
+    website () {
+      return this.localApplication.github_repository
     }
   },
   created () {
