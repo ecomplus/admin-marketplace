@@ -1,11 +1,9 @@
 import InputMoney from '../InputMoney.vue'
-import EcDynamicField from '../../EcDynamicField.vue'
 
 export default {
   name: 'InputDiscount',
   components: {
-    InputMoney,
-    EcDynamicField
+    InputMoney
   },
   props: {
     name: {
@@ -24,7 +22,7 @@ export default {
     type () {
       return this.schema.properties.type
     },
-    value () {
+    discountValue () {
       return this.schema.properties.value
     },
     others () {

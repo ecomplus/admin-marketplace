@@ -33,7 +33,7 @@ export default {
 
     localValue: {
       get () {
-        return this.value
+        return this.value ? this.value : this.schema.default
       },
       set (value) {
         this.$emit('input', value)

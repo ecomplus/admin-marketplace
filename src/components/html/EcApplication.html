@@ -2,7 +2,7 @@
   <a-row :gutter="24">
     <div v-if="isLoaded">
       <a-col :md="24" :lg="7">
-        <a-card :bordered="false" >
+        <a-card>
           <div class="text-center">
             <a-avatar :src="icon" :size="170"  class="mb-3 img-fluid"/>
             <a-card-meta
@@ -17,26 +17,33 @@
 
           <div class="text-center mb-1 mt-4">
             <span>
-              <a-button type="primary" size="large" shape="round" @click="installApp" v-if="!isInstalled">
+              <a-button
+                shape="round"
+                type="primary"
+                size="large"
+                @click="installApp"
+                v-if="!isInstalled"
+              >
                 <i class="fas fa-plus mr-2"></i>
                 {{ i19install }}
               </a-button>
-                <a-popconfirm
-                  :title="i19areYouWantToDeleteAppMsg"
-                  @confirm="uninstallApp"
-                  :okText="i19yes"
-                  :cancelText="i19no"
-                  v-if="isInstalled"
+
+              <a-popconfirm
+                :title="i19areYouWantToDeleteAppMsg"
+                @confirm="uninstallApp"
+                :okText="i19yes"
+                :cancelText="i19no"
+                v-if="isInstalled"
+              >
+                <a-button
+                  shape="round"
+                  type="danger"
+                  size="large"
                 >
-                  <a-button
-                    type="danger"
-                    shape="round"
-                    size="large"
-                  >
-                    <i class="fas fa-trash mr-2"></i>
-                    {{ i19uninstall }}
-                  </a-button>
-                </a-popconfirm>
+                  <i class="fas fa-trash mr-2"></i>
+                  {{ i19uninstall }}
+                </a-button>
+              </a-popconfirm>
             </span>
           </div>
 
@@ -62,36 +69,41 @@
       </a-col>
 
       <a-col :md="24" :lg="17">
-        <a-card class="w-100" :bordered="false" :tabList="tabListNoTitle" :activeTabKey="activeTabKey"
-          @tabChange="key => handleTabChange(key, 'activeTabKey')" >
-
+        <a-card
+          class="w-100"
+          :tabList="tabListNoTitle"
+          :activeTabKey="activeTabKey"
+          @tabChange="key => handleTabChange(key, 'activeTabKey')"
+        >
           <a-card :bordered="false" v-if="activeTabKey === 'description'" key="app-description">
-            <vue-markdown>{{description}}</vue-markdown>
+            <vue-markdown>{{ description }}</vue-markdown>
           </a-card>
 
-          <article v-else-if="activeTabKey === 'configuration'" key="app-settings"></article>
+          <article v-else-if="activeTabKey === 'configuration'" key="app-settings">
+            <ec-admin-settings-form :application="applicationBody" @submit="editApp"/>
+          </article>
 
           <article v-else-if="activeTabKey === 'relatedApps'" key="app-related">
-            <div v-if="quantityOfRelatedApps" class="row">
+            <div v-if="appsRelated.length" class="row">
               <div class="col-6 col-md-4" v-for="(app, i) in appsRelated" :key="`app-${i}`">
-                <ec-app-card v-if="quantityOfRelatedApps" :app.sync="appsRelated[i]" :ecomApps="ecomApps" @click="$emit('click:app', app)"
+                <ec-app-card :app.sync="appsRelated[i]" :ecomApps="ecomApps" @click="$emit('click:app', app)"
                   class="mb-4" />
               </div>
             </div>
             <div v-else class="row">
-              {{ noRelatedApps }}
+              {{ i19noAppsAvailable }}
             </div>
           </article>
         </a-card>
+
         <a-button
           hoverable
           @click="$emit('click:back')"
           type="link"
-          size="large"
           class="mt-4 float-right"
           style="border: 1px solid #e8e8e8"
         >
-        <i class="fas fa-undo mr-3"></i>
+        <i class="fas fa-undo mr-2"></i>
           {{ i19back }}
         </a-button>
       </a-col>

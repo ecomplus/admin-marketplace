@@ -23,7 +23,7 @@ export default {
   computed: {
     localValue: {
       get () {
-        return Number(this.value)
+        return this.value ? Number(this.value) : Number(this.schema.default)
       },
       set (value) {
         this.$emit('input', Number(value))

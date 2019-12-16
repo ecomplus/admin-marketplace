@@ -1,12 +1,14 @@
 import VueMarkdown from 'vue-markdown'
 import EcomApps from '@ecomplus/apps-manager'
 import EcAppCard from './../EcAppCard.vue'
+import EcAdminSettingsForm from './../EcAdminSettingsForm.vue'
 import { i18n } from '@ecomplus/utils'
 
 import {
   i19install,
   i19version,
   i19description,
+  i19errorMsg,
   i19relatedApps,
   i19configuration,
   i19free,
@@ -19,11 +21,11 @@ import {
   i19unavailable,
   i19paid,
   i19installed,
-  i19unableToInstallAppMsg,
+  i19unableToInstallApp,
   i19installingApp,
   i19tryAgain,
   i19loadDataErrorMsg,
-  i19appAlreadyInstalledMsg
+  i19saved
 } from '@ecomplus/i18n'
 
 export default {
@@ -31,7 +33,8 @@ export default {
 
   components: {
     VueMarkdown,
-    EcAppCard
+    EcAppCard,
+    EcAdminSettingsForm
   },
 
   props: {
@@ -52,19 +55,15 @@ export default {
       loadError: false,
       applicationBody: this.application,
       appsRelated: [],
-      quantityOfRelatedApps: true,
       tabListNoTitle: [
         {
-          key: 'description',
-          tab: ''
+          key: 'description'
         },
         {
-          key: 'configuration',
-          tab: ''
+          key: 'configuration'
         },
         {
-          key: 'relatedApps',
-          tab: ''
+          key: 'relatedApps'
         }
       ],
       activeTabKey: 'description'
@@ -97,19 +96,12 @@ export default {
     },
 
     description () {
-      return this.applicationBody.description
+      return this.applicationBody.description ||
+        `# ${this.title}\nApp ID: \`${this.appId}\``
     },
 
     version () {
       return this.applicationBody.version
-    },
-
-    noRelatedApps () {
-      if (this.appsRelated) {
-        if (!this.quantityOfRelatedApps) {
-          return this.i19noAppsAvailable
-        }
-      }
     },
 
     website () {
@@ -125,11 +117,15 @@ export default {
         }
       } else {
         return i18n(i19unavailable)
-        }
+      }
     },
 
     i19description () {
       return i18n(i19description)
+    },
+
+    i19errorMsg () {
+      return i18n(i19errorMsg)
     },
 
     i19tryAgain () {
@@ -145,7 +141,7 @@ export default {
     },
 
     i19unableToInstallAppMsg () {
-      return i18n(i19unableToInstallAppMsg)
+      return i18n(i19unableToInstallApp)
     },
 
     i19unableToUninstallAppMsg () {
@@ -209,7 +205,11 @@ export default {
     },
 
     i19appAlreadyInstalledMsg () {
-      return 'Desculpe, o aplicativo já foi instalado.'
+      return 'Aplicativo já instalado, deseja continuar?'
+    },
+
+    i19saved () {
+      return i18n(i19saved)
     },
 
     isInstalled () {
@@ -229,6 +229,17 @@ export default {
   },
 
   methods: {
+    editApp (obj) {
+      this.ecomApps.editApplication(this.applicationBody._id, obj)
+        .then(() => {
+          this.$message.success(this.title + ' ' + this.i19saved, 2)
+          this.localApplication = Object.assign({}, this.applicationBody, obj)
+        })
+        .catch(e => {
+          this.$message.error(this.i19errorMsg, 3)
+        })
+    },
+
     fetchMarketApplication () {
       this.ecomApps.findApp(this.appId).then(app => {
         // remove null
@@ -259,12 +270,6 @@ export default {
           const { result } = resp
           const filter = result.filter(app => app.app_id !== this.appId)
           this.appsRelated = filter || []
-          if (this.appsRelated.length === 0) {
-            return this.quantityOfRelatedApps = false
-          } else {
-            return this.quantityOfRelatedApps = true
-          }
-
         })
         .catch(e => {
           console.log(e)
@@ -272,32 +277,30 @@ export default {
         })
     },
 
-    installApp () {
-      if (!this.searchForApps) {
-        this.$message.loading(this.i19installingApp + ' ' + this.title, 1)
-        this.ecomApps.installApp(this.appId, true)
-          .then(installed => {
-            this.$message.success(this.title + ' ' + this.i19installed , 2)
-            this.fetchStoreApplication(installed.result._id)
-            this.$emit('click:install', installed.result, installed.app)
-          })
-          .catch(e => {
-            console.log(e)
-            this.$message.error(this.i19unableToInstallAppMsg, 3)
-          })
-      } else {
-        this.$message.error(this.i19appAlreadyInstalledMsg, 5)
-      }
-    },
-
-    searchForApps () {
-      this.ecomApps.fetchStoreApplications(this.appId)
-        .then(result => {
-          console.log(result)
-          return result.filter(idFind => idFind === this.appId)
+    requestInstall () {
+      this.ecomApps.installApp(this.appId, true)
+        .then(installed => {
+          this.$message.success(this.title + ' ' + this.i19installed, 2)
+          this.fetchStoreApplication(installed.result._id)
+          this.$emit('click:install', installed.result, installed.app)
         })
         .catch(e => {
           console.log(e)
+          this.$message.error(this.i19unableToInstallAppMsg, 3)
+        })
+    },
+
+    installApp () {
+      this.ecomApps.fetchStoreApplications({ params: { app_id: this.appId } })
+        .then(resp => {
+          if (Array.isArray(resp) && resp.length) {
+            this.$confirm({
+              title: this.i19appAlreadyInstalledMsg,
+              onOk: this.requestInstall
+            })
+          } else {
+            this.requestInstall()
+          }
         })
     },
 
@@ -305,7 +308,7 @@ export default {
       this.ecomApps.removeApplication(this.localApplication._id)
       this.$message.loading(this.i19uninstallingApp + ' ' + this.title, 1)
         .then(result => {
-          this.$message.success(this.i19uninstallingAppWithSuccessMsg , 2)
+          this.$message.success(this.i19uninstallingAppWithSuccessMsg, 2)
           this.$emit('click:uninstall')
           console.log(result)
         })

@@ -1,21 +1,21 @@
 export default {
-  name: 'InputEnum',
+  name: 'InputText',
   props: {
+    schema: {
+      type: Object
+    },
     name: {
       type: String,
       required: true
     },
-    schema: {
-      type: Object
-    },
     value: {
-      type: String
+      type: Boolean
     }
   },
   computed: {
     localValue: {
       get () {
-        return typeof this.value === 'string' ? this.value : this.schema.default
+        return typeof this.value === 'boolean' ? this.value : Boolean(this.schema.default)
       },
       set (val) {
         this.$emit('input', val)

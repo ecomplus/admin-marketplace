@@ -1,0 +1,42 @@
+<div>
+  <a-form @submit="submit">
+    <div
+      v-for="({ schema, hide }, field) in adminSettings"
+      :key="`${hide.toString()}-${field}`"
+    >
+      <a-form-item
+        :label="schema.title"
+        :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }"
+      >
+        <template v-if="schema.description" #extra>
+          <span v-html="getDescriptionHtml(schema.description)"></span>
+        </template>
+        <component
+          v-for="({
+            field,
+            name,
+            schema,
+            component,
+            data
+          }) in parseAdminSettingsField({ field, schema, hide })"
+          v-bind="{ name, schema }"
+          v-if="component"
+          :key="name"
+          v-model="data[field]"
+          :is="component"
+        />
+      </a-form-item>
+    </div>
+
+    <a-button
+      hoverable
+      @click="submit"
+      size="large"
+      class="mt-3 float-right"
+      type="primary"
+    >
+      <i class="fas fa-save mr-2"></i>
+      {{ i19save }}
+    </a-button>
+  </a-form>
+</div>
