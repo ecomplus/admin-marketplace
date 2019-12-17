@@ -1,21 +1,26 @@
+import { $ecomConfig } from '@ecomplus/utils'
+
 export default {
   name: 'InputNumber',
+
   props: {
     name: {
       type: String,
       required: true
     },
     schema: {
-      type: Object
+      type: Object,
+      default: () => ({})
     },
-    value: {
-      type: Number
-    }
+    value: Number
   },
+
   computed: {
+    countryCode: () => $ecomConfig.get('country_code'),
+
     localValue: {
       get () {
-        return this.value ? Number(this.value) : Number(this.schema.default)
+        return this.value
       },
       set (val) {
         this.$emit('input', val)

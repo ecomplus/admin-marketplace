@@ -4,6 +4,8 @@
     :min="schema.minimum"
     :max="schema.maximum"
     v-model="localValue"
+    :defaultValue="schema.default"
+    :decimalSeparator="countryCode === 'BR' ? ',' : '.'"
   />
 </template>
 

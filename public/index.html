@@ -44,6 +44,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@ecomplus/auth@0.3.2/dist/ecom-auth.root.min.js"></script>
 
     <script>
+      $ecomConfig.set('lang', 'pt_br')
+      $ecomConfig.set('country_code', 'BR')
       const ecomAuth = new EcomAuth()
       ecomAuth.login(localStorage.getItem('username'), localStorage.getItem('password'), 1011)
     </script>

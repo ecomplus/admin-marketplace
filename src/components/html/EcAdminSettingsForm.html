@@ -1,42 +1,60 @@
 <div>
-  <a-form @submit="submit">
-    <div
-      v-for="({ schema, hide }, field) in adminSettings"
-      :key="`${hide.toString()}-${field}`"
-    >
-      <a-form-item
-        :label="schema.title"
-        :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }"
+  <a-form @submit.prevent="handleSubmit">
+    <a-collapse defaultActiveKey="0" accordion>
+      <a-collapse-panel
+        v-for="({ header, description, fields }, i) in settingsFieldGroups"
+        :header="header"
+        :key="i"
       >
-        <template v-if="schema.description" #extra>
-          <span v-html="getDescriptionHtml(schema.description)"></span>
-        </template>
-        <component
-          v-for="({
-            field,
-            name,
-            schema,
-            component,
-            data
-          }) in parseAdminSettingsField({ field, schema, hide })"
-          v-bind="{ name, schema }"
-          v-if="component"
-          :key="name"
-          v-model="data[field]"
-          :is="component"
-        />
-      </a-form-item>
-    </div>
+        <a-alert
+          class="mb-4"
+          v-if="description"
+          type="info"
+          banner
+        >
+          <span
+            slot="message"
+            v-html="getDescriptionHtml(description)"
+          ></span>
+        </a-alert>
 
-    <a-button
-      hoverable
-      @click="submit"
-      size="large"
-      class="mt-3 float-right"
-      type="primary"
-    >
-      <i class="fas fa-save mr-2"></i>
-      {{ i19save }}
-    </a-button>
+        <div
+          v-for="({ schema, hide, field }, i) in fields"
+          :key="`${hide.toString()}-${field}`"
+        >
+          <a-form-item
+            v-for="({
+              field,
+              name,
+              schema,
+              component,
+              data
+            }) in parseAdminSettingsField({ field, schema, hide })"
+            v-if="component"
+            :key="name"
+            :label="schema.title"
+            :label-col="{ span: 8 }"
+            :wrapper-col="{ span: 16 }"
+          >
+            <template v-if="schema.description" #extra>
+              <span v-html="getDescriptionHtml(schema.description)"></span>
+            </template>
+
+            <component
+              v-bind="{ name, schema }"
+              v-model="data[field]"
+              :is="component"
+            />
+          </a-form-item>
+        </div>
+
+        <a-form-item :wrapper-col="{ span: 16, offset: 8 }" class="mb-1">
+          <a-button type="primary" html-type="submit">
+            <i class="fas fa-save mr-2"></i>
+            {{ i19save }}
+          </a-button>
+        </a-form-item>
+      </a-collapse-panel>
+    </a-collapse>
   </a-form>
 </div>
