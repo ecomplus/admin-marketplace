@@ -54,6 +54,7 @@ export default {
       isLoaded: false,
       loadError: false,
       applicationBody: this.application,
+      fontSize: 4,
       appsRelated: [],
       tabListNoTitle: [
         {
@@ -88,7 +89,22 @@ export default {
     },
 
     author () {
-      return this.applicationBody.author_name
+      if (this.applicationBody.author_name) {
+        return this.applicationBody.author_name
+      } else {
+        return 'E-Com Club'
+      }
+    },
+
+    firstLetter () {
+      if (this.applicationBody.title) {
+        let letters = this.applicationBody.title.split('')
+        return letters[0]
+      }
+    },
+
+    randomColors () {
+      return '#'+(Math.random()*0xFFFFFF<<0).toString(16)
     },
 
     shortDescription () {
