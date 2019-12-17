@@ -221,7 +221,7 @@ export default {
         return this.applicationBody
       },
       set (data) {
-        this.applicationBody = data
+        this.applicationBody = Object.assign({}, this.applicationBody, data)
         this.isLoaded = true
         this.$emit('update:application', data)
       }

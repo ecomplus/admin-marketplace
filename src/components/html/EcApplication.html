@@ -4,7 +4,8 @@
       <a-col :md="24" :lg="7">
         <a-card>
           <div class="text-center">
-            <a-avatar :src="icon" :size="170"  class="mb-3 img-fluid"/>
+            <a-avatar v-if="icon" :src="icon" :size="170"  class="mb-3 img-fluid"/>
+            <a-avatar v-else :size="170" :style="{background: randomColors, fontSize: fontSize + 'rem'}"  class="mb-3 img-fluid"> {{ firstLetter }} </a-avatar>
             <a-card-meta
               :title="title"
               class="overflow-hidden"
