@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.8](https://github.com/ecomclub/admin-marketplace/compare/v0.2.7...v0.2.8) (2020-01-02)
+
+
+### Bug Fixes
+
+* **admin-settings-form:** fix reactivity in deep object ([#61](https://github.com/ecomclub/admin-marketplace/issues/61)) ([22022ca](https://github.com/ecomclub/admin-marketplace/commit/22022ca3a21b3ca85cc940aeb7150fbd66831d92)), closes [#57](https://github.com/ecomclub/admin-marketplace/issues/57)
+
 ### [0.2.7](https://github.com/ecomclub/admin-marketplace/compare/v0.2.6...v0.2.7) (2019-12-24)
 
 
