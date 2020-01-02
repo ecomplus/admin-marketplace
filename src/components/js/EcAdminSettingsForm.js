@@ -109,10 +109,9 @@ export default {
       let refSchema
       if (this.checkNestedObjectsArray(schema)) {
         if (!data[field] || !data[field].length) {
-          data[field] = [{}]
+          this.$set(data, field, [{}])
         }
         if (parentFields === '' && this.dataListsIndexes[field] === undefined) {
-          this.$set(data, field, data[field])
           this.$set(this.dataListsIndexes, field, 0)
         }
         data = data[field]
@@ -134,7 +133,7 @@ export default {
       }
       if (localSchema.type === 'object') {
         if (!data[field]) {
-          data[field] = {}
+          this.$set(data, field, {})
         }
         const { properties } = localSchema
         for (const nestedField in properties) {
