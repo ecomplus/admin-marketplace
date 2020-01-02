@@ -112,7 +112,6 @@ export default {
           this.$set(data, field, [{}])
         }
         if (parentFields === '' && this.dataListsIndexes[field] === undefined) {
-          this.$set(data, field, data[field])
           this.$set(this.dataListsIndexes, field, 0)
         }
         data = data[field]
