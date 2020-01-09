@@ -20,7 +20,7 @@
 
         <div
           v-for="(config, i) in fields"
-          :key="`${config.hide.toString()}-${config.field}`"
+          :key="`${Boolean(config.hide).toString()}-${config.field}`"
         >
           <template v-if="checkNestedObjectsArray(config.schema)">
             <div
