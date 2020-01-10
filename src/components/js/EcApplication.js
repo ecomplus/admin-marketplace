@@ -66,9 +66,6 @@ export default {
           key: 'description'
         },
         {
-          key: 'configuration'
-        },
-        {
           key: 'relatedApps'
         }
       ],
@@ -340,6 +337,22 @@ export default {
 
     handleTabChange (key, type) {
       this[type] = key
+    },
+
+    hasConfigurationTab() {
+      return this.tabListNoTitle[1].key === 'configuration'
+    },
+
+    addConfigurationTab() {
+      if (!this.hasConfigurationTab()) {
+        this.tabListNoTitle.splice(1, 0, { key: 'configuration', tab: this.i19configuration })
+      }
+    },
+
+    removeConfigurationTab() {
+      if (this.hasConfigurationTab()) {
+        this.tabListNoTitle.splice(1, 1)
+      }
     }
   },
 
@@ -351,6 +364,13 @@ export default {
         }
       },
       immediate: true
+    },
+    'applicationBody._id' (val) {
+      if (val && this.applicationBody.admin_settings) {
+        this.addConfigurationTab()
+      } else {
+        this.removeConfigurationTab()
+      }
     }
   },
 
@@ -358,6 +378,9 @@ export default {
     this.tabListNoTitle.forEach((tab, index) => {
       this.tabListNoTitle[index].tab = this[`i19${tab.key}`]
     })
+    if (this.isInstalled) {
+      this.addConfigurationTab()
+    }
     const loadPromises = []
     const { applicationBody } = this
     if (applicationBody.app_id && !applicationBody.author_id) {
