@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.9](https://github.com/ecomclub/admin-marketplace/compare/v0.2.8...v0.2.9) (2020-01-10)
+
+
+### Bug Fixes
+
+* fixed bug when does not have hide property ([fb19643](https://github.com/ecomclub/admin-marketplace/commit/fb196436de68019e821d7db58a91e09213b31bb7))
+* hide configuration tab if not installed application ([#69](https://github.com/ecomclub/admin-marketplace/issues/69)) ([1de228e](https://github.com/ecomclub/admin-marketplace/commit/1de228e4ca9077aff84b83400ab57ee8a0c124b5))
+
 ### [0.2.8](https://github.com/ecomclub/admin-marketplace/compare/v0.2.7...v0.2.8) (2020-01-02)
 
 
