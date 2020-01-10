@@ -340,7 +340,7 @@ export default {
     },
 
     hasConfigurationTab() {
-      return this.tabListNoTitle.filter((tab) => tab.key === 'configuration').length > 0
+      return this.tabListNoTitle[1].key === 'configuration'
     },
 
     addConfigurationTab() {
@@ -365,8 +365,8 @@ export default {
       },
       immediate: true
     },
-    'applicationBody._id': function(val) {
-      if (val) {
+    'applicationBody._id' (val) {
+      if (val && this.applicationBody.admin_settings) {
         this.addConfigurationTab()
       } else {
         this.removeConfigurationTab()
