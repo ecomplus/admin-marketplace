@@ -1,48 +1,44 @@
 <template>
-  <a-input-group>
+  <div>
     <a-form-item
-      :label="type.title"
-      :label-col="{ span: 8 }"
-      :wrapper-col="{ span: 16 }"
-      :extra="type.description"
+      :extra="discountValue.description || discountValue.title"
     >
-      <a-select
-        v-model="localValue.type"
-        style="width: 100%">
+      <a-input-group compact>
+        <a-select
+          v-model="localValue.type"
+          style="width: 40%"
+          :default-value="type.default"
+        >
           <a-select-option
             v-for="item in type.enum"
             :key="item"
-            :value="item">
+            :value="item"
+          >
             {{ typeOptions[item] }}
           </a-select-option>
-      </a-select>
+        </a-select>
+
+        <a-input-number
+          style="width: 60%"
+          v-if="localValue.type === 'percentage'"
+          v-model="localValue.value"
+          :min="0"
+          :max="100"
+          :formatter="value => `${value}%`"
+          :parser="value => value.replace('%', '')"
+        />
+        <input-money
+          style="width: 60%"
+          name="value"
+          :schema="value"
+          v-model="localValue.value"
+          v-else
+        />
+      </a-input-group>
     </a-form-item>
+
     <a-form-item
-      :label="discountValue.title"
-      :label-col="{ span: 8 }"
-      :wrapper-col="{ span: 16 }"
-      :extra="discountValue.description"
-    >
-      <a-input-number
-        v-if="localValue.type === 'percentage'"
-        v-model="localValue.value"
-        :min="0"
-        :max="100"
-        :formatter="value => `${value}%`"
-        :parser="value => value.replace('%', '')"
-      />
-      <input-money
-        name="value"
-        :schema="value"
-        v-model="localValue.value"
-        v-else
-      />
-    </a-form-item>
-    <a-form-item
-      :label="applyAt.title"
-      :label-col="{ span: 9 }"
-      :wrapper-col="{ span: 15 }"
-      :extra="applyAt.description"
+      :extra="applyAt.description || applyAt.title"
     >
       <input-enum
         name="apply_at"
@@ -52,6 +48,7 @@
         :i18n-values="applyAtOptions"
       />
     </a-form-item>
-  </a-input-group>
+  </div>
 </template>
+
 <script src="./js/InputDiscount.js"></script>
