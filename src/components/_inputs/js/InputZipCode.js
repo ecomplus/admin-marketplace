@@ -1,9 +1,8 @@
-import { i18n, _config } from '@ecomplus/utils'
+import { i18n, $ecomConfig } from '@ecomplus/utils'
 import { i19zipCode } from '@ecomplus/i18n'
 import CleaveInput from 'vue-cleave-component'
 
-// const countryCode = _config.get('country_code')
-const countryCode = 'BR' // Todo: remove before merge
+const countryCode = $ecomConfig.get('country_code')
 
 export default {
   name: 'InputZipCode',
@@ -14,8 +13,11 @@ export default {
 
   props: {
     value: {
-      type: [String, Number],
-      required: true
+      type: [String, Number]
+    },
+    schema: {
+      type: Object,
+      default: () => ({})
     }
   },
 
