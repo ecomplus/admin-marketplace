@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.10](https://github.com/ecomclub/admin-marketplace/compare/v0.2.9...v0.2.10) (2020-02-06)
+
+
+### Features
+
+* **input-date-time:** add inputs for date/time handling with format ([8f16559](https://github.com/ecomclub/admin-marketplace/commit/8f16559d3f35ea87a6e1eda3827d0d5ec2a13a8b))
+* **schema-parse:** treat date-time string format (InputDateTime) ([03fc275](https://github.com/ecomclub/admin-marketplace/commit/03fc275770a2ecb056fa920b356dc6ae47d80aeb))
+
+
+### Bug Fixes
+
+* **input-zip-code:** add schema to component props ([fe7c771](https://github.com/ecomclub/admin-marketplace/commit/fe7c771a798afc7709887cbcbc7f9245685cc833))
+
 ### [0.2.9](https://github.com/ecomclub/admin-marketplace/compare/v0.2.8...v0.2.9) (2020-01-10)
 
 
