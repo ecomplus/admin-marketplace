@@ -7,16 +7,18 @@ import InputBoolean from './../components/_inputs/InputBoolean.vue'
 
 import matchGroupDiscount from './_custom-input-matchers/discount'
 import matchInputMoney from './_custom-input-matchers/money'
+import matchInputDateTime from './_custom-input-matchers/date-time'
 import matchInputZipCode from './_custom-input-matchers/zip-code'
 
 const getInputMatchersByType = type => {
   switch (type) {
     case 'object':
       return [
-        matchGroupDiscount,
+        matchGroupDiscount
       ]
     case 'string':
       return [
+        matchInputDateTime,
         matchInputZipCode,
         (_, schema) => schema.enum && InputEnum,
         () => InputText
