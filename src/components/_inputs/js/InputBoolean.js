@@ -2,7 +2,8 @@ export default {
   name: 'InputText',
   props: {
     schema: {
-      type: Object
+      type: Object,
+      required: true
     },
     name: {
       type: String,
@@ -15,7 +16,7 @@ export default {
   computed: {
     localValue: {
       get () {
-        return typeof this.value === 'boolean' ? this.value : Boolean(this.schema.default)
+        return this.value
       },
       set (val) {
         this.$emit('input', val)
