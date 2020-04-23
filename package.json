@@ -8,6 +8,16 @@
     "lint": "vue-cli-service lint",
     "release": "npm run build && standard-version"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecomplus/admin-marketplace.git"
+  },
+  "author": "E-Com Club <ti@e-com.club>",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ecomplus/admin-marketplace/issues"
+  },
+  "homepage": "https://github.com/ecomplus/admin-marketplace#readme",
   "dependencies": {
     "@ecomplus/apps-manager": "^0.3.2",
     "@ecomplus/client": "^2.0.4",
@@ -55,5 +65,9 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "access": "public"
   }
 }
