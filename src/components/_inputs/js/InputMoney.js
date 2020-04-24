@@ -31,7 +31,7 @@ export default {
     },
     cleaveOptions () {
       return {
-        prefix: countryCode === 'BR' ? 'R$' : '$',
+        prefix: countryCode === 'BR' ? 'R$ ' : '$',
         numeral: true,
         numeralThousandsGroupStyle: 'thousand',
         numeralDecimalMark: ',',

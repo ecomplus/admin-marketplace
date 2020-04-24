@@ -2,8 +2,10 @@
   <a-input
     :name="name"
     :placeholder="schema.default"
-    :maxlength="schema.maxLength"
+    :max-length="schema.maxLength"
+    :pattern="schema.pattern"
     v-model="localValue"
+    @blur="$emit('blur')"
   />
 </template>
 

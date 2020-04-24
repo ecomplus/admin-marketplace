@@ -2,6 +2,7 @@
   <cleave-input
     type="tel"
     class="ant-input"
+    style="max-width: 135px"
     pattern="[\d:]{8}"
     :options="cleaveOptions"
     v-model="localValue"

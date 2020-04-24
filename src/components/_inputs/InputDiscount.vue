@@ -4,22 +4,16 @@
       :extra="discountValue.description || discountValue.title"
     >
       <a-input-group compact>
-        <a-select
+        <input-enum
+          name="type"
+          :schema="type"
           v-model="localValue.type"
-          style="width: 40%"
-          :default-value="type.default"
-        >
-          <a-select-option
-            v-for="item in type.enum"
-            :key="item"
-            :value="item"
-          >
-            {{ typeOptions[item] }}
-          </a-select-option>
-        </a-select>
+          style="width: 33%; min-width: auto"
+          :i18n-values="typeOptions"
+        />
 
         <a-input-number
-          style="width: 60%"
+          style="width: 34%"
           v-if="localValue.type === 'percentage'"
           v-model="localValue.value"
           :min="0"
@@ -28,25 +22,22 @@
           :parser="value => value.replace('%', '')"
         />
         <input-money
-          style="width: 60%"
+          style="width: 34%"
           name="value"
           :schema="value"
           v-model="localValue.value"
           v-else
         />
-      </a-input-group>
-    </a-form-item>
 
-    <a-form-item
-      :extra="applyAt.description || applyAt.title"
-    >
-      <input-enum
-        name="apply_at"
-        :schema="applyAt"
-        v-model="localValue.apply_at"
-        style="width: 100%"
-        :i18n-values="applyAtOptions"
-      />
+        <input-enum
+          name="apply_at"
+          :schema="applyAt"
+          v-model="localValue.apply_at"
+          style="width: 33%; min-width: auto"
+          :i18n-values="applyAtOptions"
+          :placeholder="applyAt.description || applyAt.title"
+        />
+      </a-input-group>
     </a-form-item>
   </div>
 </template>
