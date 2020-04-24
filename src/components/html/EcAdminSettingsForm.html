@@ -102,15 +102,15 @@
             :label="schema.title || field"
             :label-col="{ span: 8 }"
             :wrapper-col="{ span: 16 }"
-            >
-              <template v-if="schema.description" #extra>
-                <span v-html="getDescriptionHtml(schema.description)"></span>
-              </template>
-              <component
-                v-bind="{ name, schema }"
-                v-model="data[field]"
-                :is="component"
-              />
+          >
+            <template v-if="schema.description" #extra>
+              <span v-html="getDescriptionHtml(schema.description)"></span>
+            </template>
+            <component
+              v-bind="{ name, schema }"
+              v-model="data[field]"
+              :is="component"
+            />
           </component>
         </div>
 
