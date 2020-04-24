@@ -17,7 +17,7 @@ import {
   i19uninstall,
   i19yes,
   i19no,
-  i19areYouWantToDeleteAppMsg,
+  // i19doYouWantToDeleteAppQn,
   // i19appAlreadyInstalledMsg,
   i19back,
   i19unavailable,
@@ -195,8 +195,8 @@ export default {
       return i18n(i19back)
     },
 
-    i19areYouWantToDeleteAppMsg () {
-      return i18n(i19areYouWantToDeleteAppMsg)
+    i19doYouWantToDeleteAppQn () {
+      return 'Tem certeza que deseja deletar o aplicativo?'
     },
 
     i19installingApp () {
