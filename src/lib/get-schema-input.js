@@ -1,9 +1,10 @@
 import cloneDeep from 'lodash.clonedeep'
 
-import InputEnum from './../components/_inputs/InputEnum.vue'
-import InputText from './../components/_inputs/InputText.vue'
-import InputNumber from './../components/_inputs/InputNumber.vue'
-import InputBoolean from './../components/_inputs/InputBoolean.vue'
+import InputEnum from '../components/_inputs/InputEnum.vue'
+import InputText from '../components/_inputs/InputText.vue'
+import InputNumber from '../components/_inputs/InputNumber.vue'
+import InputBoolean from '../components/_inputs/InputBoolean.vue'
+import InputList from '../components/_inputs/InputList.vue'
 
 import matchGroupDiscount from './_custom-input-matchers/discount'
 import matchInputMoney from './_custom-input-matchers/money'
@@ -33,6 +34,10 @@ const getInputMatchersByType = type => {
     case 'boolean':
       return [
         () => InputBoolean
+      ]
+    case 'array':
+      return [
+        () => InputList
       ]
     default:
       return []
