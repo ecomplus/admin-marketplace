@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.11](https://github.com/ecomplus/admin-marketplace/compare/v0.2.10...v0.2.11) (2020-04-24)
+
+
+### Features
+
+* **input-list:** handling generic array schema [#89](https://github.com/ecomplus/admin-marketplace/issues/89) ([2dd8183](https://github.com/ecomplus/admin-marketplace/commit/2dd8183963735faf6d7d890fbbff569014210042))
+
+
+### Bug Fixes
+
+* **input-boolean:** fix localValue, set schema required ([e29be89](https://github.com/ecomplus/admin-marketplace/commit/e29be89b91a2a50cc8e368685f428ffe29ef812b))
+* **input-boolean:** warning color to disable bool, set :defaultChecked ([6ef2bb8](https://github.com/ecomplus/admin-marketplace/commit/6ef2bb8ffc209d7a048a57132098eca061e791e2))
+* **inputs:** general style and attr fixes for common inputs ([7ea032e](https://github.com/ecomplus/admin-marketplace/commit/7ea032e9c9acb2d993968032965609a92c713869))
+
 ### [0.2.10](https://github.com/ecomclub/admin-marketplace/compare/v0.2.9...v0.2.10) (2020-02-06)
 
 
