@@ -19,7 +19,7 @@ export default {
   methods: {
     goToApp (app, object) {
       this.$router.push({
-        name: 'application',
+        name: this.$route.name,
         params: {
           appId: object.app_id,
           objectId: app._id
