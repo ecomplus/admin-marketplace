@@ -1,0 +1,3 @@
+String(service_code),Number(zip_range.min),Number(zip_range.max),Number(max_cubic_weight),Number(total_price)
+1001,1000000,39999999,100,10.50
+1002,1000000,39999999,200,20.50
