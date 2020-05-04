@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Marketplace from './../views/Marketplace.vue'
-import Application from './../views/Application.vue'
+import Marketplace from '../views/Marketplace.vue'
+import Application from '../views/Application.vue'
 
 Vue.use(VueRouter)
 
@@ -16,10 +16,30 @@ const routes = [
     name: 'application',
     component: Application
   }
+  /*
+  {
+    path: '/apps/edit/custom-shipping/:appId/:objectId?',
+    name: 'app-sample',
+    component: () => import('../views/apps/AppSample.vue')
+  }
+  */
 ]
 
 const router = new VueRouter({
   routes
 })
+
+/*
+router.beforeEach((to, from, next) => {
+  if (to.name === 'application') {
+    switch (to.params.appId) {
+      case 100:
+        router.push({ ...to, name: 'app-sample' })
+        break
+    }
+  }
+  next()
+})
+*/
 
 export default router
