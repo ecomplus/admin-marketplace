@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.12](https://github.com/ecomplus/admin-marketplace/compare/v0.2.11...v0.2.12) (2020-05-04)
+
+
+### Features
+
+* **csv-table:** support csv upload for array of objects ([88f2fa4](https://github.com/ecomplus/admin-marketplace/commit/88f2fa48f1238583de4ea4c6648f3c4924b92d6b))
+
 ### [0.2.11](https://github.com/ecomplus/admin-marketplace/compare/v0.2.10...v0.2.11) (2020-04-24)
 
 
