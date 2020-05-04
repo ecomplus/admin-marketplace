@@ -33,16 +33,30 @@
             >
               <a-button
                 type="dashed"
-                class="mb-3"
+                class="mr-2 mb-1"
                 html-type="button"
                 @click.prevent="dataList.push({})"
               >
                 {{ `${i19add} ${lowerCaseTitle}` }}
               </a-button>
 
+              <a-upload
+                class="mb-1"
+                :before-upload="file => uploadCsv(dataList, file)"
+                accept=".csv"
+              >
+                <a-button
+                  type="dashed"
+                  html-type="button"
+                >
+                  <i class="fas fa-upload mr-2"></i>
+                  {{ i19upload }}
+                </a-button>
+              </a-upload>
+
               <a-list
                 :dataSource="dataList"
-                class="mb-4"
+                class="mt-3 mb-4"
                 bordered
               >
                 <a-list-item slot="renderItem" slot-scope="item, index">

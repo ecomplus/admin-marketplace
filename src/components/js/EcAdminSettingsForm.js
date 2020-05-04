@@ -1,4 +1,5 @@
 import { i18n } from '@ecomplus/utils'
+import Papa from 'papaparse'
 import getSchemaInput from './../../lib/get-schema-input'
 import sanitize from './../../lib/sanitize'
 
@@ -8,8 +9,10 @@ import {
   i19edit,
   // i19empty,
   // i19editing,
+  i19error,
   // i19general,
-  i19save
+  i19save,
+  i19upload
 } from '@ecomplus/i18n'
 
 export default {
@@ -38,6 +41,7 @@ export default {
     i19empty: () => 'Vazio',
     i19general: () => 'Geral',
     i19save: () => i18n(i19save),
+    i19upload: () => i18n(i19upload),
 
     adminSettings () {
       return this.application.admin_settings
@@ -159,6 +163,49 @@ export default {
         dataList.push({})
       }
       this.dataListsIndexes[field] = index > 0 ? index - 1 : 0
+    },
+
+    uploadCsv (dataList, file) {
+      Papa.parse(file, {
+        header: true,
+        error: (err, file, inputElem, reason) => {
+          console.error(err)
+          this.$notification.warning({
+            message: i18n(i19error),
+            description: reason
+          })
+        },
+        complete: ({ data }) => {
+          data.forEach(row => {
+            const parsedData = {}
+            for (const head in row) {
+              if (row[head]) {
+                const field = head.replace(/\w+\(([^)]+)\)/i, '$1')
+                const value = head.startsWith('Number') ? Number(row[head])
+                  : head.startsWith('Boolean') ? Boolean(row[head])
+                    : row[head]
+                const fields = field.split('.')
+                if (fields.length > 1) {
+                  let nestedField = parsedData
+                  for (let i = 0; i < fields.length - 1; i++) {
+                    if (!nestedField[fields[i]]) {
+                      nestedField[fields[i]] = {}
+                    }
+                    nestedField = nestedField[fields[i]]
+                  }
+                  nestedField[fields[fields.length - 1]] = value
+                } else {
+                  parsedData[field] = value
+                }
+              }
+            }
+            if (Object.keys(parsedData).length) {
+              dataList.push(parsedData)
+            }
+          })
+        }
+      })
+      return false
     },
 
     handleSubmit () {
