@@ -1,7 +1,7 @@
 <template>
   <Application>
     <template #settings-append>
-      <a-collapse>
+      <a-collapse class="mt-4">
         <a-collapse-panel key="1" header="Envio Manual">
           <div class="mb-3">
             <a-alert
