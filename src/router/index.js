@@ -15,7 +15,7 @@ const routes = [
     path: '/apps/edit/:appId/:objectId?',
     name: 'application',
     component: Application
-  }
+  },
   /*
   {
     path: '/apps/edit/custom-shipping/:appId/:objectId?',
@@ -23,23 +23,29 @@ const routes = [
     component: () => import('../views/apps/AppSample.vue')
   }
   */
+  {
+    path: '/apps/edit/1247/:objectId?',
+    name: 'app-bling',
+    component: () => import('./../views/apps/AppBling.vue')
+  }
 ]
 
 const router = new VueRouter({
   routes
 })
 
-/*
 router.beforeEach((to, from, next) => {
   if (to.name === 'application') {
     switch (to.params.appId) {
       case 100:
         router.push({ ...to, name: 'app-sample' })
         break
+      case 1247:
+        router.push({ ...to, name: 'app-bling' })
+        break
     }
   }
   next()
 })
-*/
 
 export default router
