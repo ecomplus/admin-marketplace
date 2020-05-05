@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Marketplace from '../views/Marketplace.vue'
 import Application from '../views/Application.vue'
+import AppBling from '../views/apps/AppBling.vue'
 
 Vue.use(VueRouter)
 
@@ -16,17 +17,10 @@ const routes = [
     name: 'application',
     component: Application
   },
-  /*
-  {
-    path: '/apps/edit/custom-shipping/:appId/:objectId?',
-    name: 'app-sample',
-    component: () => import('../views/apps/AppSample.vue')
-  }
-  */
   {
     path: '/apps/edit/1247/:objectId?',
     name: 'app-bling',
-    component: () => import('./../views/apps/AppBling.vue')
+    component: AppBling
   }
 ]
 
@@ -37,9 +31,6 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.name === 'application') {
     switch (to.params.appId) {
-      case 100:
-        router.push({ ...to, name: 'app-sample' })
-        break
       case 1247:
         router.push({ ...to, name: 'app-bling' })
         break
