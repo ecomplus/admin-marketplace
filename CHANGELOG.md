@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.13](https://github.com/ecomplus/admin-marketplace/compare/v0.2.12...v0.2.13) (2020-05-05)
+
+
+### Features
+
+* **bling:** handling specific view for bling app ([#96](https://github.com/ecomplus/admin-marketplace/issues/96)) ([f45088b](https://github.com/ecomplus/admin-marketplace/commit/f45088b39abbb2a330807be704a5f66018796ee3))
+
+
+### Bug Fixes
+
+* **router:** using only normal imports yet ([62391a4](https://github.com/ecomplus/admin-marketplace/commit/62391a406c1eb5e9278358dea84c7b5aa8b447cc)), closes [/github.com/ecomplus/admin-marketplace/pull/96#issuecomment-624361785](https://github.com/ecomplus//github.com/ecomplus/admin-marketplace/pull/96/issues/issuecomment-624361785)
+
 ### [0.2.12](https://github.com/ecomplus/admin-marketplace/compare/v0.2.11...v0.2.12) (2020-05-04)
 
 
