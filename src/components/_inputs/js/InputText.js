@@ -1,5 +1,6 @@
 export default {
   name: 'InputText',
+
   props: {
     schema: {
       type: Object
@@ -12,6 +13,7 @@ export default {
       type: String
     }
   },
+
   computed: {
     localValue: {
       get () {

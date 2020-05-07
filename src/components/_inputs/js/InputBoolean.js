@@ -1,5 +1,6 @@
 export default {
-  name: 'InputText',
+  name: 'InputBoolean',
+
   props: {
     schema: {
       type: Object,
@@ -13,6 +14,7 @@ export default {
       type: Boolean
     }
   },
+
   computed: {
     localValue: {
       get () {
