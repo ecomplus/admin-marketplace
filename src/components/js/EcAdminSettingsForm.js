@@ -7,10 +7,10 @@ import {
   i19add,
   i19delete,
   i19edit,
-  // i19empty,
-  // i19editing,
+  i19empty,
+  i19editing,
   i19error,
-  // i19general,
+  i19general,
   i19save,
   i19upload
 } from '@ecomplus/i18n'
@@ -37,9 +37,9 @@ export default {
     i19add: () => i18n(i19add),
     i19delete: () => i18n(i19delete),
     i19edit: () => i18n(i19edit),
-    i19editing: () => 'Editando',
-    i19empty: () => 'Vazio',
-    i19general: () => 'Geral',
+    i19editing: () => i18n(i19editing),
+    i19empty: () => i18n(i19empty),
+    i19general: () => i18n(i19general),
     i19save: () => i18n(i19save),
     i19upload: () => i18n(i19upload),
 
