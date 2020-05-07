@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.14](https://github.com/ecomplus/admin-marketplace/compare/v0.2.13...v0.2.14) (2020-05-07)
+
+
+### Features
+
+* **trustvox:** handling specific view for trustvox app ([#97](https://github.com/ecomplus/admin-marketplace/issues/97)) ([9902c9f](https://github.com/ecomplus/admin-marketplace/commit/9902c9f177cc0e3651137dfd5ac1f9f3fb31075f))
+
+
+### Bug Fixes
+
+* **admin-settings-form:** preset data field value with default ([ab2f389](https://github.com/ecomplus/admin-marketplace/commit/ab2f389d8ad9fc26e88221aff903b64df275350e))
+
 ### [0.2.13](https://github.com/ecomplus/admin-marketplace/compare/v0.2.12...v0.2.13) (2020-05-05)
 
 
