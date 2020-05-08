@@ -5,30 +5,37 @@ const countryCode = _config.get('country_code')
 
 export default {
   name: 'InputMoney',
+
   components: {
     CleaveInput
   },
+
   props: {
-    value: {
-      type: Number
+    schema: {
+      type: Object,
+      default () {
+        return {}
+      }
     },
     name: {
       type: String,
       required: true
     },
-    schema: {
-      type: Object
+    value: {
+      type: Number
     }
   },
+
   computed: {
     localValue: {
       get () {
-        return this.value ? Number(this.value) : Number(this.schema.default)
+        return this.value
       },
       set (value) {
         this.$emit('input', Number(value))
       }
     },
+
     cleaveOptions () {
       return {
         prefix: countryCode === 'BR' ? 'R$ ' : '$',
@@ -39,6 +46,12 @@ export default {
         delimiter: '.',
         rawValueTrimPrefix: true
       }
+    }
+  },
+
+  mounted () {
+    if (this.schema.default) {
+      this.localValue = this.schema.default
     }
   }
 }

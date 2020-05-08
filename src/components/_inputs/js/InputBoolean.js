@@ -4,7 +4,9 @@ export default {
   props: {
     schema: {
       type: Object,
-      required: true
+      default () {
+        return {}
+      }
     },
     name: {
       type: String,
@@ -23,6 +25,12 @@ export default {
       set (val) {
         this.$emit('input', val)
       }
+    }
+  },
+
+  mounted () {
+    if (typeof this.schema.default === 'boolean') {
+      this.localValue = this.schema.default
     }
   }
 }

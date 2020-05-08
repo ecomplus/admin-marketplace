@@ -3,7 +3,10 @@ export default {
 
   props: {
     schema: {
-      type: Object
+      type: Object,
+      default () {
+        return {}
+      }
     },
     name: {
       type: String,
@@ -17,11 +20,17 @@ export default {
   computed: {
     localValue: {
       get () {
-        return typeof this.value === 'string' ? this.value : this.schema.default
+        return this.value
       },
       set (val) {
         this.$emit('input', val)
       }
+    }
+  },
+
+  mounted () {
+    if (this.schema.default) {
+      this.localValue = this.schema.default
     }
   }
 }

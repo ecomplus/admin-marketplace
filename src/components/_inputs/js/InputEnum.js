@@ -1,12 +1,16 @@
 export default {
   name: 'InputEnum',
+
   props: {
+    schema: {
+      type: Object,
+      default () {
+        return {}
+      }
+    },
     name: {
       type: String,
       required: true
-    },
-    schema: {
-      type: Object
     },
     value: {
       type: String
@@ -15,14 +19,21 @@ export default {
       type: Object
     }
   },
+
   computed: {
     localValue: {
       get () {
-        return typeof this.value === 'string' ? this.value : this.schema.default
+        return this.value
       },
       set (val) {
         this.$emit('input', val)
       }
+    }
+  },
+
+  mounted () {
+    if (this.schema.default) {
+      this.localValue = this.schema.default
     }
   }
 }

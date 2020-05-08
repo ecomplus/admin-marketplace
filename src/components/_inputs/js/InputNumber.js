@@ -4,13 +4,15 @@ export default {
   name: 'InputNumber',
 
   props: {
+    schema: {
+      type: Object,
+      default () {
+        return {}
+      }
+    },
     name: {
       type: String,
       required: true
-    },
-    schema: {
-      type: Object,
-      default: () => ({})
     },
     value: [Number, String]
   },
@@ -26,6 +28,12 @@ export default {
       set (val) {
         this.$emit('input', val)
       }
+    }
+  },
+
+  mounted () {
+    if (this.schema.default) {
+      this.localValue = this.schema.default
     }
   }
 }
