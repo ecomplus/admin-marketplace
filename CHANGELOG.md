@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.15](https://github.com/ecomplus/admin-marketplace/compare/v0.2.14...v0.2.15) (2020-05-08)
+
+
+### Bug Fixes
+
+* **admin-settings-form:** fix setting default values on data ([3efc28a](https://github.com/ecomplus/admin-marketplace/commit/3efc28a4f139defe493a375f861a65d80abafc40))
+
 ### [0.2.14](https://github.com/ecomplus/admin-marketplace/compare/v0.2.13...v0.2.14) (2020-05-07)
 
 
