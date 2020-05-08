@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.16](https://github.com/ecomplus/admin-marketplace/compare/v0.2.15...v0.2.16) (2020-05-08)
+
+
+### Features
+
+* **input-componens:** emit default value on mounted ([8d91b15](https://github.com/ecomplus/admin-marketplace/commit/8d91b159a08ffe5b331874db032d2d9754fee7b0))
+
+
+### Bug Fixes
+
+* **admin-marketplace:** revert hard setting default values ([8b849e1](https://github.com/ecomplus/admin-marketplace/commit/8b849e1f95ab40d1c58d615d0def502f321b9363))
+
 ### [0.2.15](https://github.com/ecomplus/admin-marketplace/compare/v0.2.14...v0.2.15) (2020-05-08)
 
 
