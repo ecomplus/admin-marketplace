@@ -135,9 +135,6 @@ export default {
           component
         })
       }
-      if (!data[field] && localSchema.default) {
-        this.$set(data, field, localSchema.default)
-      }
       if (localSchema.type === 'object') {
         if (!data[field]) {
           this.$set(data, field, {})
