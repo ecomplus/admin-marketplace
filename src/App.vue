@@ -1,5 +1,5 @@
 <template>
-  <div id="admin-marketplace">
+  <div id="admin-marketplace" class="mb-3">
     <slide-x-left-transition :duration="{ enter: 400, leave: 0 }">
       <router-view/>
     </slide-x-left-transition>
