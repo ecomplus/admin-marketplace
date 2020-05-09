@@ -32,7 +32,7 @@ export default {
   },
 
   mounted () {
-    if (this.schema.default) {
+    if (typeof this.schema.default === 'number') {
       this.localValue = this.schema.default
     }
   }

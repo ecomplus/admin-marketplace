@@ -31,8 +31,9 @@ export default {
       get () {
         return this.value
       },
-      set (value) {
-        this.$emit('input', Number(value))
+      set (val) {
+        const num = parseFloat(val)
+        this.$emit('input', isNaN(num) ? null : num)
       }
     },
 
@@ -50,7 +51,7 @@ export default {
   },
 
   mounted () {
-    if (this.schema.default) {
+    if (typeof this.schema.default === 'number') {
       this.localValue = this.schema.default
     }
   }
