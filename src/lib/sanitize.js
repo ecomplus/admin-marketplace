@@ -19,19 +19,26 @@ const sanitizeArray = items => {
   }
 }
 
-const sanitize = (obj, initialKey) => {
+const sanitize = (obj, prop) => {
   if (typeof obj === 'object' && obj !== null) {
-    if (hasNextObject(obj[initialKey])) {
-      for (const key of Object.keys(obj[initialKey])) {
-        sanitize(obj[initialKey], key)
-      }
-    }
-    if (Array.isArray(obj[initialKey])) {
-      sanitizeArray(obj[initialKey])
-      obj[initialKey] = obj[initialKey].filter(item => isEmptyObject(item) === false)
-    }
-    if (isEmptyObject(obj[initialKey])) {
-      delete obj[initialKey]
+    switch (obj[prop]) {
+      case null:
+      case '':
+        delete obj[prop]
+        break
+      default:
+        if (hasNextObject(obj[prop])) {
+          for (const key of Object.keys(obj[prop])) {
+            sanitize(obj[prop], key)
+          }
+        }
+        if (Array.isArray(obj[prop])) {
+          sanitizeArray(obj[prop])
+          obj[prop] = obj[prop].filter(item => isEmptyObject(item) === false)
+        }
+        if (isEmptyObject(obj[prop])) {
+          delete obj[prop]
+        }
     }
   }
 }
