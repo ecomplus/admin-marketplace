@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.17](https://github.com/ecomplus/admin-marketplace/compare/v0.2.16...v0.2.17) (2020-05-09)
+
+
+### Bug Fixes
+
+* **number-inputs:** prevent emitting 0 when empty ([e54d6c0](https://github.com/ecomplus/admin-marketplace/commit/e54d6c01a062dd7677fed589ac8d1ad07303aa5a))
+* **sanitize:** delete empty string and null props ([0ca7a9b](https://github.com/ecomplus/admin-marketplace/commit/0ca7a9bee0a4b1bb2b9835406a09fa8b79826239))
+
 ### [0.2.16](https://github.com/ecomplus/admin-marketplace/compare/v0.2.15...v0.2.16) (2020-05-08)
 
 
