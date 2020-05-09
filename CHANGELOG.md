@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.18](https://github.com/ecomplus/admin-marketplace/compare/v0.2.17...v0.2.18) (2020-05-09)
+
+
+### Bug Fixes
+
+* **inputs:** prevent overwriting data values with defaults ([6b54f3f](https://github.com/ecomplus/admin-marketplace/commit/6b54f3ff57dc54ded0ecf382cbd66061bc9c2af1))
+
 ### [0.2.17](https://github.com/ecomplus/admin-marketplace/compare/v0.2.16...v0.2.17) (2020-05-09)
 
 
