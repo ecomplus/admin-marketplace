@@ -29,7 +29,7 @@ export default {
   },
 
   mounted () {
-    if (typeof this.schema.default === 'boolean') {
+    if (this.value === undefined && typeof this.schema.default === 'boolean') {
       this.localValue = this.schema.default
     }
   }

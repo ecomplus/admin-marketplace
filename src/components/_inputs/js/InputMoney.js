@@ -51,7 +51,7 @@ export default {
   },
 
   mounted () {
-    if (typeof this.schema.default === 'number') {
+    if (typeof this.value !== 'number' && typeof this.schema.default === 'number') {
       this.localValue = this.schema.default
     }
   }
