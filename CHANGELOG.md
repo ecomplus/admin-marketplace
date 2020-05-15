@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.20](https://github.com/ecomplus/admin-marketplace/compare/v0.2.19...v0.2.20) (2020-05-15)
+
+
+### Bug Fixes
+
+* **input-money:** fix formatting number value from prop ([9571240](https://github.com/ecomplus/admin-marketplace/commit/95712401c6aafb66c4177b42e225cd6f0bbea2ca))
+
 ### [0.2.19](https://github.com/ecomplus/admin-marketplace/compare/v0.2.18...v0.2.19) (2020-05-15)
 
 
