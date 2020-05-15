@@ -25,7 +25,8 @@
   <span class="text-info" v-else>
     {{ i19paid }}
   </span>
-  <span class="float-right"><i class="fas fa-download"></i>
+  <span v-if="downloadCount" class="float-right">
+    <i class="fas fa-download"></i>
     {{ downloadCount }}
   </span>
 </a-card>
