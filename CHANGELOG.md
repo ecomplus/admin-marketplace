@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.19](https://github.com/ecomplus/admin-marketplace/compare/v0.2.18...v0.2.19) (2020-05-15)
+
+
+### Bug Fixes
+
+* **app-card:** show downloads count only if gt zero ([91899d6](https://github.com/ecomplus/admin-marketplace/commit/91899d68c0071a72a8d79bd3631436cf21d34ded))
+* **money-input-matcher:** check exact field name or schema 'maximum' ([bb6d2f4](https://github.com/ecomplus/admin-marketplace/commit/bb6d2f43d02988a3b29d06de9c89c1e8695118fe))
+
 ### [0.2.18](https://github.com/ecomplus/admin-marketplace/compare/v0.2.17...v0.2.18) (2020-05-09)
 
 
