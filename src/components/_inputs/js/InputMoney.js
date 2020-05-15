@@ -21,15 +21,14 @@ export default {
       type: String,
       required: true
     },
-    value: {
-      type: Number
-    }
+    value: Number
   },
 
   computed: {
     localValue: {
       get () {
-        return this.value
+        return typeof this.value === 'number'
+          ? this.value.toString().replace('.', ',') : null
       },
       set (val) {
         const num = parseFloat(val)
