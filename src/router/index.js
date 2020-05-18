@@ -4,6 +4,7 @@ import Marketplace from '../views/Marketplace.vue'
 import Application from '../views/Application.vue'
 import AppBling from '../views/apps/AppBling.vue'
 import AppTrustvox from '../views/apps/AppTrustvox.vue'
+import AppMailchimp from '../views/apps/AppMailchimp.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/apps/edit/1255/:objectId?',
     name: 'app-trustvox',
     component: AppTrustvox
+  },
+  {
+    path: '/apps/edit/126944/:objectId?',
+    name: 'app-mailchimp',
+    component: AppMailchimp
   }
 ]
 
@@ -40,11 +46,11 @@ router.beforeEach((to, from, next) => {
       case 1247:
         router.push({ ...to, name: 'app-bling' })
         break
-      case 1247:
-        router.push({ ...to, name: 'app-bling' })
-        break
       case 1255:
         router.push({ ...to, name: 'app-trustvox' })
+        break
+      case 126944:
+        router.push({ ...to, name: 'app-mailchimp' })
         break
     }
   }
