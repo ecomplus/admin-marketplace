@@ -5,7 +5,7 @@ import Application from '../../Application.vue'
 export default {
   name: 'AppBling',
 
-  data() {
+  data () {
     return {
       syncType: 'ecomProducts',
       syncValues: ''
@@ -17,7 +17,7 @@ export default {
   },
 
   methods: {
-    handler() {
+    handler () {
       let url = 'https://bling.ecomplus.biz'
       let type = ''
       const { syncType, syncValues } = this
@@ -26,15 +26,15 @@ export default {
         case 'ecomProducts':
           url += '/ecomplus/products'
           type = 'produto'
-          break;
+          break
         case 'ecomOrders':
           url += '/ecomplus/orders'
           type = 'produto'
-          break;
+          break
         case 'blingProducts':
           url += '/bling/products'
           type = 'pedido'
-          break;
+          break
         default: break
       }
 
@@ -42,7 +42,7 @@ export default {
         this.$message.error(`É preciso informar algum ${type} para sincronizar, ou vário(a)s ${type} separados por vírgula.`, 4)
       } else {
         let data = syncValues.split(',')
-        data = data.map(el => el.replace(/ /g, ""))
+        data = data.map(el => el.replace(/ /g, ''))
         axios({
           url,
           method: 'post',

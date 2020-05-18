@@ -339,17 +339,17 @@ export default {
       this[type] = key
     },
 
-    hasConfigurationTab() {
+    hasConfigurationTab () {
       return this.tabListNoTitle[1].key === 'configuration'
     },
 
-    addConfigurationTab() {
+    addConfigurationTab () {
       if (!this.hasConfigurationTab()) {
         this.tabListNoTitle.splice(1, 0, { key: 'configuration', tab: this.i19configuration })
       }
     },
 
-    removeConfigurationTab() {
+    removeConfigurationTab () {
       if (this.hasConfigurationTab()) {
         this.tabListNoTitle.splice(1, 1)
       }
