@@ -10,7 +10,7 @@ export default {
   methods: {
     handlerClick () {
       const authUrl = `https://trustvox.ecomplus.biz/trustvox/auth-callback?x_store_id=${$ecomConfig.get('store_id')}`
-      window.open(authUrl, "_blank")
-    } 
+      window.open(authUrl, '_blank')
+    }
   }
 }

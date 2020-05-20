@@ -9,4 +9,4 @@
     />
   </template>
 
-  <script src="./js/InputPhone.js"></script>
+<script src="./js/InputPhone.js"></script>
