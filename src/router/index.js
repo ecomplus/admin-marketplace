@@ -2,9 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Marketplace from '../views/Marketplace.vue'
 import Application from '../views/Application.vue'
-import AppBling from '../views/apps/AppBling.vue'
-import AppTrustvox from '../views/apps/AppTrustvox.vue'
-import AppMailchimp from '../views/apps/AppMailchimp.vue'
 
 Vue.use(VueRouter)
 
@@ -22,17 +19,17 @@ const routes = [
   {
     path: '/apps/edit/1247/:objectId?',
     name: 'app-bling',
-    component: AppBling
+    component: () => import('../views/apps/AppBling.vue')
   },
   {
     path: '/apps/edit/1255/:objectId?',
     name: 'app-trustvox',
-    component: AppTrustvox
+    component: () => import('../views/apps/AppTrustvox.vue')
   },
   {
     path: '/apps/edit/126944/:objectId?',
     name: 'app-mailchimp',
-    component: AppMailchimp
+    component: () => import('../views/apps/AppMailchimp.vue')
   }
 ]
 
