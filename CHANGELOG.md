@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.23](https://github.com/ecomplus/admin-marketplace/compare/v0.2.22...v0.2.23) (2020-06-12)
+
+
+### Bug Fixes
+
+* **admin-settings-form:** use reset key when data list is reseted ([b7fec47](https://github.com/ecomplus/admin-marketplace/commit/b7fec47c1d6552ea9f842a4ff8182705a6578c9a))
+
 ### [0.2.22](https://github.com/ecomplus/admin-marketplace/compare/v0.2.21...v0.2.22) (2020-05-24)
 
 ### [0.2.21](https://github.com/ecomplus/admin-marketplace/compare/v0.2.20...v0.2.21) (2020-05-20)
