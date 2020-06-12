@@ -29,7 +29,8 @@ export default {
     return {
       data: {},
       hiddenData: {},
-      dataListsIndexes: {}
+      dataListsIndexes: {},
+      formResetKey: 0
     }
   },
 
@@ -160,7 +161,8 @@ export default {
     removeDataListElement (dataList, index, field) {
       dataList.splice(index, 1)
       if (!dataList.length) {
-        dataList.push({})
+        this.$set(dataList, 0, {})
+        this.formResetKey++
       }
       this.dataListsIndexes[field] = index > 0 ? index - 1 : 0
     },

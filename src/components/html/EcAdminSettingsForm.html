@@ -103,29 +103,31 @@
             </div>
           </template>
 
-          <component
-            :is="checkComplexSchema(schema) && field === config.field ? 'div' : 'a-form-item'"
-            v-for="({
-              field,
-              name,
-              schema,
-              component,
-              data
-            }) in parseAdminSettingsField(config)"
-            :key="name"
-            :label="schema.title || field"
-            :label-col="{ span: 8 }"
-            :wrapper-col="{ span: 16 }"
-          >
-            <template v-if="schema.description" #extra>
-              <span v-html="getDescriptionHtml(schema.description)"></span>
-            </template>
+          <div :key="formResetKey">
             <component
-              v-bind="{ name, schema }"
-              v-model="data[field]"
-              :is="component"
-            />
-          </component>
+              :is="checkComplexSchema(schema) && field === config.field ? 'div' : 'a-form-item'"
+              v-for="({
+                field,
+                name,
+                schema,
+                component,
+                data
+              }) in parseAdminSettingsField(config)"
+              :key="name"
+              :label="schema.title || field"
+              :label-col="{ span: 8 }"
+              :wrapper-col="{ span: 16 }"
+            >
+              <template v-if="schema.description" #extra>
+                <span v-html="getDescriptionHtml(schema.description)"></span>
+              </template>
+              <component
+                v-bind="{ name, schema }"
+                v-model="data[field]"
+                :is="component"
+              />
+            </component>
+          </div>
         </div>
 
         <a-form-item :wrapper-col="{ span: 16, offset: 8 }" class="mb-1">
