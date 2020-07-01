@@ -50,7 +50,7 @@
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
     "standard": "^14.3.4",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.0",
     "vue-template-compiler": "^2.6.11"
   },
   "gitHooks": {
