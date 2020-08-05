@@ -1,25 +1,11 @@
-<a-card class="ec-app-card" @click="$emit('click')" hoverable>
-  <div slot="cover" class="text-center">
-    <img
-      v-if="iconUrl"
-      class="img-fluid"
-      :src="iconUrl"
-      :alt="app.title"
-    />
-    <a-icon v-else type="picture"/>
+<div class="card" @click="$emit('click')" hoverable style="height: 26rem">
+  <img v-if="iconUrl" class="card-img-top" :src="iconUrl" :alt="app.title" />
+  <div class="card-body">
+    <h5 style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis;" class="card-text">
+      {{app.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 20px;">{{ formattedDescription }} </h6>
   </div>
-
-  <a-card-meta
-    :title="app.title"
-    class="overflow-hidden"
-    style="height: 9.25rem"
-  >
-    <template slot="description">
-      {{ formattedDescription }}
-    </template>
-  </a-card-meta>
-
-  <span class="text-success" v-if="!app.paid">
+  <span class="text-success" style="font-size: 16px; padding: 20px;" v-if="!app.paid">
     {{ i19free }}
   </span>
   <span class="text-info" v-else>
@@ -29,4 +15,4 @@
     <i class="fas fa-download"></i>
     {{ downloadCount }}
   </span>
-</a-card>
+</div>
