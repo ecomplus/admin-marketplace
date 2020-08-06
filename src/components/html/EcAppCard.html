@@ -1,18 +1,46 @@
-<div class="card" @click="$emit('click')" hoverable style="height: 26rem">
-  <img v-if="iconUrl" class="card-img-top" :src="iconUrl" :alt="app.title" />
-  <div class="card-body">
-    <h5 style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis;" class="card-text">
-      {{app.title}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 20px;">{{ formattedDescription }} </h6>
+<div 
+  class="card" 
+  @click="$emit('click')"  
+  style="height: 26rem">
+    <img 
+      v-if="iconUrl" 
+      class="card-img-top" 
+      :src="iconUrl" 
+      :alt="app.title" 
+    />
+    <div 
+      v-else 
+      class="d-flex justify-content-center align-items-center"
+      style="width: 203px; height: 203px">
+      <i class="fas fa-image"></i>
+    </div>
+    <div 
+      class="card-body" 
+      style="min-height: 150px;">
+      <h5 
+        class="card-text text-truncate">
+          {{app.title}}
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted ">
+          {{ formattedDescription }} 
+      </h6>
+    </div>
+    <div class="card-body">
+      <h6 
+        class="text-success" 
+        v-if="!app.paid">
+        {{ i19free }}
+      </h6>
+      <h6 
+        class="text-info" 
+        v-else>
+        {{ i19paid }}
+    </h6>
   </div>
-  <span class="text-success" style="font-size: 16px; padding: 20px;" v-if="!app.paid">
-    {{ i19free }}
-  </span>
-  <span class="text-info" v-else>
-    {{ i19paid }}
-  </span>
-  <span v-if="downloadCount" class="float-right">
-    <i class="fas fa-download"></i>
-    {{ downloadCount }}
-  </span>
+    <span 
+      v-if="downloadCount" 
+      class="float-right">
+        <i class="fas fa-download"></i>
+          {{ downloadCount }}
+    </span>
 </div>
