@@ -34,12 +34,12 @@ export default {
     },
 
     iconUrl () {
-      if (this.app.icon) {
-        if (!this.app.icon.startsWith('https://')) {
-          return `https://market.e-com.plus${this.app.icon}`
-        }
-        return this.app.icon
-      }
+      // if (this.app.icon) {
+      //   if (!this.app.icon.startsWith('https://')) {
+      //     return `https://market.e-com.plus${this.app.icon}`
+      //   }
+      //   return this.app.icon
+      // }
       return ''
     },
 
