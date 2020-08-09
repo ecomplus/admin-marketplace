@@ -1,32 +1,49 @@
-<a-card class="ec-app-card" @click="$emit('click')" hoverable>
-  <div slot="cover" class="text-center">
-    <img
-      v-if="iconUrl"
-      class="img-fluid"
-      :src="iconUrl"
-      :alt="app.title"
-    />
-    <a-icon v-else type="picture"/>
-  </div>
-
-  <a-card-meta
-    :title="app.title"
-    class="overflow-hidden"
-    style="height: 9.25rem"
+<div
+  class="card justify-content-between"
+  @click="$emit('click')"
+>
+  <img 
+    v-if="iconUrl" 
+    class="card-img-top" 
+    :src="iconUrl" 
+    :alt="app.title" 
+  />
+  <div
+    v-else
+    class="d-flex justify-content-center align-items-center card-img-top py-5 my-md-5 h3 text-muted"
   >
-    <template slot="description">
+    <i class="fas fa-image"></i>
+  </div>
+  <div class="card-body overflow-hidden">
+    <h5 class="card-text text-truncate">
+      {{ app.title }}
+    </h5>
+    <h6 
+      class="card-subtitle mb-2 text-muted" 
+      style="height: 9.25rem;"
+    >
       {{ formattedDescription }}
-    </template>
-  </a-card-meta>
-
-  <span class="text-success" v-if="!app.paid">
-    {{ i19free }}
-  </span>
-  <span class="text-info" v-else>
-    {{ i19paid }}
-  </span>
-  <span v-if="downloadCount" class="float-right">
+    </h6>
+  </div>
+  <div class="card-footer b-0">
+    <h6 
+      class="text-success" 
+      v-if="!app.paid"
+    >
+      {{ i19free }}
+    </h6>
+    <h6 
+      class="text-info" 
+      v-else
+    >
+      {{ i19paid }}
+    </h6>
+  </div>
+  <span 
+    v-if="downloadCount" 
+    class="float-right"
+  >
     <i class="fas fa-download"></i>
     {{ downloadCount }}
   </span>
-</a-card>
+</div>
