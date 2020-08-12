@@ -22,11 +22,6 @@ const routes = [
     component: () => import('../views/apps/AppBling.vue')
   },
   {
-    path: '/apps/edit/1255/:objectId?',
-    name: 'app-trustvox',
-    component: () => import('../views/apps/AppTrustvox.vue')
-  },
-  {
     path: '/apps/edit/126944/:objectId?',
     name: 'app-mailchimp',
     component: () => import('../views/apps/AppMailchimp.vue')
@@ -42,9 +37,6 @@ router.beforeEach((to, from, next) => {
     switch (to.params.appId) {
       case 1247:
         router.push({ ...to, name: 'app-bling' })
-        break
-      case 1255:
-        router.push({ ...to, name: 'app-trustvox' })
         break
       case 126944:
         router.push({ ...to, name: 'app-mailchimp' })
