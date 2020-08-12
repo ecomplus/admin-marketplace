@@ -91,6 +91,9 @@ export default {
         .finally(() => {
           this.loading = false
         })
+    },
+    switchTabs (tabName) {
+      this.activeTabKey = tabName;
     }
   },
 

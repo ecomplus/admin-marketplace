@@ -1,5 +1,5 @@
 <div
-  class="card "
+  class="card"
   @click="$emit('click')"
   style="justify-content: space-between;"
 >
@@ -15,13 +15,14 @@
   >
     <i class="fas fa-image"></i>
   </div>
-  <div class="card-body overflow-hidden ">
+  <div class="card-body overflow-hidden">
     <h5 class="card-text text-truncate">
-      {{app.title}}
+      {{ app.title }}
     </h5>
     <h6 
       class="card-subtitle mb-2 text-muted" 
-      style="height: 9.25rem;">
+      style="height: 9.25rem;"
+    >
       {{ formattedDescription }}
     </h6>
   </div>

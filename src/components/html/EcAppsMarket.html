@@ -1,49 +1,72 @@
 <div class="ec-apps-market">
-  <a-card
-    class="mb-4"
-    :bodyStyle="{ paddingBottom: 0 }"
-  >
+  <div class="card pt-4 pl-4">
     <h2>{{ i19applications }}</h2>
-    <a-tabs
-      :tabBarStyle="{ margin: 0 }"
+    <ul 
+      class="nav nav-tabs" 
       v-model="activeTabKey"
     >
-      <a-tab-pane :tab="i19availableApps" key="market"/>
-      <a-tab-pane :tab="i19yourInstalledApps" key="installed"/>
-    </a-tabs>
-  </a-card>
+      <li class="nav-item">
+        <a 
+          class="nav-link" 
+          :class="{ active: activeTabKey === 'market' }" 
+          role="button" 
+          key="market" 
+          @click="switchTabs('market')"
+        >
+          {{ i19availableApps }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a 
+          class="nav-link" 
+          :class="{ active: activeTabKey === 'installed' }" 
+          role="button" 
+          key="installed" 
+          @click="switchTabs('installed')"
+        >
+          {{i19yourInstalledApps}}
+        </a>
+      </li>
+    </ul>
+  </div>
 
-  <fade-transition :duration="{ enter: 500, leave: 0 }">
-    <div v-if="!loading" class="pt-2">
-      <a-alert
-        v-if="loadError"
-        key="error"
-        :message="errorMessage"
-        type="warning"
-        closable
-        @close="updateTabContent"
-        :closeText="i19tryAgain"
-      />
-
-      <article v-else key="list">
-        <div class="row">
-          <div
-            class="col-6 col-md-4 col-lg-3"
-            v-for="(app, i) in apps"
-            :key="`app-${i}`"
-          >
-            <component
-              :is="activeTabKey === 'market' ? 'ec-app-card' : 'ec-installed-app-card'"
-              :app.sync="apps[i]"
-              :ecomApps="ecomApps"
-              @click="$emit('click:app', app)"
-              class="mb-4"
-            />
-          </div>
-        </div>
-      </article>
+  <div 
+    v-if="!loading" 
+    class="pt-2"
+  >
+    <div
+      class="card bg-pale-yellow border p-2"
+      v-if="loadError"
+      key="error"
+    >
+      {{ errorMessage} }
+      <div>
+        <a 
+          role="button"
+          @click="updateTabContent"
+        >
+          {{ i19tryAgain }}
+        </a>
+      </div>
     </div>
-  </fade-transition>
 
-  <a-skeleton v-if="loading" active/>
+    <article v-else key="list">
+      <div class="row">
+        <div
+          class="col-6 col-md-4 col-lg-3"
+          v-for="(app, i) in apps"
+          :key="`app-${i}`"
+        >
+          <component
+            :is="activeTabKey === 'market' ? 'ec-app-card' : 'ec-installed-app-card'"
+            :app.sync="apps[i]"
+            :ecomApps="ecomApps"
+            @click="$emit('click:app', app)"
+            class="mb-4"
+          />
+        </div>
+      </div>
+    </article>
+  </div>
+  <a v-if="loading" active></a>
 </div>
