@@ -18,7 +18,7 @@ export default {
   components: {
     FadeTransition,
     EcAppCard,
-    EcInstalledAppCard
+    EcInstalledAppCard,
   },
 
   props: {
@@ -57,6 +57,12 @@ export default {
 
     i19yourInstalledApps () {
       return i18n(i19yourInstalledApps)
+    },
+    tabs () {
+      return {
+        market: this.i19availableApps,
+        installed: this.i19yourInstalledApps
+      }
     }
   },
 
@@ -92,9 +98,7 @@ export default {
           this.loading = false
         })
     },
-    switchTabs (tabName) {
-      this.activeTabKey = tabName;
-    }
+
   },
 
   watch: {
