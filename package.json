@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:site": "vue-cli-service build",
+    "build:site": "vue-cli-service build --site",
     "lint": "vue-cli-service lint",
     "release": "npm run build && standard-version"
   },
