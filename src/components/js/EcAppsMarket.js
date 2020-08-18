@@ -18,7 +18,7 @@ export default {
   components: {
     FadeTransition,
     EcAppCard,
-    EcInstalledAppCard,
+    EcInstalledAppCard
   },
 
   props: {
