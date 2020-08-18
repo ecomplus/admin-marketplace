@@ -1,5 +1,5 @@
 <div 
-  class="card border" 
+  class="ec-installed-app-card card border" 
   @click="$emit('click')"
 >
   <div class="card-body">
@@ -104,6 +104,14 @@
         class="fas px-2 fa-toggle-off"
       >
       </i>
+    </div>
+  </div>
+  <div 
+    v-else
+    class="d-flex justify-content-center"
+  >
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
     </div>
   </div>
 </div>
