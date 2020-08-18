@@ -17,9 +17,11 @@ npm run serve
 ```
 
 To login on dev server you should set _username_ and _password_ on `localStorage` with your credential for demo store (1011):
+
 ```js
-localStorage.getItem('username', 'myuser')
-localStorage.getItem('password', 'mypassword')
+localStorage.setItem('store_id', 1011)
+localStorage.setItem('username', 'myuser')
+localStorage.setItem('password', 'mypassword')
 ```
 
 ### Compiles and minifies for production
