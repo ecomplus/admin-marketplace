@@ -23,52 +23,57 @@
       </li>
     </ul>
   </div>
-
-  <div 
-    v-if="!loading" 
-    class="pt-2"
-  >
+  <fade-transition :duration="{ enter: 500, leave: 0 }">
     <div 
-      class="card bg-pale-yellow border p-2" 
-      v-if="loadError"
+      v-if="!loading" 
+      class="pt-2"
     >
-      {{ errorMessage }}
-      <div>
-        <a 
-          role="button" 
-          @click="updateTabContent"
-        >
-          {{ i19tryAgain }}
-        </a>
-      </div>
-    </div>
-
-    <article 
-      v-else 
-      key="list"
-    >
-      <div class="row">
-        <div 
-          class="col-6 col-md-4 col-lg-3" 
-          v-for="(app, i) in apps"
-          :key="`app-${i}`"
-        >
-          <component
-            :is="activeTabKey === 'market' ? 'ec-app-card' : 'ec-installed-app-card'"
-            :app.sync="apps[i]"
-            :ecomApps="ecomApps"
-            @click="$emit('click:app', app)"
-            class="mb-4"
-          />
+      <div 
+        class="card bg-pale-yellow border p-2" 
+        v-if="loadError"
+      >
+        {{ errorMessage }}
+        <div>
+          <a 
+            role="button" 
+            @click="updateTabContent"
+          >
+            {{ i19tryAgain }}
+          </a>
         </div>
       </div>
-    </article>
-  </div>
+
+      <article 
+        v-else 
+        key="list"
+      >
+        <div class="row">
+          <div 
+            class="col-6 col-md-4 col-lg-3" 
+            v-for="(app, i) in apps"
+            :key="`app-${i}`"
+          >
+            <component
+              :is="activeTabKey === 'market' ? 'ec-app-card' : 'ec-installed-app-card'"
+              :app.sync="apps[i]"
+              :ecomApps="ecomApps"
+              @click="$emit('click:app', app)"
+              class="mb-4"
+            />
+          </div>
+        </div>
+      </article>
+    </div>
+  </fade-transition>
   <div 
     v-if="loading"
     class="d-flex justify-content-center"
   >
-    <div class="spinner-border" role="status">
+    <div 
+      class="spinner-border" 
+      style="width: 50px; height: 50px" 
+      role="status"
+    >
       <span class="sr-only">Loading...</span>
     </div>
   </div>
