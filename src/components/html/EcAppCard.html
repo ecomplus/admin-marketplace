@@ -1,49 +1,53 @@
 <div
-  class="card justify-content-between"
+  class="ec-app-card card"
+  style="cursor: pointer"
   @click="$emit('click')"
 >
-  <img 
-    v-if="iconUrl" 
-    class="card-img-top" 
-    :src="iconUrl" 
-    :alt="app.title" 
+  <img
+    v-if="iconUrl"
+    class="card-img-top"
+    :src="iconUrl"
+    :alt="app.title"
   />
   <div
     v-else
-    class="d-flex justify-content-center align-items-center card-img-top py-5 my-md-5 h3 text-muted"
+    class="d-flex justify-content-center align-items-center py-5 my-md-4 h3 text-muted"
   >
     <i class="fas fa-image"></i>
   </div>
+
   <div class="card-body overflow-hidden">
     <h5 class="card-text text-truncate">
       {{ app.title }}
     </h5>
-    <h6 
-      class="card-subtitle mb-2 text-muted" 
-      style="height: 9.25rem;"
+    <div
+      class="card-subtitle mb-2 text-muted"
+      style="height: 100px"
     >
       {{ formattedDescription }}
-    </h6>
+    </div>
   </div>
+
   <div class="card-footer b-0">
-    <h6 
-      class="text-success" 
+    <h6
+      class="text-success"
       v-if="!app.paid"
     >
       {{ i19free }}
     </h6>
-    <h6 
-      class="text-info" 
+    <h6
+      class="text-info"
       v-else
     >
       {{ i19paid }}
     </h6>
+
+    <span
+      v-if="downloadCount"
+      class="float-right"
+    >
+      <i class="fas fa-download"></i>
+      {{ downloadCount }}
+    </span>
   </div>
-  <span 
-    v-if="downloadCount" 
-    class="float-right"
-  >
-    <i class="fas fa-download"></i>
-    {{ downloadCount }}
-  </span>
 </div>

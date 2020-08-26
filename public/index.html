@@ -7,7 +7,6 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
 
     <link rel="stylesheet" href="https://app.e-com.plus/admin.2b7bd29a11cf34c6471c.css">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ant-design-vue@1/dist/antd.min.css">
     <script src="https://kit.fontawesome.com/a3730efcb8.js" crossorigin="anonymous"></script>
 
@@ -45,11 +44,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@ecomplus/auth@0.3.2/dist/ecom-auth.root.min.js"></script>
 
     <script>
+      const storeId = localStorage.getItem('store_id') || 1056
       $ecomConfig.set('lang', 'pt_br')
       $ecomConfig.set('country_code', 'BR')
+      $ecomConfig.set('store_id', storeId)
       const ecomAuth = new EcomAuth()
-      ecomAuth.login(localStorage.getItem('username'), localStorage.getItem('password'), 1011)
+      ecomAuth.login(
+        localStorage.getItem('username') || 'teste',
+        localStorage.getItem('password') || 'teste',
+        localStorage.getItem('store_id') || 1056
+      )
     </script>
   </body>
 </html>
-
