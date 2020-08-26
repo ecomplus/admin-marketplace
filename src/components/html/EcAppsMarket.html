@@ -1,34 +1,55 @@
 <div class="ec-apps-market">
-  <a-card
-    class="mb-4"
-    :bodyStyle="{ paddingBottom: 0 }"
-  >
-    <h2>{{ i19applications }}</h2>
-    <a-tabs
-      :tabBarStyle="{ margin: 0 }"
+  <div class="card pt-3 pl-3">
+    <h1>
+      {{ i19applications }}
+    </h1>
+    <ul 
+      class="nav nav-tabs" 
       v-model="activeTabKey"
     >
-      <a-tab-pane :tab="i19availableApps" key="market"/>
-      <a-tab-pane :tab="i19yourInstalledApps" key="installed"/>
-    </a-tabs>
-  </a-card>
-
+      <li 
+        v-for="(label, key) in tabs" 
+        class="nav-item" 
+        :key="key"
+      >
+        <a
+          class="nav-link"
+          :class="{ active: activeTabKey === key }"
+          role="button"
+          @click="activeTabKey = key"
+        >
+          {{ label }}
+        </a>
+      </li>
+    </ul>
+  </div>
   <fade-transition :duration="{ enter: 500, leave: 0 }">
-    <div v-if="!loading" class="pt-2">
-      <a-alert
+    <div 
+      v-if="!loading" 
+      class="pt-2"
+    >
+      <div 
+        class="card bg-pale-yellow border p-2" 
         v-if="loadError"
-        key="error"
-        :message="errorMessage"
-        type="warning"
-        closable
-        @close="updateTabContent"
-        :closeText="i19tryAgain"
-      />
+      >
+        {{ errorMessage }}
+        <div>
+          <a 
+            role="button" 
+            @click="updateTabContent"
+          >
+            {{ i19tryAgain }}
+          </a>
+        </div>
+      </div>
 
-      <article v-else key="list">
+      <article 
+        v-else 
+        key="list"
+      >
         <div class="row">
-          <div
-            class="col-6 col-md-4 col-lg-3"
+          <div 
+            class="col-6 col-md-4 col-lg-3" 
             v-for="(app, i) in apps"
             :key="`app-${i}`"
           >
@@ -44,6 +65,16 @@
       </article>
     </div>
   </fade-transition>
-
-  <a-skeleton v-if="loading" active/>
+  <div 
+    v-if="loading"
+    class="d-flex justify-content-center mt-lg-5"
+  >
+    <div 
+      class="spinner-border" 
+      style="width: 50px; height: 50px" 
+      role="status"
+    >
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 </div>
