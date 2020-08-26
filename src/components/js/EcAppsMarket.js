@@ -57,6 +57,13 @@ export default {
 
     i19yourInstalledApps () {
       return i18n(i19yourInstalledApps)
+    },
+    
+    tabs () {
+      return {
+        market: this.i19availableApps,
+        installed: this.i19yourInstalledApps
+      }
     }
   },
 
