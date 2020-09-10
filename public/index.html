@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
 
-    <link rel="stylesheet" href="https://app.e-com.plus/admin.2b7bd29a11cf34c6471c.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ant-design-vue@1/dist/antd.min.css">
-    <script src="https://kit.fontawesome.com/a3730efcb8.js" crossorigin="anonymous"></script>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
 
-    <title>@ecomplus/admin-marketplace</title>
+  <link href="https://app.e-com.plus/admin.10d9575087eebc049c09.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ant-design-vue@1/dist/antd.min.css"> -->
+  <script src="https://kit.fontawesome.com/a3730efcb8.js" crossorigin="anonymous"></script>
 
-    <style>
-      body {
-        background: var(--light);
-      }
-      #admin-marketplace {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-    </style>
+  <title>@ecomplus/admin-marketplace</title>
 
-    <script>
-      location.hash = '#/apps'
-    </script>
-  </head>
+  <style>
+    body {
+      background: var(--light);
+    }
 
-  <body>
-    <noscript>
-      <strong>We're sorry but @ecomplus/admin-marketplace doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div class="container p-4">
-      <div id="admin-marketplace"></div>
-    </div>
-    <!-- built files will be auto injected -->
+    #admin-marketplace {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  </style>
 
-    <script src="https://unpkg.com/axios@0/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/eventemitter3@4/umd/eventemitter3.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2/js/md5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@ecomplus/utils@1/dist/ecom-utils.polyfill.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@ecomplus/client@2/dist/ecom-client.polyfill.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@ecomplus/auth@0.3.2/dist/ecom-auth.root.min.js"></script>
+  <script>
+    location.hash = '#/apps'
+  </script>
+</head>
 
-    <script>
-      const storeId = localStorage.getItem('store_id') || 1056
-      $ecomConfig.set('lang', 'pt_br')
-      $ecomConfig.set('country_code', 'BR')
-      $ecomConfig.set('store_id', storeId)
-      const ecomAuth = new EcomAuth()
-      ecomAuth.login(
-        localStorage.getItem('username') || 'teste',
-        localStorage.getItem('password') || 'teste',
-        localStorage.getItem('store_id') || 1056
-      )
-    </script>
-  </body>
+<body>
+  <noscript>
+    <strong>We're sorry but @ecomplus/admin-marketplace doesn't work properly without JavaScript enabled. Please enable
+      it to continue.</strong>
+  </noscript>
+  <div class="container p-4">
+    <div id="admin-marketplace"></div>
+  </div>
+  <!-- built files will be auto injected -->
+
+  <script src="https://unpkg.com/axios@0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/eventemitter3@4/umd/eventemitter3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2/js/md5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@ecomplus/utils@1/dist/ecom-utils.polyfill.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@ecomplus/client@2/dist/ecom-client.polyfill.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@ecomplus/auth@0.3.2/dist/ecom-auth.root.min.js"></script>
+
+  <script>
+    const storeId = localStorage.getItem('store_id') || 1056
+    $ecomConfig.set('lang', 'pt_br')
+    $ecomConfig.set('country_code', 'BR')
+    $ecomConfig.set('store_id', storeId)
+    const ecomAuth = new EcomAuth()
+    ecomAuth.login(
+      localStorage.getItem('username') || 'teste',
+      localStorage.getItem('password') || 'teste',
+      localStorage.getItem('store_id') || 1056
+    )
+  </script>
+</body>
+
 </html>

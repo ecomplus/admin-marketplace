@@ -1,4 +1,4 @@
-<div class="ec-application">
+<!-- <div class="ec-application">
   <a-row :gutter="24">
     <div v-if="isLoaded">
       <a-col :md="24" :lg="7">
@@ -128,4 +128,192 @@
 
     <a-skeleton v-else active />
   </a-row>
+</div> -->
+
+
+<div class="ec-application">
+  <div 
+    class="row d-flex justify-content-around" 
+    v-if="isLoaded"
+  >
+    <div class="col-3 card bg-white border h-100">
+      <div class="text-center">
+        <img 
+          v-if="icon" 
+          :src="icon" 
+          class="mb-3" 
+        />
+        <div 
+          v-else  
+          :style="{ background: randomColors, fontSize: '4rem' }" 
+          class="mb-3 img-fluid"
+        >
+          {{ title.charAt(0) }}
+        </div>
+
+        <div class="card-body p-0">
+          <h5>
+            {{title}}
+          </h5>
+          <p class="text-muted text-center">
+            {{ shortDescription }}
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mb-1 mt-4">
+        <span>
+          <div 
+            class="btn btn-pink rounded-pill" 
+            type="primary" 
+            size="large" 
+            @click="installApp" 
+            v-if="!isInstalled"
+          >
+            <i class="fas fa-plus mr-2"></i>
+            {{ i19install }}
+          </div>
+
+          <div v-if="isInstalled">
+            <!--@click="uninstallApp"-->
+            <button class="btn btn-pink rounded-pill" id="popover">
+              <i class="fas fa-trash mr-2"></i>
+              {{ i19uninstall }}
+            </button>
+            <b-popover 
+              target="popover" 
+              triggers="click" 
+              placement="top" 
+              :show.sync="popoverShow"
+            >
+              {{i19doYouWantToDeleteAppQn }}
+              <div class="row p-2 d-flex justify-content-end">
+                <button @click="onClose" class="btn btn-sm m-2">
+                  {{i19no}}
+                </button>
+                <button 
+                  @click="uninstallApp" 
+                  class="btn btn-primary btn-sm m-2"
+                >
+                  {{i19yes}}
+                </button>
+              </div>
+            </b-popover>
+          </div>
+        </span>
+      </div>
+      <div class="text-center mb-1">
+        <p>{{ price }}</p>
+      </div>
+      <p 
+        class="d-flex align-items-center" 
+        v-if="author"
+      >
+        <i class="fas fa-user mr-3"></i>
+        {{ i19author }} : {{ author }}
+      </p>
+      <p 
+        class="d-flex align-items-center" 
+        v-if="version"
+      >
+        <i class="fas fa-sync-alt mr-3"></i>
+        {{ i19version }} : {{ version }}
+      </p>
+      <p class="d-flex align-items-center">
+        <i class="fa fa-globe mr-3"></i>
+        <a :href="website">Website</a>
+      </p>
+    </div>
+
+    <div class="col-8 card bg-white border p-3 h-100">
+      <div>
+        <ul 
+          class="nav nav-tabs d-flex justify-content-around" 
+          v-model="activeTabKey"
+        >
+          <li 
+            v-for="(tab, key) in tabListNoTitle" 
+            class="nav-item"
+          >
+            <a 
+              class="nav-link" 
+              :class="{ active: activeTabKey === tab.key }" 
+              role="button"
+              @click="activeTabKey = tab.key"
+            >
+              {{tab.tab}}
+            </a>
+          </li>
+        </ul>
+        <div 
+          class="card" 
+          v-if="activeTabKey === 'description'" 
+          key="app-description"
+        >
+          <vue-markdown>
+            {{ (description || `# ${title}\nApp ID: \`${appId}\``) }}
+          </vue-markdown>
+        </div>
+
+        <article 
+          v-else-if="activeTabKey === 'configuration'" 
+          key="app-settings"
+        >
+          <slot name="settings">.
+            <ec-admin-settings-form :application="applicationBody" @submit="editApp" />
+            <slot name="settings-append" />
+          </slot>
+        </article>
+
+        <article 
+          v-else-if="activeTabKey === 'relatedApps'" 
+          key="app-related"
+        >
+          <div 
+            v-if="appsRelated.length" 
+            class="row"
+          >
+            <div 
+              class="col-6 col-md-4" v-for="(app, i) in appsRelated" 
+              :key="`app-${i}`"
+            >
+              <EcAppCard 
+                :app.sync="appsRelated[i]" 
+                :ecomApps="ecomApps" 
+                @click="$emit('click:app', app)"
+                class="mb-4" 
+              />
+            </div>
+          </div>
+          <div 
+            v-else 
+            class="row"
+          >
+            {{ i19noAppsAvailable }}
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div 
+    v-else 
+    class="d-flex justify-content-center"
+  >
+    <div 
+      class="spinner-border" 
+      style="width: 50px; height: 50px;" 
+      role="status"
+    >
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <button 
+    @click="$emit('click:back')" 
+    role="button" 
+    class="float-right btn text-primary"
+  >
+    <i class="fas fa-undo mr-2"></i>
+    {{ i19back }}
+  </button>
 </div>
