@@ -4,7 +4,7 @@ import EcomApps from '@ecomplus/apps-manager'
 import EcAppCard from './../EcAppCard.vue'
 import EcAdminSettingsForm from './../EcAdminSettingsForm.vue'
 import { i18n } from '@ecomplus/utils'
-import {BPopover, VBPopover, BCollapse} from 'bootstrap-vue'
+import { BPopover } from 'bootstrap-vue'
 
 
 import {
@@ -43,11 +43,7 @@ export default {
     VueMarkdown,
     EcAppCard,
     EcAdminSettingsForm,
-    'b-popover': BPopover,
-    'b-collapse': BCollapse
-  },
-  directives: {
-    'b-popover': VBPopover
+    BPopover    
   },
 
   props: {
@@ -77,7 +73,7 @@ export default {
         }
       ],
       activeTabKey: 'description',
-      popoverShow: false
+      isPopoverShown: false
     }
   },
 
@@ -362,9 +358,8 @@ export default {
         this.tabListNoTitle.splice(1, 1)
       }
     },
-    onClose() {
-      console.log('oi')
-      this.popoverShow = false
+    close() {
+      this.isPopoverShown = false
     }
   },
 
