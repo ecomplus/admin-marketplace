@@ -53,16 +53,16 @@
               placement="top" 
               :show.sync="isPopoverShown"
             >
-              {{i19doYouWantToDeleteAppQn }}
+              {{ i19doYouWantToDeleteAppQn }}
               <div class="row p-2 d-flex justify-content-end">
                 <button @click="close" class="btn btn-sm m-2">
-                  {{i19no}}
+                  {{ i19no }}
                 </button>
                 <button 
                   @click="uninstallApp" 
                   class="btn btn-primary btn-sm m-2"
                 >
-                  {{i19yes}}
+                  {{ i19yes }}
                 </button>
               </div>
             </b-popover>
@@ -108,7 +108,7 @@
               role="button"
               @click="activeTabKey = tab.key"
             >
-              {{tab.tab}}
+              {{ tab.tab }}
             </a>
           </li>
         </ul>
