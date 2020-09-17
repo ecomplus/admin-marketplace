@@ -42,22 +42,24 @@
                   lowerCaseTitle: (config.schema.items.title || '').toLowerCase()
                 }]" 
               key="nested">
-              <div class="d-flex justify-content-start">
+              <div class="d-flex justify-content-start overflow-hidden">
                 <button 
-                  class="mr-2  btn btn-secundary btn-sm" 
+                  class="mr-2 btn btn-secundary btn-sm" 
                   @click.prevent="dataList.push({})"
                 >
                   {{ `${i19add} ${lowerCaseTitle}` }}
                 </button>
-                <a-upload 
-                  :before-upload="file => uploadCsv(dataList, file)" 
+                <div class="btn btn-secundary btn-sm">
+                  <input 
+                  type="file"
                   accept=".csv"
-                >
-                  <button class=" btn btn-secundary btn-sm">
-                    <i class="fas fa-upload mr-2"></i>
-                    {{ i19upload }}
-                  </button>
-                </a-upload>
+                  id="upload"
+                  >
+                  <i class="fas fa-upload mr-2" style="z-index: 1"></i>
+                </div>
+                
+                  
+                  
               </div>
 
               <div 
@@ -116,44 +118,31 @@
               </div>
             </div>
           </template>
-          <component 
-            :is="checkComplexSchema(schema) && field === config.field ? 'div' : 'div'" 
-            v-for="({
+          <div :key="formResetKey">
+            <component
+              :is="checkComplexSchema(schema) && field === config.field ? 'div' : 'a-form-item'"
+              v-for="({
                 field,
                 name,
                 schema,
                 component,
                 data
-              }) in parseAdminSettingsField(config)" 
-            :key="name">
-            <label>
-              {{ schema.title || field }}
-            </label>
-
-            <div v-if="schema.type === 'integer' || schema.type === 'number'">
-              <input class="form-control" id="input-number" type="number">
-            </div>
-
-            <div v-else-if="schema.type === 'string' && schema.enum">
-              <select class="form-control">
-                <option class="" v-for="option in schema.enum" :key="option">
-                  {{ option }}
-                </option>
-              </select>
-            </div>
-
-            <div v-else-if="schema.type === 'string'">
-              <input class="form-control" id="input-number" type="text">
-            </div>
-
-            <div v-else-if="schema.type === 'boolean'">
-              <input type="checkbox">
-            </div>
-
-            <small v-if="schema.description" class="form-text text-muted">
-              {{ schema.description }}
-            </small>
-          </component>
+              }) in parseAdminSettingsField(config)"
+              :key="name"
+              :label="schema.title || field"
+              :label-col="{ span: 8 }"
+              :wrapper-col="{ span: 16 }"
+            >
+              <template v-if="schema.description" #extra>
+                <span v-html="getDescriptionHtml(schema.description)"></span>
+              </template>
+              <component
+                v-bind="{ name, schema }"
+                v-model="data[field]"
+                :is="component"
+              />
+            </component>
+          </div>
         </div>
         <div class="d-flex justify-content-center mb-1">
           <button 
