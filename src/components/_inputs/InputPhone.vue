@@ -1,7 +1,7 @@
 <template>
-    <cleave-input
+    <input
       type="tel"
-      class="ant-input"
+      class="form-control"
       pattern="(\+[\d]{2})?([\d]{2,})?([\s-]?[\d]{4,}){2,}"
       :options="cleaveOptions"
       v-model="localValue"

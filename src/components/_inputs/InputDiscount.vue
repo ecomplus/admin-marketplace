@@ -1,8 +1,7 @@
 <template>
   <div>
-    <a-form-item
-      :extra="discountValue.description || discountValue.title"
-    >
+    <div>
+      {{ discountValue.description || discountValue.title}}
       <a-input-group compact>
         <input-enum
           name="type"
@@ -38,7 +37,7 @@
           :placeholder="applyAt.description || applyAt.title"
         />
       </a-input-group>
-    </a-form-item>
+    </div>
   </div>
 </template>
 

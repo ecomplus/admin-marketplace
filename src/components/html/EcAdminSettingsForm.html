@@ -132,6 +132,7 @@
               :label="schema.title || field"
               :label-col="{ span: 8 }"
               :wrapper-col="{ span: 16 }"
+              class="form-group"
             >
               <template v-if="schema.description" #extra>
                 <span v-html="getDescriptionHtml(schema.description)"></span>

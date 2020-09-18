@@ -1,10 +1,12 @@
 <template>
-  <a-switch
-    :name="name"
-    :class="localValue && name.indexOf('disable') > -1 ? 'bg-warning' : null"
-    :defaultChecked="Boolean(schema.default)"
-    v-model="localValue"
-  />
+  <div class="form-check">
+    <input  
+      v-model="localValue" 
+      type="checkbox" 
+      class="form-check-input"  
+      :value="$Boolean(schema.default)"
+    >
+  </div>
 </template>
 
 <script src="./js/InputBoolean.js"></script>

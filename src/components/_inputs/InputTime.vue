@@ -1,7 +1,7 @@
 <template>
-  <cleave-input
+  <input
     type="tel"
-    class="ant-input"
+    class="form-control"
     style="max-width: 135px"
     pattern="[\d:]{8}"
     :options="cleaveOptions"

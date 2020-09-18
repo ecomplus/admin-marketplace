@@ -1,16 +1,20 @@
 <template>
-  <a-input-group>
-    <input-date
+  <div class="d-flex justify-content-space-around">
+    <input  
+      type="date"
+      class="form-control"     
       style="width: 50%"
-      :iso-value.sync="localDateValue"
+      v-model="localDateValue"
       :schema="schema"
-    />
-    <input-time
+    >
+    <input
+      type="date"
+      class="form-control"     
       style="width: 50%"
-      :iso-value.sync="localTimeValue"
+      v-model="localTimeValue"
       :schema="schema"
-    />
-  </a-input-group>
+    >
+  </div>
 </template>
 
 <script src="./js/InputDateTime.js"></script>
