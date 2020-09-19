@@ -1,6 +1,5 @@
 import { i18n, formatDate } from '@ecomplus/utils'
 import EcomApps from '@ecomplus/apps-manager'
-import { FadeTransition } from 'vue2-transitions'
 
 import {
   i19active,
