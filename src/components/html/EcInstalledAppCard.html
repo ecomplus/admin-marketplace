@@ -1,49 +1,118 @@
-<a-card
-  class="ec-installed-app-card"
+<div 
+  class="ec-installed-app-card card border" 
   @click="$emit('click')"
-  hoverable
+  role="button"
 >
-  <a-card-meta :title="app.title" class="mb-3">
-    <template slot="description">
-      <samp>#{{ app.app_id }}</samp>
+  <div class="card-body">
+    <h5 class=" text-truncate">
+      {{ app.title }}
+    </h5>
+    <samp class="text-muted">
+      #{{ app.app_id }}
+    </samp>
+    <br />
+    <div 
+      v-if="isActive" 
+      style="  
+        width: 7px;
+        height: 7px;
+        background-color: #52c41a;
+        border-radius: 50%;
+        display: inline-block;"
+    >
+    </div>
+    <div 
+      v-else 
+      style="  
+        width: 7px;
+        height: 7px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;"
+    >
+    </div>
+    <span v-if="isActive">
+      {{i19active}}
+    </span>
+    <span v-else>
+      {{i19inactive}}
+    </span>
+    /
+    <span 
+      class="text-success" 
+      v-if="!app.paid"
+    >
+      {{ i19free }}
+    </span>
+    <span 
+      class="text-info p-0" 
+      v-else
+    >
+      {{ i19paid }}
+    </span>
+  </div>
 
-      <br>
-      <a-badge
-        :text="isActive ? i19active : i19inactive"
-        :status="isActive ? 'success' : 'default'"
-      />
-      /
-      <span class="text-success" v-if="!app.paid">
-        {{ i19free }}
-      </span>
-      <span class="text-info" v-else>
-        {{ i19paid }}
-      </span>
-    </template>
-  </a-card-meta>
+  <div 
+    class="pl-4" 
+    :value="app.version"
+  >
+    <h6 class="text-muted">
+      {{ i19version }}
+    </h6>
+      <h3 :title="i19version">
+        <span>
+          <small class="h5 text-muted">
+            v
+          </small>
+        </span> 
+        {{ app.version }}
+      </h3>
+    <small>
+      {{ formatDate(app.version_date) }}
+    </small>
+  </div> 
+  <div 
+    v-if="!loading" 
+    class="card-body  d-flex justify-content-around bg-pale-gray" 
+  >
+    <i 
+      class="fas px-2 fa-edit align-self-center"  
+      role="button" 
+      :title="i19edit"
+    >
+    </i>
+    <div class="border-left"></div>
+    <div 
+      v-if="isActive" 
+      role="button"
+      :title="i19disable" 
+      key="disable"
+    >
+      <i 
+        @click.stop="toggleState" 
+        class="fas px-2 fa-toggle-on">
+      </i>
+    </div>
+    <div 
+      v-else 
+      role="button"
+      :title="i19activate" 
+      key="activate"
+    >
+      <i 
+        @click.stop="toggleState" 
+        class="fas px-2 fa-toggle-off"
+      >
+      </i>
+    </div>
+  </div>    
+    <div 
+      v-if="loading" 
+      class="card-body d-flex justify-content-center bg-pale-gray p-3"
+    >
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+     </div>
+    </div>
+</div>
 
-  <a-statistic :title="i19version" :value="app.version">
-    <template #prefix>
-      <small>v</small>
-    </template>
-    <template #suffix>
-      <small>{{ formatDate(app.version_date) }}</small>
-    </template>
-  </a-statistic>
-
-  <template slot="actions">
-    <template v-if="!loading">
-      <a-tooltip :title="i19edit">
-        <i class="fas px-2 fa-edit"></i>
-      </a-tooltip>
-      <a-tooltip v-if="isActive" :title="i19disable" key="disable">
-        <i @click.stop="toggleState" class="fas px-2 fa-toggle-on"></i>
-      </a-tooltip>
-      <a-tooltip v-else :title="i19activate" key="activate">
-        <i @click.stop="toggleState" class="fas px-2 fa-toggle-off"></i>
-      </a-tooltip>
-    </template>
-
-    <a-spin v-else size="small"/>
-  </template>
-</a-card>
