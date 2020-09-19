@@ -15,10 +15,6 @@ import {
 export default {
   name: 'EcInstalledAppCard',
 
-  components: {
-    FadeTransition,
-  },
-
   props: {
     ecomApps: {
       type: Object,
