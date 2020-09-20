@@ -1,118 +1,105 @@
-<div 
-  class="ec-installed-app-card card border" 
+<div
+  class="ec-installed-app-card card"
   @click="$emit('click')"
   role="button"
 >
   <div class="card-body">
-    <h5 class=" text-truncate">
+    <h5 class="text-truncate">
       {{ app.title }}
     </h5>
     <samp class="text-muted">
       #{{ app.app_id }}
     </samp>
-    <br />
-    <div 
-      v-if="isActive" 
-      style="  
-        width: 7px;
-        height: 7px;
-        background-color: #52c41a;
-        border-radius: 50%;
-        display: inline-block;"
-    >
-    </div>
-    <div 
-      v-else 
-      style="  
-        width: 7px;
-        height: 7px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;"
+    <br>
+
+    <div
+      class="d-inline-block mr-1"
+      :class="isActive ? 'bg-success' : 'bg-gray'"
+      style="width: 7px; height: 7px; border-radius: 50%;"
     >
     </div>
     <span v-if="isActive">
-      {{i19active}}
+      {{ i19active }}
     </span>
     <span v-else>
-      {{i19inactive}}
+      {{ i19inactive }}
     </span>
     /
-    <span 
-      class="text-success" 
+    <span
+      class="text-success"
       v-if="!app.paid"
     >
       {{ i19free }}
     </span>
-    <span 
-      class="text-info p-0" 
+    <span
+      class="text-info"
       v-else
     >
       {{ i19paid }}
     </span>
+
+    <div :title="i19version">
+      <div class="h3 mb-0">
+        <small class="h5 text-muted">
+          v
+        </small>
+        {{ app.version }}
+      </div>
+      <small>
+        {{ formatDate(app.version_date) }}
+      </small>
+    </div>
   </div>
 
-  <div 
-    class="pl-4" 
-    :value="app.version"
-  >
-    <h6 class="text-muted">
-      {{ i19version }}
-    </h6>
-      <h3 :title="i19version">
-        <span>
-          <small class="h5 text-muted">
-            v
-          </small>
-        </span> 
-        {{ app.version }}
-      </h3>
-    <small>
-      {{ formatDate(app.version_date) }}
-    </small>
-  </div> 
-  <div 
-    v-if="!loading" 
-    class="card-body  d-flex justify-content-around bg-pale-gray" 
-  >
-    <i 
-      class="fas px-2 fa-edit align-self-center"  
-      role="button" 
-      :title="i19edit"
+  <div class="card-footer position-relative">
+    <div
+      v-if="loading"
+      class="position-absolute d-flex justify-content-center"
+      style="left: 50%; top: 50%; margin-left: -0.7rem; margin-top: -0.7rem;"
     >
-    </i>
-    <div class="border-left"></div>
-    <div 
-      v-if="isActive" 
-      role="button"
-      :title="i19disable" 
-      key="disable"
-    >
-      <i 
-        @click.stop="toggleState" 
-        class="fas px-2 fa-toggle-on">
-      </i>
-    </div>
-    <div 
-      v-else 
-      role="button"
-      :title="i19activate" 
-      key="activate"
-    >
-      <i 
-        @click.stop="toggleState" 
-        class="fas px-2 fa-toggle-off"
+      <div
+        class="spinner-grow"
+        style="width: 1.4rem; height: 1.4rem;"
+        role="status"
       >
-      </i>
-    </div>
-  </div>    
-    <div 
-      v-if="loading" 
-      class="card-body d-flex justify-content-center bg-pale-gray p-3"
-    >
-      <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
-     </div>
+      </div>
     </div>
-</div>
 
+    <div
+      class="d-flex justify-content-between"
+      :style="{
+        opacity: loading ? 0 : 1
+      }"
+    >
+      <button
+        class="btn btn-sm btn-block btn-outline-light"
+        :title="i19edit"
+        type="button"
+      >
+        <i class="fas fa-edit"></i>
+      </button>
+
+      <div class="w-25"></div>
+
+      <button
+        v-if="isActive"
+        type="button"
+        class="btn btn-sm btn-block btn-outline-warning"
+        :title="i19disable"
+        @click.stop="toggleState"
+      >
+        <i class="fas fa-toggle-on"></i>
+      </button>
+      <button
+        v-else
+        type="button"
+        class="btn btn-sm btn-block btn-outline-success"
+        :title="i19activate"
+        @click.stop="toggleState"
+      >
+        <i class="fas fa-toggle-off"></i>
+      </button>
+    </div>
+  </div>
+</div>
