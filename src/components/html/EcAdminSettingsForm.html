@@ -1,5 +1,5 @@
 <div>
-  <a-form @submit.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit">
     <a-collapse defaultActiveKey="0" accordion>
       <a-collapse-panel
         v-for="({ header, description, fields }, i) in settingsFieldGroups"
@@ -138,5 +138,5 @@
         </a-form-item>
       </a-collapse-panel>
     </a-collapse>
-  </a-form>
+  </form>
 </div>

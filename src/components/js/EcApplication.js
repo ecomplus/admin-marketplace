@@ -4,6 +4,7 @@ import EcomApps from '@ecomplus/apps-manager'
 import EcAppCard from './../EcAppCard.vue'
 import EcAdminSettingsForm from './../EcAdminSettingsForm.vue'
 import { i18n } from '@ecomplus/utils'
+import { BPopover } from 'bootstrap-vue'
 
 import {
   i19install,
@@ -40,7 +41,8 @@ export default {
   components: {
     VueMarkdown,
     EcAppCard,
-    EcAdminSettingsForm
+    EcAdminSettingsForm,
+    BPopover
   },
 
   props: {
@@ -60,16 +62,15 @@ export default {
       isLoaded: false,
       loadError: false,
       applicationBody: this.application,
+      isfetchingRelated: false,
       appsRelated: [],
-      tabListNoTitle: [
-        {
-          key: 'description'
-        },
-        {
-          key: 'relatedApps'
-        }
-      ],
-      activeTabKey: 'description'
+      tabListNoTitle: [{
+        key: 'description'
+      }, {
+        key: 'relatedApps'
+      }],
+      activeTabKey: 'description',
+      isPopoverShown: false
     }
   },
 
@@ -283,6 +284,7 @@ export default {
     },
 
     findRelateds () {
+      this.isfetchingRelated = true
       this.ecomApps.fetchMarketApps({ params: { category: this.category } })
         .then(resp => {
           const { result } = resp
@@ -292,6 +294,9 @@ export default {
         .catch(e => {
           console.log(e)
           this.$message.error(this.i19loadDataErrorMsg, 3)
+        })
+        .finally(() => {
+          this.isfetchingRelated = false
         })
     },
 

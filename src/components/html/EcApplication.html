@@ -1,96 +1,138 @@
 <div class="ec-application">
-  <a-row :gutter="24">
-    <div v-if="isLoaded">
-      <a-col :md="24" :lg="7">
-        <a-card>
-          <div class="text-center">
-            <a-avatar v-if="icon" :src="icon" :size="170"  class="mb-3 img-fluid"/>
-            <a-avatar
-              v-else
-              :size="170"
-              :style="{ background: randomColors, fontSize: '4rem' }"
-              class="mb-3 img-fluid"
-            >
-              {{ title.charAt(0) }}
-            </a-avatar>
-
-            <a-card-meta
-              :title="title"
-              class="overflow-hidden"
-            >
-              <template slot="description">
-                {{ shortDescription }}
-              </template>
-            </a-card-meta>
-          </div>
-
-          <div class="text-center mb-1 mt-4">
-            <span>
-              <a-button
-                shape="round"
-                type="primary"
-                size="large"
-                @click="installApp"
-                v-if="!isInstalled"
-              >
-                <i class="fas fa-plus mr-2"></i>
-                {{ i19install }}
-              </a-button>
-
-              <a-popconfirm
-                :title="i19doYouWantToDeleteAppQn"
-                @confirm="uninstallApp"
-                :okText="i19yes"
-                :cancelText="i19no"
-                v-if="isInstalled"
-              >
-                <a-button
-                  shape="round"
-                  type="danger"
-                  size="large"
-                >
-                  <i class="fas fa-trash mr-2"></i>
-                  {{ i19uninstall }}
-                </a-button>
-              </a-popconfirm>
-            </span>
-          </div>
-
-          <div class="text-center mb-1">
-            <p>{{ price }}</p>
-          </div>
-
-          <div>
-            <p class="d-flex align-items-center" v-if="author">
-              <i class="fas fa-user mr-3"></i>
-              {{ i19author }} : {{ author }}
-            </p>
-            <p class="d-flex align-items-center" v-if="version">
-              <i class="fas fa-sync-alt mr-3"></i>
-              {{ i19version }} : {{ version }}
-            </p>
-            <p class="d-flex align-items-center">
-              <i class="fa fa-globe mr-3"></i>
-              <a :href="website">Website</a>
-            </p>
-          </div>
-        </a-card>
-      </a-col>
-
-      <a-col :md="24" :lg="17">
-        <a-card
-          class="w-100"
-          :tabList="tabListNoTitle"
-          :activeTabKey="activeTabKey"
-          @tabChange="key => handleTabChange(key, 'activeTabKey')"
+  <div
+    class="row d-flex justify-content-around"
+    v-if="isLoaded"
+  >
+    <div class="col-sm-3">
+      <div class="card">
+        <img
+          v-if="icon"
+          :src="icon"
+          class="card-img-top"
+        />
+        <div
+          v-else
+          :style="{
+            background: randomColors,
+            fontSize: '4rem'
+          }"
+          class="card-img-top text-center text-white py-5"
         >
-          <a-card :bordered="false" v-if="activeTabKey === 'description'" key="app-description">
+          {{ title.charAt(0) }}
+        </div>
+
+        <div class="card-body">
+          <div class="text-center mb-3">
+            <h3>{{ title }}</h3>
+            <p class="card-text">
+              {{ shortDescription }}
+            </p>
+
+            <button
+              class="btn btn-success"
+              type="button"
+              @click="installApp"
+              v-if="!isInstalled"
+            >
+              <i class="fas fa-plus mr-1"></i>
+              {{ i19install }}
+            </button>
+
+            <template v-else>
+              <button
+                class="btn btn-danger"
+                id="uninstall-app"
+              >
+                <i class="fas fa-trash mr-1"></i>
+                {{ i19uninstall }}
+              </button>
+
+              <b-popover
+                target="uninstall-app"
+                triggers="click"
+                placement="top"
+                :show.sync="isPopoverShown"
+              >
+                {{ i19doYouWantToDeleteAppQn }}
+                <div class="text-right py-2">
+                  <button
+                    class="btn btn-light btn-sm mr-2"
+                    type="button"
+                    @click="isPopoverShown = false"
+                  >
+                    {{ i19no }}
+                  </button>
+                  <button
+                    class="btn btn-danger btn-sm"
+                    type="button"
+                    @click="uninstallApp"
+                  >
+                    {{ i19yes }}
+                  </button>
+                </div>
+              </b-popover>
+            </template>
+            <br>
+            <small>{{ price }}</small>
+          </div>
+
+          <div v-if="author">
+            <i class="fas fa-user mr-1"></i>
+            {{ i19author }}: {{ author }}
+          </div>
+          <div v-if="version">
+            <i class="fas fa-sync-alt mr-1"></i>
+            {{ i19version }}:
+            <samp>{{ version }}</samp>
+          </div>
+          <a
+            v-if="website"
+            :href="website"
+            target="_blank"
+          >
+            <i class="fas fa-globe mr-1"></i>
+            Website
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-9">
+      <div class="card">
+        <ul
+          class="nav nav-tabs px-3"
+          v-model="activeTabKey"
+        >
+          <li
+            v-for="(tab, key) in tabListNoTitle"
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              :class="{ active: activeTabKey === tab.key }"
+              role="button"
+              @click="activeTabKey = tab.key"
+            >
+              {{ tab.tab }}
+            </a>
+          </li>
+        </ul>
+
+        <div class="card-body">
+          <article
+            v-if="activeTabKey === 'description'"
+            key="app-description"
+            class="px-lg-2"
+          >
             <vue-markdown>
               {{ (description || `# ${title}\nApp ID: \`${appId}\``) }}
             </vue-markdown>
-          </a-card>
+          </article>
 
-          <article v-else-if="activeTabKey === 'configuration'" key="app-settings">
+          <article
+            v-else-if="activeTabKey === 'configuration'"
+            key="app-settings"
+          >
             <slot name="settings">
               <ec-admin-settings-form
                 :application="applicationBody"
@@ -100,32 +142,71 @@
             </slot>
           </article>
 
-          <article v-else-if="activeTabKey === 'relatedApps'" key="app-related">
-            <div v-if="appsRelated.length" class="row">
-              <div class="col-6 col-md-4" v-for="(app, i) in appsRelated" :key="`app-${i}`">
-                <ec-app-card :app.sync="appsRelated[i]" :ecomApps="ecomApps" @click="$emit('click:app', app)"
-                  class="mb-4" />
+          <article
+            v-else-if="activeTabKey === 'relatedApps'"
+            key="app-related"
+          >
+            <div
+              v-if="appsRelated.length"
+              class="row"
+            >
+              <div
+                class="col-6 col-md-4" v-for="(app, i) in appsRelated"
+                :key="`app-${i}`"
+              >
+                <ec-app-card
+                  :app.sync="appsRelated[i]"
+                  :ecomApps="ecomApps"
+                  @click="$emit('click:app', app)"
+                  class="border"
+                />
               </div>
             </div>
-            <div v-else class="row">
-              {{ i19noAppsAvailable }}
+
+            <div
+              v-else-if="isfetchingRelated"
+              class="d-flex justify-content-center my-5"
+            >
+              <div
+                class="spinner-grow"
+                style="width: 40px; height: 40px"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
             </div>
+
+            <p
+              v-else
+              class="lead"
+            >
+              {{ i19noAppsAvailable }}
+            </p>
           </article>
-        </a-card>
+        </div>
+      </div>
 
-        <a-button
-          hoverable
-          @click="$emit('click:back')"
-          type="link"
-          class="mt-4 float-right"
-          style="border: 1px solid #e8e8e8"
-        >
-        <i class="fas fa-undo mr-2"></i>
-          {{ i19back }}
-        </a-button>
-      </a-col>
+      <button
+        @click="$emit('click:back')"
+        role="button"
+        class="float-right btn btn-light"
+      >
+        <i class="fas fa-undo mr-1"></i>
+        {{ i19back }}
+      </button>
     </div>
+  </div>
 
-    <a-skeleton v-else active />
-  </a-row>
+  <div
+    v-else
+    class="d-flex justify-content-center my-5"
+  >
+    <div
+      class="spinner-border"
+      style="width: 60px; height: 60px;"
+      role="status"
+    >
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 </div>
