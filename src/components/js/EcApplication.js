@@ -6,7 +6,6 @@ import EcAdminSettingsForm from './../EcAdminSettingsForm.vue'
 import { i18n } from '@ecomplus/utils'
 import { BPopover } from 'bootstrap-vue'
 
-
 import {
   i19install,
   i19version,
@@ -43,7 +42,7 @@ export default {
     VueMarkdown,
     EcAppCard,
     EcAdminSettingsForm,
-    BPopover    
+    BPopover
   },
 
   props: {
@@ -63,15 +62,13 @@ export default {
       isLoaded: false,
       loadError: false,
       applicationBody: this.application,
+      isfetchingRelated: false,
       appsRelated: [],
-      tabListNoTitle: [
-        {
-          key: 'description'
-        },
-        {
-          key: 'relatedApps'
-        }
-      ],
+      tabListNoTitle: [{
+        key: 'description'
+      }, {
+        key: 'relatedApps'
+      }],
       activeTabKey: 'description',
       isPopoverShown: false
     }
@@ -287,6 +284,7 @@ export default {
     },
 
     findRelateds () {
+      this.isfetchingRelated = true
       this.ecomApps.fetchMarketApps({ params: { category: this.category } })
         .then(resp => {
           const { result } = resp
@@ -296,6 +294,9 @@ export default {
         .catch(e => {
           console.log(e)
           this.$message.error(this.i19loadDataErrorMsg, 3)
+        })
+        .finally(() => {
+          this.isfetchingRelated = false
         })
     },
 
@@ -357,9 +358,6 @@ export default {
       if (this.hasConfigurationTab()) {
         this.tabListNoTitle.splice(1, 1)
       }
-    },
-    close() {
-      this.isPopoverShown = false
     }
   },
 
