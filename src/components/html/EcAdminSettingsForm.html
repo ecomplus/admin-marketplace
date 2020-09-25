@@ -1,6 +1,5 @@
 <div>
   <form @submit.prevent="handleSubmit">
-<<<<<<< HEAD
     <div 
       role="tablist" 
       v-for="({ header, description, fields }, i) in settingsFieldGroups" 
@@ -11,19 +10,6 @@
           role="tab" 
           v-b-toggle="'accordion-' + i" 
           class="card-title bg-pale-gray border h6"
-=======
-    <a-collapse defaultActiveKey="0" accordion>
-      <a-collapse-panel
-        v-for="({ header, description, fields }, i) in settingsFieldGroups"
-        :header="header"
-        :key="i"
-      >
-        <a-alert
-          class="mb-4"
-          v-if="description"
-          type="info"
-          banner
->>>>>>> 88a429b4e37dd2f54944de11442807a4318071b3
         >
           {{ header }}
         </div>
