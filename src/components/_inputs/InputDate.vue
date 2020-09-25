@@ -1,13 +1,15 @@
+
 <template>
-  <input 
-    type="tel" 
-    :placeholder="placeholder" 
-    :raw="false" 
-    class="form-control" 
-    pattern="[\d/-]{10}" 
-    :options="cleaveOptions" 
+  <cleave-input
+    type="tel"
+    class="form-control"
+    style="max-width: 135px"
+    pattern="[\d/-]{10}"
+    :options="cleaveOptions"
     v-model="localValue"
-  >
+    :raw="false"
+    :placeholder="placeholder"
+  />
 </template>
 
 <script src="./js/InputDate.js"></script>

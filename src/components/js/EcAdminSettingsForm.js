@@ -162,6 +162,7 @@ export default {
           }
         }
       }
+      console.log(fieldObjects)
       return fieldObjects
     },
 

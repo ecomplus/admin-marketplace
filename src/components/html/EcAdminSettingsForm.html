@@ -129,13 +129,15 @@
                 data
               }) in parseAdminSettingsField(config)"
               :key="name"
-              :label="schema.title || field"
-              :label-col="{ span: 8 }"
-              :wrapper-col="{ span: 16 }"
+              :label="schema.type === 'boolean'? '' : schema.title || field"
               class="form-group"
             >
               <template v-if="schema.description" #extra>
-                <span v-html="getDescriptionHtml(schema.description)"></span>
+                <span 
+                  v-html="getDescriptionHtml(schema.description)"
+                  class="text-muted"
+                >
+                </span>
               </template>
               <component
                 v-bind="{ name, schema }"

@@ -1,5 +1,5 @@
 <template>
-  <input
+  <cleave-input
     type="tel"
     class="form-control"
     style="max-width: 135px"

@@ -1,19 +1,15 @@
 <template>
   <div class="d-flex justify-content-space-around">
-    <input  
-      type="date"
-      class="form-control"     
+    <input-date
       style="width: 50%"
-      v-model="localDateValue"
+      :iso-value.sync="localDateValue"
       :schema="schema"
-    >
-    <input
-      type="date"
-      class="form-control"     
+    />
+    <input-time
       style="width: 50%"
-      v-model="localTimeValue"
+      :iso-value.sync="localTimeValue"
       :schema="schema"
-    >
+    />
   </div>
 </template>
 
