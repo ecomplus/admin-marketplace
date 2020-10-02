@@ -5,6 +5,7 @@
     class="form-control" 
     :placeholder="schema.default" 
     :max-length="schema.maxLength" 
+    :pattern="schema.pattern"
     v-model="localValue"
   >
 </template>

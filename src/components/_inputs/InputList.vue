@@ -1,7 +1,7 @@
 <template>
   <div>
     <input-text
-    class="form-control mt-2"
+    class="mt-2"
       v-for="(item, i) in localValue"
       :name="`${name}[${i}]`"
       :key="i"

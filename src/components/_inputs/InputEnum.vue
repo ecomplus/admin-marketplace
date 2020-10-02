@@ -1,6 +1,6 @@
 <template>
   <select
-    class="form-control"
+    class="custom-select"
     style="min-width: 120px;"
     v-model="localValue"
   >

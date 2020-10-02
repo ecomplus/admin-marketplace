@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="form-group d-flex">
+    <div class="input-group d-flex">
       <input-enum
         name="type"
         :schema="type"

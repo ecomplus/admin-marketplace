@@ -2,7 +2,7 @@ import { i18n } from '@ecomplus/utils'
 import Papa from 'papaparse'
 import getSchemaInput from './../../lib/get-schema-input'
 import sanitize from './../../lib/sanitize'
-import {BCollapse, VBToggle} from 'bootstrap-vue'
+import { BCollapse, VBToggle } from 'bootstrap-vue'
 
 import {
   i19add,
@@ -162,7 +162,6 @@ export default {
           }
         }
       }
-      console.log(fieldObjects)
       return fieldObjects
     },
 
