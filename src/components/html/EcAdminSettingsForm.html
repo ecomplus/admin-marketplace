@@ -124,10 +124,13 @@
               :key="name"
               class="form-group"
             >
+              <label class="h6">
+                {{schema.title || field}}
+              </label>
               <component
-              v-bind="{ name, schema }"
-              v-model="data[field]"
-              :is="component"
+                v-bind="{ name, schema }"
+                v-model="data[field]"
+                :is="component"
               />
               <template v-if="schema.description">
                 <span 
