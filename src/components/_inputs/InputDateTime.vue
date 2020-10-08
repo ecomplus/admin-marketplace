@@ -1,12 +1,10 @@
 <template>
-  <div class="d-flex justify-content-space-around">
+  <div class="input-group">
     <input-date
-      style="width: 50%"
       :iso-value.sync="localDateValue"
       :schema="schema"
     />
     <input-time
-      style="width: 50%"
       :iso-value.sync="localTimeValue"
       :schema="schema"
     />

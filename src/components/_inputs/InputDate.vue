@@ -1,4 +1,3 @@
-
 <template>
   <cleave-input
     type="tel"

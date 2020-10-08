@@ -1,12 +1,13 @@
 <template>
-  <input 
-    v-model="localValue" 
-    class="form-control" 
-    id="input-number" 
-    type="number" 
-    :max="schema.maximum" 
-    :min="schema.minimum" 
-    :decimalSeparator="countryCode === 'BR' ? ',' : '.'"
+  <input
+    v-model="localValue"
+    class="form-control"
+    style="max-width: 120px"
+    type="number"
+    :max="schema.maximum"
+    :min="schema.minimum"
+    :step="step"
   >
 </template>
+
 <script src="./js/InputNumber.js"></script>

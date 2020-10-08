@@ -1,79 +1,83 @@
 <div>
   <form @submit.prevent="handleSubmit">
-    <div 
-      role="tablist" 
-      v-for="({ header, description, fields }, i) in settingsFieldGroups" 
+    <div
+      role="tablist"
+      v-for="({ header, description, fields }, i) in settingsFieldGroups"
       class="card m-0" :key="i"
     >
       <div>
-        <div 
-          role="button" 
-          v-b-toggle="'accordion-' + i" 
-          class="card-title bg-pale-gray border h6"
+        <h5
+          role="button"
+          v-b-toggle="'accordion-' + i"
+          class="card-title bg-light"
         >
           {{ header }}
-        </div>
+        </h5>
       </div>
-      <b-collapse 
-        class="p-4 border-right border-left" 
-        accordion="my-accordion" 
+
+      <b-collapse
+        class="card-body"
+        accordion="admin-settings"
         :id="'accordion-' + i"
       >
-        <div 
-          v-for="(config) in fields" 
+        <div
+          v-for="(config) in fields"
           :key="`${Boolean(config.hide).toString()}-${config.field}`"
         >
-          <div 
-            class="alert alert-info" 
+          <div
+            class="alert alert-info"
             v-if="description"
-          >
-            <span 
-              slot="message"
-              v-html="getDescriptionHtml(description)" 
-            >
-            </span>
-          </div>
+            v-html="getDescriptionHtml(description)"
+          ></div>
+
           <template v-if="checkNestedObjectsArray(config.schema)">
-            <div 
-              v-for=
-                "({ dataList, lowerCaseTitle, field }) in [{
-                  ...config,
-                  dataList: config.hide ? hiddenData[config.field] : data[config.field],
-                  lowerCaseTitle: (config.schema.items.title || '').toLowerCase()
-                }]" 
-              key="nested">
-              <div class="d-flex justify-content-start overflow-hidden">
-                <button 
-                  class="mr-2 btn btn-secundary btn-sm" 
+            <div
+              v-for="({ dataList, lowerCaseTitle, field }) in [{
+                ...config,
+                dataList: config.hide ? hiddenData[config.field] : data[config.field],
+                lowerCaseTitle: (config.schema.items.title || '').toLowerCase()
+              }]"
+              key="nested"
+            >
+              <div class="d-flex align-items-center">
+                <button
+                  class="mr-2 btn btn-secundary btn-sm"
                   @click.prevent="dataList.push({})"
                 >
                   {{ `${i19add} ${lowerCaseTitle}` }}
                 </button>
-                <div class="btn btn-secundary btn-sm">
-                  <input 
-                  type="file"
-                  accept=".csv"
-                  id="upload"
+
+                <div
+                  class="custom-file"
+                  style="max-width: 200px"
+                >
+                  <input
+                    type="file"
+                    class="custom-file-input"
+                    accept=".csv"
+                    @change="ev => uploadCsv(dataList, ev.target.files && ev.target.files[0])"
                   >
-                  <i class="fas fa-upload mr-2" style="z-index: 1"></i>
+                  <label class="custom-file-label">
+                    <i class="fas fa-upload mr-2"></i>
+                    {{ i19upload }}
+                  </label>
                 </div>
               </div>
-              <div 
-                class="mt-3 mb-4 list-group"
-              >
-                <div 
-                  v-for="(item, index) in dataList" 
+
+              <div class="mt-3 mb-4 list-group">
+                <div
+                  v-for="(item, index) in dataList"
                   class="card border p-3 "
                 >
                   <div>
-                    <a 
-                      slot="title" 
-                      class="text-muted" 
-                      href="#" 
+                    <a
+                      slot="title"
+                      class="text-muted"
+                      href="#"
                       @click.prevent="dataListsIndexes[field] = index"
                     >
-                      <span 
-                        v-if="dataListsIndexes[field] === index" 
+                      <span
+                        v-if="dataListsIndexes[field] === index"
                         key="editing"
                       >
                         <i class="fas fa-pen-square mr-1"></i>
@@ -90,16 +94,16 @@
                       </samp>
                     </a>
 
-                    <div 
-                      slot="description" 
+                    <div
+                      slot="description"
                       class="text-muted"
                     >
                       {{ getObjectValues(item) }}
-                      <div 
-                        class="mt-2" 
+                      <div
+                        class="mt-2"
                         v-if="dataListsIndexes[field] === index"
                       >
-                        <button 
+                        <button
                           class="btn btn-danger rounded btn-xs"
                           @click.prevent="removeDataListElement(dataList, index, field)"
                         >
@@ -112,6 +116,7 @@
               </div>
             </div>
           </template>
+
           <div :key="formResetKey">
             <div
               v-for="({
@@ -125,7 +130,7 @@
               class="form-group"
             >
               <label class="h6">
-                {{schema.title || field}}
+                {{ schema.title || field }}
               </label>
               <component
                 v-bind="{ name, schema }"
@@ -133,7 +138,7 @@
                 :is="component"
               />
               <template v-if="schema.description">
-                <span 
+                <span
                   v-html="getDescriptionHtml(schema.description)"
                   class="text-muted"
                 >
@@ -142,16 +147,14 @@
             </div>
           </div>
         </div>
-        <div class="d-flex justify-content-center mb-1">
-          <button 
-            class="btn rounded btn-primary btn-sm" 
-            type="primary" 
-            html-type="submit"
-          >
-            <i class="fas fa-save mr-2"></i>
-            {{ i19save }}
-          </button>
-        </div>
+
+        <button
+          class="btn btn-primary mx-auto"
+          type="submit"
+        >
+          <i class="fas fa-save mr-2"></i>
+          {{ i19save }}
+        </button>
       </b-collapse>
     </div>
   </form>

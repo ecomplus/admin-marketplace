@@ -1,43 +1,45 @@
 <template>
   <div>
-    <div class="input-group d-flex">
+    <div class="input-group">
       <input-enum
         name="type"
         :schema="type"
         v-model="localValue.type"
-        style="width: 33%; min-width: auto"
         :i18n-values="typeOptions"
       />
 
-      <input
-        type="number"
-        style="width: 34%"
-        v-if="localValue.type === 'percentage'"
-        v-model="localValue.value"
-        :min="0"
-        :max="100"
-        :formatter="value => `${value}%`"
-        :parser="value => value.replace('%', '')"
-        :decimalSeparator="countryCode === 'BR' ? ',' : '.'"
-      />
+      <template v-if="localValue.type === 'percentage'">
+        <input
+          v-if="localValue.type === 'percentage'"
+          class="form-control"
+          type="number"
+          v-model="localValue.value"
+          :min="0"
+          :max="100"
+        />
+        <div class="input-group-append">
+          <span class="input-group-text">%</span>
+        </div>
+      </template>
       <input-money
-        style="width: 34%"
+        v-else
         name="value"
         :schema="value"
         v-model="localValue.value"
-        v-else
       />
 
       <input-enum
         name="apply_at"
         :schema="applyAt"
         v-model="localValue.apply_at"
-        style="width: 33%; min-width: auto"
         :i18n-values="applyAtOptions"
         :placeholder="applyAt.description || applyAt.title"
       />
     </div>
-    <small>{{discountValue.description || discountValue.title}}</small>
+
+    <span class="form-text text-muted">
+      {{ discountValue.description || discountValue.title }}
+    </span>
   </div>
 </template>
 

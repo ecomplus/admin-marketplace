@@ -25,6 +25,10 @@ export default {
       set (val) {
         this.$emit('input', val)
       }
+    },
+
+    isDisable () {
+      return this.name.indexOf('disable') > -1
     }
   },
 

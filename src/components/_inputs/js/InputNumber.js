@@ -28,6 +28,11 @@ export default {
       set (val) {
         this.$emit('input', val)
       }
+    },
+
+    step () {
+      return this.schema.type === 'integer' ? 1
+        : (this.schema.multipleOf || 0.01)
     }
   },
 

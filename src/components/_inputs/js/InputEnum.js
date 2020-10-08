@@ -12,12 +12,8 @@ export default {
       type: String,
       required: true
     },
-    value: {
-      type: String
-    },
-    i18nValues: {
-      type: Object
-    }
+    value: String,
+    i18nValues: Object
   },
 
   computed: {
