@@ -1,6 +1,6 @@
 <template>
   <cleave-input
-    class="ant-input"
+    class="form-control"
     style="width: 120px"
     :options="cleaveOptions"
     v-model="localValue"

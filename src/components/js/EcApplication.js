@@ -370,6 +370,7 @@ export default {
       },
       immediate: true
     },
+
     'applicationBody._id' (val) {
       if (val && this.applicationBody.admin_settings) {
         this.addConfigurationTab()

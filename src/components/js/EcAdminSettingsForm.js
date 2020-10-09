@@ -2,6 +2,7 @@ import { i18n } from '@ecomplus/utils'
 import Papa from 'papaparse'
 import getSchemaInput from './../../lib/get-schema-input'
 import sanitize from './../../lib/sanitize'
+import { BCollapse, VBToggle } from 'bootstrap-vue'
 
 import {
   i19add,
@@ -32,6 +33,14 @@ export default {
       dataListsIndexes: {},
       formResetKey: 0
     }
+  },
+
+  components: {
+    BCollapse
+  },
+
+  directives: {
+    'b-toggle': VBToggle
   },
 
   computed: {
@@ -186,7 +195,7 @@ export default {
                 const value = head.startsWith('Number') ? Number(row[head])
                   : head.startsWith('Boolean') ? Boolean(row[head])
                     : row[head]
-                const fields = field.split('.')
+                const fields = field.split(/[.[\]]/)
                 if (fields.length > 1) {
                   let nestedField = parsedData
                   for (let i = 0; i < fields.length - 1; i++) {

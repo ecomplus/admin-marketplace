@@ -1,44 +1,45 @@
 <template>
   <div>
-    <a-form-item
-      :extra="discountValue.description || discountValue.title"
-    >
-      <a-input-group compact>
-        <input-enum
-          name="type"
-          :schema="type"
-          v-model="localValue.type"
-          style="width: 33%; min-width: auto"
-          :i18n-values="typeOptions"
-        />
+    <div class="input-group">
+      <input-enum
+        name="type"
+        :schema="type"
+        v-model="localValue.type"
+        :i18n-values="typeOptions"
+      />
 
-        <a-input-number
-          style="width: 34%"
+      <template v-if="localValue.type === 'percentage'">
+        <input
           v-if="localValue.type === 'percentage'"
+          class="form-control"
+          type="number"
           v-model="localValue.value"
           :min="0"
           :max="100"
-          :formatter="value => `${value}%`"
-          :parser="value => value.replace('%', '')"
         />
-        <input-money
-          style="width: 34%"
-          name="value"
-          :schema="value"
-          v-model="localValue.value"
-          v-else
-        />
+        <div class="input-group-append">
+          <span class="input-group-text">%</span>
+        </div>
+      </template>
+      <input-money
+        v-else
+        name="value"
+        :schema="value"
+        v-model="localValue.value"
+      />
 
-        <input-enum
-          name="apply_at"
-          :schema="applyAt"
-          v-model="localValue.apply_at"
-          style="width: 33%; min-width: auto"
-          :i18n-values="applyAtOptions"
-          :placeholder="applyAt.description || applyAt.title"
-        />
-      </a-input-group>
-    </a-form-item>
+      <input-enum
+        name="apply_at"
+        :schema="applyAt"
+        v-model="localValue.apply_at"
+        :i18n-values="applyAtOptions"
+        :placeholder="applyAt.description || applyAt.title"
+      />
+    </div>
+
+    <span class="form-text text-muted">
+      {{ discountValue.description || discountValue.title }}
+    </span>
   </div>
 </template>
 
