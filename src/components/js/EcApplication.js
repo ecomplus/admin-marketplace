@@ -358,10 +358,6 @@ export default {
       if (this.hasConfigurationTab()) {
         this.tabListNoTitle.splice(1, 1)
       }
-    },
-    onClose() {
-      console.log('oi')
-      this.popoverShow = false
     }
   },
 

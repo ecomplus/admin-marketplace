@@ -34,9 +34,11 @@ export default {
       formResetKey: 0
     }
   },
-  components:{
-    'b-collapse': BCollapse
+
+  components: {
+    BCollapse
   },
+
   directives: {
     'b-toggle': VBToggle
   },

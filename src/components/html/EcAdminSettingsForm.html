@@ -67,7 +67,7 @@
               <div class="mt-3 mb-4 list-group">
                 <div
                   v-for="(item, index) in dataList"
-                  class="card border p-3 "
+                  class="border rouded mb-2 p-2"
                 >
                   <div>
                     <a
@@ -104,7 +104,7 @@
                         v-if="dataListsIndexes[field] === index"
                       >
                         <button
-                          class="btn btn-danger rounded btn-xs"
+                          class="btn btn-danger btn-xs"
                           @click.prevent="removeDataListElement(dataList, index, field)"
                         >
                           {{ i19delete }}
@@ -149,10 +149,10 @@
         </div>
 
         <button
-          class="btn btn-primary mx-auto"
+          class="btn btn-primary"
           type="submit"
         >
-          <i class="fas fa-save mr-2"></i>
+          <i class="fas fa-save mr-1"></i>
           {{ i19save }}
         </button>
       </b-collapse>
