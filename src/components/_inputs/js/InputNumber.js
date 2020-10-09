@@ -1,5 +1,3 @@
-import { $ecomConfig } from '@ecomplus/utils'
-
 export default {
   name: 'InputNumber',
 
@@ -18,8 +16,6 @@ export default {
   },
 
   computed: {
-    countryCode: () => $ecomConfig.get('country_code'),
-
     localValue: {
       get () {
         const num = parseFloat(this.value)
