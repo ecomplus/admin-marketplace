@@ -195,7 +195,7 @@ export default {
                 const value = head.startsWith('Number') ? Number(row[head])
                   : head.startsWith('Boolean') ? Boolean(row[head])
                     : row[head]
-                const fields = field.split('.')
+                const fields = field.split(/[.[\]]/)
                 if (fields.length > 1) {
                   let nestedField = parsedData
                   for (let i = 0; i < fields.length - 1; i++) {
