@@ -24,7 +24,6 @@
     "@ecomplus/client": "^2.1.1",
     "@ecomplus/i18n": "^1.16.1",
     "@ecomplus/utils": "^1.4.1",
-    "ant-design-vue": "^1.6.5",
     "bootstrap-vue": "^2.17.3",
     "core-js": "^3.6.5",
     "lodash.clonedeep": "^4.5.0",
