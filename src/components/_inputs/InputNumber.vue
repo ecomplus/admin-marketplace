@@ -1,6 +1,6 @@
 <template>
   <input
-    v-model="localValue"
+    v-model.number="localValue"
     class="form-control"
     style="max-width: 120px"
     type="number"

@@ -4,16 +4,19 @@
       <input-enum
         name="type"
         :schema="type"
-        v-model="localValue.type"
+        :value="value.type"
+        @input="val => update('type', val)"
         :i18n-values="typeOptions"
       />
 
-      <template v-if="localValue.type === 'percentage'">
+      <template v-if="value.type === 'percentage'">
         <input
-          v-if="localValue.type === 'percentage'"
+          v-if="value.type === 'percentage'"
+          name="value"
           class="form-control"
           type="number"
-          v-model="localValue.value"
+          :value="value.value"
+          @input="e => update('value', parseInt(e.target.value, 10))"
           :min="0"
           :max="100"
         />
@@ -25,13 +28,15 @@
         v-else
         name="value"
         :schema="value"
-        v-model="localValue.value"
+        :value="value.value"
+        @input="val => update('value', val)"
       />
 
       <input-enum
         name="apply_at"
         :schema="applyAt"
-        v-model="localValue.apply_at"
+        :value="value.apply_at"
+        @input="val => update('apply_at', val)"
         :i18n-values="applyAtOptions"
         :placeholder="applyAt.description || applyAt.title"
       />
