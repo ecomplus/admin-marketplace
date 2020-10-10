@@ -219,10 +219,19 @@ export default {
         method: 'post'
       })
         .then(() => {
-          this.$message.success('Sucesso', 4)
+          this.$bvToast.toast('Sincronizado com sucesso', {
+            variant: 'success',
+            title: 'Mailchimp'
+          })
         })
         .catch(e => {
-          this.$message.error('Não foi possível realizar a sincronização. Tente novamente mais tarde ou informe o suporte.', 4)
+          console.log(e)
+          this.$bvToast.toast(
+            'Não foi possível realizar a sincronização. Tente novamente mais tarde ou informe o suporte.', {
+              variant: 'danger',
+              title: 'Mailchimp'
+            }
+          )
         })
     },
 
@@ -232,10 +241,19 @@ export default {
         method: 'post'
       })
         .then(() => {
-          this.$message.success('Sucesso', 4)
+          this.$bvToast.toast('Sincronizado com sucesso', {
+            variant: 'success',
+            title: 'Mailchimp'
+          })
         })
         .catch(e => {
-          this.$message.error('Não foi possível realizar a sincronização. Tente novamente mais tarde ou informe o suporte.', 4)
+          console.log(e)
+          this.$bvToast.toast(
+            'Não foi possível realizar a sincronização. Tente novamente mais tarde ou informe o suporte.', {
+              variant: 'danger',
+              title: 'Mailchimp'
+            }
+          )
         })
     }
   }

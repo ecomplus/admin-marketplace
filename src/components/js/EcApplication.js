@@ -1,48 +1,51 @@
 import 'core-js/modules/es.promise.all-settled'
+import { BSkeleton, BPopover } from 'bootstrap-vue'
+import { FadeTransition, SlideYUpTransition } from 'vue2-transitions'
 import VueMarkdown from 'vue-markdown'
 import EcomApps from '@ecomplus/apps-manager'
 import EcAppCard from './../EcAppCard.vue'
 import EcAdminSettingsForm from './../EcAdminSettingsForm.vue'
 import { i18n } from '@ecomplus/utils'
-import { BPopover } from 'bootstrap-vue'
 
 import {
-  i19install,
-  i19version,
-  i19description,
-  i19errorMsg,
-  i19relatedApps,
-  i19configuration,
-  i19free,
-  i19author,
-  i19uninstall,
-  i19yes,
-  i19no,
-  // i19doYouWantToDeleteAppQn,
+  i19app,
   // i19appAlreadyInstalledMsg,
+  i19author,
   i19back,
-  i19unavailable,
-  i19paid,
-  i19installed,
-  i19unableToInstallApp,
-  i19installingApp,
-  i19unableToUninstallApp,
-  i19tryAgain,
+  i19configuration,
+  i19description,
+  i19free,
+  // i19doYouWantToDeleteAppQn,
+  i19errorMsg,
+  i19install,
   i19loadDataErrorMsg,
-  i19saved,
+  i19no,
   i19noAppsAvailable,
-  i19uninstallingApp,
-  i19uninstallingAppWithSuccess
+  i19paid,
+  i19relatedApps,
+  i19savedWithSuccess,
+  // i19successfullyInstalled,
+  // i19successfullyUninstalled,
+  i19tryAgain,
+  i19unableToInstallApp,
+  i19unableToUninstallApp,
+  i19unavailable,
+  i19uninstall,
+  i19version,
+  i19yes
 } from '@ecomplus/i18n'
 
 export default {
   name: 'EcApplication',
 
   components: {
+    BSkeleton,
+    BPopover,
+    FadeTransition,
+    SlideYUpTransition,
     VueMarkdown,
     EcAppCard,
-    EcAdminSettingsForm,
-    BPopover
+    EcAdminSettingsForm
   },
 
   props: {
@@ -60,7 +63,8 @@ export default {
   data () {
     return {
       isLoaded: false,
-      loadError: false,
+      isSaving: false,
+      isSwitching: false,
       applicationBody: this.application,
       isfetchingRelated: false,
       appsRelated: [],
@@ -70,11 +74,35 @@ export default {
         key: 'relatedApps'
       }],
       activeTabKey: 'description',
-      isPopoverShown: false
+      hasInstallPopover: false,
+      hasUninstallPopover: false
     }
   },
 
   computed: {
+    i19app: () => i18n(i19app),
+    i19appAlreadyInstalledMsg: () => 'O aplicativo já está instalado, deseja duplicar?',
+    i19author: () => i18n(i19author),
+    i19back: () => i18n(i19back),
+    i19configuration: () => i18n(i19configuration),
+    i19description: () => i18n(i19description),
+    i19doYouWantToDeleteAppQn: () => 'Tem certeza que deseja deletar o aplicativo?',
+    i19errorMsg: () => i18n(i19errorMsg),
+    i19install: () => i18n(i19install),
+    i19loadDataErrorMsg: () => i18n(i19loadDataErrorMsg),
+    i19no: () => i18n(i19no),
+    i19noAppsAvailable: () => i18n(i19noAppsAvailable),
+    i19relatedApps: () => i18n(i19relatedApps),
+    i19savedWithSuccess: () => i18n(i19savedWithSuccess),
+    i19successfullyInstalled: () => 'Instalado com sucesso',
+    i19successfullyUninstalled: () => 'Desinstalado com sucesso',
+    i19tryAgain: () => i18n(i19tryAgain),
+    i19unableToInstallApp: () => i18n(i19unableToInstallApp),
+    i19unableToUninstallApp: () => i18n(i19unableToUninstallApp),
+    i19uninstall: () => i18n(i19uninstall),
+    i19version: () => i18n(i19version),
+    i19yes: () => i18n(i19yes),
+
     appId () {
       return this.applicationBody.app_id
     },
@@ -128,98 +156,6 @@ export default {
       }
     },
 
-    i19description () {
-      return i18n(i19description)
-    },
-
-    i19errorMsg () {
-      return i18n(i19errorMsg)
-    },
-
-    i19tryAgain () {
-      return i18n(i19tryAgain)
-    },
-
-    i19configuration () {
-      return i18n(i19configuration)
-    },
-
-    i19relatedApps () {
-      return i18n(i19relatedApps)
-    },
-
-    i19unableToInstallAppMsg () {
-      return i18n(i19unableToInstallApp)
-    },
-
-    i19unableToUninstallApp () {
-      return i18n(i19unableToUninstallApp)
-    },
-
-    i19noAppsAvailable () {
-      return i18n(i19noAppsAvailable)
-    },
-
-    i19author () {
-      return i18n(i19author)
-    },
-
-    i19version () {
-      return i18n(i19version)
-    },
-
-    i19install () {
-      return i18n(i19install)
-    },
-
-    i19uninstall () {
-      return i18n(i19uninstall)
-    },
-
-    i19uninstallingApp () {
-      return i18n(i19uninstallingApp)
-    },
-
-    i19uninstallingAppWithSuccess () {
-      return i18n(i19uninstallingAppWithSuccess)
-    },
-
-    i19yes () {
-      return i18n(i19yes)
-    },
-
-    i19no () {
-      return i18n(i19no)
-    },
-
-    i19back () {
-      return i18n(i19back)
-    },
-
-    i19doYouWantToDeleteAppQn () {
-      return 'Tem certeza que deseja deletar o aplicativo?'
-    },
-
-    i19installingApp () {
-      return i18n(i19installingApp)
-    },
-
-    i19loadDataErrorMsg () {
-      return i18n(i19loadDataErrorMsg)
-    },
-
-    i19installed () {
-      return i18n(i19installed)
-    },
-
-    i19appAlreadyInstalledMsg () {
-      return 'Aplicativo já instalado, deseja continuar?'
-    },
-
-    i19saved () {
-      return i18n(i19saved)
-    },
-
     isInstalled () {
       return (this.applicationBody._id)
     },
@@ -236,17 +172,33 @@ export default {
   },
 
   methods: {
+    toast (variant, body) {
+      const { title } = this
+      this.$bvToast.toast(body, {
+        variant,
+        title
+      })
+    },
+
+    successToast (msg) {
+      this.toast('success', `${this.i19app} ${msg.toLowerCase()}!`)
+    },
+
     editApp (data) {
+      this.isSaving = true
       this.ecomApps.editApplication(this.applicationBody._id, data)
         .then(() => {
-          this.$message.success(this.title + ' ' + this.i19saved, 2)
+          this.successToast(this.i19savedWithSuccess)
           this.localApplication = {
             ...this.applicationBody,
             ...data
           }
         })
         .catch(e => {
-          this.$message.error(this.i19errorMsg, 3)
+          this.toast('danger', this.i19errorMsg)
+        })
+        .finally(() => {
+          this.isSaving = false
         })
     },
 
@@ -293,7 +245,7 @@ export default {
         })
         .catch(e => {
           console.log(e)
-          this.$message.error(this.i19loadDataErrorMsg, 3)
+          this.toast('danger', this.i19loadDataErrorMsg)
         })
         .finally(() => {
           this.isfetchingRelated = false
@@ -301,42 +253,53 @@ export default {
     },
 
     requestInstall () {
+      this.isSwitching = true
+      this.hasInstallPopover = false
       this.ecomApps.installApp(this.appId, true)
         .then(installed => {
-          this.$message.success(this.title + ' ' + this.i19installed, 2)
+          this.successToast(this.i19successfullyInstalled)
           this.fetchStoreApplication(installed.result._id)
-          this.$emit('click:install', installed.result, installed.app)
+          this.$emit('install', installed.result, installed.app)
         })
         .catch(e => {
           console.log(e)
-          this.$message.error(this.i19unableToInstallAppMsg, 3)
+          this.toast('danger', this.i19unableToInstallApp)
+        })
+        .finally(() => {
+          this.isSwitching = false
         })
     },
 
     installApp () {
+      this.isSwitching = true
       this.ecomApps.fetchStoreApplications({ params: { app_id: this.appId } })
         .then(resp => {
           if (Array.isArray(resp) && resp.length) {
-            this.$confirm({
-              title: this.i19appAlreadyInstalledMsg,
-              onOk: this.requestInstall
-            })
+            this.isSwitching = false
+            this.hasInstallPopover = true
           } else {
             this.requestInstall()
           }
         })
+        .catch(e => {
+          console.log(e)
+          this.isSwitching = false
+        })
     },
 
     uninstallApp () {
+      this.isSwitching = true
       this.ecomApps.removeApplication(this.applicationBody._id)
-      this.$message.loading(this.i19uninstallingApp + ' ' + this.title, 1)
-        .then(result => {
-          this.$message.success(this.i19uninstallingAppWithSuccess, 2)
-          this.$emit('click:uninstall')
+        .then(() => {
+          this.successToast(this.i19successfullyUninstalled)
+          this.$emit('uninstall')
         })
         .catch(e => {
-          this.$message.error(this.i19unableToUninstallApp, 3)
           console.log(e)
+          this.toast('danger', this.i19unableToUninstallApp)
+        })
+        .finally(() => {
+          this.isSwitching = false
         })
     },
 

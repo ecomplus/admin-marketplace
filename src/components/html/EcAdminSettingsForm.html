@@ -3,13 +3,14 @@
     <div
       role="tablist"
       v-for="({ header, description, fields }, i) in settingsFieldGroups"
-      class="card m-0" :key="i"
+      class="card border mb-2"
+      :key="`card-${i}`"
     >
       <div>
         <h5
           role="button"
-          v-b-toggle="'accordion-' + i"
           class="card-title bg-light"
+          @click="visibleCollapse = i"
         >
           {{ header }}
         </h5>
@@ -18,7 +19,8 @@
       <b-collapse
         class="card-body"
         accordion="admin-settings"
-        :id="'accordion-' + i"
+        :id="'collapse-' + i"
+        :visible="visibleCollapse === i"
       >
         <div
           v-for="(config) in fields"
@@ -151,8 +153,20 @@
         <button
           class="btn btn-primary"
           type="submit"
+          :disabled="isSaving"
         >
-          <i class="fas fa-save mr-1"></i>
+          <span
+            class="d-inline-block"
+            style="width: 1.15rem"
+          >
+            <span v-if="isSaving">
+              <i class="fas fa-circle-notch fa-spin"></i>
+            </span>
+            <i
+              v-else
+              class="fas fa-save"
+            ></i>
+          </span>
           {{ i19save }}
         </button>
       </b-collapse>
