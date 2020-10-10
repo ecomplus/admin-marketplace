@@ -11,7 +11,6 @@
 
       <template v-if="value.type === 'percentage'">
         <input
-          v-if="value.type === 'percentage'"
           name="value"
           class="form-control"
           type="number"

@@ -22,7 +22,10 @@ export default {
         return {}
       }
     },
-    schema: Object
+    schema: {
+      type: Object,
+      required: true
+    }
   },
 
   computed: {
