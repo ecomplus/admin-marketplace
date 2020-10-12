@@ -5,7 +5,7 @@ const service = axios.create({
   baseURL,
   timeout: 60000,
   headers: {
-    'x-store-id': 1056 // Todo: chage to correct store id
+    'x-store-id': localStorage.getItem('store_id') || 1056
   }
 })
 
