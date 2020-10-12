@@ -2,6 +2,7 @@ import { i18n } from '@ecomplus/utils'
 import Papa from 'papaparse'
 import getSchemaInput from './../../lib/get-schema-input'
 import sanitize from './../../lib/sanitize'
+import { BCollapse } from 'bootstrap-vue'
 
 import {
   i19add,
@@ -21,8 +22,11 @@ export default {
   props: {
     application: {
       type: Object,
-      default: () => ({})
-    }
+      default () {
+        return {}
+      }
+    },
+    isSaving: Boolean
   },
 
   data () {
@@ -30,8 +34,13 @@ export default {
       data: {},
       hiddenData: {},
       dataListsIndexes: {},
-      formResetKey: 0
+      formResetKey: 0,
+      visibleCollapse: 0
     }
+  },
+
+  components: {
+    BCollapse
   },
 
   computed: {
@@ -171,10 +180,10 @@ export default {
       Papa.parse(file, {
         header: true,
         error: (err, file, inputElem, reason) => {
-          console.error(err)
-          this.$notification.warning({
-            message: i18n(i19error),
-            description: reason
+          console.log(err)
+          this.$bvToast.toast(reason, {
+            variant: 'warning',
+            title: i18n(i19error)
           })
         },
         complete: ({ data }) => {
@@ -186,7 +195,7 @@ export default {
                 const value = head.startsWith('Number') ? Number(row[head])
                   : head.startsWith('Boolean') ? Boolean(row[head])
                     : row[head]
-                const fields = field.split('.')
+                const fields = field.split(/[.[\]]/)
                 if (fields.length > 1) {
                   let nestedField = parsedData
                   for (let i = 0; i < fields.length - 1; i++) {

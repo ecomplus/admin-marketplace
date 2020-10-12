@@ -1,16 +1,14 @@
 <template>
-  <a-input-group>
+  <div class="input-group">
     <input-date
-      style="width: 50%"
       :iso-value.sync="localDateValue"
       :schema="schema"
     />
     <input-time
-      style="width: 50%"
       :iso-value.sync="localTimeValue"
       :schema="schema"
     />
-  </a-input-group>
+  </div>
 </template>
 
 <script src="./js/InputDateTime.js"></script>

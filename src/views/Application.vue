@@ -2,9 +2,9 @@
   <div id="application">
     <ec-application
       :application="application"
-      @click:install="goToApp"
       @click:back="goToMarket"
-      @click:uninstall="goToMarket"
+      @install="goToApp"
+      @uninstall="goToMarket"
     >
       <template #settings>
         <slot name="settings"/>

@@ -39,7 +39,12 @@ export default {
       }
 
       if (syncValues === '' || syncValues === null) {
-        this.$message.error(`É preciso informar algum ${type} para sincronizar, ou vário(a)s ${type} separados por vírgula.`, 4)
+        this.$bvToast.toast(
+          `É preciso informar algum ${type} para sincronizar, ou vário(a)s ${type} separados por vírgula.`, {
+            variant: 'warning',
+            title: 'Bling'
+          }
+        )
       } else {
         let data = syncValues.split(',')
         data = data.map(el => el.replace(/ /g, ''))
@@ -52,11 +57,20 @@ export default {
           data
         })
           .then(() => {
-            this.$message.success(`${type} foram enviados e serão sincronizados.`, 4)
+            this.$bvToast.toast(`${type} foram enviados e serão sincronizados.`, {
+              variant: 'success',
+              title: 'Bling'
+            })
             this.syncValues = null
           })
           .catch(e => {
-            this.$message.error('Não foi possível realizar a sincronização. Tente novamente mais tarde ou informe o suporte.', 4)
+            console.log(e)
+            this.$bvToast.toast(
+              'Não foi possível realizar a sincronização. Tente novamente mais tarde ou informe o suporte.', {
+                variant: 'danger',
+                title: 'Bling'
+              }
+            )
           })
       }
     }

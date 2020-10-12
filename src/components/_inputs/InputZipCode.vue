@@ -1,7 +1,8 @@
 <template>
   <cleave-input
     type="tel"
-    class="ant-input"
+    class="form-control"
+    style="max-width: 120px"
     :pattern="pattern"
     :options="cleaveOptions"
     v-model="localValue"

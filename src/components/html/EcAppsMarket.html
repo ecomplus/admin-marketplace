@@ -3,13 +3,13 @@
     <h1>
       {{ i19applications }}
     </h1>
-    <ul 
-      class="nav nav-tabs" 
+    <ul
+      class="nav nav-tabs"
       v-model="activeTabKey"
     >
-      <li 
-        v-for="(label, key) in tabs" 
-        class="nav-item" 
+      <li
+        v-for="(label, key) in tabs"
+        class="nav-item"
         :key="key"
       >
         <a
@@ -23,19 +23,20 @@
       </li>
     </ul>
   </div>
+
   <fade-transition :duration="{ enter: 500, leave: 0 }">
-    <div 
-      v-if="!loading" 
+    <div
+      v-if="!loading"
       class="pt-2"
     >
-      <div 
-        class="card bg-pale-yellow border p-2" 
+      <div
+        class="card bg-pale-yellow border p-2"
         v-if="loadError"
       >
         {{ errorMessage }}
         <div>
-          <a 
-            role="button" 
+          <a
+            role="button"
             @click="updateTabContent"
           >
             {{ i19tryAgain }}
@@ -43,13 +44,13 @@
         </div>
       </div>
 
-      <article 
-        v-else 
+      <article
+        v-else
         key="list"
       >
         <div class="row">
-          <div 
-            class="col-6 col-md-4 col-lg-3" 
+          <div
+            class="col-6 col-md-4 col-lg-3"
             v-for="(app, i) in apps"
             :key="`app-${i}`"
           >
@@ -65,16 +66,20 @@
       </article>
     </div>
   </fade-transition>
-  <div 
+
+  <div
     v-if="loading"
-    class="d-flex justify-content-center mt-lg-5"
+    class="row"
   >
-    <div 
-      class="spinner-border" 
-      style="width: 50px; height: 50px" 
-      role="status"
+    <div
+      class="col-6 col-md-4 col-lg-3"
+      v-for="i in 4"
+      :key="`skeleton-${i}`"
     >
-      <span class="sr-only">Loading...</span>
+      <b-skeleton
+        class="mb-4"
+        :height="`${Math.random() * (260 - 120) + 120}px`"
+      ></b-skeleton>
     </div>
   </div>
 </div>

@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.24-rc.0](https://github.com/ecomplus/admin-marketplace/compare/v0.2.23...v0.2.24-rc.0) (2020-10-10)
+
+
+### Features
+
+* **input-zip-range:** new zip range object input for shipping rules ([#100](https://github.com/ecomplus/admin-marketplace/issues/100)) ([5d7e257](https://github.com/ecomplus/admin-marketplace/commit/5d7e2579d0c934c5bc68f9dd4697f65a985804ca))
+
+
+### Bug Fixes
+
+* **app-card:** back with component main class, minor style fixes ([ca38f3d](https://github.com/ecomplus/admin-marketplace/commit/ca38f3da699cd8aa61f5312c9644017ec1fcec31))
+* **deps:** add 'babel-runtime' required for vue-markdown ([a67867f](https://github.com/ecomplus/admin-marketplace/commit/a67867f352799f681661fd62cdb649570a0dbc34))
+* **deps:** update all non-major dependencies ([#105](https://github.com/ecomplus/admin-marketplace/issues/105)) ([f498a48](https://github.com/ecomplus/admin-marketplace/commit/f498a48650e97c66283bc1da767e8dcb6000f8b1))
+* **inputs:** minor fixes for number/discount inputs ([9c6207f](https://github.com/ecomplus/admin-marketplace/commit/9c6207fc8979e3193e8f12099deacd73e59efeb8))
+* **installed-app-card:** minor code and appearence fixes for EcInstalledAppCard ([88a429b](https://github.com/ecomplus/admin-marketplace/commit/88a429b4e37dd2f54944de11442807a4318071b3))
+
 ### [0.2.23](https://github.com/ecomplus/admin-marketplace/compare/v0.2.22...v0.2.23) (2020-06-12)
 
 

@@ -16,12 +16,15 @@ export default {
       type: String,
       required: true
     },
-    schema: {
-      type: Object
-    },
     value: {
       type: Object,
-      default: () => ({})
+      default () {
+        return {}
+      }
+    },
+    schema: {
+      type: Object,
+      required: true
     }
   },
 
@@ -38,10 +41,6 @@ export default {
       return this.schema.properties.apply_at
     },
 
-    localValue () {
-      return this.value ? this.value : {}
-    },
-
     typeOptions () {
       return i18n(i19DiscountType)
     },
@@ -53,7 +52,7 @@ export default {
 
   methods: {
     update (key, value) {
-      this.$emit('input', { ...this.localValue, [key]: value })
+      this.$emit('input', { ...this.value, [key]: value })
     }
   }
 }

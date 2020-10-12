@@ -1,8 +1,9 @@
 import { i18n } from '@ecomplus/utils'
 import EcomApps from '@ecomplus/apps-manager'
+import { BSkeleton } from 'bootstrap-vue'
+import { FadeTransition } from 'vue2-transitions'
 import EcAppCard from './../EcAppCard.vue'
 import EcInstalledAppCard from './../EcInstalledAppCard.vue'
-import { FadeTransition } from 'vue2-transitions'
 
 import {
   i19applications,
@@ -16,6 +17,7 @@ export default {
   name: 'EcAppsMarket',
 
   components: {
+    BSkeleton,
     FadeTransition,
     EcAppCard,
     EcInstalledAppCard
@@ -58,7 +60,7 @@ export default {
     i19yourInstalledApps () {
       return i18n(i19yourInstalledApps)
     },
-    
+
     tabs () {
       return {
         market: this.i19availableApps,

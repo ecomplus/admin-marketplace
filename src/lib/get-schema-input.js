@@ -10,12 +10,14 @@ import matchGroupDiscount from './_custom-input-matchers/discount'
 import matchInputMoney from './_custom-input-matchers/money'
 import matchInputDateTime from './_custom-input-matchers/date-time'
 import matchInputZipCode from './_custom-input-matchers/zip-code'
+import matchInputZipRange from './_custom-input-matchers/zip-range'
 
 const getInputMatchersByType = type => {
   switch (type) {
     case 'object':
       return [
-        matchGroupDiscount
+        matchGroupDiscount,
+        matchInputZipRange
       ]
     case 'string':
       return [
