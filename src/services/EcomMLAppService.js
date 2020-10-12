@@ -17,11 +17,16 @@ const findCategory = (term) => {
   return service.get(`/mercado-livre/suggest-category?term=${term}`)
 }
 
-const createAd = (data) => {
+const createProduct = (data) => {
   return service.post('/mercado-livre/product', data)
+}
+
+const getProducts = (data) => {
+  return service.get('/mercado-livre/product')
 }
 
 export {
   findCategory,
-  createAd
+  createProduct,
+  getProducts
 }

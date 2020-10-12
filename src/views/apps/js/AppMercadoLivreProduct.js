@@ -1,10 +1,14 @@
 import * as mlService from '../../../services/MercadoLivreService'
 import * as ecomMLAppService from '../../../services/EcomMLAppService'
+import AppMercadoLivreProducList from '../AppMercadoLivreProductList.vue'
 
 import { search } from '@ecomplus/client'
 
 export default {
   name: 'AppMercadoLivreProduct',
+  components: {
+    AppMercadoLivreProducList
+  },
   data () {
     return {
       result: {},
@@ -14,12 +18,16 @@ export default {
       listingTypes: [],
       productsFound: [],
       productSelectedId: '',
+      mlProducts: [],
       product: {
         category_id: '',
         listing_type_id: '',
         product: {}
       }
     }
+  },
+  created () {
+    this.loadMLProducts()
   },
   watch: {
     productTerm (newValue) {
@@ -79,7 +87,7 @@ export default {
         }
       }
 
-      ecomMLAppService.createAd(data)
+      ecomMLAppService.createProduct(data)
         .then(({ data }) => (this.result = data))
         .catch(error => (this.error = error))
     }

@@ -46,6 +46,9 @@
         <code>{{ error }}</code>
       </div>
     </div>
+    <h2>Anuncios no Mercado Livre!</h2>
+    <AppMercadoLivreProducList />
+
   </div>
 </template>
 
