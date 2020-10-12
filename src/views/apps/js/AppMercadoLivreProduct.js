@@ -1,13 +1,16 @@
 import * as mlService from '../../../services/MercadoLivreService'
 import * as ecomMLAppService from '../../../services/EcomMLAppService'
 import AppMercadoLivreProducList from '../AppMercadoLivreProductList.vue'
+import { BTabs, BTab } from 'bootstrap-vue'
 
 import { search } from '@ecomplus/client'
 
 export default {
   name: 'AppMercadoLivreProduct',
   components: {
-    AppMercadoLivreProducList
+    AppMercadoLivreProducList,
+    BTabs,
+    BTab
   },
   data () {
     return {

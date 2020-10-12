@@ -2,7 +2,7 @@
   <Application>
     <template #settings-append>
       <div>
-        <h2>Envio de produtos para o Mercado Livre.</h2>
+        <h2>Integrações:</h2>
         <div>
           <AppMercadoLivreProduct />
         </div>

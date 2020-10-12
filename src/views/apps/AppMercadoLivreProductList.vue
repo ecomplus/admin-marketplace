@@ -23,7 +23,6 @@
             <a
               :href="mlProduct.body.permalink"
               target="_blank"
-              rel="noopener noreferrer"
             >
               <i class="fa fa-eye"></i>
             </a>
