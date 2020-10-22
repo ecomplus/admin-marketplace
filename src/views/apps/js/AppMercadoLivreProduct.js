@@ -84,7 +84,7 @@ export default {
       const data = {
         category_id: this.product.category_id,
         listing_type_id: this.product.listing_type_id,
-        product_id: this.product._id
+        product_id: this.product.product._id
       }
 
       ecomMLAppService.createProduct(data)
