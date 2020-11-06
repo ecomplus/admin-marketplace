@@ -30,9 +30,32 @@
         <hr>
         <button class="btn btn-primary" @click="exportProducts">Exportar</button>
       </b-tab>
-      <b-tab title="Produtos no ML">
-        <h2>Anuncios no Mercado Livre!</h2>
-        <AppMercadoLivreProducList />
+      <b-tab title="Vincular produtos">
+        <AppMercadoLivreLink v-on:add="addToLink" />
+        <hr />
+        <h3>Produtos à exportar</h3>
+        <div class="table table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Categoria ML</th>
+                <th>Sincronização de saldo</th>
+                <th>Sincronização de preço</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="product of linkProducts" :key="product">
+                <td>{{ product.product_id }}</td>
+                <td>{{ product.ml_product_id }}</td>
+                <td>{{ product.allows_balance_update }}</td>
+                <td>{{ product.allows_price_update }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <hr>
+        <button class="btn btn-primary" @click="exportLinkProducts">Exportar</button>
       </b-tab>
       <b-tab title="Logs">
         <p>I'm the tab with the very, very long title</p>
