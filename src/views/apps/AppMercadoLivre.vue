@@ -4,7 +4,7 @@
       <div>
         <h2>Integrações:</h2>
         <div>
-          <AppMercadoLivreProduct />
+          <AppMercadoLivreTabs :applicationBody="applicationBody" />
         </div>
       </div>
     </template>
