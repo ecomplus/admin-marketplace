@@ -21,14 +21,14 @@
                 <td>{{ product.product_id }}</td>
                 <td>{{ product.category_id }}</td>
                 <td>{{ product.listing_type_id }}</td>
-                <td>{{ product.allows_balance_update }}</td>
-                <td>{{ product.allows_price_update }}</td>
+                <td><i :class="getCheckedClass(product.allows_balance_update)"></i></td>
+                <td><i :class="getCheckedClass(product.allows_price_update)"></i></td>
               </tr>
             </tbody>
           </table>
         </div>
         <hr />
-        <button class="btn btn-primary" @click="exportProducts">
+        <button class="btn btn-primary" @click="exportProducts" :disabled="exportationProducts.length === 0">
           Exportar
         </button>
       </b-tab>
@@ -50,14 +50,14 @@
               <tr v-for="product of linkProducts" :key="product">
                 <td>{{ product.product_id }}</td>
                 <td>{{ product.ml_product_id }}</td>
-                <td>{{ product.allows_balance_update }}</td>
-                <td>{{ product.allows_price_update }}</td>
+                <td><i :class="getCheckedClass(product.allows_balance_update)"></i></td>
+                <td><i :class="getCheckedClass(product.allows_price_update)"></i></td>
               </tr>
             </tbody>
           </table>
         </div>
         <hr />
-        <button class="btn btn-primary" @click="exportLinkProducts">
+        <button class="btn btn-primary" @click="exportLinkProducts" :disabled="linkProducts.length === 0">
           Exportar
         </button>
       </b-tab>
@@ -86,8 +86,8 @@
                 >
                   <td>{{ product.metadata.product_id }}</td>
                   <td>{{ product.ml_id }}</td>
-                  <td>{{ product.metadata.allows_balance_update }}</td>
-                  <td>{{ product.metadata.allows_price_update }}</td>
+                  <td><i :class="getCheckedClass(product.metadata.allows_balance_update)"></i></td>
+                  <td><i :class="getCheckedClass(product.metadata.allows_price_update)"></i></td>
                 </tr>
               </template>
             </tbody>

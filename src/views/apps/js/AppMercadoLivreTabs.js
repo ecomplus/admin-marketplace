@@ -48,6 +48,9 @@ export default {
           this.exportationProducts = []
         })
         .catch(error => console.error(error))
+    },
+    getCheckedClass (value) {
+      return value ? 'fa fa-check' : 'fa fa-close'
     }
   }
 }
