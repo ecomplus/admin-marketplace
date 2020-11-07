@@ -62,6 +62,11 @@
         </button>
       </b-tab>
       <b-tab title="Meus anúncios">
+        <div class="row">
+          <div class="col-md-3 offset-md-9">
+            <button class="btn btn-sm btn-light" @click="loadApplicationBody"><i class="fa fa-refresh"></i> Atualizar</button>
+          </div>
+        </div>
         <div class="table table-responsive">
           <table v-if="applicationBody.data.product_correlations">
             <thead>

@@ -3,6 +3,8 @@ import AppMercadoLivreLink from '../AppMercadoLivreLink.vue'
 import { BTabs, BTab } from 'bootstrap-vue'
 import EcomApps from '@ecomplus/apps-manager'
 
+const ecomApps = new EcomApps()
+
 export default {
   name: 'AppMercadoLivreTabs',
   components: {
@@ -11,23 +13,31 @@ export default {
     AppMercadoLivreExportation,
     AppMercadoLivreLink
   },
-  props: {
-    applicationBody: () => {}
-  },
   data () {
     return {
+      applicationBody: { data: {} },
       exportationProducts: [],
       linkProducts: []
     }
   },
+  created () {
+    this.loadApplicationBody()
+  },
   methods: {
+    loadApplicationBody () {
+      const appId = this.$route.params.objectId
+      console.log(appId)
+      ecomApps.findStoreApplication(appId)
+        .then(({ data }) => (this.applicationBody = data))
+        .catch(error => console.error(error))
+    },
     addToExportation (value) {
       this.exportationProducts.push(value)
     },
     addToLink (value) {
       this.linkProducts.push(value)
     },
-    exportLinkProducts () {
+    exportLinkProducts() {
       const ecomApps = new EcomApps()
       const data = {
         data: { link_products: this.linkProducts }
