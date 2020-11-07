@@ -62,7 +62,6 @@
         </button>
       </b-tab>
       <b-tab title="Meus anúncios">
-        <pre>{{ applicationBody.data }}</pre>
         <div class="table table-responsive">
           <table v-if="applicationBody.data.product_correlations">
             <thead>
