@@ -27,8 +27,10 @@
             </tbody>
           </table>
         </div>
-        <hr>
-        <button class="btn btn-primary" @click="exportProducts">Exportar</button>
+        <hr />
+        <button class="btn btn-primary" @click="exportProducts">
+          Exportar
+        </button>
       </b-tab>
       <b-tab title="Vincular produtos">
         <AppMercadoLivreLink v-on:add="addToLink" />
@@ -54,8 +56,44 @@
             </tbody>
           </table>
         </div>
-        <hr>
-        <button class="btn btn-primary" @click="exportLinkProducts">Exportar</button>
+        <hr />
+        <button class="btn btn-primary" @click="exportLinkProducts">
+          Exportar
+        </button>
+      </b-tab>
+      <b-tab title="Meus anúncios">
+        <pre>{{ applicationBody.data }}</pre>
+        <div class="table table-responsive">
+          <table v-if="applicationBody.data.product_correlations">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>ID no ML</th>
+                <th>Sincroniza saldo?</th>
+                <th>Sincroniza preço?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template
+                v-for="correlation of Object.keys(
+                  applicationBody.data.product_correlations
+                )"
+              >
+                <tr
+                  v-for="product of applicationBody.data.product_correlations[
+                    correlation
+                  ]"
+                  :key="product"
+                >
+                  <td>{{ product.metadata.product_id }}</td>
+                  <td>{{ product.ml_id }}</td>
+                  <td>{{ product.metadata.allows_balance_update }}</td>
+                  <td>{{ product.metadata.allows_price_update }}</td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
       </b-tab>
       <b-tab title="Logs">
         <p>I'm the tab with the very, very long title</p>
