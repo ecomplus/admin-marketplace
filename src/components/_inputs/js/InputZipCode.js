@@ -37,9 +37,18 @@ export default {
 
     localValue: {
       get () {
-        return this.value ? this.value : this.schema.default
+        const value = this.value ? this.value : this.schema.default
+        if (countryCode === 'BR' && typeof value === 'number') {
+          return String(value).padStart(8, '0')
+        }
+        return value
       },
       set (value) {
+        switch (this.schema.type) {
+          case 'integer':
+          case 'number':
+            return this.$emit('input', Number(value.replace(/\D/g, '')))
+        }
         this.$emit('input', value)
       }
     },
