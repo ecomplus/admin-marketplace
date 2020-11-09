@@ -23,6 +23,12 @@ export default {
     }
   },
 
+  data () {
+    return {
+      formattedVal: ''
+    }
+  },
+
   computed: {
     placeholder () {
       return i18n(i19zipCode)
@@ -37,13 +43,10 @@ export default {
 
     localValue: {
       get () {
-        const value = this.value ? this.value : this.schema.default
-        if (countryCode === 'BR' && typeof value === 'number') {
-          return String(value).padStart(8, '0')
-        }
-        return value
+        return this.value ? this.formattedVal : this.format(this.schema.default)
       },
       set (value) {
+        this.formattedVal = value
         switch (this.schema.type) {
           case 'integer':
           case 'number':
@@ -56,5 +59,18 @@ export default {
     cleaveOptions () {
       return countryCode === 'BR' ? { blocks: [5, 3], delimiter: '-' } : { blocks: [30] }
     }
+  },
+
+  methods: {
+    format (value) {
+      if (countryCode === 'BR' && typeof value === 'number') {
+        return String(value).padStart(8, '0')
+      }
+      return value
+    }
+  },
+
+  created () {
+    this.formattedVal = this.format(this.value)
   }
 }
