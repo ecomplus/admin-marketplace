@@ -1,5 +1,6 @@
 import AppMercadoLivreExportation from '../AppMercadoLivreExportation.vue'
 import AppMercadoLivreLink from '../AppMercadoLivreLink.vue'
+import AppMercadoLivreLogsList from '../AppMercadoLivreLogsList.vue'
 import { BTabs, BTab } from 'bootstrap-vue'
 import EcomApps from '@ecomplus/apps-manager'
 
@@ -11,7 +12,8 @@ export default {
     BTabs,
     BTab,
     AppMercadoLivreExportation,
-    AppMercadoLivreLink
+    AppMercadoLivreLink,
+    AppMercadoLivreLogsList
   },
   data () {
     return {

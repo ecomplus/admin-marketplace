@@ -17,7 +17,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="product of exportationProducts" :key="product">
+              <tr v-for="product in exportationProducts" :key="product">
                 <td>{{ product.product_id }}</td>
                 <td>{{ product.category_id }}</td>
                 <td>{{ product.listing_type_id }}</td>
@@ -47,7 +47,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="product of linkProducts" :key="product">
+              <tr v-for="product in linkProducts" :key="product">
                 <td>{{ product.product_id }}</td>
                 <td>{{ product.ml_product_id }}</td>
                 <td><i :class="getCheckedClass(product.allows_balance_update)"></i></td>
@@ -79,18 +79,18 @@
             </thead>
             <tbody>
               <template
-                v-for="correlation of Object.keys(
+                v-for="correlation in Object.keys(
                   applicationBody.data.product_correlations
                 )"
               >
                 <tr
-                  v-for="product of applicationBody.data.product_correlations[
+                  v-for="product in applicationBody.data.product_correlations[
                     correlation
                   ]"
-                  :key="product"
+                  :key="product.metadata.product_id"
                 >
                   <td>{{ product.metadata.product_id }}</td>
-                  <td>{{ product.ml_id }}</td>
+                  <td>{{ product.mlId }}</td>
                   <td><i :class="getCheckedClass(product.metadata.allows_balance_update)"></i></td>
                   <td><i :class="getCheckedClass(product.metadata.allows_price_update)"></i></td>
                 </tr>
@@ -100,7 +100,7 @@
         </div>
       </b-tab>
       <b-tab title="Logs">
-        <p>I'm the tab with the very, very long title</p>
+        <AppMercadoLivreLogsList :logs="applicationBody.data.logs"/>
       </b-tab>
     </b-tabs>
   </div>

@@ -3,15 +3,15 @@
     <table class="table">
       <thead>
         <tr>
-          <th v-for="mlKey of mlKeys" :key="mlKey" scope="col">
+          <th v-for="mlKey in mlKeys" :key="mlKey" scope="col">
             {{ mlKey }}
           </th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="mlProduct of mlProducts" :key="mlProduct">
-          <td v-for="mlKey of mlKeys" :key="mlKey" scope="col">
+        <tr v-for="mlProduct in mlProducts" :key="mlProduct">
+          <td v-for="mlKey in mlKeys" :key="mlKey" scope="col">
             {{ mlProduct.body[mlKey] }}
           </td>
 
