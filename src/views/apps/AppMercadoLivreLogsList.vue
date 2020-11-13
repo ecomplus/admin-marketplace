@@ -6,16 +6,16 @@
       v-for="(log, index) in logs"
       :key="`log-${index}`"
     >
-      <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block variant="info"
-          >{{ log.entity }} - {{ log.timestamp }}
+      <b-card-header header-tag="header" role="tab">
+        <b-button block align-h="start" variant="light" v-b-toggle="`log-${index}`" @click="setActiveId(`log-${index}`)" class="p-10"
+          >
+          <span class="ml-0">{{ log.timestamp }}</span>
+          <span class="ml-30">{{ log.entity }}</span>
+          <span  v-if="log.success" class="ml-30 badge badge-success">Sucesso</span>
+          <span v-else class="ml-30 badge badge-danger">Error</span>
         </b-button>
       </b-card-header>
       <b-card-body class="log-card-body">
-        <b-card-text><strong>Horário: </strong><span>{{log.timestamp}}</span></b-card-text>
-        <b-card-text><strong>Evento: </strong><span>{{log.entity}}</span></b-card-text>
-        <b-card-text><strong>Sucesso: </strong><span>{{log.success}}</span></b-card-text>
-        <b-button variant="primary" class="btn btn-sm btn-link" v-b-toggle="`log-${index}`" @click="setActiveId(`log-${index}`)">Ver detalhes</b-button>
         <b-collapse
           :id="`log-${index}`"
           visible
@@ -37,7 +37,8 @@
 
 <style lang="scss">
 #log-notes {
-  max-width: 600px;
+  width: 100%;
+  max-width: 624px;
   max-height: 300px;
   overflow-y: scroll;
 }
