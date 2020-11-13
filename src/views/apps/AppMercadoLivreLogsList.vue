@@ -1,6 +1,5 @@
 <template>
   <div class="accordion" role="tablist">
-    {{activeId}}
     <b-card
       no-body
       class="mb-1"
@@ -12,8 +11,11 @@
           >{{ log.entity }} - {{ log.timestamp }}
         </b-button>
       </b-card-header>
-      <b-card-body>
-        <button v-b-toggle="`log-${index}`" @click="setActiveId(`log-${index}`)">Ver detalhes</button>
+      <b-card-body class="log-card-body">
+        <b-card-text><strong>Horário: </strong><span>{{log.timestamp}}</span></b-card-text>
+        <b-card-text><strong>Evento: </strong><span>{{log.entity}}</span></b-card-text>
+        <b-card-text><strong>Sucesso: </strong><span>{{log.success}}</span></b-card-text>
+        <b-button variant="primary" class="btn btn-sm btn-link" v-b-toggle="`log-${index}`" @click="setActiveId(`log-${index}`)">Ver detalhes</b-button>
         <b-collapse
           :id="`log-${index}`"
           visible
@@ -38,5 +40,9 @@
   max-width: 600px;
   max-height: 300px;
   overflow-y: scroll;
+}
+.log-card-body {
+  display: flex;
+  flex-direction: column;
 }
 </style>
