@@ -1,10 +1,10 @@
 <template>
   <div id="app-mercado-livre">
     <b-tabs content-class="mt-3" fill>
-      <b-tab title="Autenticação">
-        <AppMercadoLivreAuth />
+      <b-tab title="Autenticação" active>
+        <AppMercadoLivreAuth :mlProfile="applicationBody.data.mlProfile" />
       </b-tab>
-      <b-tab title="Exportar produtos" active>
+      <b-tab title="Exportar produtos">
         <AppMercadoLivreExportation v-on:add="addToExportation" />
         <hr />
         <h3>Produtos à exportar</h3>
