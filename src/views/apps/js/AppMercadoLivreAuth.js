@@ -30,6 +30,8 @@ export default {
     loadProfile (authWindow) {
       let running = false
       let count = 0
+      const timeout = 500
+      const maxAttempts = timeout * 100
       const interval = setInterval(() => {
         const appId = this.$route.params.objectId
         if (!running) {
@@ -46,7 +48,7 @@ export default {
             .catch(error => console.error(error))
             .finally(() => {
               running = false
-              if (count >= 20) {
+              if (count >= maxAttempts) {
                 clearInterval(interval)
                 return authWindow.close()
               }
