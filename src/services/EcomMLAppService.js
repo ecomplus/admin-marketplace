@@ -9,6 +9,10 @@ const service = axios.create({
   }
 })
 
+const getAuthUrl = () => {
+  return `${baseURL}/mercado-livre/callback?store_id=${localStorage.getItem('store_id')}`
+}
+
 const findCategory = (term) => {
   term = term
     .toLowerCase()
@@ -17,16 +21,12 @@ const findCategory = (term) => {
   return service.get(`/mercado-livre/suggest-category?term=${term}`)
 }
 
-const createProduct = (data) => {
-  return service.post('/mercado-livre/product', data)
-}
-
-const getProducts = (data) => {
+const getProducts = () => {
   return service.get('/mercado-livre/product')
 }
 
 export {
+  getAuthUrl,
   findCategory,
-  createProduct,
   getProducts
 }

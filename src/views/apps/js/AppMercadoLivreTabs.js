@@ -1,7 +1,8 @@
 import AppMercadoLivreExportation from '../AppMercadoLivreExportation.vue'
 import AppMercadoLivreLink from '../AppMercadoLivreLink.vue'
 import AppMercadoLivreLogsList from '../AppMercadoLivreLogsList.vue'
-import { BTabs, BTab } from 'bootstrap-vue'
+import AppMercadoLivreAuth from '../AppMercadoLivreAuth.vue'
+import { BTabs, BTab, BCollapse, BCard, BButton, BCardBody, BCardHeader, BCardText } from 'bootstrap-vue'
 import EcomApps from '@ecomplus/apps-manager'
 
 const ecomApps = new EcomApps()
@@ -11,9 +12,16 @@ export default {
   components: {
     BTabs,
     BTab,
+    BCollapse,
+    BCard,
+    BButton,
+    BCardBody,
+    BCardHeader,
+    BCardText,
     AppMercadoLivreExportation,
     AppMercadoLivreLink,
-    AppMercadoLivreLogsList
+    AppMercadoLivreLogsList,
+    AppMercadoLivreAuth
   },
   data () {
     return {

@@ -1,6 +1,9 @@
 <template>
   <div id="app-mercado-livre">
     <b-tabs content-class="mt-3" fill>
+      <b-tab title="Autenticação">
+        <AppMercadoLivreAuth />
+      </b-tab>
       <b-tab title="Exportar produtos" active>
         <AppMercadoLivreExportation v-on:add="addToExportation" />
         <hr />
@@ -100,6 +103,12 @@
         </div>
       </b-tab>
       <b-tab title="Logs">
+        <div class="row">
+          <div class="col-md-3 offset-md-9">
+            <button class="btn btn-sm btn-light" @click="loadApplicationBody"><i class="fa fa-refresh"></i> Atualizar</button>
+          </div>
+        </div>
+        <hr>
         <AppMercadoLivreLogsList :logs="applicationBody.data.logs"/>
       </b-tab>
     </b-tabs>

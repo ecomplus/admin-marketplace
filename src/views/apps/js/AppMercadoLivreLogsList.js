@@ -1,9 +1,9 @@
-import { BCollapse, BButton, BCard } from 'bootstrap-vue'
+import { BCollapse, BButton, BCard, BCardBody, BCardHeader, BCardText } from 'bootstrap-vue'
 
 export default {
   name: 'AppMercadoLivreLogsList',
   components: {
-    BCollapse, BCard, BButton
+    BCollapse, BCard, BButton, BCardBody, BCardHeader, BCardText
   },
   props: {
     logs: Array
