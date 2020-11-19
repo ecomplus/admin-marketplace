@@ -4,13 +4,14 @@
       size="lg"
       id="modal-app-ml-search-category"
       title="Pesquise a categoria"
+      hide-footer
     >
       <div class="form-group">
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
-            placeholder="Digite o termo da pesquisa..."
+            placeholder="Pesquisar categoria..."
             aria-label="Categoria no ML"
             aria-describedby="btn-search-ml-category"
             v-model="term"
