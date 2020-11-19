@@ -1,45 +1,45 @@
 <template>
-  <div id="app-mercado-livre-product-list">
-    <table class="table">
+  <div class="table table-responsive">
+    <table v-if="productCorrelations">
       <thead>
         <tr>
-          <th v-for="mlKey in mlKeys" :key="mlKey" scope="col">
-            {{ mlKey }}
-          </th>
+          <th>ID</th>
+          <th>ID no ML</th>
+          <th>Sinc. saldo?</th>
+          <th>Sinc. preço?</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="mlProduct in mlProducts" :key="mlProduct">
-          <td v-for="mlKey in mlKeys" :key="mlKey" scope="col">
-            {{ mlProduct.body[mlKey] }}
-          </td>
-
-          <td>
-            <a href="#"><i class="fa fa-link"></i></a>
-          </td>
-
-          <td>
-            <a
-              :href="mlProduct.body.permalink"
-              target="_blank"
-            >
-              <i class="fa fa-eye"></i>
-            </a>
-          </td>
-        </tr>
+        <template
+          v-for="correlation in Object.keys(productCorrelations)"
+        >
+          <tr
+            v-for="product in productCorrelations[correlation]"
+            :key="product.metadata.product_id"
+          >
+            <td>{{ product.metadata.product_id }}</td>
+            <td>{{ product.mlId }}</td>
+            <td>
+              <i
+                :class="getCheckedClass(product.metadata.allows_balance_update)"
+              ></i>
+            </td>
+            <td>
+              <i
+                :class="getCheckedClass(product.metadata.allows_price_update)"
+              ></i>
+            </td>
+            <td>
+              <button type="button" class="btn btn-sm btn-light" @click="unlink(product)">
+                Desvincular
+              </button>
+            </td>
+          </tr>
+        </template>
       </tbody>
     </table>
   </div>
 </template>
 
 <script src="./js/AppMercadoLivreProductList.js"></script>
-
-<style lang="scss">
-#app-mercado-livre {
-  code {
-    display: block;
-    white-space: pre-wrap;
-  }
-}
-</style>

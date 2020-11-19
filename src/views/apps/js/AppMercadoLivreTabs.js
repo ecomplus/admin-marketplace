@@ -2,6 +2,7 @@ import AppMercadoLivreExportation from '../AppMercadoLivreExportation.vue'
 import AppMercadoLivreLink from '../AppMercadoLivreLink.vue'
 import AppMercadoLivreLogsList from '../AppMercadoLivreLogsList.vue'
 import AppMercadoLivreAuth from '../AppMercadoLivreAuth.vue'
+import AppMercadoLivreProductList from '../AppMercadoLivreProductList.vue'
 import { BTabs, BTab, BCollapse, BCard, BButton, BCardBody, BCardHeader, BCardText } from 'bootstrap-vue'
 import EcomApps from '@ecomplus/apps-manager'
 
@@ -21,13 +22,15 @@ export default {
     AppMercadoLivreExportation,
     AppMercadoLivreLink,
     AppMercadoLivreLogsList,
+    AppMercadoLivreProductList,
     AppMercadoLivreAuth
   },
   data () {
     return {
       applicationBody: { data: {} },
       exportationProducts: [],
-      linkProducts: []
+      linkProducts: [],
+      loading: false
     }
   },
   created () {
@@ -36,10 +39,11 @@ export default {
   methods: {
     loadApplicationBody () {
       const appId = this.$route.params.objectId
-      console.log(appId)
+      this.loading = true
       ecomApps.findStoreApplication(appId)
         .then(({ data }) => (this.applicationBody = data))
         .catch(error => console.error(error))
+        .finally(() => (this.loading = false))
     },
     addToExportation (value) {
       this.exportationProducts.push(value)
@@ -47,7 +51,17 @@ export default {
     addToLink (value) {
       this.linkProducts.push(value)
     },
-    exportLinkProducts() {
+    unlinkProduct (value) {
+      const ecomApps = new EcomApps()
+      const data = {}
+      const productCorrelations = this.applicationBody.data.product_correlations
+      productCorrelations[value.metadata.product_id] = productCorrelations[value.metadata.product_id]
+        .filter(item => item.mlId !== value.mlId)
+      data.product_correlations = productCorrelations
+      ecomApps.editApplication(this.applicationBody._id, { data })
+        .catch(error => console.log(error))
+    },
+    exportLinkProducts () {
       const ecomApps = new EcomApps()
       const data = {
         data: { link_products: this.linkProducts }

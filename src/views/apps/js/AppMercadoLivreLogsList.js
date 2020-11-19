@@ -6,14 +6,14 @@ export default {
     BCollapse, BCard, BButton, BCardBody, BCardHeader, BCardText
   },
   props: {
-    logs: Array
+    logs: Array,
+    loading: Boolean
   },
   data: {
     activeId: null
   },
   methods: {
     setActiveId (id) {
-      console.log(id)
       this.activeId = id
     }
   }
