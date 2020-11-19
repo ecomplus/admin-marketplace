@@ -1,10 +1,12 @@
 import { BTabs, BTab } from 'bootstrap-vue'
+import AppMercadoLivreSearchCategory from '../AppMercadoLivreSearchCategory.vue'
 
 export default {
   name: 'AppMercadoLivreExportation',
   components: {
     BTabs,
-    BTab
+    BTab,
+    AppMercadoLivreSearchCategory
   },
   data () {
     return {
@@ -45,6 +47,9 @@ export default {
     add () {
       this.$emit('add', Object.assign({}, this.productToExport))
       this.productToExport = {}
+    },
+    selectCategory (category) {
+      this.$set(this.productToExport, 'category_id', category.category_id)
     }
   }
 }

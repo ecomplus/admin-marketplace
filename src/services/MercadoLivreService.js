@@ -18,7 +18,16 @@ const findProducts = (ids = [], attributes = []) => {
   return service.get(`/items/?ids=${ids}&attributes=${attributes}`)
 }
 
+const findCategory = (term) => {
+  term = term
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '')
+  return service.get(`/sites/MLB/domain_discovery/search?limit=10&q=${term}`)
+}
+
 export {
   getListingTypes,
-  findProducts
+  findProducts,
+  findCategory
 }
