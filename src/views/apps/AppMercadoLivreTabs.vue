@@ -108,7 +108,7 @@
         </div>
         <hr />
         <AppMercadoLivreLogsList
-          :logs="applicationBody.data.logs"
+          :logs="applicationBody.hidden_data.logs"
           :loading="loading"
         />
       </b-tab>
