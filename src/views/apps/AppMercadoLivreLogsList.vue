@@ -39,7 +39,7 @@
                 <pre><code>{{ log.notes }}</code></pre>
               </div>
             </b-card-text>
-            <b-card-text>
+            <b-card-text v-if="log.requestData">
               <strong>
                 Request [{{log.status}}]: {{ log.requestMethod }} - {{ log.requestURL }}
               </strong>
