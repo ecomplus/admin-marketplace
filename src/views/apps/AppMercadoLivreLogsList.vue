@@ -39,6 +39,14 @@
                 <pre><code>{{ log.notes }}</code></pre>
               </div>
             </b-card-text>
+            <b-card-text>
+              <strong>
+                Request [{{log.status}}]: {{ log.requestMethod }} - {{ log.requestURL }}
+              </strong>
+              <div id="log-notes">
+                <pre><code>{{ log.requestData }}</code></pre>
+              </div>
+            </b-card-text>
           </b-collapse>
         </b-card-body>
       </b-card>
@@ -59,6 +67,5 @@
   display: flex;
   flex-direction: column;
   max-width: 624px;
-
 }
 </style>
