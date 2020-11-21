@@ -27,7 +27,15 @@ export default {
   },
   data () {
     return {
-      applicationBody: { data: {} },
+      applicationBody: {
+        hidden_data: {
+          logs: []
+        },
+        data: {
+          product_correlations: {},
+          mlProfile: []
+        }
+      },
       exportationProducts: [],
       linkProducts: [],
       loading: false
@@ -41,7 +49,9 @@ export default {
       const appId = this.$route.params.objectId
       this.loading = true
       ecomApps.findStoreApplication(appId)
-        .then(({ data }) => (this.applicationBody = data))
+        .then(({ data }) => {
+          Object.assign(this.applicationBody, data)
+        })
         .catch(error => console.error(error))
         .finally(() => (this.loading = false))
     },
