@@ -1,5 +1,6 @@
 import { BTabs, BTab } from 'bootstrap-vue'
 import AppMercadoLivreSearchCategory from '../AppMercadoLivreSearchCategory.vue'
+import { getListingTypes } from '../../../services/MercadoLivreService'
 
 export default {
   name: 'AppMercadoLivreExportation',
@@ -41,6 +42,13 @@ export default {
           name: 'Grátis'
         }
       ]
+    }
+  },
+  watch: {
+    'productToExport.category_id' (newValue, oldValue) {
+      if (newValue && newValue !== oldValue) {
+        getListingTypes(newValue).then(({ data }) => (this.listingTypes = data))
+      }
     }
   },
   methods: {
