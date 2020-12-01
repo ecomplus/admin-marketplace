@@ -1,4 +1,4 @@
-import { getAuthUrl } from '../../../services/EcomMLAppService'
+import { getAuthUrl } from '../../../../services/EcomMLAppService'
 import EcomApps from '@ecomplus/apps-manager'
 
 const ecomApps = new EcomApps()

@@ -1,5 +1,5 @@
 import { BModal } from 'bootstrap-vue'
-import { findCategory } from '../../../services/MercadoLivreService'
+import { findCategory } from '../../../../services/MercadoLivreService'
 
 export default {
   name: 'AppMercadoLivreSearchCategory',

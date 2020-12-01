@@ -1,6 +1,6 @@
 import { BTabs, BTab } from 'bootstrap-vue'
 import AppMercadoLivreSearchCategory from '../AppMercadoLivreSearchCategory.vue'
-import { getListingTypes } from '../../../services/MercadoLivreService'
+import { getListingTypes } from '../../../../services/MercadoLivreService'
 
 export default {
   name: 'AppMercadoLivreExportation',

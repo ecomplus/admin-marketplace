@@ -1,4 +1,4 @@
-import Application from '../../Application.vue'
+import Application from '../../../Application.vue'
 import AppMercadoLivreTabs from '../AppMercadoLivreTabs.vue'
 
 export default {

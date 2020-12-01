@@ -29,7 +29,7 @@ const routes = [
   {
     path: '/apps/edit/120079/:objectId?',
     name: 'app-mercado-livre',
-    component: () => import('../views/apps/AppMercadoLivre.vue')
+    component: () => import('../views/apps/AppMercadoLivre/AppMercadoLivre.vue')
   }
 ]
 
