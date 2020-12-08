@@ -25,6 +25,11 @@ const routes = [
     path: '/apps/edit/126944/:objectId?',
     name: 'app-mailchimp',
     component: () => import('../views/apps/AppMailchimp.vue')
+  },
+  {
+    path: '/apps/edit/120079/:objectId?',
+    name: 'app-mercado-livre',
+    component: () => import('../views/apps/AppMercadoLivre/AppMercadoLivre.vue')
   }
 ]
 
@@ -40,6 +45,9 @@ router.beforeEach((to, from, next) => {
         break
       case 126944:
         router.push({ ...to, name: 'app-mailchimp' })
+        break
+      case 120079:
+        router.push({ ...to, name: 'app-mercado-livre' })
         break
     }
   }
