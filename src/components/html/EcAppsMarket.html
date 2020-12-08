@@ -30,18 +30,18 @@
       class="pt-2"
     >
       <div
-        class="card bg-pale-yellow border p-2"
         v-if="loadError"
+        class="alert alert-warning"
+        role="alert"
       >
         {{ errorMessage }}
-        <div>
-          <a
-            role="button"
-            @click="updateTabContent"
-          >
-            {{ i19tryAgain }}
-          </a>
-        </div>
+        <a
+          href="#"
+          class="alert-link"
+          @click.prevent="updateTabContent"
+        >
+          {{ i19tryAgain }}
+        </a>
       </div>
 
       <article

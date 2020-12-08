@@ -25,7 +25,13 @@ export default {
 
   methods: {
     update (key, value) {
-      this.$emit('input', { ...this.value, [key]: value })
+      const zipRange = { ...this.value }
+      if (!value) {
+        delete zipRange[key]
+      } else {
+        zipRange[key] = value
+      }
+      this.$emit('input', zipRange)
     }
   },
 

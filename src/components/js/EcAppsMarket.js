@@ -72,6 +72,7 @@ export default {
   methods: {
     updateTabContent () {
       this.loading = true
+      this.loadError = false
       const isMarketApps = this.activeTabKey === 'market'
       const promise = isMarketApps
         ? this.ecomApps.fetchMarketApps()
