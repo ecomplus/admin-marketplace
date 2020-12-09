@@ -1,113 +1,125 @@
 <template>
   <Application>
     <template #settings-append>
-      <a-collapse class="mt-4">
-        <a-collapse-panel key="1" :header="i19Advanced">
-          <a-alert :message="i19ApiKeyAlert" banner />
-          <div class="mt-3">
-            <a-list size="small" bordered itemLayout="horizontal">
-              <a-list-item>
-                <a-list-item-meta :description="i19StoresDescription">
-                  <a slot="title">{{i19Stores}}</a>
-                </a-list-item-meta>
-                <div>
-                  <a-dropdown>
-                    <a-menu slot="overlay" @click="handleClick">
-                      <a-menu-item key="fetchStores">{{i19StoreFetch}}</a-menu-item>
-                      <a-menu-item key="newStore">{{i19StoreCreate}}</a-menu-item>
-                    </a-menu>
-                    <a-button>
-                      {{i19Options}}
-                      <a-icon type="down" />
-                    </a-button>
-                  </a-dropdown>
-                </div>
-              </a-list-item>
+      <div class="mt-4">
+        <div class="callout callout-info" role="alert">
+          {{ i19ApiKeyAlert }}.
+        </div>
 
-              <a-list-item>
-                <a-list-item-meta :description="i19ListDescription">
-                  <a slot="title">{{i19Lists}}</a>
-                </a-list-item-meta>
-                <div>
-                  <a-dropdown>
-                    <a-menu slot="overlay" @click="handleClick">
-                      <a-menu-item key="fetchLists">{{i19ListsSearch}}</a-menu-item>
-                      <a-menu-item key="newList">{{i19ListsCreate}}</a-menu-item>
-                    </a-menu>
-                    <a-button>
-                      {{i19Options}}
-                      <a-icon type="down" />
-                    </a-button>
-                  </a-dropdown>
-                </div>
-              </a-list-item>
-            </a-list>
+        <div class="row">
+          <div class="col-lg-6">
+            <h5>{{ i19Stores }}</h5>
+            <p class="text-muted">
+              {{ i19StoresDescription }}
+              <br>
+              <button
+                class="btn btn-sm btn-light mt-2"
+                @click="fetchStores"
+              >
+                {{ i19StoreFetch }}
+              </button>
+              <br>
+              <button
+                class="btn btn-sm btn-light mt-2"
+                @click="newStore"
+              >
+                {{ i19StoreCreate }}
+              </button>
+            </p>
           </div>
 
-          <div class="mt-3">
-            <a-alert :message="i19StoreIdAlert" banner />
+          <div class="col-lg-6">
+            <h5>{{ i19Lists }}</h5>
+            <p class="text-muted">
+              {{ i19ListDescription }}
+              <br>
+              <button
+                class="btn btn-sm btn-light mt-2"
+                @click="fetchLists"
+              >
+                {{ i19ListsSearch }}
+              </button>
+              <br>
+              <button
+                class="btn btn-sm btn-light mt-2"
+                @click="newList"
+              >
+                {{ i19ListsCreate }}
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <div class="callout callout-info" role="alert">
+          {{ i19StoreIdAlert }}.
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <p class="text-muted">
+              <button
+                class="btn btn-primary mb-2"
+                @click="syncProducts"
+              >
+                {{ i19SyncProducts }}
+              </button>
+              <br>
+              {{ i19SyncProductsMessage }}
+            </p>
           </div>
 
-          <div class="mt-3">
-            <a-list size="small" bordered itemLayout="horizontal">
-              <a-list-item>
-                <a-list-item-meta :description="i19SyncProductsMessage">
-                  <a slot="title">{{i19SyncProducts}}</a>
-                </a-list-item-meta>
-                <div>
-                  <a-button type="primary" @click="syncProducts">{{i19SyncProducts}}</a-button>
-                </div>
-              </a-list-item>
-
-              <a-list-item>
-                <a-list-item-meta :description="i19SyncCustomersMessage">
-                  <a slot="title">{{i19SyncCustomers}}</a>
-                </a-list-item-meta>
-                <div>
-                  <a-button type="primary" @click="syncCustomers">{{i19SyncCustomers}}</a-button>
-                </div>
-              </a-list-item>
-            </a-list>
+          <div class="col-lg-6">
+            <p class="text-muted">
+              <button
+                class="btn btn-primary mb-2"
+                @click="syncCustomers"
+              >
+                {{ i19SyncCustomers }}
+              </button>
+              <br>
+              {{ i19SyncCustomersMessage }}
+            </p>
           </div>
-        </a-collapse-panel>
-      </a-collapse>
-
-      <div>
-        <a-modal :footer="null" v-model="showModalLists" :title="i19Lists">
-          <a-list item-layout="horizontal" :data-source="localLists">
-            <a-list-item slot="renderItem" slot-scope="item, index">
-              <a-list-item-meta :description="`Id: ${item.id}`">
-                <a slot="title">Nome: {{ item.name.toUpperCase() }}</a>
-                <a-avatar slot="avatar">{{index}}</a-avatar>
-              </a-list-item-meta>
-            </a-list-item>
-          </a-list>
-        </a-modal>
+        </div>
       </div>
 
       <div>
-        <a-modal :footer="null" v-model="showModalStores" :title="i19Stores">
-          <a-list item-layout="vertical" :data-source="localStores">
-            <a-list-item slot="renderItem" slot-scope="item">
-              <a-list-item-meta>
-                <a slot="title">{{ item.name.toUpperCase() }}</a>
-              </a-list-item-meta>
-              <div class="mt-2">Store Id: {{item.id}}</div>
-              <div class="mt-2">Store List Id: {{item.list_id}}</div>
-              <div class="mt-2">E-mail: {{item.email_address}}</div>
-            </a-list-item>
-          </a-list>
-        </a-modal>
+        <b-modal
+          v-model="showModalLists"
+          :title="i19Lists"
+        >
+          <b-table
+            striped
+            hover
+            :items="localLists"
+          ></b-table>
+        </b-modal>
       </div>
 
       <div>
-        <a-modal :footer="null" v-model="showModalError" title="Erro">
-          <a-result
-            status="403"
-            title="403"
-            sub-title="Sua conta não permite essa operação, verifique seu plano atual no Mailchimp e tente novamente."
-          ></a-result>
-        </a-modal>
+        <b-modal
+          v-model="showModalStores"
+          :title="i19Stores"
+        >
+          <b-table
+            striped
+            hover
+            :items="localStores"
+          ></b-table>
+        </b-modal>
+      </div>
+
+      <div>
+        <b-modal
+          v-model="showModalError"
+          title="Erro"
+        >
+          <p class="my-4">
+            Sua conta não permite essa operação, verifique seu plano atual no Mailchimp e tente novamente.
+          </p>
+        </b-modal>
       </div>
     </template>
   </Application>

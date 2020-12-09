@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { $ecomConfig, i18n } from '@ecomplus/utils'
-import { i19advanced } from '@ecomplus/i18n'
+import { BTable } from 'bootstrap-vue'
 import Application from '../../Application.vue'
 
 const appClient = axios.create({
@@ -14,6 +14,7 @@ export default {
   name: 'AppMailchimp',
 
   components: {
+    BTable,
     Application
   },
 
@@ -48,19 +49,15 @@ export default {
 
     i19ApiKeyAlert () {
       return i18n({
-        en_us: 'Api Key must be setted',
-        pt_br: 'Api Key precisa está configurada'
+        en_us: 'API Key must be setted',
+        pt_br: 'API Key precisa estar configurada'
       })
-    },
-
-    i19Advanced () {
-      return i18n(i19advanced)
     },
 
     i19StoresDescription () {
       return i18n({
-        en_us: 'Search your stores on Mailchimp or create a new one.',
-        pt_br: 'Busque suas lojas no Mailchimp ou crie uma nova.'
+        en_us: 'Search your stores on Mailchimp or create a new one',
+        pt_br: 'Busque suas lojas no Mailchimp ou crie uma nova'
       })
     },
 
@@ -122,8 +119,8 @@ export default {
 
     i19StoreIdAlert () {
       return i18n({
-        en_us: 'Store Id and List Id must be setted',
-        pt_br: 'Store Id e List Id precisam está configurada'
+        en_us: 'Store ID and List ID must be setted',
+        pt_br: 'Store ID e List ID precisam estar configurada'
       })
     },
 
@@ -164,11 +161,6 @@ export default {
   },
 
   methods: {
-    handleClick (event) {
-      const { key } = event
-      return this[key]()
-    },
-
     newStore () {
       appClient({
         url: '/mailchimp/stores',
