@@ -34,12 +34,12 @@
 
           <template v-if="checkNestedObjectsArray(config.schema)">
             <div
-              v-for="({ dataList, lowerCaseTitle, field }) in [{
+              v-for="({ dataList, lowerCaseTitle, field }, i) in [{
                 ...config,
                 dataList: config.hide ? hiddenData[config.field] : data[config.field],
                 lowerCaseTitle: (config.schema.items.title || '').toLowerCase()
               }]"
-              key="nested"
+              :key="`nested-${i}`"
             >
               <div class="d-flex align-items-center">
                 <button
@@ -70,6 +70,7 @@
                 <div
                   v-for="(item, index) in dataList"
                   class="border rouded mb-2 p-2"
+                  :key="`list-${i}-${index}`"
                 >
                   <div>
                     <a
