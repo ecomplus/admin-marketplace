@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.25-rc.0](https://github.com/ecomplus/admin-marketplace/compare/v0.2.24-rc.0...v0.2.25-rc.0) (2020-12-09)
+
+
+### Features
+
+* **app-mercado-livre:** custom view for Mercado Livre app ([#134](https://github.com/ecomplus/admin-marketplace/issues/134)) ([cde7388](https://github.com/ecomplus/admin-marketplace/commit/cde7388d1f1294a9fbe3a6aac3d1174077b082db))
+
+
+### Bug Fixes
+
+* **admin-settings:** fix some loops keys ([e65b40a](https://github.com/ecomplus/admin-marketplace/commit/e65b40aca6ccaa52bf4d1dcf5503204c49954767))
+* **apps-market:** properlly reseting and rendering load error ([2cf9be7](https://github.com/ecomplus/admin-marketplace/commit/2cf9be79b815f4c508c65337e391835ad7bb2d26))
+* **deps:** update all non-major dependencies ([d787602](https://github.com/ecomplus/admin-marketplace/commit/d78760221dd465ddb7dcf2bc7ad7cb61f358cf8e))
+* **deps:** update all non-major dependencies ([#131](https://github.com/ecomplus/admin-marketplace/issues/131)) ([b1de1a2](https://github.com/ecomplus/admin-marketplace/commit/b1de1a29f564c751daafb4fe057fd0a52c6bdfc8))
+* **deps:** update/merge non-major dependencies ([3a24913](https://github.com/ecomplus/admin-marketplace/commit/3a249136c525cc906a074bb9fca2dd526feab3b9))
+* **input-zip-code:** format number to string on create only (not on input) ([341e044](https://github.com/ecomplus/admin-marketplace/commit/341e044345c4b92fa79d0b309f85f0eb1a603f9f))
+* **input-zip-code:** properly accepting and parsing number value ([ce83e55](https://github.com/ecomplus/admin-marketplace/commit/ce83e5591d6811976723fb44438b9c8435c654a4))
+* **input-zip-range:** delete min/max if zero ([105f0fd](https://github.com/ecomplus/admin-marketplace/commit/105f0fd911a548f2ba9ecdb6b736955859b99ffc))
+
 ### [0.2.24](https://github.com/ecomplus/admin-marketplace/compare/v0.2.24-rc.0...v0.2.24) (2020-12-09)
 
 
