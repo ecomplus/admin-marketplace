@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.0](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-alpha.1...v1.0.0-beta.0) (2021-01-04)
+
+
+### Bug Fixes
+
+* **app-ml:** solved to clearinterval on close oauth window ([#143](https://github.com/ecomplus/admin-marketplace/issues/143)) ([1465ae4](https://github.com/ecomplus/admin-marketplace/commit/1465ae45d365d76b00c32a7a2868d768cc8cd58f))
+* **deps:** update all non-major dependencies ([#139](https://github.com/ecomplus/admin-marketplace/issues/139)) ([5bd604f](https://github.com/ecomplus/admin-marketplace/commit/5bd604fdb25fa91df3ae09dc65b90ab0f54d199b))
+* **input-boolean:** use `name` (unique) for input id ([dd3a828](https://github.com/ecomplus/admin-marketplace/commit/dd3a828710d8ec29238284deda5d51fa38b57b82))
+
 ## [1.0.0-alpha.1](https://github.com/ecomplus/admin-marketplace/compare/v0.2.25-rc.0...v1.0.0-alpha.1) (2020-12-09)
 
 ### [0.2.25-rc.0](https://github.com/ecomplus/admin-marketplace/compare/v0.2.24-rc.0...v0.2.25-rc.0) (2020-12-09)
