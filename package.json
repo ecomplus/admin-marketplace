@@ -7,8 +7,7 @@
     "build": "vue-cli-service build",
     "build:site": "vue-cli-service build --site",
     "lint": "vue-cli-service lint",
-    "release": "npm run build && standard-version",
-    "release:alpha": "npm run build && standard-version --prerelease alpha"
+    "release": "npm run build && standard-version --prerelease beta"
   },
   "repository": {
     "type": "git",
