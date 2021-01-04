@@ -4,13 +4,13 @@
       v-model="localValue"
       type="checkbox"
       class="custom-control-input"
-      :id="schema.title"
+      :id="name"
       :class="localValue && isDisable ? 'bg-warning' : null"
     >
     <label
       class="custom-control-label"
       :class="isDisable ? 'text-warning' : null"
-      :for="schema.title"
+      :for="name"
     >
       {{ schema.title }}
     </label>
