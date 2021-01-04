@@ -7,7 +7,8 @@ export default {
   name: 'AppMercadoLivreAuth',
   data () {
     return {
-      profile: {}
+      profile: {},
+      authInterval: null
     }
   },
   props: {
@@ -30,9 +31,9 @@ export default {
     loadProfile (authWindow) {
       let running = false
       let count = 0
-      const timeout = 500
+      const timeout = 1000
       const maxAttempts = timeout * 100
-      const interval = setInterval(() => {
+      this.authInterval = setInterval(() => {
         const appId = this.$route.params.objectId
         if (!running) {
           running = true
@@ -42,20 +43,25 @@ export default {
                 console.log(data)
                 this.profile = data.data.mlProfile
                 authWindow.close()
-                clearInterval(interval)
+                clearInterval(this.authInterval)
               }
             })
             .catch(error => console.error(error))
             .finally(() => {
               running = false
               if (count >= maxAttempts) {
-                clearInterval(interval)
+                clearInterval(this.authInterval)
                 return authWindow.close()
               }
               count++
             })
         }
       }, 500)
+    }
+  },
+  beforeDestroy () {
+    if (this.authInterval) {
+      clearInterval(this.authInterval)
     }
   }
 }
