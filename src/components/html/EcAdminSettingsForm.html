@@ -19,6 +19,7 @@
         class="card-body"
         accordion="admin-settings"
         :id="'collapse-' + i"
+        :visible="i == 0"
       >
         <div
           v-for="(config) in fields"
