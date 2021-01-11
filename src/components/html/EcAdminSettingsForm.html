@@ -10,17 +10,16 @@
         <h5
           role="button"
           class="card-title bg-light"
-          @click="visibleCollapse = i"
+          v-b-toggle="'collapse-' + i"
         >
           {{ header }}
         </h5>
       </div>
-
       <b-collapse
         class="card-body"
         accordion="admin-settings"
         :id="'collapse-' + i"
-        :visible="visibleCollapse === i"
+        :visible="i == 0"
       >
         <div
           v-for="(config) in fields"

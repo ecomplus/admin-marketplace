@@ -34,8 +34,7 @@ export default {
       data: {},
       hiddenData: {},
       dataListsIndexes: {},
-      formResetKey: 0,
-      visibleCollapse: 0
+      formResetKey: 0
     }
   },
 
