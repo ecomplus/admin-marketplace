@@ -15,9 +15,10 @@
           class="form-control"
           type="number"
           :value="value.value"
-          @input="e => update('value', parseInt(e.target.value, 10))"
-          :min="0"
-          :max="100"
+          @input="e => update('value', parseFloat(e.target.value))"
+          min="0"
+          max="100"
+          step="0.01"
         />
         <div class="input-group-append">
           <span class="input-group-text">%</span>
