@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.1](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2021-01-12)
+
+
+### Features
+
+* **admin-settings-form:** support closing all collapses ([#144](https://github.com/ecomplus/admin-marketplace/issues/144)) ([4e94fae](https://github.com/ecomplus/admin-marketplace/commit/4e94faecac9590482cd0ac4ece2527e83d3f687f))
+
+
+### Bug Fixes
+
+* **input-discount:** supporting decimal numbers on percentage discount value ([#145](https://github.com/ecomplus/admin-marketplace/issues/145)) ([8118ec2](https://github.com/ecomplus/admin-marketplace/commit/8118ec2a97d1ef9d4b5e25bf6de5aba552d9dd15))
+
 ## [1.0.0-beta.0](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-alpha.1...v1.0.0-beta.0) (2021-01-04)
 
 
