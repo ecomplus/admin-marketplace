@@ -33,7 +33,7 @@
                   {{ shortDescription }}
                 </p>
 
-                <template v-if="isInstalled">
+                <div v-if="isInstalled">
                   <button
                     class="btn btn-danger"
                     id="uninstall-app"
@@ -77,7 +77,7 @@
                       </button>
                     </div>
                   </b-popover>
-                </template>
+                </div>
 
                 <button
                   class="btn"
