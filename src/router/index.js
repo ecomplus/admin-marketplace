@@ -46,4 +46,8 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
+router.afterEach(() => {
+  window.dispatchEvent(new window.HashChangeEvent('hashchange'))
+})
+
 export default router
