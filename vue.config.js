@@ -1,7 +1,5 @@
 const devMode = process.env.NODE_ENV !== 'production'
 
-console.log(process.argv, process.argv.includes('--site'))
-
 module.exports = {
   lintOnSave: false,
   devServer: {
@@ -23,7 +21,8 @@ module.exports = {
   },
 
   publicPath: devMode || process.argv.includes('--site')
-    ? '/' : '/assets/vendor/ecomplus-marketplace/',
+    ? '/'
+    : '/assets/vendor/ecomplus-marketplace/',
   outputDir: devMode ? 'test' : 'dist',
   filenameHashing: false,
 
