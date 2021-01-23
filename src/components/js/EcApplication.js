@@ -2,7 +2,7 @@ import 'core-js/modules/es.promise.all-settled'
 import { BSkeleton, BPopover } from 'bootstrap-vue'
 import { FadeTransition, SlideYUpTransition } from 'vue2-transitions'
 import VueMarkdown from 'vue-markdown'
-import EcomApps from '@ecomplus/apps-manager'
+import ecomApps from '@ecomplus/apps-manager'
 import EcAppCard from './../EcAppCard.vue'
 import EcAdminSettingsForm from './../EcAdminSettingsForm.vue'
 import { i18n } from '@ecomplus/utils'
@@ -51,7 +51,7 @@ export default {
   props: {
     ecomApps: {
       type: Object,
-      default: () => new EcomApps()
+      default: () => ecomApps
     },
 
     application: {
@@ -186,7 +186,7 @@ export default {
 
     editApp (data) {
       this.isSaving = true
-      this.ecomApps.editApplication(this.applicationBody._id, data)
+      this.ecomApps.edit(this.applicationBody._id, data)
         .then(() => {
           this.successToast(this.i19savedWithSuccess)
           this.localApplication = {
@@ -203,7 +203,7 @@ export default {
     },
 
     fetchMarketApplication () {
-      return this.ecomApps.findApp(this.appId).then(app => {
+      return this.ecomApps.findOnMarket(this.appId).then(app => {
         for (const key in app) {
           if (app[key] === null || app[key] === '') {
             delete app[key]
@@ -219,14 +219,15 @@ export default {
     fetchStoreApplication () {
       const { ecomApps, applicationBody } = this
       const loadPromise = applicationBody._id
-        ? ecomApps.findStoreApplication(applicationBody._id)
-        : ecomApps.fetchStoreApplications({
+        ? ecomApps.find(applicationBody._id)
+        : ecomApps.list({
           params: { app_id: this.appId }
         }).then(([app]) => {
-          return app ? ecomApps.findStoreApplication(app._id) : {}
+          return app ? this.ecomApps.find(app._id) : {}
         })
       return loadPromise.then(({ data }) => {
         if (data) {
+          console.log('[data]')
           this.localApplication = {
             ...this.applicationBody,
             ...data
@@ -237,7 +238,7 @@ export default {
 
     findRelateds () {
       this.isfetchingRelated = true
-      this.ecomApps.fetchMarketApps({ params: { category: this.category } })
+      this.ecomApps.listFromMarket({ params: { category: this.category } })
         .then(resp => {
           const { result } = resp
           const filter = result.filter(app => app.app_id !== this.appId)
@@ -255,7 +256,7 @@ export default {
     requestInstall () {
       this.isSwitching = true
       this.hasInstallPopover = false
-      this.ecomApps.installApp(this.appId, true)
+      this.ecomApps.install(this.appId, true)
         .then(installed => {
           this.successToast(this.i19successfullyInstalled)
           this.fetchStoreApplication(installed.result._id)
@@ -272,7 +273,7 @@ export default {
 
     installApp () {
       this.isSwitching = true
-      this.ecomApps.fetchStoreApplications({ params: { app_id: this.appId } })
+      this.ecomApps.list({ params: { app_id: this.appId } })
         .then(resp => {
           if (Array.isArray(resp) && resp.length) {
             this.isSwitching = false
@@ -289,7 +290,7 @@ export default {
 
     uninstallApp () {
       this.isSwitching = true
-      this.ecomApps.removeApplication(this.applicationBody._id)
+      this.ecomApps.remove(this.applicationBody._id)
         .then(() => {
           this.successToast(this.i19successfullyUninstalled)
           this.$emit('uninstall')

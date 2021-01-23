@@ -21,6 +21,7 @@
   "homepage": "https://github.com/ecomplus/admin-marketplace#readme",
   "dependencies": {
     "@ecomplus/apps-manager": "^0.3.2",
+    "@ecomplus/auth": "^1.0.0-rc.0",
     "@ecomplus/client": "^2.1.4",
     "@ecomplus/i18n": "^1.18.0",
     "@ecomplus/utils": "^1.4.1",

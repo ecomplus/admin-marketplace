@@ -12,7 +12,7 @@ export default {
       this.$router.push({
         name: 'application',
         params: {
-          appId: app.app_id,
+          appId: app.id || app.app_id,
           objectId: app._id
         }
       })

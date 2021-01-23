@@ -1,7 +1,5 @@
 import { getAuthUrl } from '../../../../services/EcomMLAppService'
-import EcomApps from '@ecomplus/apps-manager'
-
-const ecomApps = new EcomApps()
+import ecomApps from '@ecomplus/apps-manager'
 
 export default {
   name: 'AppMercadoLivreAuth',

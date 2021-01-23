@@ -1,5 +1,5 @@
 import { i18n, formatDate } from '@ecomplus/utils'
-import EcomApps from '@ecomplus/apps-manager'
+import ecomApps from '@ecomplus/apps-manager'
 
 import {
   i19active,
@@ -16,11 +16,6 @@ export default {
   name: 'EcInstalledAppCard',
 
   props: {
-    ecomApps: {
-      type: Object,
-      default: () => new EcomApps()
-    },
-
     app: {
       type: Object,
       default: {}
@@ -79,7 +74,7 @@ export default {
         state: this.isActive ? 'inactive' : 'active'
       }
       this.loading = true
-      this.ecomApps.editApplication(this.app._id, editAppBody)
+      ecomApps.edit(this.app._id, editAppBody)
         .then(() => {
           this.$emit('update:app', {
             ...this.app,
