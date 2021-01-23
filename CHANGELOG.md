@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.2](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2021-01-23)
+
+
+### Bug Fixes
+
+* **app-ml:** fix problem to load config in Mercado Livre app ([#146](https://github.com/ecomplus/admin-marketplace/issues/146)) ([028720b](https://github.com/ecomplus/admin-marketplace/commit/028720be21c8bd537b70c53aca8dae603116509c))
+* **router:** manually dispatch hashchange for @ecomplus/admin listeners ([9daa537](https://github.com/ecomplus/admin-marketplace/commit/9daa537b20448d765b6e53db68bc142ceae11fbb)), closes [/github.com/vuejs/vue-router/issues/1807#issuecomment-360184146](https://github.com/ecomplus//github.com/vuejs/vue-router/issues/1807/issues/issuecomment-360184146)
+
 ## [1.0.0-beta.1](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2021-01-12)
 
 
