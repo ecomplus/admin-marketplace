@@ -6,8 +6,6 @@ import AppMercadoLivreProductList from '../AppMercadoLivreProductList.vue'
 import { BTabs, BTab, BCollapse, BCard, BButton, BCardBody, BCardHeader, BCardText } from 'bootstrap-vue'
 import EcomApps from '@ecomplus/apps-manager'
 
-const ecomApps = new EcomApps()
-
 export default {
   name: 'AppMercadoLivreTabs',
   components: {
@@ -41,18 +39,28 @@ export default {
       loading: false
     }
   },
+  computed: {
+    ecomApps: () => new EcomApps()
+  },
   created () {
     this.loadApplicationBody()
   },
   methods: {
     loadApplicationBody () {
-      const appId = this.$route.params.objectId
+      const { ecomApps } = this
       this.loading = true
-      ecomApps.findStoreApplication(appId)
-        .then(({ data }) => {
-          Object.assign(this.applicationBody, data)
+      const loadPromise = this.applicationBody._id
+        ? ecomApps.findStoreApplication(this.applicationBody._id)
+        : ecomApps.fetchStoreApplications({
+          params: { app_id: this.$route.params.appId }
+        }).then(([app]) => {
+          return app ? ecomApps.findStoreApplication(app._id) : {}
         })
-        .catch(error => console.error(error))
+      return loadPromise.then(({ data }) => {
+        if (data) {
+          Object.assign(this.applicationBody, data)
+        }
+      }).catch(error => console.error(error))
         .finally(() => (this.loading = false))
     },
     addToExportation (value) {
