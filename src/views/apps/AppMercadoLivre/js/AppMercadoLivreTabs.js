@@ -40,7 +40,7 @@ export default {
     }
   },
   computed: {
-    ecomApps: () => new EcomApps()
+    ecomApps: () => ecomApps
   },
   created () {
     this.loadApplicationBody()
