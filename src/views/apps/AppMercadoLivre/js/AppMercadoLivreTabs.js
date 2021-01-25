@@ -54,7 +54,7 @@ export default {
         : ecomApps.list({
           params: { app_id: this.$route.params.appId }
         }).then(([app]) => {
-          return app ? ecomApps.findStoreApplication(app._id) : {}
+          return app ? ecomApps.find(app._id) : {}
         })
       return loadPromise.then(({ data }) => {
         if (data) {

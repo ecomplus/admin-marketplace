@@ -38,7 +38,6 @@ export default {
           ecomApps.findStoreApplication(appId)
             .then(({ data }) => {
               if (data.data.mlProfile.id) {
-                console.log(data)
                 this.profile = data.data.mlProfile
                 authWindow.close()
                 clearInterval(this.authInterval)

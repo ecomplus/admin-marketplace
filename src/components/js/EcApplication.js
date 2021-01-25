@@ -227,7 +227,6 @@ export default {
         })
       return loadPromise.then(({ data }) => {
         if (data) {
-          console.log('[data]')
           this.localApplication = {
             ...this.applicationBody,
             ...data
