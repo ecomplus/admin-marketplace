@@ -49,8 +49,6 @@
       $ecomConfig.set('lang', 'pt_br')
       $ecomConfig.set('country_code', 'BR')
       $ecomConfig.set('store_id', storeId)
-      // console.log(EcomAuth)
-      // const ecomAuth = new EcomAuth()
       ecomAuth.login(
         localStorage.getItem('username') || 'teste',
         localStorage.getItem('password') || 'teste',
