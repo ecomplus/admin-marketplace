@@ -75,8 +75,8 @@ export default {
       this.loadError = false
       const isMarketApps = this.activeTabKey === 'market'
       const promise = isMarketApps
-        ? ecomApps.listFromMarket()
-        : ecomApps.list()
+        ? this.ecomApps.listFromMarket()
+        : this.ecomApps.list()
       promise
         .then(data => {
           this.apps = data.result || data
