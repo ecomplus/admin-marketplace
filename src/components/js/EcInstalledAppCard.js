@@ -74,7 +74,7 @@ export default {
         state: this.isActive ? 'inactive' : 'active'
       }
       this.loading = true
-      ecomApps.edit(this.app._id, editAppBody)
+      this.ecomApps.edit(this.app._id, editAppBody)
         .then(() => {
           this.$emit('update:app', {
             ...this.app,
