@@ -39,8 +39,11 @@ export default {
       loading: false
     }
   },
-  computed: {
-    ecomApps: () => ecomApps
+  props: {
+    ecomApps: {
+      type: Object,
+      default: () => ecomApps
+    }
   },
   created () {
     this.loadApplicationBody()
