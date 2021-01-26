@@ -52,8 +52,8 @@ export default {
     loadApplicationBody () {
       const { ecomApps } = this
       this.loading = true
-      const loadPromise = this.applicationBody._id
-        ? ecomApps.find(this.applicationBody._id)
+      const loadPromise = this.$route.params.objectId
+        ? ecomApps.find(this.$route.params.objectId)
         : ecomApps.list({
           params: { app_id: this.$route.params.appId }
         }).then(([app]) => {
