@@ -95,7 +95,7 @@ export default {
       const data = {
         data: { exportation_products: this.exportationProducts }
       }
-      ecomApps.edit(this.applicationBody._id, data)
+      this.ecomApps.edit(this.applicationBody._id, data)
         .then(() => {
           this.exportationProducts = []
         })
