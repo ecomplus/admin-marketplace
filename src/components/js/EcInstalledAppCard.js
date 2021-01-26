@@ -19,6 +19,10 @@ export default {
     app: {
       type: Object,
       default: {}
+    },
+    ecomApps: {
+      type: Object,
+      default: () => ecomApps
     }
   },
 
