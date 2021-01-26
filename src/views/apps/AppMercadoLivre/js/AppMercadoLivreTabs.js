@@ -85,7 +85,7 @@ export default {
       const data = {
         data: { link_products: this.linkProducts }
       }
-      ecomApps.edit(this.applicationBody._id, data)
+      this.ecomApps.edit(this.applicationBody._id, data)
         .then(() => {
           this.linkProducts = []
         })
