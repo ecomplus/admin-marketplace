@@ -78,7 +78,7 @@ export default {
       productCorrelations[value.metadata.product_id] = productCorrelations[value.metadata.product_id]
         .filter(item => item.mlId !== value.mlId)
       data.product_correlations = productCorrelations
-      ecomApps.edit(this.applicationBody._id, { data })
+      this.ecomApps.edit(this.applicationBody._id, { data })
         .catch(error => console.log(error))
     },
     exportLinkProducts () {
