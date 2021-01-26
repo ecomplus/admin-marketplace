@@ -223,7 +223,7 @@ export default {
         : ecomApps.list({
           params: { app_id: this.appId }
         }).then(([app]) => {
-          return app ? this.ecomApps.find(app._id) : {}
+          return app ? ecomApps.find(app._id) : {}
         })
       return loadPromise.then(({ data }) => {
         if (data) {
