@@ -1,7 +1,5 @@
 import { getAuthUrl } from '../../../../services/EcomMLAppService'
-import EcomApps from '@ecomplus/apps-manager'
-
-const ecomApps = new EcomApps()
+import ecomApps from '@ecomplus/apps-manager'
 
 export default {
   name: 'AppMercadoLivreAuth',
@@ -12,7 +10,11 @@ export default {
     }
   },
   props: {
-    mlProfile: {}
+    mlProfile: {},
+    ecomApps: {
+      type: Object,
+      default: () => ecomApps
+    }
   },
   created () {
     this.profile = this.mlProfile
@@ -34,14 +36,19 @@ export default {
       const timeout = 1000
       const maxAttempts = timeout * 100
       this.authInterval = setInterval(() => {
-        const appId = this.$route.params.objectId
+        const promise = this.$route.params.objectId
+          ? this.ecomApps.find(this.$route.params.objectId)
+          : this.ecomApps.list({ params: { app_id: this.$route.params.appId }})
+            .then(([app]) => { return app ? this.ecomApps.find(app._id) : {}
+          })
+
         if (!running) {
           running = true
-          ecomApps.findStoreApplication(appId)
+          promise
             .then(({ data }) => {
-              if (data.data.mlProfile.id) {
-                console.log(data)
-                this.profile = data.data.mlProfile
+              const appData = data.data
+              if (appData && (appData.mlProfile || {}).id) {
+                this.profile = appData.mlProfile
                 authWindow.close()
                 clearInterval(this.authInterval)
               }

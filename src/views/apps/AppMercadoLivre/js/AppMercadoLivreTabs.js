@@ -4,7 +4,7 @@ import AppMercadoLivreLogsList from '../AppMercadoLivreLogsList.vue'
 import AppMercadoLivreAuth from '../AppMercadoLivreAuth.vue'
 import AppMercadoLivreProductList from '../AppMercadoLivreProductList.vue'
 import { BTabs, BTab, BCollapse, BCard, BButton, BCardBody, BCardHeader, BCardText } from 'bootstrap-vue'
-import EcomApps from '@ecomplus/apps-manager'
+import ecomApps from '@ecomplus/apps-manager'
 
 export default {
   name: 'AppMercadoLivreTabs',
@@ -39,8 +39,11 @@ export default {
       loading: false
     }
   },
-  computed: {
-    ecomApps: () => new EcomApps()
+  props: {
+    ecomApps: {
+      type: Object,
+      default: () => ecomApps
+    }
   },
   created () {
     this.loadApplicationBody()
@@ -49,12 +52,12 @@ export default {
     loadApplicationBody () {
       const { ecomApps } = this
       this.loading = true
-      const loadPromise = this.applicationBody._id
-        ? ecomApps.findStoreApplication(this.applicationBody._id)
-        : ecomApps.fetchStoreApplications({
+      const loadPromise = this.$route.params.objectId
+        ? ecomApps.find(this.$route.params.objectId)
+        : ecomApps.list({
           params: { app_id: this.$route.params.appId }
         }).then(([app]) => {
-          return app ? ecomApps.findStoreApplication(app._id) : {}
+          return app ? ecomApps.find(app._id) : {}
         })
       return loadPromise.then(({ data }) => {
         if (data) {
@@ -70,32 +73,29 @@ export default {
       this.linkProducts.push(value)
     },
     unlinkProduct (value) {
-      const ecomApps = new EcomApps()
       const data = {}
       const productCorrelations = this.applicationBody.data.product_correlations
       productCorrelations[value.metadata.product_id] = productCorrelations[value.metadata.product_id]
         .filter(item => item.mlId !== value.mlId)
       data.product_correlations = productCorrelations
-      ecomApps.editApplication(this.applicationBody._id, { data })
+      this.ecomApps.edit(this.applicationBody._id, { data })
         .catch(error => console.log(error))
     },
     exportLinkProducts () {
-      const ecomApps = new EcomApps()
       const data = {
         data: { link_products: this.linkProducts }
       }
-      ecomApps.editApplication(this.applicationBody._id, data)
+      this.ecomApps.edit(this.applicationBody._id, data)
         .then(() => {
           this.linkProducts = []
         })
         .catch(error => console.error(error))
     },
     exportProducts () {
-      const ecomApps = new EcomApps()
       const data = {
         data: { exportation_products: this.exportationProducts }
       }
-      ecomApps.editApplication(this.applicationBody._id, data)
+      this.ecomApps.edit(this.applicationBody._id, data)
         .then(() => {
           this.exportationProducts = []
         })

@@ -67,7 +67,7 @@ module.exports = {
         '@ecomplus/auth': {
           commonjs: '@ecomplus/auth',
           commonjs2: '@ecomplus/auth',
-          root: 'EcomAuth'
+          root: 'ecomAuth'
         }
       }
     ])

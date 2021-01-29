@@ -1,5 +1,5 @@
 import { i18n } from '@ecomplus/utils'
-import EcomApps from '@ecomplus/apps-manager'
+import ecomApps from '@ecomplus/apps-manager'
 import { BSkeleton } from 'bootstrap-vue'
 import { FadeTransition } from 'vue2-transitions'
 import EcAppCard from './../EcAppCard.vue'
@@ -26,7 +26,7 @@ export default {
   props: {
     ecomApps: {
       type: Object,
-      default: () => new EcomApps()
+      default: () => ecomApps
     }
   },
 
@@ -75,8 +75,8 @@ export default {
       this.loadError = false
       const isMarketApps = this.activeTabKey === 'market'
       const promise = isMarketApps
-        ? this.ecomApps.fetchMarketApps()
-        : this.ecomApps.fetchStoreApplications()
+        ? this.ecomApps.listFromMarket()
+        : this.ecomApps.list()
       promise
         .then(data => {
           this.apps = data.result || data
