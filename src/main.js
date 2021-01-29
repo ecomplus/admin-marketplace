@@ -10,6 +10,14 @@ Vue.use(ModalPlugin)
 
 Vue.config.productionTip = false
 
+const autoUpdateWorker = new Worker('./worker.js', { type: 'module' })
+
+autoUpdateWorker.onmessage = event => {
+  console.log('main.js receivid message: ', event)
+}
+
+autoUpdateWorker.postMessage('main.js i need you!')
+
 new Vue({
   router,
   render: h => h(App)
