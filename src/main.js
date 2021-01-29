@@ -9,14 +9,7 @@ Vue.use(VBTogglePlugin)
 Vue.use(ModalPlugin)
 
 Vue.config.productionTip = false
-
-const autoUpdateWorker = new Worker('./worker.js', { type: 'module' })
-
-autoUpdateWorker.onmessage = event => {
-  console.log('main.js receivid message: ', event)
-}
-
-autoUpdateWorker.postMessage('main.js i need you!')
+Vue.prototype.$autoUpdateWorker = new Worker('./worker.js', { type: 'module' })
 
 new Vue({
   router,

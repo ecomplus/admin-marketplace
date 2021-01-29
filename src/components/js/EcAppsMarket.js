@@ -1,5 +1,6 @@
 import { i18n } from '@ecomplus/utils'
 import ecomApps from '@ecomplus/apps-manager'
+import ecomAuth from '@ecomplus/auth'
 import { BSkeleton } from 'bootstrap-vue'
 import { FadeTransition } from 'vue2-transitions'
 import EcAppCard from './../EcAppCard.vue'
@@ -68,8 +69,16 @@ export default {
       }
     }
   },
-
   methods: {
+    startUpdateApps () {
+      this.$autoUpdateWorker.onmessage = event => {
+        // Mark apps to manual update
+      }
+      const username = localStorage.getItem('username') || 'teste'
+      const password = localStorage.getItem('password') || 'teste'
+      const storeId = localStorage.getItem('store_id') || 1056
+      this.$autoUpdateWorker.postMessage({ username, password, storeId, marketApps: this.apps })
+    },
     updateTabContent () {
       this.loading = true
       this.loadError = false
@@ -80,6 +89,7 @@ export default {
       promise
         .then(data => {
           this.apps = data.result || data
+          this.startUpdateApps()
         })
         .catch(err => {
           console.error(err)
