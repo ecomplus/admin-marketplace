@@ -109,7 +109,7 @@ export default {
 
   watch: {
     activeTabKey: {
-      handler() {
+      handler () {
         this.updateTabContent()
       },
       immediate: true
