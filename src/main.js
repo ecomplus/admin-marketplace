@@ -9,7 +9,6 @@ Vue.use(VBTogglePlugin)
 Vue.use(ModalPlugin)
 
 Vue.config.productionTip = false
-Vue.prototype.$autoUpdateWorker = new Worker('./worker.js', { type: 'module' })
 
 new Vue({
   router,

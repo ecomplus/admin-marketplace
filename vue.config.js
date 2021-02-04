@@ -1,4 +1,3 @@
-const WorkerPlugin = require('worker-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
 
@@ -19,10 +18,7 @@ module.exports = {
     output: {
       library: '__ecomplus_marketplace',
       libraryTarget: 'umd'
-    },
-    plugins: [
-      new WorkerPlugin()
-    ]
+    }
   },
 
   publicPath: devMode || process.argv.includes('--site')
