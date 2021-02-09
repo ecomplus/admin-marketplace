@@ -14,7 +14,7 @@
       class="mb-1 btn btn-secundary btn-sm"
       @click.prevent="addItem()"
     >
-      <i class="fas fa-plus-circle mr-1"></i>
+      <i class="fa fa-plus-circle mr-1"></i>
       {{ schema.items.title }}
     </button>
   </div>
