@@ -109,8 +109,6 @@ export default {
     },
 
     requestManualUpdate (app) {
-      console.log(this)
-      console.log('[requestManualUpdate]', app.app_id)
       this.appsToUpdate.push(app.app_id)
     }
 
