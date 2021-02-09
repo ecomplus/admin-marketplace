@@ -45,14 +45,14 @@
     <!-- Todo: desfaser -->
     <script src="https://cdn.jsdelivr.net/npm/@ecomplus/auth@latest/dist/ecom-auth.var.min.js"></script>
     <script>
-      const storeId = localStorage.getItem('store_id') || 1056
+      const storeId = localStorage.getItem('store_id') || 1011
       $ecomConfig.set('lang', 'pt_br')
       $ecomConfig.set('country_code', 'BR')
       $ecomConfig.set('store_id', storeId)
       ecomAuth.login(
-        localStorage.getItem('username') || 'teste',
-        localStorage.getItem('password') || 'teste',
-        localStorage.getItem('store_id') || 1056
+        localStorage.getItem('username'),
+        localStorage.getItem('password'),
+        localStorage.getItem('store_id') || 1011
       )
     </script>
   </body>
