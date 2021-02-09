@@ -32,7 +32,12 @@ import {
   i19unavailable,
   i19uninstall,
   i19version,
-  i19yes
+  i19yes,
+  i19newVersionAvailableMsg,
+  i19attention,
+  i19warningToReinstallAppMsg,
+  i19reinstall,
+  i19doYouWantToReinstallAppQn
 } from '@ecomplus/i18n'
 
 export default {
@@ -75,7 +80,8 @@ export default {
       }],
       activeTabKey: 'description',
       hasInstallPopover: false,
-      hasUninstallPopover: false
+      hasUninstallPopover: false,
+      hasReinstallPopover: false
     }
   },
 
@@ -102,6 +108,11 @@ export default {
     i19uninstall: () => i18n(i19uninstall),
     i19version: () => i18n(i19version),
     i19yes: () => i18n(i19yes),
+    i19newVersionAvailableMsg: () => i18n(i19newVersionAvailableMsg),
+    i19attention: () => i18n(i19attention),
+    i19warningToReinstallAppMsg: () => i18n(i19warningToReinstallAppMsg),
+    i19reinstall: () => i18n(i19reinstall),
+    i19doYouWantToReinstallAppQn: () => i18n(i19doYouWantToReinstallAppQn),
 
     appId () {
       return this.applicationBody.app_id
@@ -216,10 +227,10 @@ export default {
       })
     },
 
-    fetchStoreApplication () {
+    fetchStoreApplication (appId = false) {
       const { ecomApps, applicationBody } = this
-      const loadPromise = applicationBody._id
-        ? ecomApps.find(applicationBody._id)
+      const loadPromise = applicationBody._id || appId
+        ? ecomApps.find(appId || applicationBody._id)
         : ecomApps.list({
           params: { app_id: this.appId }
         }).then(([app]) => {
@@ -259,6 +270,7 @@ export default {
         .then(installed => {
           this.successToast(this.i19successfullyInstalled)
           this.fetchStoreApplication(installed.result._id)
+          this.application.newVersionAvailable = false
           this.$emit('install', installed.result, installed.app)
         })
         .catch(e => {
@@ -301,6 +313,17 @@ export default {
         .finally(() => {
           this.isSwitching = false
         })
+    },
+
+    reinstallApp () {
+      this.isSwitching = true
+      this.hasReinstallPopover = false
+      this.ecomApps.remove(this.applicationBody._id)
+        .then(() => {
+          this.installApp(true)
+        })
+        .catch(e => console.log(e))
+        .finally(() => (this.isSwitching = false))
     },
 
     handleTabChange (key, type) {

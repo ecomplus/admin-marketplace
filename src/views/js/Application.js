@@ -11,7 +11,8 @@ export default {
     application () {
       return {
         app_id: this.$route.params.appId,
-        _id: this.$route.params.objectId
+        _id: this.$route.params.objectId,
+        newVersionAvailable: this.$route.params.newVersionAvailable
       }
     }
   },
@@ -22,7 +23,8 @@ export default {
         name: this.$route.name,
         params: {
           appId: object.app_id,
-          objectId: app._id
+          objectId: app._id,
+          newVersionAvailable: this.application.newVersionAvailable
         }
       })
     },

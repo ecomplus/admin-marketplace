@@ -1,4 +1,3 @@
-
 /* eslint-disable camelcase */
 const isMinor = (newVersion, oldVersion) => {
   return newVersion.split('.')[0] === oldVersion.split('.')[0]
@@ -17,11 +16,6 @@ const findOutdatedApps = (ecomApps, marketApps) => {
       })
       .catch(error => reject(error))
   })
-}
-
-const requestManualUpdate = (outdatedApp) => {
-  // call event
-  console.log('[reequestManualUpdate]', outdatedApp)
 }
 
 const updateApp = (ecomApps, outdatedApp) => {
@@ -44,6 +38,7 @@ const updateApp = (ecomApps, outdatedApp) => {
 }
 
 let queuedApps = []
+let requestManualUpdate
 
 const nextAppUpdate = (ecomApps) => {
   const app = queuedApps.splice(0, 1)[0]
@@ -74,7 +69,8 @@ const startQueue = (ecomApps, marketApps) => {
     .catch((error) => Promise.reject(error))
 }
 
-export const queueUpdateApps = (ecomApps, marketApps) => {
+export const queueUpdateApps = (ecomApps, marketApps, manualUpdateCallback) => {
+  requestManualUpdate = manualUpdateCallback
   if (ecomApps.ecomAuth.checkLogin()) {
     return startQueue(ecomApps, marketApps)
   }
