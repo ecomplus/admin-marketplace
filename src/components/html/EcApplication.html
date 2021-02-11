@@ -33,7 +33,10 @@
                   {{ shortDescription }}
                 </p>
 
-                <div class="mb-10" v-if="application.newVersionAvailable && isInstalled">
+                <div
+                  v-if="application.newVersionAvailable && isInstalled"
+                  class="mb-10"
+                >
                   <button
                     class="btn btn-block btn-secondary"
                     id="reinstall-app"
