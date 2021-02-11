@@ -59,7 +59,7 @@
                     @change="ev => uploadCsv(dataList, ev.target.files && ev.target.files[0])"
                   >
                   <label class="custom-file-label">
-                    <i class="fas fa-upload mr-2"></i>
+                    <i class="fa fa-upload mr-2"></i>
                     {{ i19upload }}
                   </label>
                 </div>
@@ -82,12 +82,12 @@
                         v-if="dataListsIndexes[field] === index"
                         key="editing"
                       >
-                        <i class="fas fa-pen-square mr-1"></i>
+                        <i class="fa fa-pencil-square mr-1"></i>
                         {{ `${i19editing} ${lowerCaseTitle}` }}
                       </span>
 
                       <span v-else key="edit">
-                        <i class="fas fa-pen mr-1"></i>
+                        <i class="fa fa-pencil mr-1"></i>
                         {{ i19edit }}
                       </span>
 
@@ -160,11 +160,11 @@
             style="width: 1.15rem"
           >
             <span v-if="isSaving">
-              <i class="fas fa-circle-notch fa-spin"></i>
+              <i class="fa fa-circle-o-notch fa-spin"></i>
             </span>
             <i
               v-else
-              class="fas fa-save"
+              class="fa fa-floppy-o"
             ></i>
           </span>
           {{ i19save }}

@@ -92,11 +92,11 @@
                       style="width: 1.15rem"
                     >
                       <span v-if="isSwitching">
-                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
                       </span>
                       <i
                         v-else
-                        class="fas fa-trash"
+                        class="fa fa-trash"
                       ></i>
                     </span>
                     {{ i19uninstall }}
@@ -141,11 +141,11 @@
                     v-if="!isInstalled"
                   >
                     <span v-if="isSwitching">
-                      <i class="fas fa-circle-notch fa-spin"></i>
+                      <i class="fa fa-circle-o-notch fa-spin"></i>
                     </span>
                     <i
                       v-else
-                      class="fas fa-plus"
+                      class="fa fa-plus"
                     ></i>
                   </span>
                   {{ i19install }}
@@ -181,11 +181,11 @@
               </div>
 
               <div v-if="author">
-                <i class="fas fa-user mr-1"></i>
+                <i class="fa fa-user mr-1"></i>
                 {{ i19author }}: {{ author }}
               </div>
               <div v-if="version">
-                <i class="fas fa-sync-alt mr-1"></i>
+                <i class="fa fa-refresh mr-1"></i>
                 {{ i19version }}:
                 <samp>{{ version }}</samp>
               </div>
@@ -194,7 +194,7 @@
                 :href="website"
                 target="_blank"
               >
-                <i class="fas fa-globe mr-1"></i>
+                <i class="fa fa-globe mr-1"></i>
                 Website
               </a>
             </div>
@@ -326,7 +326,7 @@
         role="button"
         class="float-right btn btn-light"
       >
-        <i class="fas fa-undo mr-1"></i>
+        <i class="fa fa-undo mr-1"></i>
         {{ i19back }}
       </button>
     </div>
