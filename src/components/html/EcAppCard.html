@@ -3,7 +3,10 @@
   style="cursor: pointer"
   @click="$emit('click')"
 >
-  <div class="outdated-label alert alert-warning" v-if="newVersionAvailable">
+  <div
+    v-if="newVersionAvailable"
+    class="w-100 position-absolute alert alert-warning"
+  >
     <i class="fa fa-warning"></i> {{ i19outOfDate }}
   </div>
   <img
