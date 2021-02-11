@@ -227,7 +227,7 @@ export default {
       })
     },
 
-    fetchStoreApplication (appId = false) {
+    fetchStoreApplication (appId) {
       const { ecomApps, applicationBody } = this
       const loadPromise = applicationBody._id || appId
         ? ecomApps.find(appId || applicationBody._id)
