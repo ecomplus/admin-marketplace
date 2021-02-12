@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-rc.1](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.0...v1.0.0-rc.1) (2021-02-12)
+
+
+### Bug Fixes
+
+* **auto-update-apps:** select only specific fields to update with patch request ([7640181](https://github.com/ecomplus/admin-marketplace/commit/764018167db255181439cfa995d82a4f1d232976))
+* **deps:** update @ecomplus/apps-manager to v1.0.0-rc.2 ([61d5abe](https://github.com/ecomplus/admin-marketplace/commit/61d5abef911fcf775b6f792ccc6f7b7db7c0e69a))
+
 ## [1.0.0-rc.0](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-beta.2...v1.0.0-rc.0) (2021-02-12)
 
 
