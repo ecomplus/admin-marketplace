@@ -239,7 +239,6 @@ export default {
         })
       return loadPromise.then(({ data }) => {
         if (data) {
-          console.log(this.applicationBody, data)
           const storeApp = this.applicationBody.store_app
           if (storeApp && storeApp.version !== data.version) {
             this.hasNewVersion = true
