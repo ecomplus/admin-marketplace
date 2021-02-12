@@ -33,6 +33,55 @@
                   {{ shortDescription }}
                 </p>
 
+                <div
+                  v-if="hasNewVersion && isInstalled"
+                  class="mb-10"
+                >
+                  <button
+                    class="btn btn-block btn-secondary"
+                    id="reinstall-app"
+                  >
+                    <span
+                      class="d-inline-block"
+                      style="width: 1.15rem"
+                    >
+                      <span v-if="isSwitching">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                      </span>
+                      <i
+                        v-else
+                        class="fa fa-refresh"
+                      ></i>
+                    </span>
+                    {{ i19reinstall }}
+                  </button>
+
+                  <b-popover
+                    target="reinstall-app"
+                    triggers="click"
+                    placement="top"
+                    :show.sync="hasReinstallPopover"
+                  >
+                    {{ i19doYouWantToReinstallAppQn }}
+                    <div class="text-right py-2">
+                      <button
+                        class="btn btn-light btn-sm mr-2"
+                        type="button"
+                        @click="hasReinstallPopover = false"
+                      >
+                        {{ i19no }}
+                      </button>
+                      <button
+                        class="btn btn-danger btn-sm"
+                        type="button"
+                        @click="reinstallApp"
+                      >
+                        {{ i19yes }}
+                      </button>
+                    </div>
+                  </b-popover>
+                </div>
+
                 <div v-if="isInstalled">
                   <button
                     class="btn btn-danger"
@@ -156,6 +205,21 @@
 
     <div class="col-sm">
       <div class="card">
+        <div
+          v-if="hasNewVersion"
+          class="alert alert-warning"
+        >
+          <div class="row d-flex align-items-center">
+            <div class="col-md-1 justify-content-center">
+              <i class="fa fa-warning" style="font-size: 32px;"></i>
+            </div>
+            <div class="col-md-10">
+              {{ i19newVersionAvailableMsg }}
+              <br />
+              <strong>{{ i19attention }}:</strong> {{ i19warningToReinstallAppMsg }}
+            </div>
+          </div>
+        </div>
         <div
           v-if="!isLoaded"
           class="m-4"

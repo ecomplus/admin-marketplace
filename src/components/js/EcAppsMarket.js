@@ -4,6 +4,7 @@ import { BSkeleton } from 'bootstrap-vue'
 import { FadeTransition } from 'vue2-transitions'
 import EcAppCard from './../EcAppCard.vue'
 import EcInstalledAppCard from './../EcInstalledAppCard.vue'
+import { queueUpdateApps } from '../../lib/auto-update-apps'
 
 import {
   i19applications,
@@ -36,7 +37,8 @@ export default {
       loadError: false,
       errorMessage: '',
       activeTabKey: 'market',
-      apps: []
+      apps: [],
+      appsToUpdate: []
     }
   },
 
@@ -100,8 +102,16 @@ export default {
         })
         .finally(() => {
           this.loading = false
+          if (this.activeTabKey === 'market' && this.apps.length) {
+            queueUpdateApps(this.ecomApps, this.apps, this.requestManualUpdate)
+          }
         })
+    },
+
+    requestManualUpdate (app) {
+      this.appsToUpdate.push(app.app_id)
     }
+
   },
 
   watch: {

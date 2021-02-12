@@ -23,6 +23,10 @@ export default {
     ecomApps: {
       type: Object,
       default: () => ecomApps
+    },
+    hasNewVersion: {
+      type: Boolean,
+      default: false
     }
   },
 

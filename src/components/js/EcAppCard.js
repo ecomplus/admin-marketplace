@@ -2,7 +2,8 @@ import { i18n } from '@ecomplus/utils'
 
 import {
   i19free,
-  i19paid
+  i19paid,
+  i19outOfDate
 } from '@ecomplus/i18n'
 
 export default {
@@ -17,6 +18,11 @@ export default {
     descriptionMaxLength: {
       type: Number,
       default: 75
+    },
+
+    hasNewVersion: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -27,6 +33,10 @@ export default {
 
     i19paid () {
       return i18n(i19paid)
+    },
+
+    i19outOfDate() {
+      return i18n(i19outOfDate)
     },
 
     downloadCount () {
