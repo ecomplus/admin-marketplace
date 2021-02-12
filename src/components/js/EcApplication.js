@@ -327,7 +327,7 @@ export default {
         .then(() => {
           this.installApp(true)
         })
-        .catch(e => console.log(e))
+        .catch(console.error)
         .finally(() => (this.isSwitching = false))
     },
 
