@@ -110,7 +110,7 @@ export default {
     i19version: () => i18n(i19version),
     i19yes: () => i18n(i19yes),
     i19newVersionAvailableMsg: () => i18n(i19newVersionAvailableMsg),
-    i19attention: () => `${i18n(i19attention)}`.toUpperCase(),
+    i19attention: () => i18n(i19attention).toUpperCase(),
     i19warningToReinstallAppMsg: () => i18n(i19warningToReinstallAppMsg),
     i19reinstall: () => i18n(i19reinstall),
     i19doYouWantToReinstallAppQn: () => i18n(i19doYouWantToReinstallAppQn),
