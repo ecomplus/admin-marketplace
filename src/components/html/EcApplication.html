@@ -34,7 +34,7 @@
                 </p>
 
                 <div
-                  v-if="application.newVersionAvailable && isInstalled"
+                  v-if="hasNewVersion && isInstalled"
                   class="mb-10"
                 >
                   <button
@@ -50,7 +50,7 @@
                       </span>
                       <i
                         v-else
-                        class="fas fa-refresh"
+                        class="fa fa-refresh"
                       ></i>
                     </span>
                     {{ i19reinstall }}
@@ -205,7 +205,7 @@
 
     <div class="col-sm">
       <div class="card">
-        <div class="alert alert-warning" v-if="application.newVersionAvailable">
+        <div class="alert alert-warning" v-if="hasNewVersion">
           <div class="row d-flex align-items-center">
             <div class="col-md-1 justify-content-center">
               <i class="fa fa-warning" style="font-size: 32px;"> </i>

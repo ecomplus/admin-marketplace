@@ -58,7 +58,7 @@
               :is="activeTabKey === 'market' ? 'ec-app-card' : 'ec-installed-app-card'"
               :app.sync="apps[i]"
               :ecomApps="ecomApps"
-              :new-version-available="appsToUpdate.includes(app.app_id || app.id)"
+              :has-new-version="appsToUpdate.includes(app.app_id || app.id)"
               @click="$emit('click:app', app, appsToUpdate)"
               class="mb-4"
             />

@@ -20,7 +20,7 @@ export default {
       default: 75
     },
 
-    newVersionAvailable: {
+    hasNewVersion: {
       type: Boolean,
       default: false
     }

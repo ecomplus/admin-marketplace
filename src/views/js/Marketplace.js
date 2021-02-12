@@ -8,13 +8,12 @@ export default {
   },
 
   methods: {
-    goToApp (app, appsToUpdate = []) {
+    goToApp (app) {
       this.$router.push({
         name: 'application',
         params: {
           appId: app.id || app.app_id,
-          objectId: app._id,
-          newVersionAvailable: appsToUpdate.includes(app.id || app.app_id)
+          objectId: app._id
         }
       })
     }

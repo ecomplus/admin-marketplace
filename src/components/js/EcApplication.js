@@ -81,7 +81,8 @@ export default {
       activeTabKey: 'description',
       hasInstallPopover: false,
       hasUninstallPopover: false,
-      hasReinstallPopover: false
+      hasReinstallPopover: false,
+      hasNewVersion: false
     }
   },
 
@@ -238,6 +239,11 @@ export default {
         })
       return loadPromise.then(({ data }) => {
         if (data) {
+          console.log(this.applicationBody, data)
+          const storeApp = this.applicationBody.store_app
+          if (storeApp && storeApp.version !== data.version) {
+            this.hasNewVersion = true
+          }
           this.localApplication = {
             ...this.applicationBody,
             ...data
@@ -270,7 +276,7 @@ export default {
         .then(installed => {
           this.successToast(this.i19successfullyInstalled)
           this.fetchStoreApplication(installed.result._id)
-          this.application.newVersionAvailable = false
+          this.hasNewVersion = false
           this.$emit('install', installed.result, installed.app)
         })
         .catch(e => {

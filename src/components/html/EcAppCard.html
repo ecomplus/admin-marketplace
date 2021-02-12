@@ -4,7 +4,7 @@
   @click="$emit('click')"
 >
   <div
-    v-if="newVersionAvailable"
+    v-if="hasNewVersion"
     class="w-100 position-absolute alert alert-warning"
   >
     <i class="fa fa-warning"></i> {{ i19outOfDate }}

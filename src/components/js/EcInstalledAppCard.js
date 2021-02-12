@@ -24,7 +24,7 @@ export default {
       type: Object,
       default: () => ecomApps
     },
-    newVersionAvailable: {
+    hasNewVersion: {
       type: Boolean,
       default: false
     }
