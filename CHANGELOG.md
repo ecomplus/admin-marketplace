@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-rc.0](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-beta.2...v1.0.0-rc.0) (2021-02-12)
+
+
+### Features
+
+* **auto-update-apps:** update all non-major apps patching new admin settings ([#148](https://github.com/ecomplus/admin-marketplace/issues/148)) ([382f394](https://github.com/ecomplus/admin-marketplace/commit/382f394d52df250c81c3d35dc64078db2b009280)), closes [#138](https://github.com/ecomplus/admin-marketplace/issues/138) [#138](https://github.com/ecomplus/admin-marketplace/issues/138) [#138](https://github.com/ecomplus/admin-marketplace/issues/138) [#138](https://github.com/ecomplus/admin-marketplace/issues/138)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([ecda7b1](https://github.com/ecomplus/admin-marketplace/commit/ecda7b11aa86e512827dfd1408e2910b73717c9e))
+* **deps:** update to @ecomplus/apps-manager and @ecomplus/auth v1 ([#147](https://github.com/ecomplus/admin-marketplace/issues/147)) ([b45aaae](https://github.com/ecomplus/admin-marketplace/commit/b45aaae04b05420bf13f63ba7bb20d08c2980d5f))
+
 ## [1.0.0-beta.2](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2021-01-23)
 
 

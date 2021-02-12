@@ -1,13 +1,13 @@
 {
   "name": "@ecomplus/admin-marketplace",
   "description": "Apps marketplace for E-Com Plus admin with Vue.js SPA",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-rc.0",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build:site": "vue-cli-service build --site",
     "lint": "vue-cli-service lint",
-    "release": "npm run build && standard-version --prerelease beta"
+    "release": "npm run build && standard-version --prerelease rc"
   },
   "repository": {
     "type": "git",
