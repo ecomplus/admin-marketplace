@@ -66,7 +66,7 @@ const startQueue = (ecomApps, marketApps) => {
       console.log(`[apps to update]: ${queuedApps.length}`)
       nextAppUpdate(ecomApps)
     })
-    .catch((error) => Promise.reject(error))
+    .catch(console.error)
 }
 
 export const queueUpdateApps = (ecomApps, marketApps, manualUpdateCallback) => {
