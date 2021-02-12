@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/ecomplus/admin-marketplace#readme",
   "dependencies": {
-    "@ecomplus/apps-manager": "^1.0.0-rc.1",
+    "@ecomplus/apps-manager": "^1.0.0-rc.2",
     "@ecomplus/auth": "^1.0.0",
     "@ecomplus/client": "^2.2.0",
     "@ecomplus/i18n": "^1.20.0",
