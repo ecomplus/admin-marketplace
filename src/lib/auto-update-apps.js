@@ -8,6 +8,7 @@ const findOutdatedApps = (ecomApps, marketApps) => {
       .then((data) => {
         const outdatedApps = data
           .filter(app => {
+            if (app.state === 'inactive') return false
             const { version } = marketApps.find(({ id }) => id === app.app_id) || ''
             return app && version ? version !== (app || {}).version : false
           })
