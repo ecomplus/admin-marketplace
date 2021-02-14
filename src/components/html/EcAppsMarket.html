@@ -59,7 +59,7 @@
               :app.sync="apps[i]"
               :ecomApps="ecomApps"
               :has-new-version="appsToUpdate.includes(app.app_id || app.id)"
-              @click="$emit('click:app', app, appsToUpdate)"
+              @click="$emit('click:app', app)"
               class="mb-4"
             />
           </div>
