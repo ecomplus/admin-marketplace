@@ -3,7 +3,7 @@
     <ec-application
       :application="application"
       @click:back="goToMarket"
-      @install="goToApp"
+      @install="onInstall"
       @uninstall="goToMarket"
     >
       <template #settings>

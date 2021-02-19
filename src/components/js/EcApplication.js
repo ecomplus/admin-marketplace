@@ -9,7 +9,7 @@ import { i18n } from '@ecomplus/utils'
 
 import {
   i19app,
-  // i19appAlreadyInstalledMsg,
+  i19appAlreadyInstalledMsg,
   i19author,
   i19back,
   i19configuration,
@@ -88,7 +88,7 @@ export default {
 
   computed: {
     i19app: () => i18n(i19app),
-    i19appAlreadyInstalledMsg: () => 'O aplicativo já está instalado, deseja duplicar?',
+    i19appAlreadyInstalledMsg: () => i18n(i19appAlreadyInstalledMsg),
     i19author: () => i18n(i19author),
     i19back: () => i18n(i19back),
     i19configuration: () => i18n(i19configuration),
@@ -276,7 +276,7 @@ export default {
           this.successToast(this.i19successfullyInstalled)
           this.fetchStoreApplication(installed.result._id)
           this.hasNewVersion = false
-          this.$emit('install', installed.result, installed.app)
+          this.$emit('install', installed)
         })
         .catch(e => {
           console.log(e)

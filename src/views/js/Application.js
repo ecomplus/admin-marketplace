@@ -17,12 +17,12 @@ export default {
   },
 
   methods: {
-    goToApp (app, object) {
+    onInstall ({ result, app }) {
       this.$router.push({
         name: this.$route.name,
         params: {
-          appId: object.app_id,
-          objectId: app._id
+          appId: app.id,
+          objectId: result._id
         }
       })
     },
