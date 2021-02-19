@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-rc.2](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.1...v1.0.0-rc.2) (2021-02-19)
+
+
+### Bug Fixes
+
+* **application:** fix handling on install event payload ([#152](https://github.com/ecomplus/admin-marketplace/issues/152)) ([f8fcedb](https://github.com/ecomplus/admin-marketplace/commit/f8fcedbef2635435e358d86948ce0b7604be609d))
+* **auto-update-apps:** ignore inactive apps ([#150](https://github.com/ecomplus/admin-marketplace/issues/150)) ([49330ad](https://github.com/ecomplus/admin-marketplace/commit/49330ad329e71b48f1399965c36d8db086e5b864))
+* **ec-application:** force col-9 to fix responsive layout ([10cafdc](https://github.com/ecomplus/admin-marketplace/commit/10cafdcb6aa3eb3bd50eb98adbe3c05fe4f68766))
+
 ## [1.0.0-rc.1](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.0...v1.0.0-rc.1) (2021-02-12)
 
 
