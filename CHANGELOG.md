@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-rc.3](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.2...v1.0.0-rc.3) (2021-02-21)
+
+
+### Bug Fixes
+
+* **ec-application:** adjusted new version alert btn position ([#153](https://github.com/ecomplus/admin-marketplace/issues/153)) ([d2b8573](https://github.com/ecomplus/admin-marketplace/commit/d2b8573139fcea2cc08b30ac9c25f31a32952100))
+
 ## [1.0.0-rc.2](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.1...v1.0.0-rc.2) (2021-02-19)
 
 
