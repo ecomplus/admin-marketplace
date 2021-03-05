@@ -1,5 +1,5 @@
 import VueBootstrapTypeahead from 'vue-bootstrap-typeahead'
-import { search } from '@ecomplus/client'
+import { search, store } from '@ecomplus/client'
 
 export default {
   name: 'InputProduct',
@@ -25,7 +25,7 @@ export default {
 
   data () {
     return {
-      products: [{ name: 'arroz' }, { name: 'feijão' }],
+      products: [],
       productSearch: ''
     }
   },
@@ -44,14 +44,7 @@ export default {
   watch: {
     productSearch () {
       if (this.productSearch && this.productSearch.length > 2) {
-        search({ url: `/items.json?size=30&q=name:${this.productSearch}` })
-          .then(({ data: { hits } }) => {
-            console.log(hits)
-            this.products = hits.hits.map(({ _id, _source }) => {
-              return { _id, name: _source.name }
-            })
-            console.log(this.products)
-          })
+        this.findProducts(`name:${this.productSearch}`)
       }
     }
   },
@@ -60,12 +53,40 @@ export default {
     if (!this.value && this.schema.default) {
       this.localValue = this.schema.default
     }
+    if (this.value) {
+      this.loadProduct(this.value)
+    }
   },
 
   methods: {
-    getProducts: async (query) => {
-      // Search products
+    findProducts (query, size = 30) {
+      search({ url: `/items.json?size=${size}&q=${query}` })
+        .then(({ data: { hits } }) => {
+          this.products = hits.hits.map(({ _id, _source }) => {
+            return { _id, name: _source.name }
+          })
+        }).catch(error => {
+          console.error(error)
+          if (error.response) {
+            console.log(error.response)
+          }
+        })
+    },
+    loadProduct (id) {
+      store({ url: `/products/${id}.json` })
+        .then(({ data }) => {
+          this.productSearch = data.name
+          this.$refs.typeahead.inputValue = this.productSearch
+          this.$emit('input', data._id)
+        })
+        .catch(error => {
+          console.error(error)
+          if (error.response) {
+            console.log(error.response)
+          }
+        })
     }
+
   }
 
 }

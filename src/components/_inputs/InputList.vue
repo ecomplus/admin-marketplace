@@ -1,6 +1,16 @@
 <template>
   <div>
-    <input-text
+    <!-- <input-text
+      class="mb-2"
+      v-for="(item, i) in localValue"
+      :name="`${name}[${i}]`"
+      :key="i"
+      :schema="schema.items"
+      :value="getItemValue(item)"
+      @input="value => setItemValue(value, i)"
+      @blur="checkItem(i)"
+    /> -->
+    <input-product
       class="mb-2"
       v-for="(item, i) in localValue"
       :name="`${name}[${i}]`"

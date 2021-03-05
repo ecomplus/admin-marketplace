@@ -1,10 +1,12 @@
 import InputText from '../InputText.vue'
+import InputProduct from '../InputProduct.vue'
 
 export default {
   name: 'InputList',
 
   components: {
-    InputText
+    InputText,
+    InputProduct
   },
 
   props: {
@@ -40,8 +42,10 @@ export default {
     },
 
     setItemValue (str, i) {
+      console.log('chegou no setItemValue', str, i)
       let item = str
       if (str !== '') {
+        console.log(this.schema.items.type, '==========')
         switch (this.schema.items.type) {
           case 'integer':
             item = parseInt(str, 10)
@@ -57,6 +61,7 @@ export default {
             item = JSON.parse(str)
         }
       }
+      console.log(this.localValue)
       if (this.localValue.length > i) {
         this.$set(this.localValue, i, item)
       } else {

@@ -11,6 +11,8 @@ import matchInputMoney from './_custom-input-matchers/money'
 import matchInputDateTime from './_custom-input-matchers/date-time'
 import matchInputZipCode from './_custom-input-matchers/zip-code'
 import matchInputZipRange from './_custom-input-matchers/zip-range'
+import matchInputProduct from './_custom-input-matchers/product'
+import InputProduct from '../components/_inputs/js/InputProduct'
 
 const getInputMatchersByType = type => {
   switch (type) {
@@ -23,6 +25,7 @@ const getInputMatchersByType = type => {
       return [
         matchInputDateTime,
         matchInputZipCode,
+        matchInputProduct,
         (_, schema) => schema.enum && InputEnum,
         () => InputText
       ]
