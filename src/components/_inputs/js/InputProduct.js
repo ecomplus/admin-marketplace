@@ -1,4 +1,5 @@
 import VueBootstrapTypeahead from 'vue-bootstrap-typeahead'
+import { search } from '@ecomplus/client'
 
 export default {
   name: 'InputProduct',
@@ -24,7 +25,7 @@ export default {
 
   data () {
     return {
-      products: [],
+      products: [{ name: 'arroz' }, { name: 'feijão' }],
       productSearch: ''
     }
   },
@@ -40,14 +41,31 @@ export default {
     }
   },
 
+  watch: {
+    productSearch () {
+      if (this.productSearch && this.productSearch.length > 2) {
+        search({ url: `/items.json?size=30&q=name:${this.productSearch}` })
+          .then(({ data: { hits } }) => {
+            console.log(hits)
+            this.products = hits.hits.map(({ _id, _source }) => {
+              return { _id, name: _source.name }
+            })
+            console.log(this.products)
+          })
+      }
+    }
+  },
+
   mounted () {
     if (!this.value && this.schema.default) {
       this.localValue = this.schema.default
     }
   },
 
-  async getProducts (query) {
-    // Search products
+  methods: {
+    getProducts: async (query) => {
+      // Search products
+    }
   }
 
 }
