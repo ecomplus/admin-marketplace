@@ -7,8 +7,9 @@
       :serializer="(product) => product.name"
       :placeholder="schema.default"
       :maxMatches="30"
-      v-model="productSearch"
-      @hit="localValue = $event._id"
+      :value="productSearch"
+      @input="handleInput"
+      @hit="handleHit"
       ref="typeahead"
     />
   </div>

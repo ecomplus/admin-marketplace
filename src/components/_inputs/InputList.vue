@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{name}}
     <!-- <input-text
       class="mb-2"
       v-for="(item, i) in localValue"

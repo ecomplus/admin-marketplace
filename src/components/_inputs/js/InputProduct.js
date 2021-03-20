@@ -36,6 +36,7 @@ export default {
         return this.value
       },
       set (val) {
+        console.log('set local value', val)
         this.$emit('input', val)
       }
     }
@@ -59,6 +60,20 @@ export default {
   },
 
   methods: {
+    handleInput (event) {
+      console.log('handleInput', event)
+      this.productSearch = event
+      if (!event) {
+        this.$emit('input', '')
+        this.$emit('blur')
+      }
+    },
+
+    handleHit (event) {
+      console.log('hit event', event)
+      this.localValue = event._id
+    },
+
     findProducts (query, size = 30) {
       search({ url: `/items.json?size=${size}&q=${query}` })
         .then(({ data: { hits } }) => {
@@ -86,7 +101,6 @@ export default {
           }
         })
     }
-
   }
 
 }
