@@ -29,8 +29,7 @@ export default {
 
   computed: {
     isProductList () {
-      return ['product', 'product_id', 'id_product', 'product_ids']
-        .filter(field => this.name.endsWith(field)).length
+      return this.name.endsWith('product_ids')
     }
   },
 

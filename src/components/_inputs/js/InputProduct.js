@@ -47,7 +47,7 @@ export default {
     },
     productSearch () {
       if (this.productSearch && this.productSearch.length > 2) {
-        this.findProducts(`name:${this.productSearch}`)
+        this.findProducts(this.productSearch)
       }
     }
   },
@@ -75,8 +75,24 @@ export default {
       this.$emit('blur')
     },
 
-    findProducts (query, size = 30) {
-      search({ url: `/items.json?size=${size}&q=${query}` })
+    findProducts (term) {
+      const data = {
+        query: {
+          bool: {
+            must: {
+              multi_match: {
+                query: term,
+                fields: [
+                  'name',
+                  'sku',
+                  'keywords'
+                ]
+              }
+            }
+          }
+        }
+      }
+      search({ url: '/items.json', method: 'POST', data })
         .then(({ data: { hits } }) => {
           this.products = hits.hits.map(({ _id, _source }) => {
             return { _id, name: _source.name }
