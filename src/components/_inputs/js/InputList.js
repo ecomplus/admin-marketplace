@@ -27,6 +27,13 @@ export default {
     }
   },
 
+  computed: {
+    isProductList () {
+      return ['product', 'product_id', 'id_product', 'product_ids']
+        .filter(field => this.name.endsWith(field)).length
+    }
+  },
+
   methods: {
     getItemValue (item) {
       switch (this.schema.items.type) {
@@ -74,6 +81,9 @@ export default {
       if (this.localValue[i] === '') {
         this.localValue.splice(i, 1)
       }
+    },
+    isProductList () {
+
     }
   },
 
