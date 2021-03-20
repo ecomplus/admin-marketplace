@@ -2,9 +2,6 @@
   <div id="app-mercado-livre">
     <b-tabs content-class="mt-3" fill>
       <b-tab title="Autenticação" active>
-        <!-- Todo: Remover -->
-        <InputProduct name="product_id" :schema="applicationBody"/>
-        <!--  -->
         <AppMercadoLivreAuth :mlProfile="applicationBody.data.mlProfile" />
       </b-tab>
       <b-tab title="Exportar produtos">
