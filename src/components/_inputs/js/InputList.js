@@ -81,9 +81,6 @@ export default {
       if (this.localValue[i] === '') {
         this.localValue.splice(i, 1)
       }
-    },
-    isProductList () {
-
     }
   },
 

@@ -36,13 +36,15 @@ export default {
         return this.value
       },
       set (val) {
-        console.log('set local value', val)
         this.$emit('input', val)
       }
     }
   },
 
   watch: {
+    value () {
+      this.loadProduct(this.value)
+    },
     productSearch () {
       if (this.productSearch && this.productSearch.length > 2) {
         this.findProducts(`name:${this.productSearch}`)
@@ -51,27 +53,26 @@ export default {
   },
 
   mounted () {
-    if (!this.value && this.schema.default) {
-      this.localValue = this.schema.default
-    }
     if (this.value) {
       this.loadProduct(this.value)
     }
+    this.onBlur()
   },
 
   methods: {
-    handleInput (event) {
-      console.log('handleInput', event)
-      this.productSearch = event
-      if (!event) {
-        this.$emit('input', '')
-        this.$emit('blur')
-      }
+    onBlur () {
+      this.$refs.productTypeahead.$refs.input
+        .addEventListener('blur', () => {
+          if (!this.productSearch) {
+            this.$emit('input', '')
+            this.$emit('blur')
+          }
+        })
     },
 
     handleHit (event) {
-      console.log('hit event', event)
-      this.localValue = event._id
+      this.$emit('input', event._id)
+      this.$emit('blur')
     },
 
     findProducts (query, size = 30) {
@@ -87,11 +88,12 @@ export default {
           }
         })
     },
+
     loadProduct (id) {
       store({ url: `/products/${id}.json` })
         .then(({ data }) => {
           this.productSearch = data.name
-          this.$refs.typeahead.inputValue = this.productSearch
+          this.$refs.productTypeahead.inputValue = this.productSearch
           this.$emit('input', data._id)
         })
         .catch(error => {

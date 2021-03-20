@@ -1,5 +1,4 @@
 <template>
-  <div>
     <vue-bootstrap-typeahead
       type="text"
       class="form-control"
@@ -7,12 +6,10 @@
       :serializer="(product) => product.name"
       :placeholder="schema.default"
       :maxMatches="30"
-      :value="productSearch"
-      @input="handleInput"
+      v-model="productSearch"
+      ref="productTypeahead"
       @hit="handleHit"
-      ref="typeahead"
     />
-  </div>
 </template>
 
 <script src="./js/InputProduct.js"></script>
