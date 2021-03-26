@@ -1,10 +1,12 @@
 import InputText from '../InputText.vue'
+import InputProduct from '../InputProduct.vue'
 
 export default {
   name: 'InputList',
 
   components: {
-    InputText
+    InputText,
+    InputProduct
   },
 
   props: {
@@ -22,6 +24,12 @@ export default {
   data () {
     return {
       localValue: this.value || []
+    }
+  },
+
+  computed: {
+    isProductList () {
+      return this.name.endsWith('product_ids')
     }
   },
 
