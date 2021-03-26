@@ -98,12 +98,7 @@ export default {
           this.products = hits.hits.map(({ _id, _source }) => {
             return { _id, name: _source.name }
           })
-        }).catch(error => {
-          console.error(error)
-          if (error.response) {
-            console.log(error.response)
-          }
-        })
+        }).catch(console.error)
     },
 
     loadProduct (id) {
