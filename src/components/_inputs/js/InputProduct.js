@@ -108,12 +108,7 @@ export default {
           this.$refs.productTypeahead.inputValue = this.productSearch
           this.$emit('input', data._id)
         })
-        .catch(error => {
-          console.error(error)
-          if (error.response) {
-            console.log(error.response)
-          }
-        })
+        }).catch(console.error)
     }
   }
 
