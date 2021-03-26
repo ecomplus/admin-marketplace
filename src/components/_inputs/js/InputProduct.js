@@ -19,97 +19,95 @@ export default {
       type: String,
       required: true
     },
-    value: {
-      type: String
-    }
+    value: String
   },
 
   data () {
     return {
       products: [],
-      productSearch: ''
+      term: '',
+      isSearchScheduled: false,
+      selectedProductName: ''
     }
-  },
-
-  computed: {
-    localValue: {
-      get () {
-        return this.value
-      },
-      set (val) {
-        this.$emit('input', val)
-      }
-    }
-  },
-
-  watch: {
-    value () {
-      this.loadProduct(this.value)
-    },
-    productSearch () {
-      if (this.productSearch && this.productSearch.length > 2) {
-        this.findProducts(this.productSearch)
-      }
-    }
-  },
-
-  mounted () {
-    if (this.value) {
-      this.loadProduct(this.value)
-    }
-    this.onBlur()
   },
 
   methods: {
-    onBlur () {
-      this.$refs.productTypeahead.$refs.input
-        .addEventListener('blur', () => {
-          if (!this.productSearch) {
-            this.$emit('input', '')
-            this.$emit('blur')
-          }
-        })
-    },
-
-    handleHit (event) {
-      this.$emit('input', event._id)
+    handleHit ({ _id, name }) {
+      this.selectedProductName = name
+      this.$emit('input', _id)
       this.$emit('blur')
     },
 
-    findProducts (term) {
-      const data = {
-        query: {
-          bool: {
-            must: {
-              multi_match: {
-                query: term,
-                fields: [
-                  'name',
-                  'sku',
-                  'keywords'
-                ]
+    searchProducts (term) {
+      search({
+        url: '/items.json',
+        method: 'POST',
+        data: {
+          query: {
+            bool: {
+              must: {
+                multi_match: {
+                  query: term,
+                  fields: [
+                    'name',
+                    'sku',
+                    'keywords'
+                  ]
+                }
               }
             }
           }
         }
-      }
-      search({ url: '/items.json', method: 'POST', data })
+      })
         .then(({ data: { hits } }) => {
-          this.products = hits.hits.map(({ _id, _source }) => {
-            return { _id, name: _source.name }
-          })
-        }).catch(console.error)
-    },
-
-    loadProduct (id) {
-      store({ url: `/products/${id}.json` })
-        .then(({ data }) => {
-          this.productSearch = data.name
-          this.$refs.productTypeahead.inputValue = this.productSearch
-          this.$emit('input', data._id)
+          if (
+            this.term === term ||
+            (!this.products.length && this.term.startsWith(term))
+          ) {
+            this.products = hits.hits.map(({ _id, _source }) => {
+              return { _id, name: _source.name }
+            })
+          }
         })
-        }).catch(console.error)
+        .catch(console.error)
     }
-  }
+  },
 
+  watch: {
+    term () {
+      if (this.term && this.term.length > 2 && this.term !== this.selectedProductName) {
+        if (!this.isSearchScheduled) {
+          this.isSearchScheduled = true
+          this.$nextTick(() => {
+            setTimeout(() => {
+              this.searchProducts(this.term)
+              this.isSearchScheduled = false
+            }, 40)
+          })
+        }
+      }
+    }
+  },
+
+  created () {
+    if (this.value) {
+      store({ url: `/products/${this.value}.json` })
+        .then(({ data: { _id, name } }) => {
+          this.selectedProductName = this.term = name
+          this.$refs.typeahead.inputValue = name
+          this.products = [{ _id, name }]
+          this.$emit('input', _id)
+        })
+        .catch(console.error)
+    }
+  },
+
+  mounted () {
+    this.$refs.typeahead.$refs.input.addEventListener('blur', () => {
+      if (!this.term) {
+        this.$emit('input', '')
+        this.$emit('blur')
+      }
+    })
+  }
 }
