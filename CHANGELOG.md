@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-rc.6](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.5...v1.0.0-rc.6) (2021-03-26)
+
+
+### Features
+
+* **input-product:** render `product_ids` with typeasearch to find product ([#158](https://github.com/ecomplus/admin-marketplace/issues/158)) ([eb68e74](https://github.com/ecomplus/admin-marketplace/commit/eb68e74f6b62eaacce002cfd05f9d66a2d8bcaf1))
+
+
+### Bug Fixes
+
+* **input-product:** general fixes with scheduled fetches and results handling ([2f0de8e](https://github.com/ecomplus/admin-marketplace/commit/2f0de8ea1b8ef57878f4e8b65795e8e88d6e0891))
+
 ## [1.0.0-rc.5](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.4...v1.0.0-rc.5) (2021-03-17)
 
 
