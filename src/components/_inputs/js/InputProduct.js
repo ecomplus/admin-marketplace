@@ -3,6 +3,7 @@ import { search, store } from '@ecomplus/client'
 
 export default {
   name: 'InputProduct',
+
   components: {
     VueBootstrapTypeahead
   },
