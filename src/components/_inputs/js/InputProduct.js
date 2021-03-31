@@ -64,10 +64,10 @@ export default {
             this.term === term ||
             (!this.products.length && this.term.startsWith(term))
           ) {
-            this.products = hits.hits.map(({ _id, _source }) => {
-              return { _id, name: _source.name }
+            this.products = hits.hits.map(({ _id, _source: { name, sku } }) => {
+              return { _id, name, sku }
             })
-            if (this.products === 1) {
+            if (this.products.length === 1) {
               this.$refs.typeahead.inputValue = this.products[0].name
               this.handleHit(this.products[0])
             }

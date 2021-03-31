@@ -3,7 +3,7 @@
     type="text"
     class="form-control"
     :data="products"
-    :serializer="product => product.name"
+    :serializer="({ sku, name }) => `${name} (${sku})`"
     :placeholder="schema.default"
     :maxMatches="30"
     v-model="term"
