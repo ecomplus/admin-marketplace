@@ -67,7 +67,22 @@ export default {
             this.products = hits.hits.map(({ _id, _source }) => {
               return { _id, name: _source.name }
             })
+            if (this.products === 1) {
+              this.$refs.typeahead.inputValue = this.products[0].name
+              this.handleHit(this.products[0])
+            }
           }
+        })
+        .catch(console.error)
+    },
+
+    findById (productId) {
+      store({ url: `/products/${productId}.json` })
+        .then(({ data: { _id, name } }) => {
+          this.selectedProductName = this.term = name
+          this.$refs.typeahead.inputValue = name
+          this.products = [{ _id, name }]
+          this.$emit('input', _id)
         })
         .catch(console.error)
     }
@@ -89,24 +104,16 @@ export default {
     }
   },
 
-  created () {
-    if (this.value) {
-      store({ url: `/products/${this.value}.json` })
-        .then(({ data: { _id, name } }) => {
-          this.selectedProductName = this.term = name
-          this.$refs.typeahead.inputValue = name
-          this.products = [{ _id, name }]
-          this.$emit('input', _id)
-        })
-        .catch(console.error)
-    }
-  },
-
   mounted () {
+    if (this.value) {
+      this.findById(this.value)
+    }
     this.$refs.typeahead.$refs.input.addEventListener('blur', () => {
       if (!this.term) {
         this.$emit('input', '')
         this.$emit('blur')
+      } else if (/^[a-f0-9]{24}$/.test(this.term)) {
+        this.findById(this.term)
       }
     })
   }
