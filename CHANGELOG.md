@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-rc.7](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.6...v1.0.0-rc.7) (2021-04-01)
+
+
+### Features
+
+* **application:** update document title with app title ([7c9b88e](https://github.com/ecomplus/admin-marketplace/commit/7c9b88ef9d5b5bf4afe715126e5e2942e84cb1ef))
+
+
+### Bug Fixes
+
+* **deps:** update @ecomplus/apps-manager to v1.0.1 ([b1b7564](https://github.com/ecomplus/admin-marketplace/commit/b1b7564454e5306a57f529d0c1df5d80cafbc35e))
+* **input-product:** also handle id directly insert, fix handling search with unique result (sku) ([24a8020](https://github.com/ecomplus/admin-marketplace/commit/24a80209a2ca08e2f8a4db820be1c8768ecf5fe6))
+* **input-product:** fix handling search with unique result (sku) ([0fb7acd](https://github.com/ecomplus/admin-marketplace/commit/0fb7acdbfb3f90506b44feb0e36a8ccc909fffe0))
+
 ## [1.0.0-rc.6](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.5...v1.0.0-rc.6) (2021-03-26)
 
 
