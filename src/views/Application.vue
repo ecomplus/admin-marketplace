@@ -1,7 +1,7 @@
 <template>
   <div id="application">
     <ec-application
-      :application="application"
+      :application.sync="application"
       @click:back="goToMarket"
       @install="onInstall"
       @uninstall="goToMarket"

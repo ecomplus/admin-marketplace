@@ -7,11 +7,12 @@ export default {
     EcApplication
   },
 
-  computed: {
-    application () {
-      return {
+  data () {
+    return {
+      application: {
         app_id: this.$route.params.appId,
-        _id: this.$route.params.objectId
+        _id: this.$route.params.objectId,
+        title: ''
       }
     }
   },
@@ -31,6 +32,13 @@ export default {
       this.$router.push({
         name: 'marketplace'
       })
+    }
+  },
+
+  watch: {
+    'application.title' (appTitle) {
+      const pageTitle = document.title.replace(/\[[^]+\]\s·\s/, '')
+      document.title = `[${appTitle.replace(/[[\]]/, '-')}] · ${pageTitle}`
     }
   }
 }
