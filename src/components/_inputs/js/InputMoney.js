@@ -24,28 +24,35 @@ export default {
     value: Number
   },
 
+  data () {
+    return {
+      cleaveOptions: {}
+    }
+  },
+
   computed: {
     localValue: {
       get () {
         return typeof this.value === 'number'
-          ? this.value.toString().replace('.', ',') : null
+          ? this.value.toString().replace('.', ',')
+          : null
       },
       set (val) {
         const num = parseFloat(val)
         this.$emit('input', isNaN(num) ? null : num)
       }
-    },
+    }
+  },
 
-    cleaveOptions () {
-      return {
-        prefix: countryCode === 'BR' ? 'R$ ' : '$',
-        numeral: true,
-        numeralThousandsGroupStyle: 'thousand',
-        numeralDecimalMark: ',',
-        numeralDecimalScale: 2,
-        delimiter: '.',
-        rawValueTrimPrefix: true
-      }
+  created () {
+    this.cleaveOptions = {
+      prefix: countryCode === 'BR' ? 'R$ ' : '$',
+      numeral: true,
+      numeralThousandsGroupStyle: 'thousand',
+      numeralDecimalMark: ',',
+      numeralDecimalScale: this.schema.type === 'integer' ? 0 : 2,
+      delimiter: '.',
+      rawValueTrimPrefix: true
     }
   },
 
