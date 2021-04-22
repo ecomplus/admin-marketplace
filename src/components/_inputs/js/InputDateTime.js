@@ -22,7 +22,13 @@ export default {
   data () {
     return {
       localDateValue: this.value,
-      localTimeValue: this.value
+      localTimeValue: this.value,
+      seconds: 0,
+      minutes: 0,
+      hours: 0,
+      day: 0,
+      month: 0,
+      year: 0
     }
   },
 
@@ -37,31 +43,36 @@ export default {
     }
   },
 
+  methods: {
+    fixLocalValue () {
+      const { seconds, minutes, hours, day, month, year } = this
+      this.localValue = new Date(year, month, day, hours, minutes, seconds)
+    }
+  },
+
   watch: {
     localDateValue (isoDateStr) {
       if (!isoDateStr) {
         this.localValue = isoDateStr
       } else {
         const date = new Date(isoDateStr)
-        this.localValue.setFullYear(date.getFullYear())
-        this.localValue.setMonth(date.getMonth())
-        this.localValue.setDate(date.getDate())
-        this.localValue = this.localValue
+        this.year = date.getFullYear()
+        this.month = date.getMonth()
+        this.day = date.getDate()
+        this.fixLocalValue()
       }
     },
 
     localTimeValue (isoTimeStr) {
-      let hours, minutes, seconds
       if (isoTimeStr) {
         const date = new Date(isoTimeStr)
-        hours = date.getHours()
-        minutes = date.getMinutes()
-        seconds = date.getSeconds()
+        this.hours = date.getHours()
+        this.minutes = date.getMinutes()
+        this.seconds = date.getSeconds()
+      } else {
+        this.hours = this.minutes = this.seconds = 0
       }
-      this.localValue.setHours(hours)
-      this.localValue.setMinutes(minutes)
-      this.localValue.setSeconds(seconds)
-      this.localValue = this.localValue
+      this.fixLocalValue()
     }
   }
 }
