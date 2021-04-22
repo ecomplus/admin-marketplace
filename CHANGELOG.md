@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.7...v1.0.0) (2021-04-22)
+
+
+### Bug Fixes
+
+* **input-date-time:** fix storing date and time unit values and create new date ([#163](https://github.com/ecomplus/admin-marketplace/issues/163)) ([103f459](https://github.com/ecomplus/admin-marketplace/commit/103f45901584b78d32904509d29bb31ed334ac54))
+* **input-money:** no decimal scale for integer schema types ([#162](https://github.com/ecomplus/admin-marketplace/issues/162)) ([1b05c3b](https://github.com/ecomplus/admin-marketplace/commit/1b05c3b88436278a4cbb1f520bbcf087f0cece9d))
+
 ## [1.0.0-rc.7](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.6...v1.0.0-rc.7) (2021-04-01)
 
 
