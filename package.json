@@ -1,7 +1,7 @@
 {
-  "name": "@ecomplus/admin-marketplace",
+  "name": "@confere-stores/admin-marketplace",
   "description": "Apps marketplace for E-Com Plus admin with Vue.js SPA",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ecomplus/admin-marketplace.git"
+    "url": "git+https://github.com/confere-stores/admin-marketplace.git"
   },
   "author": "E-Com Club <ti@e-com.club>",
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/ecomplus/admin-marketplace/issues"
+    "url": "https://github.com/confere-stores/admin-marketplace/issues"
   },
-  "homepage": "https://github.com/ecomplus/admin-marketplace#readme",
+  "homepage": "https://github.com/confere-stores/admin-marketplace#readme",
   "dependencies": {
     "@ecomplus/apps-manager": "^1.0.1",
     "@ecomplus/auth": "^1.0.1",
