@@ -33,7 +33,7 @@
                   {{ shortDescription }}
                 </p>
 
-                <div v-if="isInstalled">
+                <div v-if="isInstalled" :class="[126945, 1256].includes(appId) ? 'd-none' : ''">
                   <button
                     class="btn btn-danger"
                     id="uninstall-app"
@@ -82,7 +82,7 @@
                 <button
                   class="btn"
                   id="install-app"
-                  :class="isInstalled ? 'btn-outline-success btn-xs mt-2' : 'btn-success'"
+                  :class="[126945, 1256].includes(appId) ? 'd-none' : (isInstalled ? 'btn-outline-success btn-xs mt-2' : 'btn-success')"
                   type="button"
                   @click="installApp"
                 >
@@ -128,7 +128,7 @@
                 </b-popover>
 
                 <br>
-                <small>{{ price }}</small>
+                <small :class="[126945, 1256].includes(appId) ? 'd-none' : ''">{{ price }}</small>
               </div>
 
               <div v-if="author">
@@ -158,7 +158,7 @@
       <div class="card">
         <div
           v-if="hasNewVersion"
-          class="alert alert-warning"
+          :class="[126945, 1256].includes(appId) ? 'd-none' : 'alert alert-warning'"
         >
           <div class="row d-flex align-items-center">
             <div class="col-md-1 justify-content-center">
@@ -166,56 +166,56 @@
             </div>
             <div class="col-md-10">
               {{ i19newVersionAvailableMsg }}
-              <br />
+              <br/>
               <strong>{{ i19attention }}:</strong> {{ i19warningToReinstallAppMsg }}
-                <div
-                  v-if="hasNewVersion && isInstalled"
-                  class="mt-10"
+              <div
+                v-if="hasNewVersion && isInstalled"
+                class="mt-10"
+              >
+                <button
+                  class="btn btn-warning btn-sm"
+                  id="reinstall-app"
                 >
-                  <button
-                    class="btn btn-warning btn-sm"
-                    id="reinstall-app"
+                  <span
+                    class="d-inline-block"
+                    style="width: 1.15rem"
                   >
-                    <span
-                      class="d-inline-block"
-                      style="width: 1.15rem"
-                    >
-                      <span v-if="isSwitching">
-                        <i class="fas fa-circle-notch fa-spin"></i>
-                      </span>
-                      <i
-                        v-else
-                        class="fa fa-refresh"
-                      ></i>
+                    <span v-if="isSwitching">
+                      <i class="fas fa-circle-notch fa-spin"></i>
                     </span>
-                    {{ i19reinstall }}
-                  </button>
+                    <i
+                      v-else
+                      class="fa fa-refresh"
+                    ></i>
+                  </span>
+                  {{ i19reinstall }}
+                </button>
 
-                  <b-popover
-                    target="reinstall-app"
-                    triggers="click"
-                    placement="top"
-                    :show.sync="hasReinstallPopover"
-                  >
-                    {{ i19doYouWantToReinstallAppQn }}
-                    <div class="text-right py-2">
-                      <button
-                        class="btn btn-light btn-sm mr-2"
-                        type="button"
-                        @click="hasReinstallPopover = false"
-                      >
-                        {{ i19no }}
-                      </button>
-                      <button
-                        class="btn btn-danger btn-sm"
-                        type="button"
-                        @click="reinstallApp"
-                      >
-                        {{ i19yes }}
-                      </button>
-                    </div>
-                  </b-popover>
-                </div>
+                <b-popover
+                  target="reinstall-app"
+                  triggers="click"
+                  placement="top"
+                  :show.sync="hasReinstallPopover"
+                >
+                  {{ i19doYouWantToReinstallAppQn }}
+                  <div class="text-right py-2">
+                    <button
+                      class="btn btn-light btn-sm mr-2"
+                      type="button"
+                      @click="hasReinstallPopover = false"
+                    >
+                      {{ i19no }}
+                    </button>
+                    <button
+                      class="btn btn-danger btn-sm"
+                      type="button"
+                      @click="reinstallApp"
+                    >
+                      {{ i19yes }}
+                    </button>
+                  </div>
+                </b-popover>
+              </div>
             </div>
           </div>
         </div>

@@ -82,6 +82,23 @@ export default {
       promise
         .then(data => {
           this.apps = data.result || data
+          this.apps = this.apps.filter((app) => ![
+            'wirecard',
+            'pagseguro',
+            'paypal',
+            'paghiper',
+            'github-cd',
+            'pix',
+            'tiny-erp',
+            'custom-payment',
+            'infinitepay',
+            'mercado-pago',
+            'bling-erp',
+            'pagarme',
+            'mercado-livre',
+            'vindi',
+            'ideris'
+          ].includes(app.slug))
         })
         .catch(err => {
           console.error(err)
