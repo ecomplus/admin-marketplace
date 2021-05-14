@@ -271,7 +271,8 @@ export default {
             'pagarme',
             'mercado-livre',
             'vindi',
-            'ideris'
+            'ideris',
+            'app-ses'
           ].includes(app.slug))
           this.appsRelated = filter || []
         })
