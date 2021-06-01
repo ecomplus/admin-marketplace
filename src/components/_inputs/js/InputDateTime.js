@@ -28,7 +28,8 @@ export default {
       hours: 0,
       day: 0,
       month: 0,
-      year: 0
+      year: 0,
+      fixValueTimer: null
     }
   },
 
@@ -38,15 +39,49 @@ export default {
         return this.value ? new Date(this.value) : new Date(0, 0, 0, 0, 0, 0)
       },
       set (date) {
-        this.$emit('input', date && !isNaN(date.getTime()) ? date.toISOString() : null)
+        console.log(date)
+        this.$emit('input', date && !isNaN(date.getTime()) && date.getFullYear() > 2000
+          ? date.toISOString()
+          : null)
       }
     }
   },
 
   methods: {
-    fixLocalValue () {
-      const { seconds, minutes, hours, day, month, year } = this
-      this.localValue = new Date(year, month, day, hours, minutes, seconds)
+    scheduleFixValue () {
+      if (!this.fixValueTimer) {
+        this.fixValueTimer = setTimeout(() => {
+          const { seconds, minutes, hours, day, month, year } = this
+          this.localValue = new Date(year, month, day, hours, minutes, seconds)
+          this.fixValueTimer = null
+        }, 300)
+      }
+    },
+
+    splitDate (isoDateStr) {
+      const date = new Date(isoDateStr)
+      const year = date.getFullYear()
+      const month = date.getMonth()
+      const day = date.getDate()
+      if (year !== this.year || month !== this.month || day !== this.day) {
+        this.year = year
+        this.month = month
+        this.day = day
+        this.scheduleFixValue()
+      }
+    },
+
+    splitTime (isoTimeStr) {
+      const date = new Date(isoTimeStr)
+      const hours = date.getHours()
+      const minutes = date.getMinutes()
+      const seconds = date.getSeconds()
+      if (hours !== this.hours || minutes !== this.minutes || seconds !== this.seconds) {
+        this.hours = hours
+        this.minutes = minutes
+        this.seconds = seconds
+        this.scheduleFixValue()
+      }
     }
   },
 
@@ -55,24 +90,23 @@ export default {
       if (!isoDateStr) {
         this.localValue = isoDateStr
       } else {
-        const date = new Date(isoDateStr)
-        this.year = date.getFullYear()
-        this.month = date.getMonth()
-        this.day = date.getDate()
-        this.fixLocalValue()
+        this.splitDate(isoDateStr)
       }
     },
 
     localTimeValue (isoTimeStr) {
       if (isoTimeStr) {
-        const date = new Date(isoTimeStr)
-        this.hours = date.getHours()
-        this.minutes = date.getMinutes()
-        this.seconds = date.getSeconds()
+        this.splitTime(isoTimeStr)
       } else {
         this.hours = this.minutes = this.seconds = 0
       }
-      this.fixLocalValue()
+    }
+  },
+
+  created () {
+    if (this.value) {
+      this.splitDate(this.value)
+      this.splitTime(this.value)
     }
   }
 }
