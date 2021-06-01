@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0...v1.0.1) (2021-06-01)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#171](https://github.com/ecomplus/admin-marketplace/issues/171)) ([9e3b5c5](https://github.com/ecomplus/admin-marketplace/commit/9e3b5c55a329afb286ade9da2f02bb1043dba5bc))
+* **input-date-time:** prevent simultaneos input (set value) events ([#179](https://github.com/ecomplus/admin-marketplace/issues/179)) ([2f5bab7](https://github.com/ecomplus/admin-marketplace/commit/2f5bab716196d63f321ea86d8c49753e50045bef))
+
 ## [1.0.0](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.7...v1.0.0) (2021-04-22)
 
 
