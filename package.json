@@ -27,11 +27,11 @@
     "@ecomplus/utils": "^1.4.1",
     "babel-runtime": "^6.26.0",
     "bootstrap-vue": "^2.21.2",
-    "core-js": "^3.13.1",
+    "core-js": "^3.14.0",
     "lodash.clonedeep": "^4.5.0",
     "papaparse": "^5.3.1",
     "popper.js": "^1.16.1",
-    "vue": "^2.6.13",
+    "vue": "^2.6.14",
     "vue-bootstrap-typeahead": "^0.2.6",
     "vue-cleave-component": "^2.1.3",
     "vue-markdown": "^2.2.4",
@@ -48,7 +48,7 @@
     "@vue/cli-service": "^4.5.13",
     "@vue/eslint-config-standard": "^6.0.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.27.0",
+    "eslint": "^7.28.0",
     "eslint-plugin-vue": "^7.10.0",
     "husky": "^4.3.8",
     "lint-staged": "^11.0.0",
@@ -56,7 +56,7 @@
     "sass-loader": "^10.2.0",
     "standard": "^16.0.3",
     "standard-version": "^9.3.0",
-    "vue-template-compiler": "^2.6.13"
+    "vue-template-compiler": "^2.6.14"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
