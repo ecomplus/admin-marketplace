@@ -1,3 +1,3 @@
-String(service_code),Number(zip_range.min),Number(zip_range.max),Number(max_cubic_weight),Number(total_price),Number(delivery_time.days),Boolean(delivery_time.working_days),Number(min_amount),Boolean(disable_free_shipping_from),Number(excedent_weight_cost),Number(amount_tax)
-1001,1000000,39999999,100,10.50,2,TRUE,500,TRUE,10,1
-1002,1000000,39999999,200,20.50,5,FALSE,10,FALSE,20,2
+String(service_code),Number(zip_range.min),Number(zip_range.max),Number(max_cubic_weight),Number(total_price),Number(delivery_time.days),Boolean(delivery_time.working_days),Number(min_amount),Boolean(disable_free_shipping_from),Number(excedent_weight_cost),Number(amount_tax),String(from.zip)
+1001,1000000,39999999,100,10.50,2,TRUE,500,TRUE,10,1,19999999
+1002,1000000,39999999,200,20.50,5,FALSE,10,FALSE,20,2,19999999
