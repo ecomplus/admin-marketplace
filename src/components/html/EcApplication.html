@@ -13,7 +13,10 @@
             <img
               v-if="icon"
               :src="icon"
-              class="card-img-top"
+              :alt="title"
+              class="card-img-top h-auto text-white"
+              width="600"
+              height="600"
             />
             <div
               v-else
