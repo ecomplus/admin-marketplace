@@ -39,7 +39,6 @@ export default {
         return this.value ? new Date(this.value) : new Date(0, 0, 0, 0, 0, 0)
       },
       set (date) {
-        console.log(date)
         this.$emit('input', date && !isNaN(date.getTime()) && date.getFullYear() > 2000
           ? date.toISOString()
           : null)
