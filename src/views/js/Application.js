@@ -7,6 +7,14 @@ export default {
     EcApplication
   },
 
+  props: {
+    isSettingsVisible: {
+      type: Boolean,
+      default: true
+    },
+    settingsOpenCollapse: Number
+  },
+
   data () {
     return {
       application: {
@@ -39,6 +47,13 @@ export default {
     'application.title' (appTitle) {
       const pageTitle = document.title.replace(/\[[^]+\]\s·\s/, '')
       document.title = `[${appTitle.replace(/[[\]]/, '-')}] · ${pageTitle}`
+    },
+
+    application: {
+      handler () {
+        this.$emit('load', this.application)
+      },
+      deep: true
     }
   }
 }

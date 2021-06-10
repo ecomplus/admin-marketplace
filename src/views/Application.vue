@@ -2,6 +2,8 @@
   <div id="application">
     <ec-application
       :application.sync="application"
+      :is-settings-visible="isSettingsVisible"
+      :settings-open-collapse="settingsOpenCollapse"
       @click:back="goToMarket"
       @install="onInstall"
       @uninstall="goToMarket"
