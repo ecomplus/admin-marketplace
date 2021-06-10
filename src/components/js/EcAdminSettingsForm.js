@@ -26,7 +26,11 @@ export default {
         return {}
       }
     },
-    isSaving: Boolean
+    isSaving: Boolean,
+    openCollapse: {
+      type: Number,
+      default: 0
+    }
   },
 
   data () {
