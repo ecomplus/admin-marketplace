@@ -19,12 +19,14 @@ const sanitizeArray = items => {
   }
 }
 
-const sanitize = (obj, prop) => {
+const sanitize = (obj, prop, isRootObject = false) => {
   if (typeof obj === 'object' && obj !== null) {
     switch (obj[prop]) {
       case null:
       case '':
-        delete obj[prop]
+        if (!isRootObject) {
+          delete obj[prop]
+        }
         break
       default:
         if (hasNextObject(obj[prop])) {
@@ -36,7 +38,7 @@ const sanitize = (obj, prop) => {
           sanitizeArray(obj[prop])
           obj[prop] = obj[prop].filter(item => isEmptyObject(item) === false)
         }
-        if (isEmptyObject(obj[prop])) {
+        if (!isRootObject && isEmptyObject(obj[prop])) {
           delete obj[prop]
         }
     }
@@ -46,7 +48,7 @@ const sanitize = (obj, prop) => {
 export default formData => {
   const newFormData = cloneDeep(formData)
   for (const key of Object.keys(newFormData)) {
-    sanitize(newFormData, key)
+    sanitize(newFormData, key, true)
   }
   return newFormData
 }
