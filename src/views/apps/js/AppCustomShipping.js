@@ -132,7 +132,12 @@ export default {
         }
         return {
           hidden_data: {
-            shipping_rule: this.editingMethod
+            shipping_rule: {
+              ...this.editingMethod,
+              posting_deadline: {
+                days: 0
+              }
+            }
           },
           admin_settings: {
             shipping_rule: {
