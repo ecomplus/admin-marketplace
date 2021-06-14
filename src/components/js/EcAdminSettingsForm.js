@@ -223,10 +223,10 @@ export default {
     },
 
     handleSubmit () {
-      const formData = sanitize({
-        data: this.data,
-        hidden_data: this.hiddenData
-      })
+      const formData = {
+        data: sanitize(this.data),
+        hidden_data: sanitize(this.hiddenData)
+      }
       this.$emit('submit', formData)
       this.$emit('update:application', {
         ...this.application,
