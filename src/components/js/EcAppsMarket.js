@@ -98,6 +98,7 @@ export default {
             'mercado-livre',
             'vindi',
             'ideris',
+            'offers-notification',
             'app-ses'
           ].includes(app.slug))
         })

@@ -26,7 +26,11 @@ export default {
         return {}
       }
     },
-    isSaving: Boolean
+    isSaving: Boolean,
+    openCollapse: {
+      type: Number,
+      default: 0
+    }
   },
 
   data () {
@@ -191,9 +195,9 @@ export default {
             for (const head in row) {
               if (row[head]) {
                 const field = head.replace(/\w+\(([^)]+)\)/i, '$1')
-                const value = head.startsWith('Number') ? Number(row[head])
-                  : head.startsWith('Boolean') ? Boolean(row[head])
-                    : row[head]
+                const value = head.startsWith('Number')
+                  ? Number(row[head])
+                  : head.startsWith('Boolean') ? Boolean(row[head]) : row[head]
                 const fields = field.split(/[.[\]]/)
                 if (fields.length > 1) {
                   let nestedField = parsedData
@@ -219,10 +223,10 @@ export default {
     },
 
     handleSubmit () {
-      const formData = sanitize({
-        data: this.data,
-        hidden_data: this.hiddenData
-      })
+      const formData = {
+        data: sanitize(this.data),
+        hidden_data: sanitize(this.hiddenData)
+      }
       this.$emit('submit', formData)
       this.$emit('update:application', {
         ...this.application,

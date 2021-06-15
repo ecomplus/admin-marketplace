@@ -13,7 +13,10 @@
             <img
               v-if="icon"
               :src="icon"
-              class="card-img-top"
+              :alt="title"
+              class="card-img-top h-auto text-white"
+              width="600"
+              height="600"
             />
             <div
               v-else
@@ -265,11 +268,18 @@
                 key="app-settings"
               >
                 <slot name="settings">
-                  <ec-admin-settings-form
-                    :application="applicationBody"
-                    :is-saving="isSaving"
-                    @submit="editApp"
-                  />
+                  <slot name="settings-prepend"/>
+                  <b-collapse
+                      id="collapse-settings"
+                      :visible="isSettingsVisible"
+                  >
+                    <ec-admin-settings-form
+                        :application="applicationBody"
+                        :is-saving="isSaving"
+                        :open-collapse="settingsOpenCollapse"
+                        @submit="editApp"
+                    />
+                  </b-collapse>
                   <slot name="settings-append"/>
                 </slot>
               </article>

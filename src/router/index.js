@@ -5,26 +5,51 @@ import Application from '../views/Application.vue'
 
 Vue.use(VueRouter)
 
+const path = (typeof window === 'object' && window.ADMIN_MARKETPLACE_PATH) || '/apps'
+
+const genAppPath = (appId, objectId = '') => `${path}/edit/${appId}/${objectId}`
+
+const genAppRoute = appId => {
+  let beforeEnter
+  if (appId) {
+    beforeEnter = (to, from, next) => {
+      to.params.appId = appId
+      next()
+    }
+  } else {
+    appId = ':appId'
+  }
+  return {
+    path: genAppPath(appId, ':objectId?'),
+    beforeEnter
+  }
+}
+
 const routes = [
   {
-    path: '/apps',
+    path,
     name: 'marketplace',
     component: Marketplace
   },
   {
-    path: '/apps/edit/:appId/:objectId?',
-    name: 'application',
-    component: Application
-  },
-  {
-    path: '/apps/edit/126944/:objectId?',
+    ...genAppRoute(126944),
     name: 'app-mailchimp',
     component: () => import('../views/apps/AppMailchimp.vue')
   },
   {
-    path: '/apps/edit/120079/:objectId?',
+    ...genAppRoute(126944),
     name: 'app-mercado-livre',
     component: () => import('../views/apps/AppMercadoLivre/AppMercadoLivre.vue')
+  },
+  {
+    ...genAppRoute(1253),
+    name: 'app-custom-shipping',
+    component: () => import('../views/apps/AppCustomShipping.vue')
+  },
+  {
+    ...genAppRoute(),
+    name: 'application',
+    component: Application
   }
 ]
 
@@ -32,22 +57,10 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.name === 'application') {
-    switch (to.params.appId) {
-      case 126944:
-        router.push({ ...to, name: 'app-mailchimp' })
-        break
-      case 120079:
-        router.push({ ...to, name: 'app-mercado-livre' })
-        break
-    }
-  }
-  next()
-})
-
 router.afterEach(() => {
   window.dispatchEvent(new window.HashChangeEvent('hashchange'))
 })
 
 export default router
+
+export { routes, genAppPath }

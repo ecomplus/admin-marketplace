@@ -2,7 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [1.0.1](https://github.com/confere-stores/admin-marketplace/compare/v1.0.0...v1.0.1) (2021-05-07)
+## [1.1.0](https://github.com/ecomplus/admin-marketplace/compare/v1.0.1...v1.1.0) (2021-06-14)
+
+
+### Features
+
+* **admin-settings-form:** add new `openCollapse` prop and  slot ([ef3b804](https://github.com/ecomplus/admin-marketplace/commit/ef3b804daa6b3b65bb506d277a4f605a20d089c1))
+* **app-custom-shipping:** additional specific view for custom shipping app ([#173](https://github.com/ecomplus/admin-marketplace/issues/173)) ([d054a57](https://github.com/ecomplus/admin-marketplace/commit/d054a575f86c72642e8587acb7071681c1acad83))
+* **application:** make settings form collapsable and customizable by props ([7134683](https://github.com/ecomplus/admin-marketplace/commit/7134683a052bb16ae85c061af760e0a176f7ac30))
+* **application:** new `settings-prepend` slot for custom apps views ([8dc4669](https://github.com/ecomplus/admin-marketplace/commit/8dc46694c7b3b1e141ece3c390096f80bcf377a4))
+* **application-view:** props for settings form, emit `load` event with application payload ([26944e0](https://github.com/ecomplus/admin-marketplace/commit/26944e05fb1048d6c3d7aac6c0a5d6b9013d8c52))
+* **input-text:** render textarea for big string fields ([7319644](https://github.com/ecomplus/admin-marketplace/commit/7319644d2811dd883bd6ff4563f0ea13db085be4))
+
+
+### Bug Fixes
+
+* **app-custom-shipping:** unset posting deadline on mocked shipping methods ([41d8ee6](https://github.com/ecomplus/admin-marketplace/commit/41d8ee6d6cbe8c725ce979c03a47fe48d2da278b))
+* **ec-admin-settings:** must sanitize data and hidden data objects separately ([1f35afc](https://github.com/ecomplus/admin-marketplace/commit/1f35afce19c56da772bd76fe768f9ea03e021896))
+* **router:** prevent need to cancel routes for app specific views (and dry) ([db42f88](https://github.com/ecomplus/admin-marketplace/commit/db42f88c9e04420e5c570f113f965637f40ae944))
+* **sanitize:** do not delete props on root data object ([60358cd](https://github.com/ecomplus/admin-marketplace/commit/60358cddda15fe771eb0046f5fd682e6bb87d39f))
+
+### [1.0.1](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0...v1.0.1) (2021-06-01)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#171](https://github.com/ecomplus/admin-marketplace/issues/171)) ([9e3b5c5](https://github.com/ecomplus/admin-marketplace/commit/9e3b5c55a329afb286ade9da2f02bb1043dba5bc))
+* **input-date-time:** prevent simultaneos input (set value) events ([#179](https://github.com/ecomplus/admin-marketplace/issues/179)) ([2f5bab7](https://github.com/ecomplus/admin-marketplace/commit/2f5bab716196d63f321ea86d8c49753e50045bef))
 
 ## [1.0.0](https://github.com/ecomplus/admin-marketplace/compare/v1.0.0-rc.7...v1.0.0) (2021-04-22)
 

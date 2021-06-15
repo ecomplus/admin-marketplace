@@ -8,6 +8,7 @@
     >
       <div>
         <h5
+          v-if="openCollapse !== 0 || settingsFieldGroups.length > 1"
           role="button"
           class="card-title bg-light"
           v-b-toggle="'collapse-' + i"
@@ -19,7 +20,7 @@
         class="card-body"
         accordion="admin-settings"
         :id="'collapse-' + i"
-        :visible="i == 0"
+        :visible="i === openCollapse"
       >
         <div
           v-for="(config) in fields"
@@ -131,7 +132,10 @@
               :key="name"
               class="form-group"
             >
-              <label class="h6">
+              <label
+                v-if="schema.type !== 'boolean'"
+                class="h6"
+              >
                 {{ schema.title || field }}
               </label>
               <component
@@ -167,7 +171,9 @@
               class="fa fa-floppy-o"
             ></i>
           </span>
-          {{ i19save }}
+          <slot name="submit-label">
+            {{ i19save }}
+          </slot>
         </button>
       </b-collapse>
     </div>

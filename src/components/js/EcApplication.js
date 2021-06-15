@@ -1,5 +1,5 @@
 import 'core-js/modules/es.promise.all-settled'
-import { BSkeleton, BPopover } from 'bootstrap-vue'
+import { BSkeleton, BPopover, BCollapse } from 'bootstrap-vue'
 import { FadeTransition, SlideYUpTransition } from 'vue2-transitions'
 import VueMarkdown from 'vue-markdown'
 import ecomApps from '@ecomplus/apps-manager'
@@ -46,6 +46,7 @@ export default {
   components: {
     BSkeleton,
     BPopover,
+    BCollapse,
     FadeTransition,
     SlideYUpTransition,
     VueMarkdown,
@@ -58,11 +59,15 @@ export default {
       type: Object,
       default: () => ecomApps
     },
-
     application: {
       type: Object,
       default: () => ({})
-    }
+    },
+    isSettingsVisible: {
+      type: Boolean,
+      default: true
+    },
+    settingsOpenCollapse: Number
   },
 
   data () {
@@ -272,6 +277,7 @@ export default {
             'mercado-livre',
             'vindi',
             'ideris',
+            'offers-notification',
             'app-ses'
           ].includes(app.slug))
           this.appsRelated = filter || []
