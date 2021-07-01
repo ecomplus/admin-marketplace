@@ -86,7 +86,6 @@ export default {
             'wirecard',
             'pagseguro',
             'paypal',
-            'paghiper',
             'github-cd',
             'pix',
             'tiny-erp',
