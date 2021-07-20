@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/ecomplus/admin-marketplace/compare/v1.1.0...v1.2.0) (2021-07-20)
+
+
+### Features
+
+* **input-text:** check field name to handle input type password when appropriate [[#177](https://github.com/ecomplus/admin-marketplace/issues/177)] ([b400d76](https://github.com/ecomplus/admin-marketplace/commit/b400d76c965896bcba8d207537d4c6d65a8fdcb6))
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#179](https://github.com/ecomplus/admin-marketplace/issues/179)) ([045ebde](https://github.com/ecomplus/admin-marketplace/commit/045ebdefe68fb8d8ab645f6627a37403b19291a8))
+
 ## [1.1.0](https://github.com/ecomplus/admin-marketplace/compare/v1.0.1...v1.1.0) (2021-06-14)
 
 
