@@ -1,8 +1,7 @@
 <template>
   <div>
     <textarea
-      v-if="!schema.pattern && schema.maxLength > 255"
-      type="text"
+      v-if="inputType === 'text' && !schema.pattern && schema.maxLength > 255"
       class="form-control"
       :placeholder="schema.default"
       :maxlength="schema.maxLength"
@@ -12,8 +11,8 @@
     ></textarea>
     <input
       v-else
-      type="text"
       class="form-control"
+      :type="inputType"
       :placeholder="schema.default"
       :maxlength="schema.maxLength"
       :pattern="schema.pattern"
