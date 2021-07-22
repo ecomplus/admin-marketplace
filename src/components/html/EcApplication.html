@@ -85,7 +85,7 @@
                 <button
                   class="btn"
                   id="install-app"
-                  :class="[126945, 1256].includes(appId) ? 'd-none' : (isInstalled ? 'btn-outline-success btn-xs mt-2' : 'btn-success')"
+                  :class="(isInstalled ? ([126945, 1256].includes(appId) ? 'd-none' : 'btn-outline-success btn-xs mt-2') : 'btn-success')"
                   type="button"
                   @click="installApp"
                 >

@@ -47,6 +47,11 @@ const routes = [
     component: () => import('../views/apps/AppCustomShipping.vue')
   },
   {
+    ...genAppRoute(126945),
+    name: 'app-confere-pay',
+    component: () => import('../views/apps/AppConferePay.vue')
+  },
+  {
     ...genAppRoute(),
     name: 'application',
     component: Application
