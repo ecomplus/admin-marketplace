@@ -5,7 +5,7 @@ import Application from './../../Application.vue'
 import axios from 'axios'
 
 const appClient = axios.create({
-  baseURL: 'http://localhost:3400/',
+  baseURL: 'https://api.confere.com.br/',
   headers: {
     'x-store-id': $ecomConfig.get('store_id'),
     'x-my-id': localStorage.getItem('my_id'),
