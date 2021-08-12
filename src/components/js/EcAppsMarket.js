@@ -28,6 +28,10 @@ export default {
     ecomApps: {
       type: Object,
       default: () => ecomApps
+    },
+    tab: {
+      type: String,
+      default: 'market'
     }
   },
 
@@ -66,6 +70,8 @@ export default {
     tabs () {
       return {
         market: this.i19availableApps,
+        payment: 'Meios de Pagamento',
+        shipping: 'Frete e Envio',
         installed: this.i19yourInstalledApps
       }
     }
@@ -76,7 +82,9 @@ export default {
       this.loading = true
       this.loadError = false
       const isMarketApps = this.activeTabKey === 'market'
-      const promise = isMarketApps
+      const isPaymentApps = this.activeTabKey === 'payment'
+      const isShippingApps = this.activeTabKey === 'shipping'
+      const promise = isMarketApps || isPaymentApps || isShippingApps
         ? this.ecomApps.listFromMarket()
         : this.ecomApps.list()
       promise
@@ -96,10 +104,30 @@ export default {
             'pagarme',
             'mercado-livre',
             'vindi',
-            'ideris',
             'offers-notification',
             'app-ses'
           ].includes(app.slug))
+          if (isPaymentApps) {
+            this.apps = this.apps.filter((app) => [
+              'confere-pay',
+              'paghiper'
+            ].includes(app.slug))
+            const conferePayIndex = this.apps.findIndex(app => app.slug === 'confere-pay')
+            const conferePay = this.apps[conferePayIndex]
+            this.apps.splice(conferePayIndex, 1)
+            this.apps = [conferePay, ...this.apps]
+          }
+          if (isShippingApps) {
+            this.apps = this.apps.filter((app) => [
+              'correios',
+              'customshipping',
+              'melhor-envio',
+              'jadlog',
+              'manda-bem',
+              'datafrete',
+              'mandae'
+            ].includes(app.slug))
+          }
         })
         .catch(err => {
           console.error(err)
@@ -120,7 +148,7 @@ export default {
         })
         .finally(() => {
           this.loading = false
-          if (this.activeTabKey === 'market' && this.apps.length) {
+          if ((isMarketApps || isPaymentApps || isShippingApps) && this.apps.length) {
             queueUpdateApps(this.ecomApps, this.apps, this.requestManualUpdate)
           }
         })
@@ -135,6 +163,13 @@ export default {
   watch: {
     activeTabKey: {
       handler () {
+        this.updateTabContent()
+      },
+      immediate: true
+    },
+    tab: {
+      handler () {
+        this.activeTabKey = this.tab
         this.updateTabContent()
       },
       immediate: true

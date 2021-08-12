@@ -8,6 +8,13 @@ export default {
     EcAppsMarket
   },
 
+  props: {
+    tab: {
+      type: String,
+      default: 'market'
+    }
+  },
+
   methods: {
     goToApp (app) {
       this.$router.push(genAppPath(app.id || app.app_id, app._id))

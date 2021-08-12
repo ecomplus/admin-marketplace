@@ -25,6 +25,13 @@ export default {
       set (val) {
         this.$emit('input', val)
       }
+    },
+
+    inputType () {
+      const { name } = this
+      return /token/i.test(name) || /(api|private|merchant)_?key/i.test(name) || /password/i.test(name)
+        ? 'password'
+        : 'text'
     }
   },
 

@@ -1,6 +1,6 @@
 <template>
   <div id="marketplace">
-    <ec-apps-market @click:app="goToApp"/>
+    <ec-apps-market @click:app="goToApp" v-bind:tab="tab"/>
   </div>
 </template>
 
