@@ -93,11 +93,11 @@ export default {
 
           const pagHiperApp = this.apps.find(app => app.slug === 'paghiper')
           // eslint-disable-next-line camelcase
-          if (pagHiperApp?.short_description) pagHiperApp.short_description = 'Aceite pagamentos com PIX e Boletos na sua loja através da PagHiper. Crie sua conta grátis agora mesmo.'
+          if (pagHiperApp && pagHiperApp.short_description) pagHiperApp.short_description = 'Aceite pagamentos com PIX e Boletos na sua loja através da PagHiper. Crie sua conta grátis agora mesmo.'
 
           const conferePayApp = this.apps.find(app => app.slug === 'confere-pay')
           // eslint-disable-next-line camelcase
-          if (conferePayApp?.short_description) conferePayApp.short_description = 'Aceite pagamentos com cartão de crédito na sua loja através da InfinitePay. Parcele em até 12X sem juros com as melhores taxas do mercado. Crie sua conta grátis agora mesmo.'
+          if (conferePayApp && conferePayApp.short_description) conferePayApp.short_description = 'Aceite pagamentos com cartão de crédito na sua loja através da InfinitePay. Parcele em até 12X sem juros com as melhores taxas do mercado. Crie sua conta grátis agora mesmo.'
 
           this.apps = this.apps.filter((app) => ![
             'wirecard',
