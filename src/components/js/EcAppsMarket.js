@@ -70,9 +70,9 @@ export default {
     tabs () {
       return {
         market: this.i19availableApps,
+        installed: this.i19yourInstalledApps,
         payment: 'Meios de Pagamento',
-        shipping: 'Frete e Envio',
-        installed: this.i19yourInstalledApps
+        shipping: 'Frete e Envio'
       }
     }
   },
