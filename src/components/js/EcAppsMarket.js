@@ -7,11 +7,8 @@ import EcInstalledAppCard from './../EcInstalledAppCard.vue'
 import { queueUpdateApps } from '../../lib/auto-update-apps'
 
 import {
-  i19applications,
-  i19availableApps,
   i19loadDataErrorMsg,
-  i19tryAgain,
-  i19yourInstalledApps
+  i19tryAgain
 } from '@ecomplus/i18n'
 
 export default {
@@ -48,11 +45,11 @@ export default {
 
   computed: {
     i19applications () {
-      return i18n(i19applications)
+      return 'Módulos'
     },
 
     i19availableApps () {
-      return i18n(i19availableApps)
+      return 'Módulos disponíveis'
     },
 
     i19loadDataErrorMsg () {
@@ -64,7 +61,7 @@ export default {
     },
 
     i19yourInstalledApps () {
-      return i18n(i19yourInstalledApps)
+      return 'Seus módulos instalados'
     },
 
     tabs () {

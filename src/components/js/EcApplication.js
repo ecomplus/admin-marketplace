@@ -9,7 +9,6 @@ import { i18n } from '@ecomplus/utils'
 
 import {
   i19app,
-  i19appAlreadyInstalledMsg,
   i19author,
   i19back,
   i19configuration,
@@ -20,9 +19,7 @@ import {
   i19install,
   i19loadDataErrorMsg,
   i19no,
-  i19noAppsAvailable,
   i19paid,
-  i19relatedApps,
   i19savedWithSuccess,
   i19successfullyInstalled,
   i19successfullyUninstalled,
@@ -93,7 +90,7 @@ export default {
 
   computed: {
     i19app: () => i18n(i19app),
-    i19appAlreadyInstalledMsg: () => i18n(i19appAlreadyInstalledMsg),
+    i19appAlreadyInstalledMsg: () => 'O módulo já está instalado, deseja duplicar?',
     i19author: () => i18n(i19author),
     i19back: () => i18n(i19back),
     i19configuration: () => i18n(i19configuration),
@@ -103,8 +100,8 @@ export default {
     i19install: () => i18n(i19install),
     i19loadDataErrorMsg: () => i18n(i19loadDataErrorMsg),
     i19no: () => i18n(i19no),
-    i19noAppsAvailable: () => i18n(i19noAppsAvailable),
-    i19relatedApps: () => i18n(i19relatedApps),
+    i19noAppsAvailable: () => 'Não há módulos disponíveis',
+    i19relatedApps: () => 'Módulos relacionados',
     i19savedWithSuccess: () => i18n(i19savedWithSuccess),
     i19successfullyInstalled: () => i18n(i19successfullyInstalled),
     i19successfullyUninstalled: () => i18n(i19successfullyUninstalled),
@@ -189,6 +186,11 @@ export default {
   },
 
   methods: {
+    openModal () {
+      this.activeTabKey = 'configuration'
+      this.$root.$emit('openIPModal')
+    },
+
     toast (variant, body) {
       const { title } = this
       this.$bvToast.toast(body, {
