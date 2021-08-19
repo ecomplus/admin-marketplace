@@ -1,6 +1,7 @@
 import { $ecomConfig } from '@ecomplus/utils'
 import ecomApps from '@ecomplus/apps-manager'
 import EcAdminSettingsForm from './../../../components/EcAdminSettingsForm.vue'
+import WindowMessage from '../../../lib/WindowMessage'
 import Application from './../../Application.vue'
 import axios from 'axios'
 
@@ -24,6 +25,7 @@ export default {
   data () {
     return {
       showModalError: false,
+      ipModal: false,
       isSaving: false,
       application: {
         admin_settings: {}
@@ -31,7 +33,11 @@ export default {
     }
   },
 
-  computed: {},
+  computed: {
+    message () {
+      return WindowMessage.message
+    }
+  },
 
   methods: {
     handleAppLoad (application) {
@@ -61,6 +67,26 @@ export default {
         .finally(() => {
           this.isSaving = false
         })
+    }
+  },
+
+  mounted () {
+    this.$root.$on('openIPModal', () => {
+      this.ipModal = true
+    })
+  },
+
+  watch: {
+    message: {
+      handler (newMessage) {
+        if (
+          newMessage.origin !== 'http://localhost:3000' &&
+          newMessage.origin !== 'https://checkout.confere.shop' &&
+          newMessage.origin !== 'https://checkout.confere.com.br'
+        ) return
+        this.ipModal = false
+      },
+      deep: true
     }
   }
 }

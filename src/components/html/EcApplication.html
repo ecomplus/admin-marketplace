@@ -261,6 +261,15 @@
                 <vue-markdown>
                   {{ (description || `# ${title}\nApp ID: \`${appId}\``) }}
                 </vue-markdown>
+                <button
+                  class="btn btn-primary mb-2"
+                  style="width:100%"
+                  v-if="[126945].includes(appId)"
+                  @click="openModal"
+                >
+
+                  Criar conta grátis na InfinitePay
+                </button>
               </article>
 
               <article

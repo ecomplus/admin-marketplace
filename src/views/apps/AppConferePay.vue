@@ -23,7 +23,6 @@
           </div>
         </div>
       </div>
-
       <div>
         <b-modal
           v-model="showModalError"
@@ -35,6 +34,15 @@
           <p class="my-4">
             Qualquer dúvida, pode chamar eles no chat: <a href="https://infinitepay.io" target="_blank" rel="nofollow noopener noreferrer">https://infinitepay.io</a>
           </p>
+        </b-modal>
+      </div>
+      <div>
+        <b-modal
+          v-model="ipModal"
+          hide-footer
+          hide-header
+        >
+          <iframe src="https://checkout.confere.shop" style="height: 100%; min-height: 650px; border: none; width: 100%"></iframe>
         </b-modal>
       </div>
     </template>
