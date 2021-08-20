@@ -1,7 +1,7 @@
 {
   "name": "@confere-stores/admin-marketplace",
   "description": "Apps marketplace for E-Com Plus admin with Vue.js SPA",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
