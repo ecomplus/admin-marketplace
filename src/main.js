@@ -11,7 +11,7 @@ Vue.use(ModalPlugin)
 
 Vue.config.productionTip = false
 
-document.domain = 'confere.shop'
+if (window.location.host.includes('confere.shop')) document.domain = 'confere.shop'
 
 new Vue({
   router,
