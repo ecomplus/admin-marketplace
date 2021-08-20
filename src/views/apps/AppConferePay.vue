@@ -42,7 +42,7 @@
           hide-footer
           hide-header
         >
-          <iframe src="https://checkout.confere.shop" style="height: 100%; min-height: 650px; border: none; width: 100%"></iframe>
+          <iframe src="admin.confere.shop" style="height: 100%; min-height: 650px; border: none; width: 100%"></iframe>
         </b-modal>
       </div>
     </template>
