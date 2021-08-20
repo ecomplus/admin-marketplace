@@ -24,6 +24,7 @@ export default {
 
   data () {
     return {
+      currentUrl: location.toString() || 'homolog-admin.confere.shop',
       showModalError: false,
       ipModal: false,
       isSaving: false,
