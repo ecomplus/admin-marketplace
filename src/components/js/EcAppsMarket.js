@@ -114,11 +114,12 @@ export default {
             'app-ses'
           ].includes(app.slug))
           if (isPaymentApps) {
+            console.log(this.apps)
             this.apps = this.apps.filter((app) => [
-              'confere-pay',
-              'paghiper'
-            ].includes(app.slug))
-            const conferePayIndex = this.apps.findIndex(app => app.slug === 'confere-pay')
+              126945,
+              1251
+            ].includes(app.id))
+            const conferePayIndex = this.apps.findIndex(app => app.id === 126945)
             const conferePay = this.apps[conferePayIndex]
             this.apps.splice(conferePayIndex, 1)
             this.apps = [conferePay, ...this.apps]
