@@ -37,6 +37,10 @@ export default {
   computed: {
     message () {
       return WindowMessage.message
+    },
+    confereData () {
+      if (!window.confereData) return window.confereLogin()
+      return window.confereData
     }
   },
 

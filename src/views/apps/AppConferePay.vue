@@ -42,7 +42,7 @@
           hide-footer
           hide-header
         >
-          <iframe :src="currentUrl.includes('admin.confere.shop') ? 'https://checkout.confere.shop' : 'https://checkout.confere.com.br'" style="height: 100%; min-height: 650px; border: none; width: 100%"></iframe>
+          <iframe :src="currentUrl.includes('admin.confere.shop') ? `https://checkout.confere.shop?userId=${confereData.id}` : `https://checkout.confere.com.br?userId=${confereData.id}`" style="height: 100%; min-height: 650px; border: none; width: 100%"></iframe>
         </b-modal>
       </div>
     </template>
