@@ -47,7 +47,13 @@ export default {
   methods: {
     openCreateModal () {
       this.showModalError = false
+      this.loadConfereData()
       this.ipModal = true
+    },
+
+    loadConfereData () {
+      if (!window.confereData) return window.confereLogin()
+      return window.confereData
     },
 
     handleAppLoad (application) {
