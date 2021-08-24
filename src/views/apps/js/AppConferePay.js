@@ -45,6 +45,11 @@ export default {
   },
 
   methods: {
+    openCreateModal () {
+      this.showModalError = false
+      this.ipModal = true
+    },
+
     handleAppLoad (application) {
       this.application = application
     },

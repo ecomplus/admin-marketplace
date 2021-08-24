@@ -27,13 +27,22 @@
         <b-modal
           v-model="showModalError"
           title="Conta não encontrada"
+          hide-footer
         >
           <p class="my-4">
             Sua conta ainda não foi habilitada na Infinitepay. Verifique se o seu cadastro foi aprovado com a InfinitePay e tente novamente.
           </p>
           <p class="my-4">
-            Qualquer dúvida, pode chamar eles no chat: <a href="https://infinitepay.io" target="_blank" rel="nofollow noopener noreferrer">https://infinitepay.io</a>
+            Qualquer dúvida, nos chame no <a href="#" onclick="'window.intercom && window.intercom.show()'">chat</a>!
           </p>
+
+          <button
+            class="btn btn-primary mb-2"
+            style="width:100%"
+            @click="openCreateModal"
+          >
+            Criar conta grátis na InfinitePay
+          </button>
         </b-modal>
       </div>
       <div>
