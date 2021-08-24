@@ -91,7 +91,7 @@ export default {
           newMessage.origin !== 'https://checkout.confere.shop' &&
           newMessage.origin !== 'https://checkout.confere.com.br' &&
           newMessage.data !== 'closeModal'
-        ) return
+        ) return false
         this.ipModal = false
       },
       deep: true
