@@ -87,9 +87,15 @@ export default {
     message: {
       handler (newMessage) {
         if (
+          !newMessage.origin ||
+          !newMessage.data
+        ) return false
+        else if (
           newMessage.origin !== 'http://localhost:3000' &&
           newMessage.origin !== 'https://checkout.confere.shop' &&
-          newMessage.origin !== 'https://checkout.confere.com.br' &&
+          newMessage.origin !== 'https://checkout.confere.com.br'
+        ) return false
+        else if (
           newMessage.data !== 'closeModal'
         ) return false
         else this.ipModal = false
