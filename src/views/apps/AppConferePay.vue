@@ -1,10 +1,10 @@
 <template>
   <Application
-    :is-settings-visible="!!(application.data && application.data.merchant_key)"
+    :is-settings-visible="!!(application.data && application.data.merchant_key && application.data.merchant_key.length)"
     @load="handleAppLoad"
   >
     <template
-      v-if="!(application.data && application.data.merchant_key)"
+      v-if="!(application.data && application.data.merchant_key && application.data.merchant_key.length)"
       #settings-prepend
     >
       <div class="mt-4">
