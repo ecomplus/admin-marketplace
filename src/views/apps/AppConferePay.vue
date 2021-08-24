@@ -33,7 +33,7 @@
             Sua conta ainda não foi habilitada na Infinitepay. Verifique se o seu cadastro foi aprovado com a InfinitePay e tente novamente.
           </p>
           <p class="my-4">
-            Qualquer dúvida, nos chame no <a href="#" onclick="'window.intercom && window.intercom.show()'">chat</a>!
+            Qualquer dúvida, nos chame no <a href="#" onclick="'window.Intercom && window.Intercom(\'show\')'">chat</a>!
           </p>
 
           <button
