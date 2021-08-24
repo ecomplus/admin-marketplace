@@ -51,6 +51,7 @@ export default {
 
     integrateIp () {
       this.isSaving = true
+      if (!this.application.data) this.application.data = {}
       const editingData = this.application.data
       appClient({
         url: '/store/integrateIP',
@@ -60,10 +61,11 @@ export default {
         }
       })
         .then(({ data }) => {
-          ecomApps.edit(this.application._id, { data: data })
+          return ecomApps.edit(this.application._id, { data: data })
             .then(() => {
               Object.assign(editingData, data)
-              window.location.reload()
+              window.location.reload(true)
+              return data
             })
         })
         .catch(() => {
