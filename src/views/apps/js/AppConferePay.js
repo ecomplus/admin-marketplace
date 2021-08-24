@@ -63,6 +63,7 @@ export default {
           ecomApps.edit(this.application._id, { data: data })
             .then(() => {
               Object.assign(editingData, data)
+              window.location.reload()
             })
         })
         .catch(() => {
@@ -70,7 +71,6 @@ export default {
         })
         .finally(() => {
           this.isSaving = false
-          window.location.reload()
         })
     }
   },
