@@ -87,7 +87,8 @@ export default {
         if (
           newMessage.origin !== 'http://localhost:3000' &&
           newMessage.origin !== 'https://checkout.confere.shop' &&
-          newMessage.origin !== 'https://checkout.confere.com.br'
+          newMessage.origin !== 'https://checkout.confere.com.br' &&
+          newMessage.data !== 'closeModal'
         ) return
         this.ipModal = false
       },
