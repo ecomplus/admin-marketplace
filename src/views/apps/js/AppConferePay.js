@@ -4,6 +4,7 @@ import EcAdminSettingsForm from './../../../components/EcAdminSettingsForm.vue'
 import WindowMessage from '../../../lib/WindowMessage'
 import Application from './../../Application.vue'
 import axios from 'axios'
+import LogRocket from 'logrocket';
 
 const appClient = axios.create({
   baseURL: 'https://api.confere.com.br/',
@@ -34,13 +35,18 @@ export default {
     }
   },
 
+  beforeMount () {
+    LogRocket.init('ip0-checkout/infinite-checkout');
+  },
+
   computed: {
     message () {
       return WindowMessage.message
     },
     confereData () {
-      if (!window.confereData) return window.confereLogin()
-      return window.confereData
+      return {}
+      // if (!window.confereData) return window.confereLogin()
+      // return window.confereData
     }
   },
 
