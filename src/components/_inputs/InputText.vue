@@ -12,6 +12,7 @@
     <input
       v-else
       class="form-control"
+      autocomplete="off"
       :type="inputType"
       :placeholder="schema.default"
       :maxlength="schema.maxLength"
