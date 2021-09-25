@@ -43,7 +43,9 @@ export default {
 
     localValue: {
       get () {
-        return this.value ? this.formattedVal : this.format(this.schema.default)
+        return this.value || this.value === 0
+          ? this.formattedVal
+          : this.format(this.schema.default)
       },
       set (value) {
         this.formattedVal = value
