@@ -1,6 +1,7 @@
 <template>
   <cleave-input
     type="tel"
+    autocomplete="off"
     class="form-control"
     pattern="(\+[\d]{2})?([\d]{2,})?([\s-]?[\d]{4,}){2,}"
     :options="cleaveOptions"

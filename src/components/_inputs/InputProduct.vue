@@ -1,6 +1,7 @@
 <template>
   <vue-bootstrap-typeahead
     type="text"
+    autocomplete="off"
     class="form-control"
     :data="products"
     :serializer="({ sku, name }) => `${name} (${sku})`"

@@ -4,6 +4,7 @@
     class="form-control"
     style="max-width: 120px"
     type="number"
+    autocomplete="off"
     :name="name"
     :max="schema.maximum"
     :min="schema.minimum"
