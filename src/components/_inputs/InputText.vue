@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="position-relative">
     <textarea
-      v-if="inputType === 'text' && !schema.pattern && schema.maxLength > 255"
+      v-if="!isPassword && !schema.pattern && schema.maxLength > 255"
       class="form-control"
       :placeholder="schema.default"
       :maxlength="schema.maxLength"
@@ -20,6 +20,14 @@
       v-model="localValue"
       @blur="$emit('blur')"
     >
+
+    <i
+      v-if="isPassword"
+      class="fa position-absolute"
+      :class="inputType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
+      style="cursor: pointer; right: 7px; top: 12px"
+      @click="inputType = (inputType === 'password' ? 'text' : 'password')"
+    ></i>
   </div>
 </template>
 
