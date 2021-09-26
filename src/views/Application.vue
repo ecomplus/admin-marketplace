@@ -1,9 +1,11 @@
 <template>
   <div id="application">
     <ec-application
+      :key="application.app_id"
       :application.sync="application"
       :is-settings-visible="isSettingsVisible"
       :settings-open-collapse="settingsOpenCollapse"
+      @click:app="goToApp"
       @click:back="goToMarket"
       @install="onInstall"
       @uninstall="goToMarket"
