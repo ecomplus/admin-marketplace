@@ -261,7 +261,7 @@ export default {
       this.ecomApps.listFromMarket({ params: { category: this.category } })
         .then(resp => {
           const { result } = resp
-          const filter = result.filter(app => app.app_id !== this.appId)
+          const filter = result.filter(app => app.id !== this.appId)
           this.appsRelated = filter || []
         })
         .catch(e => {
