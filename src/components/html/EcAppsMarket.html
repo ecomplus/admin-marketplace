@@ -55,7 +55,7 @@
             :key="`app-${i}`"
           >
             <component
-              :is="activeTabKey === 'market' ? 'ec-app-card' : 'ec-installed-app-card'"
+              :is="activeTabKey === 'installed' ? 'ec-installed-app-card' : 'ec-app-card'"
               :app.sync="apps[i]"
               :ecomApps="ecomApps"
               :has-new-version="appsToUpdate.includes(app.app_id || app.id)"

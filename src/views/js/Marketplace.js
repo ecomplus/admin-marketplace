@@ -4,6 +4,12 @@ import { genAppPath } from './../../router/'
 export default {
   name: 'Marketplace',
 
+  computed: {
+    nextTab () {
+      return this.$route.params.tab
+    }
+  },
+
   components: {
     EcAppsMarket
   },

@@ -9,7 +9,9 @@ import { queueUpdateApps } from '../../lib/auto-update-apps'
 import {
   i19applications,
   i19availableApps,
+  i19delivery,
   i19loadDataErrorMsg,
+  i19payment,
   i19tryAgain,
   i19yourInstalledApps
 } from '@ecomplus/i18n'
@@ -25,6 +27,7 @@ export default {
   },
 
   props: {
+    nextTab: String,
     ecomApps: {
       type: Object,
       default: () => ecomApps
@@ -43,30 +46,20 @@ export default {
   },
 
   computed: {
-    i19applications () {
-      return i18n(i19applications)
-    },
-
-    i19availableApps () {
-      return i18n(i19availableApps)
-    },
-
-    i19loadDataErrorMsg () {
-      return i18n(i19loadDataErrorMsg)
-    },
-
-    i19tryAgain () {
-      return i18n(i19tryAgain)
-    },
-
-    i19yourInstalledApps () {
-      return i18n(i19yourInstalledApps)
-    },
+    i19applications: () => i18n(i19applications),
+    i19availableApps: () => i18n(i19availableApps),
+    i19delivery: () => i18n(i19delivery),
+    i19loadDataErrorMsg: () => i18n(i19loadDataErrorMsg),
+    i19payment: () => i18n(i19payment),
+    i19tryAgain: () => i18n(i19tryAgain),
+    i19yourInstalledApps: () => i18n(i19yourInstalledApps),
 
     tabs () {
       return {
         market: this.i19availableApps,
-        installed: this.i19yourInstalledApps
+        installed: this.i19yourInstalledApps,
+        sales: this.i19payment,
+        shipping: this.i19delivery
       }
     }
   },
@@ -75,9 +68,15 @@ export default {
     updateTabContent () {
       this.loading = true
       this.loadError = false
-      const isMarketApps = this.activeTabKey === 'market'
+      const isMarketApps = this.activeTabKey !== 'installed'
       const promise = isMarketApps
-        ? this.ecomApps.listFromMarket()
+        ? this.ecomApps.listFromMarket({
+            params: {
+              category: this.activeTabKey !== 'market'
+                ? this.activeTabKey
+                : undefined
+            }
+          })
         : this.ecomApps.list()
       promise
         .then(data => {
@@ -115,6 +114,15 @@ export default {
   },
 
   watch: {
+    nextTab: {
+      handler (tabKey) {
+        this.activeTabKey = tabKey && this.tabs[tabKey]
+          ? tabKey
+          : 'market'
+      },
+      immediate: true
+    },
+
     activeTabKey: {
       handler () {
         this.updateTabContent()

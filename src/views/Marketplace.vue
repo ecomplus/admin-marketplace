@@ -1,6 +1,9 @@
 <template>
   <div id="marketplace">
-    <ec-apps-market @click:app="goToApp"/>
+    <ec-apps-market
+      :next-tab="nextTab"
+      @click:app="goToApp"
+    />
   </div>
 </template>
 

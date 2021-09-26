@@ -27,7 +27,8 @@ const genAppRoute = appId => {
 
 const routes = [
   {
-    path,
+    path: `${path}/tab/:tab?`,
+    alias: path,
     name: 'marketplace',
     component: Marketplace
   },
