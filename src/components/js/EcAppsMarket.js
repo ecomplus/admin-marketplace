@@ -28,6 +28,7 @@ export default {
 
   props: {
     nextTab: String,
+    additionalApps: Array,
     skippedApps: {
       type: Array,
       default () {
