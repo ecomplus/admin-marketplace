@@ -28,9 +28,23 @@ export default {
 
   props: {
     nextTab: String,
+    skippedApps: {
+      type: Array,
+      default () {
+        return window.ecomMarketSkippedApps
+      }
+    },
+    canDeleteSkippedApps: {
+      type: Boolean,
+      default () {
+        return Boolean(window.ecomMarketDeleteSkippedApps)
+      }
+    },
     ecomApps: {
       type: Object,
-      default: () => ecomApps
+      default () {
+        return ecomApps
+      }
     }
   },
 
@@ -41,6 +55,7 @@ export default {
       errorMessage: '',
       activeTabKey: 'market',
       apps: [],
+      marketApps: null,
       appsToUpdate: []
     }
   },
@@ -70,17 +85,37 @@ export default {
       this.loadError = false
       const isMarketApps = this.activeTabKey !== 'installed'
       const promise = isMarketApps
-        ? this.ecomApps.listFromMarket({
-            params: {
-              category: this.activeTabKey !== 'market'
-                ? this.activeTabKey
-                : undefined
-            }
-          })
+        ? !this.marketApps
+            ? this.ecomApps.listFromMarket()
+            : Promise.resolve(this.marketApps)
         : this.ecomApps.list()
       promise
         .then(data => {
           this.apps = data.result || data
+          if (isMarketApps) {
+            if (!this.marketApps) {
+              this.marketApps = this.apps.concat()
+              if (this.marketApps.length) {
+                queueUpdateApps(this.ecomApps, this.marketApps, this.requestManualUpdate)
+              }
+            }
+            if (this.activeTabKey !== 'market') {
+              this.apps = this.apps.filter(({ category }) => category === this.activeTabKey)
+            }
+          }
+          if (Array.isArray(this.skippedApps)) {
+            this.apps = this.apps.filter(app => {
+              const isSkipped = this.skippedApps.includes(app.id || app.app_id)
+              if (isSkipped && !isMarketApps) {
+                if (this.canDeleteSkippedApps) {
+                  this.ecomApps.remove(this.app._id).catch(console.error)
+                } else {
+                  window.alert(`${app.title} should not be installed`)
+                }
+              }
+              return !isSkipped
+            })
+          }
         })
         .catch(err => {
           console.error(err)
@@ -101,16 +136,12 @@ export default {
         })
         .finally(() => {
           this.loading = false
-          if (this.activeTabKey === 'market' && this.apps.length) {
-            queueUpdateApps(this.ecomApps, this.apps, this.requestManualUpdate)
-          }
         })
     },
 
     requestManualUpdate (app) {
       this.appsToUpdate.push(app.app_id)
     }
-
   },
 
   watch: {
