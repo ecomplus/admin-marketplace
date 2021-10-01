@@ -27,7 +27,7 @@
     "@ecomplus/utils": "^1.4.1",
     "babel-runtime": "^6.26.0",
     "bootstrap-vue": "^2.21.2",
-    "core-js": "^3.18.0",
+    "core-js": "^3.18.1",
     "lodash.clonedeep": "^4.5.0",
     "papaparse": "^5.3.1",
     "popper.js": "^1.16.1",
@@ -39,8 +39,8 @@
     "vue2-transitions": "^0.3.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
+    "@commitlint/cli": "^13.2.0",
+    "@commitlint/config-conventional": "^13.2.0",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.5.13",
     "@vue/cli-plugin-router": "^4.5.13",
