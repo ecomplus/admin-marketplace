@@ -19,9 +19,14 @@
   />
   <div
     v-else
-    class="d-flex justify-content-center align-items-center py-5 my-md-4 h3 text-muted"
+    class="position-relative embed-responsive embed-responsive-1by1 bg-light opacity-60"
   >
-    <i class="fa fa-picture-o"></i>
+    <div
+        class="position-absolute d-flex justify-content-center align-items-center py-5 my-md-4 fs-60"
+        style="top: 0; width: 100%"
+    >
+      <i class="fa fa-picture-o"></i>
+    </div>
   </div>
 
   <div class="card-body overflow-hidden">
@@ -47,7 +52,7 @@
       class="text-info"
       v-else
     >
-      {{ i19paid }}
+      {{ (typeof app.paid === 'string' ? app.paid : i19paid) }}
     </h6>
 
     <span

@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/ecomplus/admin-marketplace/compare/v1.3.0...v1.3.1) (2021-09-29)
+
+
+### Bug Fixes
+
+* **imports:** prevent invalid @ecomplus/auth named import ([c38cb96](https://github.com/ecomplus/admin-marketplace/commit/c38cb96c0300bb6558aec2185c092f7e9407ba88))
+
+## [1.3.0](https://github.com/ecomplus/admin-marketplace/compare/v1.2.0...v1.3.0) (2021-09-28)
+
+
+### Features
+
+* **ec-app-card:** support for custom mocked apps ([2f6ae66](https://github.com/ecomplus/admin-marketplace/commit/2f6ae6643ad637e177538da5d23e0d0e7c29473d))
+* **ec-apps-market:** add new `additionalApps` prop for mocked apps [[#178](https://github.com/ecomplus/admin-marketplace/issues/178)] ([da3bed3](https://github.com/ecomplus/admin-marketplace/commit/da3bed3bae66013569f36907c099f8cfb22f78f1))
+* **ec-apps-market:** optional new `skippedApps` and `canDeleteSkippedApps` (default from window) ([4962246](https://github.com/ecomplus/admin-marketplace/commit/49622467dbb61b7df4f72ecaae87dc7189b088fe))
+* **input-text:** toggle input type password/text [[#190](https://github.com/ecomplus/admin-marketplace/issues/190)] ([e992963](https://github.com/ecomplus/admin-marketplace/commit/e99296315a140ed6500fdcaa8ed4885868df158d))
+* **marketplace:** new sales/shipping tabs and optional route param ([d1e8d95](https://github.com/ecomplus/admin-marketplace/commit/d1e8d959521ded2bbd8317aa78eca2ac6193cbc6))
+* **mocked-apps:** first mocked apps for storefront and partner integrations on marketplace [[#178](https://github.com/ecomplus/admin-marketplace/issues/178)] ([df35dbb](https://github.com/ecomplus/admin-marketplace/commit/df35dbbefc95800c97d5d0e42b30f87de4d017f4))
+
+
+### Bug Fixes
+
+* **application:** properly push new route and render application again on new app click ([0f4c4e0](https://github.com/ecomplus/admin-marketplace/commit/0f4c4e0fdda5df0aac2b40a8474a02af10d99e9a))
+* **auto-update-apps:** better checking major version [[#182](https://github.com/ecomplus/admin-marketplace/issues/182)] ([71ad0c3](https://github.com/ecomplus/admin-marketplace/commit/71ad0c356b15caa59819a1bc4f181393149f78a3))
+* **deps:** update all non-major dependencies ([#189](https://github.com/ecomplus/admin-marketplace/issues/189)) ([7a45f29](https://github.com/ecomplus/admin-marketplace/commit/7a45f29ff4d4d91a96fcc789e52fe62a6ec54544))
+* **ec-application:** fix filtering related apps (different id) ([957df1a](https://github.com/ecomplus/admin-marketplace/commit/957df1aa251a534c7eacda8bb79b238414c4c814))
+* **input-text:** prevent anoying browser save password option [[#186](https://github.com/ecomplus/admin-marketplace/issues/186)] ([0a33c3a](https://github.com/ecomplus/admin-marketplace/commit/0a33c3a1d9db1452d4ba01a72cdb51e987342a6f))
+* **input-zip-range:** accept value 0 [[#191](https://github.com/ecomplus/admin-marketplace/issues/191)] ([039f0fa](https://github.com/ecomplus/admin-marketplace/commit/039f0fa989038f311f754a09b1d6135910f31e52))
+
 ## [1.2.0](https://github.com/ecomplus/admin-marketplace/compare/v1.1.0...v1.2.0) (2021-07-20)
 
 

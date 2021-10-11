@@ -22,6 +22,20 @@ export default {
   },
 
   props: {
+    nextTab: String,
+    additionalApps: Array,
+    skippedApps: {
+      type: Array,
+      default () {
+        return window.ecomMarketSkippedApps
+      }
+    },
+    canDeleteSkippedApps: {
+      type: Boolean,
+      default () {
+        return Boolean(window.ecomMarketDeleteSkippedApps)
+      }
+    },
     ecomApps: {
       type: Object,
       default: () => ecomApps
@@ -39,6 +53,7 @@ export default {
       errorMessage: '',
       activeTabKey: 'market',
       apps: [],
+      marketApps: null,
       appsToUpdate: []
     }
   },
@@ -68,7 +83,7 @@ export default {
       return {
         market: this.i19availableApps,
         installed: this.i19yourInstalledApps,
-        payment: 'Meios de Pagamento',
+        sales: 'Meios de Pagamento',
         shipping: 'Frete e Envio'
       }
     }
@@ -78,15 +93,44 @@ export default {
     updateTabContent () {
       this.loading = true
       this.loadError = false
-      const isMarketApps = this.activeTabKey === 'market'
-      const isPaymentApps = this.activeTabKey === 'payment'
+      const isMarketApps = this.activeTabKey !== 'installed'
+      const isPaymentApps = this.activeTabKey === 'sales'
       const isShippingApps = this.activeTabKey === 'shipping'
-      const promise = isMarketApps || isPaymentApps || isShippingApps
-        ? this.ecomApps.listFromMarket()
+      const promise = isMarketApps
+        ? !this.marketApps
+            ? this.ecomApps.listFromMarket()
+            : Promise.resolve(this.marketApps)
         : this.ecomApps.list()
       promise
         .then(data => {
           this.apps = data.result || data
+
+          if (isMarketApps) {
+            if (!this.marketApps) {
+              this.marketApps = this.apps.concat()
+              if (this.marketApps.length) {
+                queueUpdateApps(this.ecomApps, this.marketApps, this.requestManualUpdate)
+              }
+            }
+            if (this.activeTabKey !== 'market') {
+              const activeCategory = this.activeTabKey === 'payment' ? 'sales' : this.activeTabKey
+              this.apps = this.apps.filter(({ category }) => category === activeCategory)
+            }
+          }
+          console.log('skippedApps', this.skippedApps)
+          if (Array.isArray(this.skippedApps)) {
+            this.apps = this.apps.filter(app => {
+              const isSkipped = this.skippedApps.includes(app.id || app.app_id)
+              if (isSkipped && !isMarketApps) {
+                if (this.canDeleteSkippedApps) {
+                  this.ecomApps.remove(this.app._id).catch(console.error)
+                } else {
+                  window.alert(`${app.title} should not be installed`)
+                }
+              }
+              return !isSkipped
+            })
+          }
 
           const pagHiperApp = this.apps.find(app => app.slug === 'paghiper')
           // eslint-disable-next-line camelcase
@@ -102,11 +146,9 @@ export default {
             'paypal',
             'github-cd',
             'pix',
-            'tiny-erp',
             'custom-payment',
             'infinitepay',
             'mercado-pago',
-            'bling-erp',
             'pagarme',
             'mercado-livre',
             'vindi',
@@ -114,7 +156,6 @@ export default {
             'app-ses'
           ].includes(app.slug))
           if (isPaymentApps) {
-            console.log(this.apps)
             this.apps = this.apps.filter((app) => [
               126945,
               1251
@@ -155,25 +196,31 @@ export default {
         })
         .finally(() => {
           this.loading = false
-          if ((isMarketApps || isPaymentApps || isShippingApps) && this.apps.length) {
-            queueUpdateApps(this.ecomApps, this.apps, this.requestManualUpdate)
-          }
         })
     },
 
     requestManualUpdate (app) {
       this.appsToUpdate.push(app.app_id)
     }
-
   },
 
   watch: {
+    nextTab: {
+      handler (tabKey) {
+        this.activeTabKey = tabKey && this.tabs[tabKey]
+          ? tabKey
+          : 'market'
+      },
+      immediate: true
+    },
+
     activeTabKey: {
       handler () {
         this.updateTabContent()
       },
       immediate: true
     },
+
     tab: {
       handler () {
         this.activeTabKey = this.tab

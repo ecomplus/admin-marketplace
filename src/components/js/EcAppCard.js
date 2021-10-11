@@ -12,18 +12,18 @@ export default {
   props: {
     app: {
       type: Object,
-      default: {}
+      default () {
+        return {}
+      }
     },
 
     descriptionMaxLength: {
       type: Number,
-      default: 75
+      default: 80
     },
 
-    hasNewVersion: {
-      type: Boolean,
-      default: false
-    }
+    hasNewVersion: Boolean,
+    isMockedApp: Boolean
   },
 
   computed: {
@@ -35,7 +35,7 @@ export default {
       return i18n(i19paid)
     },
 
-    i19outOfDate() {
+    i19outOfDate () {
       return i18n(i19outOfDate)
     },
 
@@ -45,7 +45,7 @@ export default {
 
     iconUrl () {
       if (this.app.icon) {
-        if (!this.app.icon.startsWith('https://')) {
+        if (!this.isMockedApp && !this.app.icon.startsWith('https://')) {
           return `https://market.e-com.plus${this.app.icon}`
         }
         return this.app.icon

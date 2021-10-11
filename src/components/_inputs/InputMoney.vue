@@ -2,6 +2,7 @@
   <cleave-input
     class="form-control"
     style="width: 120px"
+    autocomplete="off"
     :options="cleaveOptions"
     v-model="localValue"
   />

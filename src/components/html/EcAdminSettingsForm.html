@@ -1,5 +1,8 @@
 <div>
-  <form @submit.prevent="handleSubmit">
+  <form
+    autocomplete="off"
+    @submit.prevent="handleSubmit"
+  >
     <div
       role="tablist"
       v-for="({ header, description, fields }, i) in settingsFieldGroups"

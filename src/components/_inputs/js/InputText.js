@@ -17,6 +17,12 @@ export default {
     }
   },
 
+  data () {
+    return {
+      inputType: ''
+    }
+  },
+
   computed: {
     localValue: {
       get () {
@@ -27,12 +33,17 @@ export default {
       }
     },
 
-    inputType () {
+    isPassword () {
       const { name } = this
-      return /token/i.test(name) || /(api|private|merchant)_?key/i.test(name) || /password/i.test(name)
-        ? 'password'
-        : 'text'
+      return /token/i.test(name) ||
+        /(api|private)_?key/i.test(name) ||
+        /password/i.test(name) ||
+        /encryption/i.test(name)
     }
+  },
+
+  created () {
+    this.inputType = this.isPassword ? 'password' : 'text'
   },
 
   mounted () {

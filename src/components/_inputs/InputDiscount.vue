@@ -14,6 +14,7 @@
           name="value"
           class="form-control"
           type="number"
+          autocomplete="off"
           :value="value.value"
           @input="e => update('value', parseFloat(e.target.value))"
           min="0"

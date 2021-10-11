@@ -26,7 +26,7 @@ export default {
   methods: {
     update (key, value) {
       const zipRange = { ...this.value }
-      if (!value) {
+      if (!value && value !== 0) {
         delete zipRange[key]
       } else {
         zipRange[key] = value

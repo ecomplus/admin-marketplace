@@ -55,7 +55,7 @@
             :key="`app-${i}`"
           >
             <component
-              :is="activeTabKey === 'market' ? 'ec-app-card' : activeTabKey === 'payment' ? 'ec-app-card' : activeTabKey === 'shipping' ? 'ec-app-card' : 'ec-installed-app-card'"
+              :is="activeTabKey === 'installed' ? 'ec-installed-app-card' : 'ec-app-card'"
               :app.sync="apps[i]"
               :ecomApps="ecomApps"
               :has-new-version="appsToUpdate.includes(app.app_id || app.id)"
@@ -64,8 +64,32 @@
             />
           </div>
         </div>
+
+        <div v-if="additionalApps && activeTabKey === 'market'">
+          <div
+            v-for="({ listTitle, apps }, i) in additionalApps"
+            :key="`mock-apps-${i}`"
+          >
+            <hr>
+            <h3>{{ listTitle }}</h3>
+            <div class="row mt-4">
+              <div
+                class="col-6 col-md-4 col-lg-3"
+                v-for="(app, i) in apps"
+                :key="`mock-app-${i}`"
+              >
+                <ec-app-card
+                  class="mb-4"
+                  :app="app"
+                  is-mocked-app
+                  @click="app.clicked"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </article>
-    </div>
+     </div>
   </fade-transition>
 
   <div

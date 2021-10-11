@@ -1,4 +1,5 @@
 import EcApplication from './../../components/EcApplication.vue'
+import { genAppPath } from './../../router/'
 
 export default {
   name: 'Application',
@@ -18,8 +19,8 @@ export default {
   data () {
     return {
       application: {
-        app_id: this.$route.params.appId,
-        _id: this.$route.params.objectId,
+        app_id: '',
+        _id: '',
         title: ''
       }
     }
@@ -40,10 +41,25 @@ export default {
       this.$router.push({
         name: 'marketplace'
       })
+    },
+
+    goToApp (app) {
+      this.$router.push(genAppPath(app.id || app.app_id, app._id))
     }
   },
 
   watch: {
+    '$route.params.appId': {
+      handler (appId) {
+        this.application = {
+          app_id: Number(appId),
+          _id: this.$route.params.objectId,
+          title: ''
+        }
+      },
+      immediate: true
+    },
+
     'application.title' (appTitle) {
       const pageTitle = document.title.replace(/\[[^]+\]\s·\s/, '')
       document.title = `[${appTitle.replace(/[[\]]/, '-')}] · ${pageTitle}`

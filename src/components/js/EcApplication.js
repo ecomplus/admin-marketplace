@@ -263,17 +263,15 @@ export default {
       this.ecomApps.listFromMarket({ params: { category: this.category } })
         .then(resp => {
           const { result } = resp
-          const filter = result.filter(app => app.app_id !== this.appId).filter((app) => ![
+          const filter = result.filter(app => app.id !== this.appId).filter((app) => ![
             'wirecard',
             'pagseguro',
             'paypal',
             'github-cd',
             'pix',
-            'tiny-erp',
             'custom-payment',
             'infinitepay',
             'mercado-pago',
-            'bling-erp',
             'pagarme',
             'mercado-livre',
             'vindi',

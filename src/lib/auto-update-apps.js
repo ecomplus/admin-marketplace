@@ -1,5 +1,6 @@
 const isMinor = (newVersion, oldVersion) => {
-  return newVersion.split('.')[0] === oldVersion.split('.')[0]
+  const getMajor = v => String(v).split('.')[0].trim()
+  return getMajor(newVersion) === getMajor(oldVersion)
 }
 
 const findOutdatedApps = (ecomApps, marketApps) => {

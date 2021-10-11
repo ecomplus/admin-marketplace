@@ -1,6 +1,7 @@
 <template>
   <cleave-input
     type="tel"
+    autocomplete="off"
     class="form-control"
     style="max-width: 135px"
     pattern="[\d/-]{10}"
