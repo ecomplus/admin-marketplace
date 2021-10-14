@@ -402,6 +402,17 @@ export default {
     }
     const loadPromises = []
     const { applicationBody } = this
+    if (
+      [114142, 105922].includes(applicationBody.app_id) &&
+      applicationBody.description
+    ) {
+      applicationBody.description = applicationBody.description
+        .replace(/E-Com Plus/g, 'Confere Shop')
+        .replace(/Ecom/g, 'ConfereShop')
+        .replace(/https:\/\/app\.e-com\.plus/g, 'https://admin.confere.shop')
+        .replace('(use o cupom **ConfereShopClub**30 dias grátis + 3 meses com 50% OFF em qualquer plano Tiny)', '')
+        .replace('Escolha **Confere Shop** e clique em **Salvar**, conforme:', 'Escolha **E-Com Plus** e clique em **Salvar**, conforme:')
+    }
     if (applicationBody.app_id && !applicationBody.author_id) {
       loadPromises.push(this.fetchMarketApplication())
     }
