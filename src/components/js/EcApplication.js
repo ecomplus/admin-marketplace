@@ -425,5 +425,6 @@ const normalizeDescription = (appId, description) => ([114142, 105922].includes(
         .replace(/https:\/\/app\.e-com\.plus/g, 'https://admin.confere.shop')
         .replace('(use o cupom **ConfereShopClub**30 dias grátis + 3 meses com 50% OFF em qualquer plano Tiny)', '')
         .replace('Escolha **Confere Shop** e clique em **Salvar**, conforme:', 'Escolha **E-Com Plus** e clique em **Salvar**, conforme:')
+        .replace('https://user-images.githubusercontent.com/35343551/114413345-49bc5600-9b84-11eb-80a9-707c27b6a2dd.png', 'https://confere-assets.s3.sa-east-1.amazonaws.com/shop/image+(4).png')
     )
   : description
