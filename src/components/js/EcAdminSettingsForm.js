@@ -7,6 +7,7 @@ import { BCollapse } from 'bootstrap-vue'
 import {
   i19add,
   i19delete,
+  //i19deleteAll
   i19edit,
   i19empty,
   i19editing,
@@ -49,6 +50,7 @@ export default {
   computed: {
     i19add: () => i18n(i19add),
     i19delete: () => i18n(i19delete),
+    i19deleteAll: () => `Deletar todos`,
     i19edit: () => i18n(i19edit),
     i19editing: () => i18n(i19editing),
     i19empty: () => i18n(i19empty),
