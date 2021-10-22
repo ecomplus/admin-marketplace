@@ -82,7 +82,7 @@ export default [
     }]
   },
 
-  {
+  /*{
     listTitle: i18n({
       pt_br: 'Outros',
       en_us: 'Others'
@@ -127,5 +127,5 @@ export default [
         openWhatsapp('a Hi Platform')
       }
     }]
-  }
+  }*/
 ]
