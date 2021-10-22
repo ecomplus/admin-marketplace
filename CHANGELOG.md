@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/ecomplus/admin-marketplace/compare/v1.3.1...v1.4.0) (2021-10-22)
+
+
+### Features
+
+* **ec-admin-settings-form:** add button to delete all rules ([#193](https://github.com/ecomplus/admin-marketplace/issues/193)) ([1e58431](https://github.com/ecomplus/admin-marketplace/commit/1e584311886b7adb8adcf25877e5beb9d14725c3))
+
 ### [1.3.1](https://github.com/ecomplus/admin-marketplace/compare/v1.3.0...v1.3.1) (2021-09-29)
 
 
