@@ -124,8 +124,6 @@ export default {
               if (isSkipped && !isMarketApps) {
                 if (this.canDeleteSkippedApps) {
                   this.ecomApps.remove(this.app._id).catch(console.error)
-                } else {
-                  window.alert(`${app.title} should not be installed`)
                 }
               }
               return !isSkipped
