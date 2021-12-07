@@ -119,6 +119,14 @@ export default [
         openWhatsapp('ERP Kuiper')
       }
     }, {
+      title: 'ERP Sig 2000',
+      icon: null,
+      short_description: 'Integração pronta ou customizada sob demanda por parceiros com o ERP Sig 2000',
+      paid: 'Entre em contato',
+      clicked () {
+        openWhatsapp('ERP Sig 2000')
+      }
+    }, {
       title: 'Hi Platform',
       icon: null,
       short_description: 'Integração pronta e customizada pela própria Hi Platform',
