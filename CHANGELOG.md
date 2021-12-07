@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/ecomplus/admin-marketplace/compare/v1.4.0...v1.5.0) (2021-12-07)
+
+
+### Features
+
+* **mocked-apps:** add new paid "ERP Sig 2000" app ([da481b7](https://github.com/ecomplus/admin-marketplace/commit/da481b7f5f1556311022a471558290fbf3ef087f))
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#194](https://github.com/ecomplus/admin-marketplace/issues/194)) ([8816c67](https://github.com/ecomplus/admin-marketplace/commit/8816c67e45b2da0df6e5e7e2e300bcadc1b6fabe))
+* **deps:** update all non-major dependencies ([#196](https://github.com/ecomplus/admin-marketplace/issues/196)) ([552f82f](https://github.com/ecomplus/admin-marketplace/commit/552f82fd55f04145e20e3652de9df4931f774e20))
+
 ## [1.4.0](https://github.com/ecomplus/admin-marketplace/compare/v1.3.1...v1.4.0) (2021-10-22)
 
 
