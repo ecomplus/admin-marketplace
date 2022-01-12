@@ -20,7 +20,6 @@
                       </span>
                       <b-form-file
                         v-model="file"
-                        :state="Boolean(file)"
                         placeholder="Escolha o arquivo (csv/xlsx)..."
                         drop-placeholder="Drop file here..."
                       />

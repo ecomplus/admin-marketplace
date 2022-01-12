@@ -6,7 +6,10 @@ import { $ecomConfig, i18n } from '@ecomplus/utils'
 import ecomApps from '@ecomplus/apps-manager'
 
 import {
-  i19save
+  i19save,
+  i19app,
+  i19errorMsg,
+  i19savedWithSuccess
 } from '@ecomplus/i18n'
 
 const appClient = axios.create({
@@ -39,13 +42,31 @@ export default {
   },
 
   computed: {
-    i19save: () => i18n(i19save)
+    i19app: () => i18n(i19app),
+    i19save: () => i18n(i19save),
+    i19errorMsg: () => i18n(i19errorMsg),
+    i19savedWithSuccess: () => i18n(i19savedWithSuccess),
+    title () {
+      return this.applicationBody.title
+    }
   },
   created () {
     this.loadApplicationBody()
   },
 
   methods: {
+    toast (variant, body) {
+      const { title } = this
+      this.$bvToast.toast(body, {
+        variant,
+        title
+      })
+    },
+
+    successToast (msg) {
+      this.toast('success', `${this.i19app} ${msg.toLowerCase()}!`)
+    },
+
     async loadApplicationBody () {
       const { ecomApps } = this
       this.loading = true
@@ -64,13 +85,19 @@ export default {
     },
 
     async uploadFile () {
-      const form = new FormData()
-      form.append('file', this.file)
-      const { hidden_data: hiddenData } = this.applicationBody
-      if (!hiddenData || hiddenData.__token) {
-        await this.loadApplicationBody()
+      try {
+        const form = new FormData()
+        form.append('file', this.file)
+        const { hidden_data: hiddenData } = this.applicationBody
+        if (!hiddenData || hiddenData.__token) {
+          await this.loadApplicationBody()
+        }
+        await appClient.post(`/upload?token=${hiddenData.__token}&store_id=${$ecomConfig.get('store_id')}`, form)
+        this.successToast(this.i19savedWithSuccess)
+      } catch (error) {
+        console.log(error)
+        this.toast('danger', this.i19errorMsg)
       }
-      await appClient.post(`/upload?token=${hiddenData.__token}&store_id=${$ecomConfig.get('store_id')}`, form)
     }
   }
 }
