@@ -39,7 +39,7 @@ export default {
   },
 
   computed: {
-    i19save: () => i18n(i19save),
+    i19save: () => i18n(i19save)
   },
   created () {
     this.loadApplicationBody()
@@ -70,7 +70,6 @@ export default {
       if (!hiddenData || hiddenData.__token) {
         await this.loadApplicationBody()
       }
-      console.log(hiddenData, this.applicationBody)
       await appClient.post(`/upload?token=${hiddenData.__token}&store_id=${$ecomConfig.get('store_id')}`, form)
     }
   }
