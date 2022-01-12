@@ -24,7 +24,7 @@
                         drop-placeholder="Drop file here..."
                       />
                     </div>
-                    <button class="btn btn-primary" type="submit" @click="uploadFile()">
+                    <button class="btn btn-primary" type="submit" @click="uploadFile">
                       <span class="d-inline-block" style="width: 1.15rem">
                         <span>
                           <i class="fa fa-floppy-o"></i>
