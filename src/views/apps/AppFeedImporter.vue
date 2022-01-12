@@ -10,8 +10,8 @@
                   <div>
                     <div class="form-group">
                       <h3>Importação de planílha (CSV/XLSX)</h3>
-                      <span
-                        >Importação baseada no seguinte
+                      <span>
+                        Importação baseada no seguinte
                         <a
                           href="https://firebasestorage.googleapis.com/v0/b/ecom-feed-importer.appspot.com/o/public%2Ftemplate.csv?alt=media&token=85526ea3-ce75-4724-8184-cbae766e78fa"
                         >
