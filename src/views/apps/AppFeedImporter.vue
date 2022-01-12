@@ -20,8 +20,8 @@
                       </span>
                       <b-form-file
                         v-model="file"
-                        placeholder="Escolha o arquivo (csv/xlsx)..."
-                        drop-placeholder="Drop file here..."
+                        placeholder="Escolha o arquivo (CVS ou XLSX)..."
+                        drop-placeholder="Arraste o arquivo aqui..."
                       />
                     </div>
                     <button class="btn btn-primary" type="submit" @click="uploadFile">
