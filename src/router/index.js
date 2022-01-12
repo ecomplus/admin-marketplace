@@ -48,6 +48,11 @@ const routes = [
     component: () => import('../views/apps/AppCustomShipping.vue')
   },
   {
+    ...genAppRoute(113859),
+    name: 'app-feed-importer',
+    component: () => import('../views/apps/AppFeedImporter.vue')
+  },
+  {
     ...genAppRoute(),
     name: 'application',
     component: Application
