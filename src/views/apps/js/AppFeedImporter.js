@@ -22,6 +22,7 @@ const appClient = axios.create({
 
 export default {
   name: 'AppFeedImporter',
+
   data () {
     return {
       file: '',
@@ -46,10 +47,40 @@ export default {
     i19save: () => i18n(i19save),
     i19errorMsg: () => i18n(i19errorMsg),
     i19savedWithSuccess: () => i18n(i19savedWithSuccess),
+
+    i19choseTheFile () {
+      return i18n({
+        en_us: 'Chose the file',
+        pt_br: 'Escolha o arquivo'
+      })
+    },
+
+    i19dropFileMsg () {
+      return i18n({
+        en_us: 'Drop the file here',
+        pt_br: 'Solte o arquivo aqui'
+      })
+    },
+
+    i19examplteTable () {
+      return i18n({
+        en_us: 'Example table',
+        pt_br: 'Tabela de exemplo'
+      })
+    },
+
+    i19spreadsheetImport () {
+      return i18n({
+        en_us: 'Spreadsheet import',
+        pt_br: 'Importação de planilha'
+      })
+    },
+
     title () {
       return this.applicationBody.title
     }
   },
+
   created () {
     this.loadApplicationBody()
   },
@@ -86,7 +117,7 @@ export default {
 
     async uploadFile () {
       try {
-        const form = new FormData()
+        const form = new window.FormData()
         form.append('file', this.file)
         const { hidden_data: hiddenData } = this.applicationBody
         if (!hiddenData || hiddenData.__token) {

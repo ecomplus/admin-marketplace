@@ -9,26 +9,21 @@
                 <div>
                   <div>
                     <div class="form-group">
-                      <h3>Importação de planílha (CSV/XLSX)</h3>
-                      <span>
-                        Importação baseada no seguinte
-                        <a
-                          href="https://firebasestorage.googleapis.com/v0/b/ecom-feed-importer.appspot.com/o/public%2Ftemplate.csv?alt=media&token=85526ea3-ce75-4724-8184-cbae766e78fa"
-                        >
-                          exemplo.
-                        </a>
-                      </span>
+                      <h3>{{ i19spreadsheetImport }} (CSV/XLSX)</h3>
                       <b-form-file
+                        class="mb-2"
                         v-model="file"
-                        placeholder="Escolha o arquivo (CVS ou XLSX)..."
-                        drop-placeholder="Arraste o arquivo aqui..."
+                        accept=".csv, .xlsx"
+                        :placeholder="`${i19choseTheFile}...`"
+                        :drop-placeholder="`${i19dropFileMsg}...`"
                       />
+                      <a href="https://firebasestorage.googleapis.com/v0/b/ecom-feed-importer.appspot.com/o/public%2Ftemplate.csv?alt=media&token=85526ea3-ce75-4724-8184-cbae766e78fa">
+                        <i class="fa fa-table mr-1"></i> {{ i19examplteTable }}
+                      </a>
                     </div>
                     <button class="btn btn-primary" type="submit" @click="uploadFile">
                       <span class="d-inline-block" style="width: 1.15rem">
-                        <span>
-                          <i class="fa fa-floppy-o"></i>
-                        </span>
+                        <i class="fa fa-floppy-o"></i>
                       </span>
                       <slot name="submit-label">
                         {{ i19save }}
