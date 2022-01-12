@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/ecomplus/admin-marketplace/compare/v1.5.0...v2.0.0) (2022-01-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **app-feed-importer:** 🧨 you will need to reinstall the feed importer app
+
+### Features
+
+* **app-feed-importer:** custom view for feed importer app ([#205](https://github.com/ecomplus/admin-marketplace/issues/205)) ([22eb82c](https://github.com/ecomplus/admin-marketplace/commit/22eb82c54b9a49829f51485ca58eb6b62944adfd)), closes [#13](https://github.com/ecomplus/admin-marketplace/issues/13) [#13](https://github.com/ecomplus/admin-marketplace/issues/13)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#203](https://github.com/ecomplus/admin-marketplace/issues/203)) ([ecba7d2](https://github.com/ecomplus/admin-marketplace/commit/ecba7d254dcc190563a15c3dbc77cfffa911dfa4))
+
 ## [1.5.0](https://github.com/ecomplus/admin-marketplace/compare/v1.4.0...v1.5.0) (2021-12-07)
 
 
