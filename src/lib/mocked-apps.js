@@ -3,7 +3,9 @@ import ecomAuth from '@ecomplus/auth'
 import iconAnalytics from './../assets/apps-icons/analytics.png'
 import iconCompreeconfie from './../assets/apps-icons/compre-confie.png'
 import iconEbit from './../assets/apps-icons/ebit.png'
+import iconFbPixel from './../assets/apps-icons/fb-pixel.png'
 import iconGmcRating from './../assets/apps-icons/gmc-ratings.png'
+import iconTagManager from './../assets/apps-icons/tag-manager.png'
 import iconTawkto from './../assets/apps-icons/tawkto.png'
 import iconA55 from './../assets/apps-icons/a55.png'
 
@@ -39,14 +41,14 @@ export default [
       }
     }, {
       title: 'Facebook Pixel',
-      icon: null,
+      icon: iconFbPixel,
       short_description: 'Disparo de eventos de visualização, carrinho e checkout via FB Pixel',
       clicked () {
         openCmsWidget('fb-pixel')
       }
     }, {
       title: 'Google Tag Manager',
-      icon: null,
+      icon: iconTagManager,
       short_description: 'Tracking customizável e eventos para enhanced ecommerce com data layer do GTM',
       clicked () {
         openCmsWidget('tag-manager')
