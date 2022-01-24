@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/ecomplus/admin-marketplace/compare/v2.0.0...v2.0.1) (2022-01-24)
+
+
+### Bug Fixes
+
+* **app-feed-importer:** fix function base url for production ([dc49b40](https://github.com/ecomplus/admin-marketplace/commit/dc49b4026b937679ff17477ac89e78830680d481))
+
 ## [2.0.0](https://github.com/ecomplus/admin-marketplace/compare/v1.5.0...v2.0.0) (2022-01-12)
 
 
