@@ -1,7 +1,7 @@
 {
   "name": "@ecomplus/admin-marketplace",
   "description": "Apps marketplace for E-Com Plus admin with Vue.js SPA",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
