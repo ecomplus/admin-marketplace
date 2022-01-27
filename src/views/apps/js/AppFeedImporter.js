@@ -13,7 +13,7 @@ import {
 } from '@ecomplus/i18n'
 
 const appClient = axios.create({
-  baseURL: 'http://us-central1-ecom-feed-importer.cloudfunctions.net/app/feed-importer',
+  baseURL: 'https://us-central1-ecom-feed-importer.cloudfunctions.net/app/feed-importer',
   headers: {
     'X-Store-Id': $ecomConfig.get('store_id')
   }
