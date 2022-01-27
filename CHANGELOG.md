@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/ecomplus/admin-marketplace/compare/v2.0.2...v2.0.3) (2022-01-27)
+
+
+### Bug Fixes
+
+* 🐛 change upload url to https ([#209](https://github.com/ecomplus/admin-marketplace/issues/209)) ([0b2f7cd](https://github.com/ecomplus/admin-marketplace/commit/0b2f7cd7e97236456596446875060d936d9b8cf2))
+
 ### [2.0.2](https://github.com/ecomplus/admin-marketplace/compare/v2.0.1...v2.0.2) (2022-01-24)
 
 ### [2.0.1](https://github.com/ecomplus/admin-marketplace/compare/v2.0.0...v2.0.1) (2022-01-24)
