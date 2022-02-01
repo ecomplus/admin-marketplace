@@ -2,6 +2,58 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/ecomplus/admin-marketplace/compare/v2.0.2...v2.0.3) (2022-01-27)
+
+
+### Bug Fixes
+
+* 🐛 change upload url to https ([#209](https://github.com/ecomplus/admin-marketplace/issues/209)) ([0b2f7cd](https://github.com/ecomplus/admin-marketplace/commit/0b2f7cd7e97236456596446875060d936d9b8cf2))
+
+### [2.0.2](https://github.com/ecomplus/admin-marketplace/compare/v2.0.1...v2.0.2) (2022-01-24)
+
+### [2.0.1](https://github.com/ecomplus/admin-marketplace/compare/v2.0.0...v2.0.1) (2022-01-24)
+
+
+### Bug Fixes
+
+* **app-feed-importer:** fix function base url for production ([dc49b40](https://github.com/ecomplus/admin-marketplace/commit/dc49b4026b937679ff17477ac89e78830680d481))
+
+## [2.0.0](https://github.com/ecomplus/admin-marketplace/compare/v1.5.0...v2.0.0) (2022-01-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **app-feed-importer:** 🧨 you will need to reinstall the feed importer app
+
+### Features
+
+* **app-feed-importer:** custom view for feed importer app ([#205](https://github.com/ecomplus/admin-marketplace/issues/205)) ([22eb82c](https://github.com/ecomplus/admin-marketplace/commit/22eb82c54b9a49829f51485ca58eb6b62944adfd)), closes [#13](https://github.com/ecomplus/admin-marketplace/issues/13) [#13](https://github.com/ecomplus/admin-marketplace/issues/13)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#203](https://github.com/ecomplus/admin-marketplace/issues/203)) ([ecba7d2](https://github.com/ecomplus/admin-marketplace/commit/ecba7d254dcc190563a15c3dbc77cfffa911dfa4))
+
+## [1.5.0](https://github.com/ecomplus/admin-marketplace/compare/v1.4.0...v1.5.0) (2021-12-07)
+
+
+### Features
+
+* **mocked-apps:** add new paid "ERP Sig 2000" app ([da481b7](https://github.com/ecomplus/admin-marketplace/commit/da481b7f5f1556311022a471558290fbf3ef087f))
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#194](https://github.com/ecomplus/admin-marketplace/issues/194)) ([8816c67](https://github.com/ecomplus/admin-marketplace/commit/8816c67e45b2da0df6e5e7e2e300bcadc1b6fabe))
+* **deps:** update all non-major dependencies ([#196](https://github.com/ecomplus/admin-marketplace/issues/196)) ([552f82f](https://github.com/ecomplus/admin-marketplace/commit/552f82fd55f04145e20e3652de9df4931f774e20))
+
+## [1.4.0](https://github.com/ecomplus/admin-marketplace/compare/v1.3.1...v1.4.0) (2021-10-22)
+
+
+### Features
+
+* **ec-admin-settings-form:** add button to delete all rules ([#193](https://github.com/ecomplus/admin-marketplace/issues/193)) ([1e58431](https://github.com/ecomplus/admin-marketplace/commit/1e584311886b7adb8adcf25877e5beb9d14725c3))
+
 ### [1.3.1](https://github.com/ecomplus/admin-marketplace/compare/v1.3.0...v1.3.1) (2021-09-29)
 
 
