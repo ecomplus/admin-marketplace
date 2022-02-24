@@ -1,5 +1,5 @@
 import { i18n } from '@ecomplus/utils'
-import { fetchStore } from '@ecomplus/auth'
+import ecomAuth from '@ecomplus/auth'
 import iconAnalytics from './../assets/apps-icons/analytics.png'
 import iconCompreeconfie from './../assets/apps-icons/compre-confie.png'
 import iconEbit from './../assets/apps-icons/ebit.png'
@@ -11,7 +11,7 @@ import iconTawkto from './../assets/apps-icons/tawkto.png'
 const openNewTab = url => window.open(url, '_blank').focus()
 
 const openCmsWidget = slug => {
-  fetchStore()
+  ecomAuth.fetchStore()
     .then(({ domain }) => {
       if (domain) {
         openNewTab(`https://${domain}/admin/#/collections/widgets/entries/${slug}`)
