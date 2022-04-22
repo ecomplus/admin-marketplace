@@ -7,7 +7,7 @@ import { BCollapse } from 'bootstrap-vue'
 import {
   i19add,
   i19delete,
-  //i19deleteAll
+  // i19deleteAll
   i19edit,
   i19empty,
   i19editing,
@@ -50,7 +50,7 @@ export default {
   computed: {
     i19add: () => i18n(i19add),
     i19delete: () => i18n(i19delete),
-    i19deleteAll: () => `Deletar todos`,
+    i19deleteAll: () => 'Deletar todos',
     i19edit: () => i18n(i19edit),
     i19editing: () => i18n(i19editing),
     i19empty: () => i18n(i19empty),
@@ -199,7 +199,9 @@ export default {
                 const field = head.replace(/\w+\(([^)]+)\)/i, '$1')
                 const value = head.startsWith('Number')
                   ? Number(row[head])
-                  : head.startsWith('Boolean') ? Boolean(row[head]) : row[head]
+                  : head.startsWith('Boolean')
+                    ? Boolean(row[head] && !row[head].toUpperCase().startsWith('FALS'))
+                    : row[head]
                 const fields = field.split(/[.[\]]/)
                 if (fields.length > 1) {
                   let nestedField = parsedData
