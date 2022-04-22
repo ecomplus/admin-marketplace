@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.4](https://github.com/ecomplus/admin-marketplace/compare/v2.0.3...v2.0.4) (2022-04-22)
+
+
+### Bug Fixes
+
+* **admin-settings-form:** properly deal with boolean types from csv ([7a15128](https://github.com/ecomplus/admin-marketplace/commit/7a151286dc5e932151fe7f393f487b526035665c))
+
 ### [2.0.3](https://github.com/ecomplus/admin-marketplace/compare/v2.0.2...v2.0.3) (2022-01-27)
 
 
