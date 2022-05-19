@@ -8,6 +8,7 @@ import iconGmcRating from './../assets/apps-icons/gmc-ratings.png'
 import iconTagManager from './../assets/apps-icons/tag-manager.png'
 import iconTawkto from './../assets/apps-icons/tawkto.png'
 import iconA55 from './../assets/apps-icons/a55.png'
+import iconPerformaai from './../assets/apps-icons/performaai.png'
 
 const openNewTab = url => window.open(url, '_blank').focus()
 
@@ -136,6 +137,16 @@ export default [
       clicked () {
         openWhatsapp('a Hi Platform')
       }
-    }]
+    },
+    {
+      title: 'Performa.ai',
+      icon: iconPerformaai,
+      short_description: 'Integração pronta e customizada pela própria Performa.ai, que oferece carrinho abandonado automatizado, vitrines inteligentes e outras funcionalidades.',
+      paid: 'Entre em contato',
+      clicked () {
+        openNewTab('https://performaai.d.pr/ACG4LO')
+      }
+    }
+  ]
   }
 ]
