@@ -36,6 +36,7 @@
     <div
       class="card-subtitle mb-2 text-muted"
       style="height: 100px"
+      :title="isTruncatedDescription ? app.short_description : ''"
     >
       {{ formattedDescription }}
     </div>

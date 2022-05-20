@@ -51,11 +51,14 @@ export default {
       return ''
     },
 
+    isTruncatedDescription () {
+      return this.app.short_description.length > this.descriptionMaxLength
+    },
+
     formattedDescription () {
       if (this.app.short_description) {
-        const { descriptionMaxLength } = this
-        if (this.app.short_description.length > descriptionMaxLength) {
-          return `${this.app.short_description.slice(0, descriptionMaxLength)}...`
+        if (this.isTruncatedDescription) {
+          return `${this.app.short_description.slice(0, this.descriptionMaxLength)}...`
         }
         return this.app.short_description
       }
