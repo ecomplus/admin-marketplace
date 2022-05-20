@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.5](https://github.com/ecomplus/admin-marketplace/compare/v2.0.4...v2.0.5) (2022-05-20)
+
+
+### Bug Fixes
+
+* **ec-app-card:** show description as element title when text is truicated ([3810ffd](https://github.com/ecomplus/admin-marketplace/commit/3810ffd1ee279c315a0f7785983fa56348a8b3ed))
+
 ### [2.0.4](https://github.com/ecomplus/admin-marketplace/compare/v2.0.3...v2.0.4) (2022-04-22)
 
 
