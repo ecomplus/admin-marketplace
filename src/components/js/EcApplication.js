@@ -55,10 +55,6 @@ export default {
   },
 
   props: {
-    ecomApps: {
-      type: Object,
-      default: () => ecomApps
-    },
     application: {
       type: Object,
       default: () => ({})
@@ -67,7 +63,17 @@ export default {
       type: Boolean,
       default: true
     },
-    settingsOpenCollapse: Number
+    settingsOpenCollapse: Number,
+    skippedApps: {
+      type: Array,
+      default () {
+        return window.ecomMarketSkippedApps
+      }
+    },
+    ecomApps: {
+      type: Object,
+      default: () => ecomApps
+    }
   },
 
   data () {
@@ -261,7 +267,12 @@ export default {
       this.ecomApps.listFromMarket({ params: { category: this.category } })
         .then(resp => {
           const { result } = resp
-          const filter = result.filter(app => app.id !== this.appId)
+          const filter = result.filter(app => {
+            if (app.id !== this.appId) {
+              return !Array.isArray(this.skippedApps) || !this.skippedApps.includes(app.id)
+            }
+            return false
+          })
           this.appsRelated = filter || []
         })
         .catch(e => {
