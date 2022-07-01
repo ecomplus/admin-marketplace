@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.7](https://github.com/ecomplus/admin-marketplace/compare/v2.0.6...v2.0.7) (2022-07-01)
+
+
+### Bug Fixes
+
+* also filter skipped apps on related apps list ([a1fd505](https://github.com/ecomplus/admin-marketplace/commit/a1fd5053128296606bae45ecf23b8855da31c760))
+
 ### [2.0.6](https://github.com/ecomplus/admin-marketplace/compare/v2.0.5...v2.0.6) (2022-07-01)
 
 ### [2.0.5](https://github.com/ecomplus/admin-marketplace/compare/v2.0.4...v2.0.5) (2022-05-20)
