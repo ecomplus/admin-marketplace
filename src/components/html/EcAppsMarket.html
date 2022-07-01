@@ -57,8 +57,9 @@
             <component
               :is="activeTabKey === 'installed' ? 'ec-installed-app-card' : 'ec-app-card'"
               :app.sync="apps[i]"
-              :ecomApps="ecomApps"
+              :ecomApps="activeTabKey === 'installed' ? ecomApps : null"
               :has-new-version="appsToUpdate.includes(app.app_id || app.id)"
+              :data-app-id="app.app_id || app.id"
               @click="$emit('click:app', app)"
               class="mb-4"
             />
