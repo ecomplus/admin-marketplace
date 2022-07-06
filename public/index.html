@@ -44,15 +44,27 @@
     <!-- Todo: desfaser -->
     <script src="https://cdn.jsdelivr.net/npm/@ecomplus/auth@latest/dist/ecom-auth.var.min.js"></script>
     <script>
-      const storeId = localStorage.getItem('store_id') || 1011
+      const urlParams = new URLSearchParams(window.location.search)
+      const storeId = parseInt(urlParams.get('store_id') || localStorage.getItem('store_id'), 10) || 1011
       $ecomConfig.set('lang', 'pt_br')
       $ecomConfig.set('country_code', 'BR')
       $ecomConfig.set('store_id', storeId)
-      ecomAuth.login(
-        localStorage.getItem('username'),
-        localStorage.getItem('password'),
-        localStorage.getItem('store_id') || 1011
-      )
+      const username = urlParams.get('username') || localStorage.getItem('username')
+      if (urlParams.get('access_token')) {
+        ecomAuth.setSession({
+          username,
+          store_id: storeId,
+          my_id: urlParams.get('my_id'),
+          access_token: urlParams.get('access_token'),
+          expires: urlParams.get('expires') || new Date(Date.now() + 60000).toISOString()
+        })
+      } else {
+        ecomAuth.login(
+          username,
+          localStorage.getItem('password'),
+          localStorage.getItem('store_id') || 1011
+        )
+      }
       window.ecomMarketSkippedApps = [126946, 126947]
     </script>
   </body>
