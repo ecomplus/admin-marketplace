@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.8](https://github.com/ecomplus/admin-marketplace/compare/v2.0.7...v2.0.8) (2022-07-06)
+
+
+### Bug Fixes
+
+* **deps:** revert vue to 2.6 (semver) ([b9600a8](https://github.com/ecomplus/admin-marketplace/commit/b9600a8ddd8f4d8eeea2dbfb5feba67b31b9a09e))
+
 ### [2.0.7](https://github.com/ecomplus/admin-marketplace/compare/v2.0.6...v2.0.7) (2022-07-01)
 
 
