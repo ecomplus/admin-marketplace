@@ -9,7 +9,6 @@ import iconTagManager from './../assets/apps-icons/tag-manager.png'
 import iconTawkto from './../assets/apps-icons/tawkto.png'
 import iconA55 from './../assets/apps-icons/a55.png'
 import iconPerformaai from './../assets/apps-icons/performaai.png'
-import iconPerformaai from './../assets/apps-icons/performaai.png'
 import iconProtheus from './../assets/apps-icons/protheus.png'
 import iconRastreionet from './../assets/apps-icons/rastreionet.png'
 import iconSelia from './../assets/apps-icons/selia.png'
@@ -97,8 +96,7 @@ export default [
       pt_br: 'Outros',
       en_us: 'Others'
     }),
-    apps: [
-     {
+    apps: [{
       title: 'Sak',
       icon: iconSak,
       short_description: 'O Sak é um aplicativo de automação de envios de mensagem exclusivo, a recuperação de carrinhos abandonados e pedidos não pagos.',
@@ -139,7 +137,7 @@ export default [
       clicked () {
         openWhatsapp('a Selia')
       }
-    }, 
+    },
     {
       title: 'ERP Kuiper',
       icon: iconKuiper,
@@ -148,7 +146,7 @@ export default [
       clicked () {
         openWhatsapp('ERP Kuiper')
       }
-    }, 
+    },
     {
       title: 'ERP Sig 2000',
       icon: null,
@@ -157,7 +155,7 @@ export default [
       clicked () {
         openWhatsapp('ERP Sig 2000')
       }
-    }, 
+    },
     {
       title: 'Hi Platform',
       icon: iconHiplatform,
@@ -175,7 +173,6 @@ export default [
       clicked () {
         openNewTab('https://performaai.d.pr/ACG4LO')
       }
-    }
-  ]
+    }]
   }
 ]
