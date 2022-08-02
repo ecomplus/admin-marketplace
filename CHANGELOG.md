@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/ecomplus/admin-marketplace/compare/v2.1.0...v2.1.1) (2022-08-02)
+
+
+### Bug Fixes
+
+* **mocked-apps:** fix sak and rastreio.net apps cta (not free) ([8578887](https://github.com/ecomplus/admin-marketplace/commit/8578887e54a039c4276c7b9c715574b9ee1a58e9))
+
 ## [2.1.0](https://github.com/ecomplus/admin-marketplace/compare/v2.0.8...v2.1.0) (2022-08-02)
 
 
