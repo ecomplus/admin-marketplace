@@ -9,6 +9,13 @@ import iconTagManager from './../assets/apps-icons/tag-manager.png'
 import iconTawkto from './../assets/apps-icons/tawkto.png'
 import iconA55 from './../assets/apps-icons/a55.png'
 import iconPerformaai from './../assets/apps-icons/performaai.png'
+import iconPerformaai from './../assets/apps-icons/performaai.png'
+import iconProtheus from './../assets/apps-icons/protheus.png'
+import iconRastreionet from './../assets/apps-icons/rastreionet.png'
+import iconSelia from './../assets/apps-icons/selia.png'
+import iconKuiper from './../assets/apps-icons/kuiper.png'
+import iconHiplatform from './../assets/apps-icons/hiplatform.png'
+import iconSak from './../assets/apps-icons/sak.png'
 
 const openNewTab = url => window.open(url, '_blank').focus()
 
@@ -90,38 +97,59 @@ export default [
       pt_br: 'Outros',
       en_us: 'Others'
     }),
-    apps: [{
+    apps: [
+     {
+      title: 'Sak',
+      icon: iconSak,
+      short_description: 'O Sak é um aplicativo de automação de envios de mensagem exclusivo, a recuperação de carrinhos abandonados e pedidos não pagos.',
+      clicked () {
+        openNewTab('https://get.sak.com.br/')
+      }
+    },
+    {
+      title: 'Rastreio.net',
+      icon: iconRastreionet,
+      short_description: 'O Rastreio.net é um aplicativo que facilita o processo de espera do cliente que aguarda seu pedido possibilitando o rastreio.',
+      clicked () {
+        openNewTab('https://get.rastreio.net/')
+      }
+    },
+    {
       title: 'a55',
       icon: iconA55,
       short_description: 'Fintech especialista em e-commerce com linhas de crédito para acelerar sua loja',
       clicked () {
         openNewTab('https://plataforma.a55.tech/parceiro/ecomplus')
       }
-    }, {
+    },
+    {
       title: 'ERPs TOTVS',
-      icon: null,
+      icon: iconProtheus,
       short_description: 'Integração com Protheus e outros ERPs adaptadas sob demanda por parceiros',
       paid: 'Entre em contato',
       clicked () {
         openWhatsapp('ERPs TOTVS')
       }
-    }, {
+    },
+    {
       title: 'Selia',
-      icon: null,
+      icon: iconSelia,
       short_description: 'Integração de estoque e logística feita e adaptada pela Selia',
       paid: 'Entre em contato',
       clicked () {
         openWhatsapp('a Selia')
       }
-    }, {
+    }, 
+    {
       title: 'ERP Kuiper',
-      icon: null,
+      icon: iconKuiper,
       short_description: 'Integração customizada sob demanda por parceiros com o ERP Kuiper',
       paid: 'Entre em contato',
       clicked () {
         openWhatsapp('ERP Kuiper')
       }
-    }, {
+    }, 
+    {
       title: 'ERP Sig 2000',
       icon: null,
       short_description: 'Integração pronta ou customizada sob demanda por parceiros com o ERP Sig 2000',
@@ -129,9 +157,10 @@ export default [
       clicked () {
         openWhatsapp('ERP Sig 2000')
       }
-    }, {
+    }, 
+    {
       title: 'Hi Platform',
-      icon: null,
+      icon: iconHiplatform,
       short_description: 'Integração pronta e customizada pela própria Hi Platform',
       paid: 'Entre em contato',
       clicked () {
