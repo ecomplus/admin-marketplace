@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/ecomplus/admin-marketplace/compare/v2.0.8...v2.1.0) (2022-08-02)
+
+
+### Features
+
+* **mocked-apps:** fill some app icons and new apps ([#230](https://github.com/ecomplus/admin-marketplace/issues/230)) ([ead866f](https://github.com/ecomplus/admin-marketplace/commit/ead866f9072137886128a0aa563a3a190cae1e24))
+
+
+### Bug Fixes
+
+* **mocked-apps:** remove duplicated icon import ([d732bc6](https://github.com/ecomplus/admin-marketplace/commit/d732bc6bf4d7b37466038b0eb3ac668990a898c8))
+
 ### [2.0.8](https://github.com/ecomplus/admin-marketplace/compare/v2.0.7...v2.0.8) (2022-07-06)
 
 
