@@ -97,9 +97,18 @@ export default [
       en_us: 'Others'
     }),
     apps: [{
+      title: 'a55',
+      icon: iconA55,
+      short_description: 'Fintech especialista em e-commerce com linhas de crédito para acelerar sua loja',
+      clicked () {
+        openNewTab('https://plataforma.a55.tech/parceiro/ecomplus')
+      }
+    },
+    {
       title: 'Sak',
       icon: iconSak,
       short_description: 'O Sak é um aplicativo de automação de envios de mensagem exclusivo, a recuperação de carrinhos abandonados e pedidos não pagos.',
+      paid: 'Cadastrar',
       clicked () {
         openNewTab('https://get.sak.com.br/')
       }
@@ -108,16 +117,9 @@ export default [
       title: 'Rastreio.net',
       icon: iconRastreionet,
       short_description: 'O Rastreio.net é um aplicativo que facilita o processo de espera do cliente que aguarda seu pedido possibilitando o rastreio.',
+      paid: 'Cadastrar',
       clicked () {
         openNewTab('https://get.rastreio.net/')
-      }
-    },
-    {
-      title: 'a55',
-      icon: iconA55,
-      short_description: 'Fintech especialista em e-commerce com linhas de crédito para acelerar sua loja',
-      clicked () {
-        openNewTab('https://plataforma.a55.tech/parceiro/ecomplus')
       }
     },
     {
