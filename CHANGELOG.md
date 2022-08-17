@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/ecomplus/admin-marketplace/compare/v2.1.1...v2.2.0) (2022-08-17)
+
+
+### Features
+
+* check `CLOUDCOMMERCE_PROJECT_ID` and dinamically set discounts app auth uri ([54db8bf](https://github.com/ecomplus/admin-marketplace/commit/54db8bf501a16cfd5c159d8bc5fca19545e19dd6))
+
 ### [2.1.1](https://github.com/ecomplus/admin-marketplace/compare/v2.1.0...v2.1.1) (2022-08-02)
 
 
