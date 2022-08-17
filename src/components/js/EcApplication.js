@@ -287,7 +287,25 @@ export default {
     requestInstall () {
       this.isSwitching = true
       this.hasInstallPopover = false
-      this.ecomApps.install(this.appId, true)
+      const storeApp = this.applicationBody.store_app
+      let authCallbackUri
+      if (storeApp) {
+        authCallbackUri = storeApp.auth_callback_uri
+        const cloudcommercePid = window.CLOUDCOMMERCE_PROJECT_ID
+        if (cloudcommercePid) {
+          switch (this.appId) {
+            case 1252:
+              authCallbackUri = `https://us-east1-${cloudcommercePid}.cloudfunctions.net/appAuthCallback`
+          }
+        }
+      }
+      this.ecomApps.install(this.appId, true, {
+        ...this.applicationBody,
+        store_app: {
+          ...storeApp,
+          auth_callback_uri: authCallbackUri
+        }
+      })
         .then(installed => {
           this.successToast(this.i19successfullyInstalled)
           this.fetchStoreApplication(installed.result._id)
