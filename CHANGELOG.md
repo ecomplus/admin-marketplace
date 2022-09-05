@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/ecomplus/admin-marketplace/compare/v2.2.0...v2.3.0) (2022-09-05)
+
+
+### Features
+
+* list skipped installed apps to uninstall and read config ([324329b](https://github.com/ecomplus/admin-marketplace/commit/324329b71902b7b9fd5281d0d361b06a4c615a8d))
+
 ## [2.2.0](https://github.com/ecomplus/admin-marketplace/compare/v2.1.1...v2.2.0) (2022-08-17)
 
 
