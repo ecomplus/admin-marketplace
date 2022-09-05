@@ -114,7 +114,7 @@ export default {
                   window.alert(`${app.title} should not be installed`)
                 }
               }
-              return !isSkipped
+              return !isSkipped || !isMarketApps
             })
           }
         })

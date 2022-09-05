@@ -7,7 +7,7 @@ import { BCollapse } from 'bootstrap-vue'
 import {
   i19add,
   i19delete,
-  // i19deleteAll
+  i19deleteAll,
   i19edit,
   i19empty,
   i19editing,
@@ -31,6 +31,12 @@ export default {
     openCollapse: {
       type: Number,
       default: 0
+    },
+    skippedApps: {
+      type: Array,
+      default () {
+        return window.ecomMarketSkippedApps
+      }
     }
   },
 
@@ -50,7 +56,7 @@ export default {
   computed: {
     i19add: () => i18n(i19add),
     i19delete: () => i18n(i19delete),
-    i19deleteAll: () => 'Deletar todos',
+    i19deleteAll: () => i18n(i19deleteAll),
     i19edit: () => i18n(i19edit),
     i19editing: () => i18n(i19editing),
     i19empty: () => i18n(i19empty),
@@ -60,6 +66,10 @@ export default {
 
     adminSettings () {
       return this.application.admin_settings
+    },
+
+    isSkippedApp () {
+      return this.skippedApps.includes(this.application.app_id)
     },
 
     settingsFieldGroups () {
@@ -227,6 +237,9 @@ export default {
     },
 
     handleSubmit () {
+      if (this.isSkippedApp) {
+        return window.alert('This app should not be installed')
+      }
       const formData = {
         data: sanitize(this.data),
         hidden_data: sanitize(this.hiddenData)

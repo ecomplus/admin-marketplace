@@ -166,6 +166,7 @@
         </div>
 
         <button
+          v-if="!isSkippedApp"
           class="btn btn-primary"
           type="submit"
           :disabled="isSaving"

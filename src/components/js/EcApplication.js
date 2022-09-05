@@ -183,6 +183,10 @@ export default {
       return (this.applicationBody._id)
     },
 
+    isSkipped () {
+      return this.skippedApps.includes(this.appId)
+    },
+
     localApplication: {
       get () {
         return this.applicationBody

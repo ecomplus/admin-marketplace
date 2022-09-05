@@ -83,6 +83,7 @@
                 </div>
 
                 <button
+                  v-if="!isSkipped"
                   class="btn"
                   id="install-app"
                   :class="isInstalled ? 'btn-outline-success btn-xs mt-2' : 'btn-success'"
