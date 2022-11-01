@@ -50,7 +50,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^7.20.0",
     "husky": "^4.3.8",
-    "lint-staged": "^11.2.6",
+    "lint-staged": "^13.0.3",
     "sass": "^1.54.8",
     "sass-loader": "^10.3.1",
     "standard": "^16.0.4",
