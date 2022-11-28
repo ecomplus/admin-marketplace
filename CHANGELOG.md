@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.1](https://github.com/ecomplus/admin-marketplace/compare/v2.3.0...v2.3.1) (2022-11-28)
+
+
+### Bug Fixes
+
+* **ml-search-category:** change to correct limit ([3942c6f](https://github.com/ecomplus/admin-marketplace/commit/3942c6f61fe64c15088c5c489abd23fd84107407))
+
 ## [2.3.0](https://github.com/ecomplus/admin-marketplace/compare/v2.2.0...v2.3.0) (2022-09-05)
 
 
