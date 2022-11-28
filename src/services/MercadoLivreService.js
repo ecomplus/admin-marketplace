@@ -23,7 +23,7 @@ const findCategory = (term) => {
     .toLowerCase()
     .replace(/ /g, '-')
     .replace(/[^\w-]+/g, '')
-  return service.get(`/sites/MLB/domain_discovery/search?limit=10&q=${term}`)
+  return service.get(`/sites/MLB/domain_discovery/search?limit=8&q=${term}`)
 }
 
 export {
