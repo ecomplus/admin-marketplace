@@ -99,7 +99,7 @@ export default [
     }),
     apps: [
       {
-        title: 'Afiliados',
+        title: 'Programa de afiliados',
         icon: iconAffiliate,
         short_description: 'Módulo para que consiga vender e traquear suas vendas através de afiliados',
         paid: 'Entre em contato',
