@@ -110,7 +110,7 @@ export default [
       {
         title: 'Pontos de fidelidade',
         icon: iconLoyaltyPoints,
-        short_description: 'Módulo para gerar maior fidelização dos seus clientes. Através de compras são gerados pontos para serem utilizados na sua loja',
+        short_description: 'Configuração de programas de "cashback" automático para fidelização de clientes com pontos cumulativos e convertíveis em desconto nas próximas compras',
         paid: 'Entre em contato',
         clicked () {
           openNewTab('https://web.whatsapp.com/send?phone=%2B5531994720048&text=Ol%C3%A1%20gostaria%20de%20instalar%20o%20app%20programa%20de%20fidelidade')
