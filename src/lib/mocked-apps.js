@@ -101,7 +101,7 @@ export default [
       {
         title: 'Programa de afiliados',
         icon: iconAffiliate,
-        short_description: 'Módulo para que consiga vender e traquear suas vendas através de afiliados',
+        short_description: 'Gera links de afiliados com benefício automático em pontos por indicação confirmada',
         paid: 'Entre em contato',
         clicked () {
           openNewTab('https://web.whatsapp.com/send?phone=%2B5531994720048&text=Ol%C3%A1%20gostaria%20de%20instalar%20o%20app%20programa%20de%20afiliados')
