@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/ecomplus/admin-marketplace/compare/v2.3.1...v2.4.0) (2023-05-30)
+
+
+### Features
+
+* **mocked-apps:** adding loyalty points and affiliates apps for contact ([#268](https://github.com/ecomplus/admin-marketplace/issues/268)) ([ac52615](https://github.com/ecomplus/admin-marketplace/commit/ac526152ca9fd8ba28648617e419d4c385d9b215))
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#255](https://github.com/ecomplus/admin-marketplace/issues/255)) ([235d6ef](https://github.com/ecomplus/admin-marketplace/commit/235d6ef7fe0b5385c63ab446ed4dce52f9c477aa))
+* **deps:** update dependency bootstrap-vue to ^2.23.1 ([#256](https://github.com/ecomplus/admin-marketplace/issues/256)) ([720b371](https://github.com/ecomplus/admin-marketplace/commit/720b371c2d1fd38a80818cf79b571fe0a08d0af4))
+* **deps:** update dependency vue-router to ^3.6.5 ([#248](https://github.com/ecomplus/admin-marketplace/issues/248)) ([88f360a](https://github.com/ecomplus/admin-marketplace/commit/88f360a15f420e172955591b9e0e20b8405f81f4))
+
 ### [2.3.1](https://github.com/ecomplus/admin-marketplace/compare/v2.3.0...v2.3.1) (2022-11-28)
 
 
