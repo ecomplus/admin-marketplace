@@ -1,9 +1,11 @@
 import { i18n } from '@ecomplus/utils'
 import ecomAuth from '@ecomplus/auth'
 import iconAnalytics from './../assets/apps-icons/analytics.png'
+import iconAffiliate from './../assets/apps-icons/afiliados.png'
 import iconCompreeconfie from './../assets/apps-icons/compre-confie.png'
 import iconEbit from './../assets/apps-icons/ebit.png'
 import iconFbPixel from './../assets/apps-icons/fb-pixel.png'
+import iconLoyaltyPoints from './../assets/apps-icons/fidelidade.png'
 import iconGmcRating from './../assets/apps-icons/gmc-ratings.png'
 import iconTagManager from './../assets/apps-icons/tag-manager.png'
 import iconTawkto from './../assets/apps-icons/tawkto.png'
@@ -90,13 +92,31 @@ export default [
       }
     }]
   },
-
   {
     listTitle: i18n({
       pt_br: 'Outros',
       en_us: 'Others'
     }),
-    apps: [{
+    apps: [
+      {
+        title: 'Programa de afiliados',
+        icon: iconAffiliate,
+        short_description: 'Gera links de afiliados com benefício automático em pontos por indicação confirmada',
+        paid: 'Entre em contato',
+        clicked () {
+          openNewTab('https://web.whatsapp.com/send?phone=%2B5531994720048&text=Ol%C3%A1%20gostaria%20de%20instalar%20o%20app%20programa%20de%20afiliados')
+        }
+      },
+      {
+        title: 'Pontos de fidelidade',
+        icon: iconLoyaltyPoints,
+        short_description: 'Configuração de programas de "cashback" automático para fidelização de clientes com pontos cumulativos e convertíveis em desconto nas próximas compras',
+        paid: 'Entre em contato',
+        clicked () {
+          openNewTab('https://web.whatsapp.com/send?phone=%2B5531994720048&text=Ol%C3%A1%20gostaria%20de%20instalar%20o%20app%20programa%20de%20fidelidade')
+        }
+      },
+      {
       title: 'a55',
       icon: iconA55,
       short_description: 'Fintech especialista em e-commerce com linhas de crédito para acelerar sua loja',
@@ -175,6 +195,7 @@ export default [
       clicked () {
         openNewTab('https://performaai.d.pr/ACG4LO')
       }
-    }]
+    }
+  ]
   }
 ]
