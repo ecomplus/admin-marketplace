@@ -17,7 +17,7 @@
           autocomplete="off"
           :value="value.value"
           @input="e => update('value', parseFloat(e.target.value))"
-          min="0"
+          :min="discountValue.minimum < 0 ? '-100' : '0'"
           max="100"
           step="0.01"
         />
