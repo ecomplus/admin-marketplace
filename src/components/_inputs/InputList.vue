@@ -1,14 +1,14 @@
 <template>
   <div>
     <component
-      :is="isProductList ? 'input-product' : 'input-text'"
+      :is="inputType"
       class="mb-2"
       v-for="(item, i) in localValue"
       :name="`${name}[${i}]`"
       :key="i"
       :schema="schema.items"
       :value="getItemValue(item)"
-      @input="value => setItemValue(value, i)"
+      @input="(value, extraValue) => setItemValue(value, i, extraValue)"
       @blur="checkItem(i)"
     />
 

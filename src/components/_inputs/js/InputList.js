@@ -1,10 +1,12 @@
 import InputText from '../InputText.vue'
 import InputProduct from '../InputProduct.vue'
+import InputCategory from '../InputCategory.vue'
 
 export default {
   name: 'InputList',
 
   components: {
+    InputCategory,
     InputText,
     InputProduct
   },
@@ -28,8 +30,16 @@ export default {
   },
 
   computed: {
-    isProductList () {
-      return this.name.endsWith('product_ids')
+    inputType () {
+      const splitNameInput = this.name.split('.')
+      switch (splitNameInput[splitNameInput.length - 1]) {
+        case 'product_ids':
+          return 'input-product'
+        case 'category_ids':
+          return 'input-category'
+        default:
+          return 'input-text'
+      }
     }
   },
 
@@ -47,7 +57,7 @@ export default {
       }
     },
 
-    setItemValue (str, i) {
+    setItemValue (str, i, extraValue) {
       let item = str
       if (str !== '') {
         switch (this.schema.items.type) {
@@ -65,7 +75,10 @@ export default {
             item = JSON.parse(str)
         }
       }
-      if (this.localValue.length > i) {
+
+      if (extraValue && this.localValue.length > i) {
+        this.localValue.push(item)
+      } else if (this.localValue.length > i) {
         this.$set(this.localValue, i, item)
       } else {
         this.localValue.push(item)
