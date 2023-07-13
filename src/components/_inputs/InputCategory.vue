@@ -4,7 +4,7 @@
     autocomplete="off"
     class="form-control"
     :data="categories"
-    :serializer="({ name, parent }) => `${name} ${parent && parent.name ? `(${parent.name})` : ''}`"
+    :serializer="({ name, parent }) => `${name} ${(parent && parent.name ? '(' + parent.name + ')' : '')}`"
     :placeholder="schema.default"
     :maxMatches="30"
     v-model="term"
