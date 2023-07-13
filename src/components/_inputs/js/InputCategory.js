@@ -42,7 +42,6 @@ export default {
             result.forEach(category => {
               if (category._id) {
                 this.$emit('input', category._id, category.parent)
-                this.$emit('blur')
               }
             })
           }
