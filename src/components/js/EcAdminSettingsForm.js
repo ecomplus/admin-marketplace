@@ -1,5 +1,6 @@
 import { i18n } from '@ecomplus/utils'
 import Papa from 'papaparse'
+import * as dot from 'dot-object'
 import getSchemaInput from './../../lib/get-schema-input'
 import sanitize from './../../lib/sanitize'
 import { BCollapse } from 'bootstrap-vue'
@@ -57,6 +58,7 @@ export default {
     i19add: () => i18n(i19add),
     i19delete: () => i18n(i19delete),
     i19deleteAll: () => i18n(i19deleteAll),
+    i19download: () => 'Download',
     i19edit: () => i18n(i19edit),
     i19editing: () => i18n(i19editing),
     i19empty: () => i18n(i19empty),
@@ -191,49 +193,110 @@ export default {
       this.dataListsIndexes[field] = index > 0 ? index - 1 : 0
     },
 
-    uploadCsv (dataList, file) {
+    uploadCsv(dataList, file) {
       Papa.parse(file, {
         header: true,
         error: (err, file, inputElem, reason) => {
-          console.log(err)
+          console.log(err);
           this.$bvToast.toast(reason, {
             variant: 'warning',
-            title: i18n(i19error)
-          })
+            title: i18n(i19error),
+          });
         },
         complete: ({ data }) => {
           data.forEach(row => {
-            const parsedData = {}
+            const parsedData = {};
             for (const head in row) {
               if (row[head]) {
-                const field = head.replace(/\w+\(([^)]+)\)/i, '$1')
+                const field = head.replace(/\w+\(([^)]+)\)/i, '$1');
                 const value = head.startsWith('Number')
                   ? Number(row[head])
                   : head.startsWith('Boolean')
                     ? Boolean(row[head] && !row[head].toUpperCase().startsWith('FALS'))
-                    : row[head]
-                const fields = field.split(/[.[\]]/)
+                    : row[head];
+                const fields = field.split(/[.[\]]/);
                 if (fields.length > 1) {
-                  let nestedField = parsedData
+                  let currentField = parsedData;
                   for (let i = 0; i < fields.length - 1; i++) {
-                    if (!nestedField[fields[i]]) {
-                      nestedField[fields[i]] = {}
+                    const currentFieldName = fields[i];
+                    if (!currentField[currentFieldName]) {
+                      // Check if the next part of the field is a numeric index
+                      const isArrayIndex = /^\d+$/.test(fields[i + 1]);
+                      if (isArrayIndex) {
+                        currentField[currentFieldName] = [];
+                      } else {
+                        currentField[currentFieldName] = {};
+                      }
                     }
-                    nestedField = nestedField[fields[i]]
+                    currentField = currentField[currentFieldName];
                   }
-                  nestedField[fields[fields.length - 1]] = value
+                  const lastFieldName = fields[fields.length - 1];
+                  if (/^\d+$/.test(lastFieldName)) {
+                    // It's a numeric index, insert into array
+                    currentField.push(value);
+                  } else {
+                    currentField[lastFieldName] = value;
+                  }
                 } else {
-                  parsedData[field] = value
+                  parsedData[field] = value;
                 }
               }
             }
             if (Object.keys(parsedData).length) {
-              dataList.push(parsedData)
+              dataList.push(parsedData);
+            }
+          });
+        },
+      });
+      return false;
+    },
+
+    downloadCsv (dataList) {
+      const parseDocToRow = doc => {
+        const row = dot.dot(doc)
+        for (const field in row) {
+          if (row[field] !== undefined) {
+            const type = typeof row[field]
+            if (type !== 'object') {
+              // save var type on row header
+              let fixedField = field
+              if (/\[(\d+)\]/.test(field)) {
+                fixedField = field.replace(/\[(\d+)\]/, '.$1')
+              }
+              row[`${type.charAt(0).toUpperCase()}${type.slice(1)}(${fixedField})`] = row[field]
+            }
+            delete row[field]
+          }
+        }
+        return row
+      }
+
+      // download CSV table with parsed data
+      const downloadCsv = () => {
+        const columns = []
+        const exportData = []
+        dataList.forEach(item => exportData.push(parseDocToRow(item)))
+        exportData.forEach(row => {
+          Object.keys(row).forEach(field => {
+            if (!/_records/.test(field) && columns.indexOf(field) === -1) {
+              columns.push(field)
             }
           })
-        }
-      })
-      return false
+        })
+        const csv = Papa.unparse(exportData, { columns })
+        const csvData = new window.Blob([csv], {
+          type: 'text/csv;charset=utf-8;'
+        })
+        const csvURL = navigator.msSaveBlob
+          ? navigator.msSaveBlob(csvData, 'download.csv')
+          : window.URL.createObjectURL(csvData)
+        const $link = document.createElement('a')
+        $link.href = csvURL
+        $link.setAttribute('download', 'list.csv')
+        $link.click()
+      }
+
+      downloadCsv()
     },
 
     handleSubmit () {
