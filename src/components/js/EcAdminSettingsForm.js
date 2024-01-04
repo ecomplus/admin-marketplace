@@ -259,11 +259,7 @@ export default {
             const type = typeof row[field]
             if (type !== 'object') {
               // save var type on row header
-              let fixedField = field
-              if (/\[(\d+)\]/.test(field)) {
-                fixedField = field.replace(/\[(\d+)\]/, '.$1')
-              }
-              row[`${type.charAt(0).toUpperCase()}${type.slice(1)}(${fixedField})`] = row[field]
+              row[`${type.charAt(0).toUpperCase()}${type.slice(1)}(${field})`] = row[field]
             }
             delete row[field]
           }
