@@ -20,10 +20,12 @@ export default {
 
   data () {
     return {
+      lists: [],
+      campaigns: [],
+      showModalError: false,
+      showModalCampaigns: false,
       showModalLists: false,
       showModalStores: false,
-      showModalError: false,
-      lists: [],
       stores: []
     }
   },
@@ -42,8 +44,17 @@ export default {
       get () {
         return this.lists
       },
-      set (stores) {
-        this.lists = stores
+      set (lists) {
+        this.lists = lists
+      }
+    },
+
+    localCampaigns: {
+      get () {
+        return this.campaigns
+      },
+      set (campaigns) {
+        this.campaigns = campaigns
       }
     },
 
@@ -51,6 +62,27 @@ export default {
       return i18n({
         en_us: 'API Key must be setted',
         pt_br: 'API Key precisa estar configurada'
+      })
+    },
+
+    i19SearchCampaigns () {
+      return i18n({
+        en_us: 'Search my campaigns',
+        pt_br: 'Buscar minhas campanhas'
+      })
+    },
+
+    i19Campaigns () {
+      return i18n({
+        en_us: 'Campaigns',
+        pt_br: 'Campanhas'
+      })
+    },
+
+    i19SearchingCampaigns () {
+      return i18n({
+        en_us: 'Searching campaigns, wait a minute..',
+        pt_br: 'Buscando campanhas, aguarde..'
       })
     },
 
@@ -247,6 +279,17 @@ export default {
             }
           )
         })
-    }
+    },
+
+    fetchCampaigns () {
+      appClient({
+        url: '/mailchimp/campaigns',
+        method: 'get'
+      })
+        .then(({ data }) => {
+          this.localCampaigns = data.results
+          this.showModalCampaigns = true
+        })
+    },
   }
 }

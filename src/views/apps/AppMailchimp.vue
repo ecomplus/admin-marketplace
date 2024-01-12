@@ -57,7 +57,7 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <p class="text-muted">
               <button
                 class="btn btn-primary mb-2"
@@ -70,7 +70,7 @@
             </p>
           </div>
 
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <p class="text-muted">
               <button
                 class="btn btn-primary mb-2"
@@ -82,7 +82,33 @@
               {{ i19SyncCustomersMessage }}
             </p>
           </div>
+
+          <div class="col-lg-4">
+            <p class="text-muted">
+              <button
+                class="btn btn-primary mb-2"
+                @click="fetchCampaigns"
+              >
+                {{ i19SearchCampaigns }}
+              </button>
+              <br>
+              {{ i19SearchingCampaigns }}
+            </p>
+          </div>
         </div>
+      </div>
+
+      <div>
+        <b-modal
+          v-model="showModalCampaigns"
+          :title="i19Campaigns"
+        >
+          <b-table
+            striped
+            hover
+            :items="localCampaigns"
+          ></b-table>
+        </b-modal>
       </div>
 
       <div>
