@@ -219,7 +219,8 @@ export default {
                   let nestedField = parsedData
                   for (let i = 0; i < fields.length - 1; i++) {
                     if (!nestedField[fields[i]]) {
-                      nestedField[fields[i]] = {}
+                      const isArrayIndex = /^\d+$/.test(fields[i + 1])
+                      nestedField[fields[i]] = isArrayIndex ? [] : {}
                     }
                     nestedField = nestedField[fields[i]]
                   }
