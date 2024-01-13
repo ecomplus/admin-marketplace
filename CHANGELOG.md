@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/ecomplus/admin-marketplace/compare/v2.4.0...v2.5.0) (2024-01-13)
+
+
+### Features
+
+* **admin-settings-form:** add download button to export array of objects config ([f974887](https://github.com/ecomplus/admin-marketplace/commit/f97488778ed7d56b079d263f21c5175a8d10bc53))
+* **mailchimp-vue:** add list campaign option and table ([#287](https://github.com/ecomplus/admin-marketplace/issues/287)) ([9aa7412](https://github.com/ecomplus/admin-marketplace/commit/9aa741218b54c4215f8893c2bdf4ef9fd044fee2))
+
+
+### Bug Fixes
+
+* **admin-settings-form:** properly handle numeric fields with arrey nested fields ([5161efa](https://github.com/ecomplus/admin-marketplace/commit/5161efa7cae97bd7472f3edd5a6e2e5e6561f0e4))
+* **deps:** update all non-major dependencies ([#285](https://github.com/ecomplus/admin-marketplace/issues/285)) ([597c849](https://github.com/ecomplus/admin-marketplace/commit/597c849fa52d2bc324cbeca639916eeca8a1b438))
+* **deps:** update dependency core-js to ^3.33.3 ([#283](https://github.com/ecomplus/admin-marketplace/issues/283)) ([9f049df](https://github.com/ecomplus/admin-marketplace/commit/9f049dfa536cf42c0cf4d31a63a6254cb93f99b1))
+* **input-discount:** allow negative percentage discount ([#270](https://github.com/ecomplus/admin-marketplace/issues/270)) ([d783d27](https://github.com/ecomplus/admin-marketplace/commit/d783d27849f8f959451f7f913370c2b2a95a7d4c))
+
 ## [2.4.0](https://github.com/ecomplus/admin-marketplace/compare/v2.3.1...v2.4.0) (2023-05-30)
 
 
