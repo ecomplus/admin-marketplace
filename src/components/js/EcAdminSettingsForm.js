@@ -1,5 +1,6 @@
 import { i18n } from '@ecomplus/utils'
 import Papa from 'papaparse'
+import * as dot from 'dot-object'
 import getSchemaInput from './../../lib/get-schema-input'
 import sanitize from './../../lib/sanitize'
 import { BCollapse } from 'bootstrap-vue'
@@ -57,6 +58,7 @@ export default {
     i19add: () => i18n(i19add),
     i19delete: () => i18n(i19delete),
     i19deleteAll: () => i18n(i19deleteAll),
+    i19download: () => 'Download',
     i19edit: () => i18n(i19edit),
     i19editing: () => i18n(i19editing),
     i19empty: () => i18n(i19empty),
@@ -234,6 +236,48 @@ export default {
         }
       })
       return false
+    },
+
+    downloadCsv (dataList) {
+      const parseDocToRow = doc => {
+        const row = dot.dot(doc)
+        for (const field in row) {
+          if (row[field] !== undefined) {
+            const type = typeof row[field]
+            if (type !== 'object') {
+              // save var type on row header
+              row[`${type.charAt(0).toUpperCase()}${type.slice(1)}(${field})`] = row[field]
+            }
+            delete row[field]
+          }
+        }
+        return row
+      }
+      // download CSV table with parsed data
+      const downloadCsv = () => {
+        const columns = []
+        const exportData = []
+        dataList.forEach(item => exportData.push(parseDocToRow(item)))
+        exportData.forEach(row => {
+          Object.keys(row).forEach(field => {
+            if (!/_records/.test(field) && columns.indexOf(field) === -1) {
+              columns.push(field)
+            }
+          })
+        })
+        const csv = Papa.unparse(exportData, { columns })
+        const csvData = new window.Blob([csv], {
+          type: 'text/csv;charset=utf-8;'
+        })
+        const csvURL = navigator.msSaveBlob
+          ? navigator.msSaveBlob(csvData, 'download.csv')
+          : window.URL.createObjectURL(csvData)
+        const $link = document.createElement('a')
+        $link.href = csvURL
+        $link.setAttribute('download', 'list.csv')
+        $link.click()
+      }
+      downloadCsv()
     },
 
     handleSubmit () {
