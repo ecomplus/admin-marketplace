@@ -214,7 +214,7 @@ export default {
                   : head.startsWith('Boolean')
                     ? Boolean(row[head] && !row[head].toUpperCase().startsWith('FALS'))
                     : row[head]
-                const fields = field.split(/[.[\]]/)
+                const fields = field.split(/[.[\]]/).filter(Boolean)
                 if (fields.length > 1) {
                   let nestedField = parsedData
                   for (let i = 0; i < fields.length - 1; i++) {
@@ -222,7 +222,7 @@ export default {
                       const isArrayIndex = /^\d+$/.test(fields[i + 1])
                       nestedField[fields[i]] = isArrayIndex ? [] : {}
                     }
-                    nestedField = nestedField[fields[i]]
+                    nestedField = nestedField[fields[i]] 
                   }
                   nestedField[fields[fields.length - 1]] = value
                 } else {
