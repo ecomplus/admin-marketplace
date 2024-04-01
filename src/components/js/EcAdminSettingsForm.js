@@ -222,7 +222,7 @@ export default {
                       const isArrayIndex = /^\d+$/.test(fields[i + 1])
                       nestedField[fields[i]] = isArrayIndex ? [] : {}
                     }
-                    nestedField = nestedField[fields[i]] 
+                    nestedField = nestedField[fields[i]]
                   }
                   nestedField[fields[fields.length - 1]] = value
                 } else {
