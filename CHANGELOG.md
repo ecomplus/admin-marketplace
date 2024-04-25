@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.1](https://github.com/ecomplus/admin-marketplace/compare/v2.5.0...v2.5.1) (2024-04-25)
+
+
+### Bug Fixes
+
+* avoid empty string columns on csv import/export ([#292](https://github.com/ecomplus/admin-marketplace/issues/292)) ([f50e59d](https://github.com/ecomplus/admin-marketplace/commit/f50e59d8c17345ee982cc97f41e36f339aa91c31))
+* **deps:** update all non-major dependencies ([#288](https://github.com/ecomplus/admin-marketplace/issues/288)) ([ec97e0a](https://github.com/ecomplus/admin-marketplace/commit/ec97e0a2120fe80940bad0dd326eae14ad5e8da2))
+* **deps:** update all non-major dependencies ([#290](https://github.com/ecomplus/admin-marketplace/issues/290)) ([d7c750a](https://github.com/ecomplus/admin-marketplace/commit/d7c750a2c3d2aa81519e9d00632234ec00a914a1))
+* **deps:** update all non-major dependencies ([#293](https://github.com/ecomplus/admin-marketplace/issues/293)) ([4a71fb6](https://github.com/ecomplus/admin-marketplace/commit/4a71fb671796b47b8578d625680f30173b86ed58))
+
 ## [2.5.0](https://github.com/ecomplus/admin-marketplace/compare/v2.4.0...v2.5.0) (2024-01-13)
 
 
