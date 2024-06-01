@@ -27,8 +27,8 @@
     "@ecomplus/utils": "^1.4.1",
     "babel-runtime": "^6.26.0",
     "bootstrap-vue": "^2.23.1",
-    "core-js": "^3.36.1",
-    "dot-object": "^2.1.4",
+    "core-js": "^3.37.1",
+    "dot-object": "^2.1.5",
     "lodash.clonedeep": "^4.5.0",
     "papaparse": "^5.4.1",
     "popper.js": "^1.16.1",
@@ -52,10 +52,10 @@
     "eslint-plugin-vue": "^7.20.0",
     "husky": "^4.3.8",
     "lint-staged": "^11.2.6",
-    "sass": "^1.72.0",
+    "sass": "^1.77.4",
     "sass-loader": "^10.5.2",
     "standard": "^17.1.0",
-    "commit-and-tag-version": "^9.5.0",
+    "commit-and-tag-version": "^9.6.0",
     "vue-template-compiler": "2.6.x"
   },
   "gitHooks": {
