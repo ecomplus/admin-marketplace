@@ -55,7 +55,7 @@
     "sass": "^1.72.0",
     "sass-loader": "^10.5.2",
     "standard": "^17.1.0",
-    "standard-version": "^9.3.2",
+    "commit-and-tag-version": "^9.5.0",
     "vue-template-compiler": "2.6.x"
   },
   "gitHooks": {
